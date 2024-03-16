@@ -1,16 +1,29 @@
 import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { AddConfig } from './Add';
+import { BundleConfig } from './Bundle';
 import { DeleteConfig } from './Delete';
 import { EditConfig } from './Edit';
 import { FormatConfig } from './Format';
+import { GenerateConfig } from './Generate';
+import { ParamsConfig } from './Params';
 import { ReplaceConfig } from './Replace';
+import { UnbomConfig } from './Unbom';
 import { OPERATION_TYPE } from './constants';
 
 /**
  * 操作の設定
  */
-export type OperationConfigTypes = AddConfig | DeleteConfig | EditConfig | FormatConfig | ReplaceConfig;
+export type OperationConfigTypes =
+  | AddConfig
+  | BundleConfig
+  | DeleteConfig
+  | EditConfig
+  | FormatConfig
+  | GenerateConfig
+  | ParamsConfig
+  | ReplaceConfig
+  | UnbomConfig;
 
 /**
  * ソースを操作する際の種別

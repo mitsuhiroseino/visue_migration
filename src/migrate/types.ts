@@ -1,6 +1,6 @@
 import { Options } from 'prettier';
 
-import { OperationConfig, OperationResult } from '../operate';
+import { OperationConfigTypes, OperationResult } from '../operate';
 import { CommonConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { ReplacementValues } from '../utils/replaceByValues';
@@ -120,7 +120,7 @@ export type MigrationTargetConfig<O = Options> = CommonConfig<O> &
      * - 正規表現の場合はパスがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter: Condition<IterationParams>;
+    filter?: Condition<IterationParams>;
 
     // 以下はソースコードの編集に関するプロパティ
 
@@ -137,7 +137,7 @@ export type MigrationTargetConfig<O = Options> = CommonConfig<O> &
      * 操作の設定
      * ここに定義した操作はフォーマットされたソースコードに対して行われる
      */
-    operations?: OperationConfig | OperationConfig[];
+    operations?: OperationConfigTypes | OperationConfigTypes[];
 
     /**
      * フォーマットも含む編集処理後に実行される任意の処理

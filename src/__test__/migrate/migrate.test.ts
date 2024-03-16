@@ -1,4 +1,5 @@
 import migrate from 'src/migrate/migrate';
+import { OperationParams } from 'src/operate';
 
 describe('migrate', () => {
   test('error', () => {
@@ -6,7 +7,22 @@ describe('migrate', () => {
       migrate({
         tasks: [
           {
-            jobs: [],
+            jobs: [
+              {
+                targets: [
+                  {
+                    template: 'abc',
+                    outputPath: '',
+                    operations: {
+                      type: 'edit',
+                      editContent: async (content: string, params: OperationParams) => {
+                        throw 'Error!!!';
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
           },
         ],
       });
