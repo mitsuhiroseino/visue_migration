@@ -19,8 +19,8 @@ export default async function executeTarget(config: MigrationTargetConfig, param
   const { inputPath, outputPath, template, templatePath, replacementBracket, forceOutput, onTargetStart, onTargetEnd, filter } = config,
     replacementOptions = { replacementBracket, forceOutput };
 
-  if (inputPath == null && template == null && templatePath == null) {
-    // 対象が存在しない場合
+  if (outputPath != null && inputPath == null && template == null && templatePath == null) {
+    // 出力があるのに入力元が存在しない場合
     console.warn('input does not exist.', JSON.stringify({ inputPath, template, templatePath, outputPath }));
   } else {
     // 対象が存在する場合

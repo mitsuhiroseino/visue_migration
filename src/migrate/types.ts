@@ -1,7 +1,7 @@
 import { Options } from 'prettier';
 
 import { OperationConfig, OperationResult } from '../operate';
-import { CommonConfig, ProcessingTime } from '../types';
+import { CommonConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { ReplacementValues } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
@@ -182,7 +182,7 @@ export type MigrationStatus = (typeof MIGRATION_STATUS)[keyof typeof MIGRATION_S
 /**
  * 結果
  */
-export type MigrationResult = ProcessingTime & {
+export type MigrationResult = {
   /**
    * タスク毎の処理結果
    */
@@ -207,7 +207,7 @@ export type MigrationResult = ProcessingTime & {
 /**
  * タスクの結果
  */
-export type MigrationTaskResult = ProcessingTime & {
+export type MigrationTaskResult = {
   /**
    * ジョブの処理結果
    */
@@ -217,7 +217,7 @@ export type MigrationTaskResult = ProcessingTime & {
 /**
  * 繰り返しの結果
  */
-export type MigrationJobResult = ProcessingTime & {
+export type MigrationJobResult = {
   /**
    * 対象毎の処理結果
    */
@@ -227,7 +227,7 @@ export type MigrationJobResult = ProcessingTime & {
 /**
  * 対象の移行をした結果
  */
-export type MigrationTargetResult = Partial<ProcessingTime> & {
+export type MigrationTargetResult = {
   /**
    * 移行元のファイルパス
    */
@@ -236,7 +236,7 @@ export type MigrationTargetResult = Partial<ProcessingTime> & {
   /**
    * 移行先のファイルパス
    */
-  outputPath: string;
+  outputPath?: string;
 
   /**
    * 処理ステータス

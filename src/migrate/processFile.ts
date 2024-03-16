@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-import StopWatch from '../utils/StopWatch';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import finshParams from './helpers/finshParams';
 import isCopyOnly from './helpers/isCopyOnly';
@@ -14,7 +13,6 @@ export default async function processFile(
   config: MigrationTargetConfig,
   params: IterationParams
 ): Promise<MigrationTargetResult> {
-  const stopWatch = new StopWatch();
   if (isCopyOnly(config)) {
     // ファイルのコピーのみで済む場合
     const parentPath = path.dirname(outputPath);
@@ -28,7 +26,7 @@ export default async function processFile(
       // 単純コピー
       await fs.copyFile(inputPath, outputPath);
     }
-    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED, ...stopWatch.stop() };
+    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
   } else {
     // ファイル内の変換が必要な場合
     const { inputEncoding, outputEncoding } = config;
@@ -40,6 +38,6 @@ export default async function processFile(
     const parentPath = path.dirname(outputPath);
     await fs.ensureDir(parentPath);
     await fs.writeFile(outputPath, content, { encoding: outputEncoding });
-    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED, ...stopWatch.stop() };
+    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
   }
 }

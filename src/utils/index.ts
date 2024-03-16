@@ -1,4 +1,3 @@
-export { default as StopWatch } from './StopWatch';
 export { default as applyIf } from './applyIf';
 export { default as getFinishedString } from './getFinishedString';
 export { default as isMatch } from './isMatch';

@@ -1,4 +1,3 @@
-import StopWatch from '../utils/StopWatch';
 import applyIf from '../utils/applyIf';
 import asArray from '../utils/asArray';
 import executeTarget from './executeTarget';
@@ -12,7 +11,6 @@ import { IterationParams, MigrationJobConfig, MigrationJobResult } from './types
  * @returns
  */
 export default async function executeJob(config: MigrationJobConfig): Promise<MigrationJobResult> {
-  const stopWatch = new StopWatch();
   // 繰り返し設定毎の処理
   const { iteration, jobParams, onJobStart, onJobEnd } = config;
   // タスク毎の前処理
@@ -34,7 +32,7 @@ export default async function executeJob(config: MigrationJobConfig): Promise<Mi
       targetResults.push(await executeTarget(targetCfg, params));
     }
   }
-  const result = { targetResults, ...stopWatch.stop() };
+  const result = { targetResults };
 
   applyIf(onJobEnd, [result, config]);
   return result;

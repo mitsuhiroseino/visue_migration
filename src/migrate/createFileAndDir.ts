@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-import StopWatch from '../utils/StopWatch';
 import getFinishedString from '../utils/getFinishedString';
 import { ReplaceByValuesOptions } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS } from './constants';
@@ -25,7 +24,6 @@ export default async function createFileAndDir(
   config: MigrationTargetConfig,
   params: IterationParams
 ): Promise<MigrationTargetResult> {
-  const stopWatch = new StopWatch();
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory()) {
     // ディレクトリの場合は配下のファイル・ディレクトリを順次処理
@@ -35,12 +33,13 @@ export default async function createFileAndDir(
       promises.push(createFileAndDir(path.join(inputPath, item.name), path.join(outputPath, item.name), config, params));
     }
     await Promise.all(promises);
-    return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED, ...stopWatch.stop() };
+    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CREATED };
   } else if (stat.isFile()) {
     // ファイルの場合は、ファイルを読み込みcreateFileを実行した結果のPromiseを返す
     const template = await fs.readFile(inputPath, { encoding: config.inputEncoding });
     const finishedParams = finshParams(params, { inputPath, outputPath });
     const content = await getFinishedString(template, finishedParams, config);
-    return await createFile(content, outputPath, config, finishedParams);
+    const result = await createFile(content, outputPath, config, finishedParams);
+    return { ...result, inputPath };
   }
 }

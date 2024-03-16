@@ -1,4 +1,3 @@
-import StopWatch from '../utils/StopWatch';
 import asArray from '../utils/asArray';
 import { MIGRATION_STATUS } from './constants';
 import executeTask from './executeTask';
@@ -12,7 +11,6 @@ import { MigrationConfig, MigrationResult } from './types';
  * @returns
  */
 export default async function migrate(config: MigrationConfig): Promise<MigrationResult> {
-  const stopWatch = new StopWatch();
   const taskResults = [];
   let status, message, error;
   try {
@@ -34,6 +32,5 @@ export default async function migrate(config: MigrationConfig): Promise<Migratio
     status,
     message,
     error,
-    ...stopWatch.stop(),
   };
 }

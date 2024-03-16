@@ -21,7 +21,8 @@ export default async function getFinishedString(
     } else {
       return result;
     }
-  } else {
+  } else if (subject != null) {
     return (() => replaceByValues(subject, values, replaceByValuesOptions))();
   }
+  return null;
 }

@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-import StopWatch from '../utils/StopWatch';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import isCopyOnly from './helpers/isCopyOnly';
 import processFile from './processFile';
@@ -23,7 +22,6 @@ export default async function processFileAndDir(
   params: IterationParams,
   _level = 0
 ): Promise<MigrationTargetResult> {
-  const stopWatch = new StopWatch();
   const { ignoreSubDir } = config;
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory() && (!ignoreSubDir || _level === 0)) {
@@ -45,7 +43,7 @@ export default async function processFileAndDir(
         // サブフォルダも含めてコピー
         await fs.copy(inputPath, outputPath, { overwrite: true });
       }
-      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED, ...stopWatch.stop() };
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
     } else {
       // テキストファイルの変換が必要な場合
       await fs.ensureDir(outputPath);
@@ -57,7 +55,7 @@ export default async function processFileAndDir(
           return processFileAndDir(inputItemPath, outputItemPath, config, params, _level + 1);
         })
       );
-      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED, ...stopWatch.stop() };
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
     }
   } else if (stat.isFile()) {
     // ファイルの場合

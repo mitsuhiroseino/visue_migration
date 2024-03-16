@@ -1,4 +1,3 @@
-import StopWatch from '../utils/StopWatch';
 import applyIf from '../utils/applyIf';
 import asArray from '../utils/asArray';
 import executeJob from './executeJob';
@@ -11,7 +10,6 @@ import { MigrationJobResult, MigrationTaskConfig, MigrationTaskResult } from './
  * @returns
  */
 export default async function executeTask(config: MigrationTaskConfig): Promise<MigrationTaskResult> {
-  const stopWatch = new StopWatch();
   const { jobs, onTaskStart, onTaskEnd } = config;
   applyIf(onTaskStart, [config]);
 
@@ -24,7 +22,7 @@ export default async function executeTask(config: MigrationTaskConfig): Promise<
   }
   // ジョブ間は並列処理
   const jobResults = await Promise.all(promises);
-  const result = { jobResults, ...stopWatch.stop() };
+  const result = { jobResults };
 
   applyIf(onTaskEnd, [result, config]);
   return result;

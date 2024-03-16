@@ -59,13 +59,3 @@ export type InputOputputConfig = {
    */
   forceOutput?: boolean;
 };
-
-/**
- * 処理時間
- */
-export type ProcessingTime = {
-  /**
-   * 処理時間
-   */
-  time?: number;
-};

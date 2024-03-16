@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-import StopWatch from '../utils/StopWatch';
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
 import operateContent from './operateContent';
 import { IterationParams, MigrationTargetConfig, MigrationTargetResult } from './types';
@@ -20,7 +19,6 @@ export default async function createFile(
   config: MigrationTargetConfig,
   params: IterationParams
 ): Promise<MigrationTargetResult> {
-  const stopWatch = new StopWatch();
   // ソースの操作
   content = await operateContent(content, config, params);
   // ソースファイルの出力
@@ -28,6 +26,5 @@ export default async function createFile(
   await fs.ensureDir(parentPath);
   const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;
   await fs.writeFile(outputPath, content, { encoding: outputEncoding });
-
-  return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED, ...stopWatch.stop() };
+  return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED };
 }
