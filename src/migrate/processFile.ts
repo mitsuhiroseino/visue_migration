@@ -5,14 +5,14 @@ import { MIGRATION_ITEM_STATUS } from './constants';
 import finshParams from './helpers/finshParams';
 import isCopyOnly from './helpers/isCopyOnly';
 import operateContent from './operateContent';
-import { IterationParams, MigrationTargetConfig, MigrationTargetResult } from './types';
+import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
 
 export default async function processFile(
   inputPath: string,
   outputPath: string,
   config: MigrationTargetConfig,
   params: IterationParams
-): Promise<MigrationTargetResult> {
+): Promise<MigrationIterationResult> {
   if (isCopyOnly(config)) {
     // ファイルのコピーのみで済む場合
     const parentPath = path.dirname(outputPath);

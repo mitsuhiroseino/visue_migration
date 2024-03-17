@@ -54,6 +54,7 @@ export const MIGRATION_STATUS = {
  * 親から引き継ぐ設定
  */
 export const INHERITED_CONFIGS = {
+  iteration: true,
   formatter: true,
   preFormatting: true,
   postFormatting: true,
@@ -64,12 +65,14 @@ export const INHERITED_CONFIGS = {
   inputEncoding: true,
   outputEncoding: true,
   forceOutput: true,
-  onTargetStart: true,
-  onTargetEnd: true,
-  onJobStart: true,
-  onJobEnd: true,
   onTaskStart: true,
   onTaskEnd: true,
+  onJobStart: true,
+  onJobEnd: true,
+  onTargetStart: true,
+  onTargetEnd: true,
+  onIterationStart: true,
+  onIterationEnd: true,
 };
 
 /**

@@ -4,7 +4,7 @@ import path from 'path';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import isCopyOnly from './helpers/isCopyOnly';
 import processFile from './processFile';
-import { IterationParams, MigrationTargetConfig, MigrationTargetResult } from './types';
+import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
 
 /**
  * 対象の移行を行う
@@ -21,7 +21,7 @@ export default async function processFileAndDir(
   config: MigrationTargetConfig,
   params: IterationParams,
   _level = 0
-): Promise<MigrationTargetResult> {
+): Promise<MigrationIterationResult> {
   const { ignoreSubDir } = config;
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory() && (!ignoreSubDir || _level === 0)) {

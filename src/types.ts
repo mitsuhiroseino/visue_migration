@@ -1,6 +1,6 @@
 import { Options } from 'prettier';
 
-import { ReplaceByValuesOptions } from './utils/replaceByValues';
+import { ReplaceByValuesOptions, ReplacementValues } from './utils/replaceByValues';
 
 export type CommonConfig<O = Options> = FormattingConfig<O> & ReplacementConfig & InputOputputConfig;
 
@@ -36,7 +36,12 @@ export type FormattingConfig<O = Options> = {
 /**
  * ソースコードの置換に関する設定
  */
-export type ReplacementConfig = ReplaceByValuesOptions & {};
+export type ReplacementConfig = ReplaceByValuesOptions & {
+  /**
+   * プレイスホルダーと置き換えられる値
+   */
+  params?: ReplacementValues;
+};
 
 /**
  * ファイルの入出力に関する設定

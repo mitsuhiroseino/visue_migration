@@ -18,7 +18,7 @@ export type ReplaceByValuesOptions = {
   flatKeys?: boolean;
 };
 
-export type ReplacementValues = { [key: string]: string | undefined } | string[];
+export type ReplacementValues = { [key: string]: string | undefined };
 
 const getShallow = (values, key) => values[key];
 

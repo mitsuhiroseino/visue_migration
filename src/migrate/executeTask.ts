@@ -21,8 +21,8 @@ export default async function executeTask(config: MigrationTaskConfig): Promise<
     promises.push(executeJob(jobCfg));
   }
   // ジョブ間は並列処理
-  const jobResults = await Promise.all(promises);
-  const result = { jobResults };
+  const results = await Promise.all(promises);
+  const result = { results };
 
   applyIf(onTaskEnd, [result, config]);
   return result;

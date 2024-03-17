@@ -6,7 +6,7 @@ import { ReplaceByValuesOptions } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import finshParams from './helpers/finshParams';
-import { IterationParams, MigrationTargetConfig, MigrationTargetResult } from './types';
+import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
 
 export type CreateFileOptions = ReplaceByValuesOptions;
 
@@ -23,7 +23,7 @@ export default async function createFileAndDir(
   outputPath: string,
   config: MigrationTargetConfig,
   params: IterationParams
-): Promise<MigrationTargetResult> {
+): Promise<MigrationIterationResult> {
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory()) {
     // ディレクトリの場合は配下のファイル・ディレクトリを順次処理

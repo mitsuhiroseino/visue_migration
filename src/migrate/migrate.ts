@@ -28,7 +28,7 @@ export default async function migrate(config: MigrationConfig): Promise<Migratio
     error = e;
   }
   return {
-    taskResults,
+    results: taskResults,
     status,
     message,
     error,
