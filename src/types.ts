@@ -2,8 +2,6 @@ import { Options } from 'prettier';
 
 import { ReplaceByValuesOptions, ReplacementValues } from './utils/replaceByValues';
 
-export type CommonConfig<O = Options> = FormattingConfig<O> & ReplacementConfig & InputOputputConfig;
-
 /**
  * ソースコードのフォーマット処理に関する設定
  */

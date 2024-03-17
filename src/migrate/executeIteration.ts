@@ -23,16 +23,18 @@ export default async function executeIteration(
       config,
     replacementOptions = { replacementBracket, forceOutput };
 
+  applyIf(onIterationStart, [config, params]);
+
+  let result: MigrationIterationResult = null;
   if (outputPath != null && inputPath == null && template == null && templatePath == null) {
     // 出力があるのに入力元が存在しない場合
+    const outputFilePath = await getFinishedString(outputPath, params, replacementOptions);
+    result = { inputPath: null, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
     console.warn('input does not exist.', JSON.stringify({ inputPath, template, templatePath, outputPath }));
   } else {
     // 対象が存在する場合
-    applyIf(onIterationStart, [config, params]);
-    let finishedParams = { ...params },
-      result: MigrationIterationResult = null;
-    const outputFilePath = await getFinishedString(outputPath, finishedParams, replacementOptions);
-    finishedParams._outputPath = outputFilePath;
+    const outputFilePath = await getFinishedString(outputPath, params, replacementOptions);
+    let finishedParams = finshParams(params, { outputPath: outputFilePath });
     if (template != null) {
       // ファイルを作成
       const content = await getFinishedString(template, finishedParams, replacementOptions);
@@ -49,6 +51,8 @@ export default async function executeIteration(
         const cfgs = { ...config, preFormatting: false };
         result = await createFileAndDir(tplPath, outputFilePath, cfgs, finishedParams);
       } else {
+        // 処理対象なし
+        result = { inputPath: tplPath, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
         console.warn(`"${tplPath}" does not exist.`);
       }
     } else if (inputPath != null) {
@@ -64,6 +68,8 @@ export default async function executeIteration(
           // ファイルを移行
           result = await processFileAndDir(inputFilePath, outputFilePath, config, finishedParams);
         } else {
+          // 処理対象なし
+          result = { inputPath: inputFilePath, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
           console.warn(`"${inputFilePath}" does not exist.`);
         }
       } else {
@@ -71,10 +77,7 @@ export default async function executeIteration(
         result = { inputPath: inputFilePath, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.SKIPPED };
       }
     }
-    if (result) {
-      applyIf(onIterationEnd, [result, config, params]);
-      return result;
-    }
   }
-  return null;
+  applyIf(onIterationEnd, [result, config, params]);
+  return result;
 }

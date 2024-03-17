@@ -1,7 +1,7 @@
 import isString from 'lodash/isString';
 
-import { CommonConfig } from '../../types';
 import { INHERITED_CONFIGS } from '../constants';
+import { CommonConfig } from '../types';
 
 /**
  * 親から子に引き継ぐコンフィグの設定

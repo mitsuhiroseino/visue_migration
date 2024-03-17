@@ -27,10 +27,10 @@ export default async function createFileAndDir(
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory()) {
     // ディレクトリの場合は配下のファイル・ディレクトリを順次処理
-    const items = await fs.readdir(inputPath, { withFileTypes: true });
+    const items = await fs.readdir(inputPath);
     const promises = [];
     for (const item of items) {
-      promises.push(createFileAndDir(path.join(inputPath, item.name), path.join(outputPath, item.name), config, params));
+      promises.push(createFileAndDir(path.join(inputPath, item), path.join(outputPath, item), config, params));
     }
     await Promise.all(promises);
     return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CREATED };

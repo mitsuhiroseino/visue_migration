@@ -9,18 +9,14 @@ describe('migrate', () => {
           {
             jobs: [
               {
-                targets: [
-                  {
-                    template: 'abc',
-                    outputPath: '',
-                    operations: {
-                      type: 'edit',
-                      editContent: async (content: string, params: OperationParams) => {
-                        throw 'Error!!!';
-                      },
-                    },
+                template: 'abc',
+                outputPath: '',
+                operations: {
+                  type: 'edit',
+                  editContent: async (content: string, params: OperationParams) => {
+                    throw 'Error!!!';
                   },
-                ],
+                },
               },
             ],
           },
