@@ -1,6 +1,6 @@
 import isPlainObject from 'lodash/isPlainObject';
 
-import { IterationParams, MigrationTargetConfig } from '../types';
+import { IterationParams, MigrationJobConfig } from '../types';
 
 /**
  * イテレーターを取得する
@@ -9,11 +9,11 @@ import { IterationParams, MigrationTargetConfig } from '../types';
  * @returns
  */
 export default function getIterator(
-  iteration: (cfg: MigrationTargetConfig) => Generator<IterationParams> | IterationParams[] | IterationParams | null | undefined,
-  config: MigrationTargetConfig
+  iteration: (cfg: MigrationJobConfig) => Generator<IterationParams> | IterationParams[] | IterationParams | null | undefined,
+  config: MigrationJobConfig
 ): Generator<IterationParams> {
   // ジェネレーターを作成する
-  let generator: (cfg: MigrationTargetConfig) => Generator<IterationParams>;
+  let generator: (cfg: MigrationJobConfig) => Generator<IterationParams>;
   if (iteration == null) {
     // 空のparamsを1つだけ返すジェネレーター
     generator = function* () {
@@ -35,7 +35,7 @@ export default function getIterator(
     };
   } else {
     // 指定のジェネレーター
-    generator = iteration as (cfg: MigrationTargetConfig) => Generator<IterationParams>;
+    generator = iteration as (cfg: MigrationJobConfig) => Generator<IterationParams>;
   }
   // イテレーターを返す
   return generator(config);

@@ -1,28 +1,29 @@
 import applyIf from '../utils/applyIf';
-import asArray from '../utils/asArray';
-import executeTarget from './executeTarget';
-import inheritConfig from './helpers/inheritConfig';
-import { MigrationJobConfig, MigrationJobResult } from './types';
+import executeIteration from './executeIteration';
+import getIterator from './helpers/getIterator';
+import { IterationParams, MigrationJobConfig, MigrationJobResult } from './types';
 
 /**
- * 以降の設定に従いソースファイルの移行を行う
- * @param configs ジョブ設定
- * @returns
+ * 1処理対象分の処理を行う
+ * @param config 移行対象の設定
+ * @param params 繰り返し毎のパラメーター
  */
-export default async function executeJob(config: MigrationJobConfig): Promise<MigrationJobResult> {
-  // 繰り返し設定毎の処理
-  const { onJobStart, onJobEnd } = config;
-  // タスク毎の前処理
+export default async function executeJob(config: MigrationJobConfig): Promise<MigrationJobResult | null> {
+  const { iteration, params: jobParams, onJobStart, onJobEnd } = config;
+
+  // 対象が存在する場合
   applyIf(onJobStart, [config]);
 
+  // イテレーターを作成する
+  const iterator = getIterator(iteration, config);
   // 対象の処理
-  const targets = asArray(config.targets);
+  let iterationParams: IterationParams;
   const results = [];
-  for (const targetConfig of targets) {
-    // 処理対象毎の処理
-    const targetCfg = inheritConfig(targetConfig, config);
-    // ターゲット間は直列実行
-    results.push(await executeTarget(targetCfg));
+  while ((iterationParams = iterator.next().value)) {
+    // iteratorの返す値で繰り返し処理
+    const params = { ...jobParams, ...iterationParams };
+    // イテレーション間は直列実行
+    results.push(await executeIteration(config, params));
   }
   const result = { results };
 

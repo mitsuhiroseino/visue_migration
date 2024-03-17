@@ -4,7 +4,7 @@ import path from 'path';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import isCopyOnly from './helpers/isCopyOnly';
 import processFile from './processFile';
-import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
+import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 対象の移行を行う
@@ -18,7 +18,7 @@ import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from
 export default async function processFileAndDir(
   inputPath: string,
   outputPath: string,
-  config: MigrationTargetConfig,
+  config: MigrationJobConfig,
   params: IterationParams,
   _level = 0
 ): Promise<MigrationIterationResult> {

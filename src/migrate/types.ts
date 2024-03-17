@@ -1,27 +1,17 @@
 import { Options } from 'prettier';
 
 import { OperationConfigTypes, OperationResult } from '../operate';
-import { CommonConfig } from '../types';
 import { Condition } from '../utils/isMatch';
-import { ReplacementValues } from '../utils/replaceByValues';
+import { ReplaceByValuesOptions, ReplacementValues } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
-
-type IterationConfig = {
-  /**
-   * 繰り返し処理毎にパラメーターを作成するイテレーターの取得元
-   */
-  iteration?: (config: MigrationTargetConfig) => Generator<IterationParams> | IterationParams[] | IterationParams;
-};
 
 /**
  * 移行の設定
  */
 export type MigrationConfig<O = Options> = CommonConfig<O> &
-  IterationConfig &
-  MigrationTaskEvents &
-  MigrationJobEvents &
-  MigrationTargetEvents &
-  MigrationIterationEvents & {
+  MigrationTaskEvents<O> &
+  MigrationJobEvents<O> &
+  MigrationIterationEvents<O> & {
     /**
      * ID
      */
@@ -37,11 +27,9 @@ export type MigrationConfig<O = Options> = CommonConfig<O> &
  * タスクの設定
  */
 export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
-  IterationConfig &
-  MigrationTaskEvents &
-  MigrationJobEvents &
-  MigrationTargetEvents &
-  MigrationIterationEvents & {
+  MigrationTaskEvents<O> &
+  MigrationJobEvents<O> &
+  MigrationIterationEvents<O> & {
     /**
      * タスクID
      */
@@ -57,30 +45,10 @@ export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
  * ジョブの設定
  */
 export type MigrationJobConfig<O = Options> = CommonConfig<O> &
-  IterationConfig &
-  MigrationJobEvents &
-  MigrationTargetEvents &
-  MigrationIterationEvents & {
+  MigrationJobEvents<O> &
+  MigrationIterationEvents<O> & {
     /**
      *  ジョブID
-     */
-    id?: string;
-
-    /**
-     * ファイル・ディレクトリ毎の移行設定
-     */
-    targets: MigrationTargetConfig | MigrationTargetConfig[];
-  };
-
-/**
- * 1処理対象分の移行設定
- */
-export type MigrationTargetConfig<O = Options> = CommonConfig<O> &
-  IterationConfig &
-  MigrationTargetEvents &
-  MigrationIterationEvents & {
-    /**
-     * ターゲットID
      */
     id?: string;
 
@@ -136,7 +104,7 @@ export type MigrationTargetConfig<O = Options> = CommonConfig<O> &
      * @param config 当コンフィグ
      * @returns 編集処理対象になるソースコード
      */
-    initialize?: (source: string, params: IterationParams, config: Omit<MigrationTargetConfig, 'initialize'>) => Promise<string>;
+    initialize?: (source: string, params: IterationParams, config: Omit<MigrationJobConfig<O>, 'initialize'>) => Promise<string>;
 
     /**
      * 操作の設定
@@ -224,16 +192,6 @@ export type MigrationTaskResult = {
  */
 export type MigrationJobResult = {
   /**
-   * ターゲット毎の処理結果
-   */
-  results: MigrationTargetResult[];
-};
-
-/**
- * ターゲットの処理結果
- */
-export type MigrationTargetResult = {
-  /**
    * イテレーション毎の処理結果
    */
   results: MigrationIterationResult[];
@@ -262,14 +220,14 @@ export type MigrationIterationResult = {
 /**
  * タスク用のイベントハンドラー
  */
-type MigrationTaskEvents = {
+type MigrationTaskEvents<O = Options> = {
   /**
    * タスク開始時のハンドラー
    * @param config タスク設定
    * @param params タスクパラメーター
    * @returns
    */
-  onTaskStart?: (config: MigrationTaskConfig) => void;
+  onTaskStart?: (config: MigrationTaskConfig<O>) => void;
 
   /**
    * タスク終了時のハンドラー
@@ -278,20 +236,20 @@ type MigrationTaskEvents = {
    * @param params タスクパラメーター
    * @returns
    */
-  onTaskEnd?: (result: MigrationTaskResult, config: MigrationTaskConfig) => void;
+  onTaskEnd?: (result: MigrationTaskResult, config: MigrationTaskConfig<O>) => void;
 };
 
 /**
  * ジョブ用のイベントハンドラー
  */
-type MigrationJobEvents = {
+type MigrationJobEvents<O = Options> = {
   /**
    * ジョブ開始時のハンドラー
    * @param config ジョブ設定
    * @param params ジョブパラメーター
    * @returns
    */
-  onJobStart?: (config: MigrationJobConfig) => void;
+  onJobStart?: (config: MigrationJobConfig<O>) => void;
 
   /**
    * ジョブ終了時のハンドラー
@@ -300,42 +258,20 @@ type MigrationJobEvents = {
    * @param params ジョブパラメーター
    * @returns
    */
-  onJobEnd?: (result: MigrationJobResult, config: MigrationJobConfig) => void;
-};
-
-/**
- * ターゲット用のイベントハンドラー
- */
-type MigrationTargetEvents = {
-  /**
-   * ターゲット開始時のハンドラー
-   * @param config ターゲット設定
-   * @param params ターゲットパラメーター
-   * @returns
-   */
-  onTargetStart?: (config: MigrationTargetConfig) => void;
-
-  /**
-   * ターゲット終了時のハンドラー
-   * @param result ターゲット処理結果
-   * @param config ターゲット設定
-   * @param params ターゲットパラメーター
-   * @returns
-   */
-  onTargetEnd?: (result: MigrationTargetResult, config: MigrationTargetConfig) => void;
+  onJobEnd?: (result: MigrationJobResult, config: MigrationJobConfig<O>) => void;
 };
 
 /**
  * イテレーション用のイベントハンドラー
  */
-type MigrationIterationEvents = {
+type MigrationIterationEvents<O = Options> = {
   /**
    * イテレーション開始時のハンドラー
    * @param config イテレーション設定
    * @param params イテレーションパラメーター
    * @returns
    */
-  onIterationStart?: (config: MigrationTargetConfig, params: IterationParams) => void;
+  onIterationStart?: (config: MigrationJobConfig<O>, params: IterationParams) => void;
 
   /**
    * イテレーション終了時のハンドラー
@@ -344,5 +280,75 @@ type MigrationIterationEvents = {
    * @param params イテレーションパラメーター
    * @returns
    */
-  onIterationEnd?: (result: MigrationIterationResult, config: MigrationTargetConfig, params: IterationParams) => void;
+  onIterationEnd?: (result: MigrationIterationResult, config: MigrationJobConfig<O>, params: IterationParams) => void;
+};
+
+type CommonConfig<O = Options> = FormattingConfig<O> & ReplacementConfig & InputOputputConfig & IterationConfig<O>;
+
+/**
+ * ソースコードのフォーマット処理に関する設定
+ */
+type FormattingConfig<O = Options> = {
+  /**
+   * フォーマッターの指定
+   * @param source ソース
+   * @param options オプション
+   * @returns
+   */
+  formatter?: (source: string, options: O) => Promise<string>;
+
+  /**
+   * 移行処理開始前のフォーマット有無
+   */
+  preFormatting?: boolean | O;
+
+  /**
+   * 移行処理終了後のフォーマット有無
+   */
+  postFormatting?: boolean | O;
+
+  /**
+   * フォーマット時の設定
+   * preFormatting,postFormattingがtrueの場合は、この設定を使用してフォーマットを行う
+   */
+  formatterOptions?: O;
+};
+
+/**
+ * ソースコードの置換に関する設定
+ */
+type ReplacementConfig = ReplaceByValuesOptions & {
+  /**
+   * プレイスホルダーと置き換えられる値
+   */
+  params?: ReplacementValues;
+};
+
+/**
+ * ファイルの入出力に関する設定
+ */
+type InputOputputConfig = {
+  /**
+   * テキストファイル読み込み時のエンコーディング
+   * 未指定の場合はutf8
+   */
+  inputEncoding?: BufferEncoding;
+
+  /**
+   * テキストファイル書き込み時のエンコーディング
+   * 未指定の場合はutf8
+   */
+  outputEncoding?: BufferEncoding;
+
+  /**
+   * エラーがあってもファイルを出力する
+   */
+  forceOutput?: boolean;
+};
+
+type IterationConfig<O = Options> = {
+  /**
+   * 繰り返し処理毎にパラメーターを作成するイテレーターの取得元
+   */
+  iteration?: (config: MigrationJobConfig<O>) => Generator<IterationParams> | IterationParams[] | IterationParams;
 };

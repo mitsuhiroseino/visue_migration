@@ -50,6 +50,17 @@ export const MIGRATION_STATUS = {
   FATAL: 'fatal',
 } as const;
 
+// 設定されていたらファイルの変換が必要になる設定
+export const CONVERSION_CONFIGS = [
+  'inputEncoding',
+  'initialize',
+  'preFormatting',
+  'operations',
+  'postFormatting',
+  'finalize',
+  'outputEncoding',
+];
+
 /**
  * 親から引き継ぐ設定
  */

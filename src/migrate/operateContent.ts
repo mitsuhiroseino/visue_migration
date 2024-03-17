@@ -1,7 +1,7 @@
 import operate, { OperationConfig } from '../operate';
 import asArray from '../utils/asArray';
 import inheritConfig from './helpers/inheritConfig';
-import { IterationParams, MigrationTargetConfig } from './types';
+import { IterationParams, MigrationJobConfig } from './types';
 
 const catchError = (e, message, forceOutput) => {
   if (!forceOutput) {
@@ -17,7 +17,7 @@ const catchError = (e, message, forceOutput) => {
  * @param params
  * @returns
  */
-export default async function operateContent(content: string, config: MigrationTargetConfig, params: IterationParams): Promise<string> {
+export default async function operateContent(content: string, config: MigrationJobConfig, params: IterationParams): Promise<string> {
   const { initialize, formatter: format, preFormatting, postFormatting, formatterOptions, operations, finalize, forceOutput } = config;
 
   // 任意の前処理

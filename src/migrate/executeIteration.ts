@@ -8,7 +8,7 @@ import createFile from './createFile';
 import createFileAndDir from './createFileAndDir';
 import finshParams from './helpers/finshParams';
 import processFileAndDir from './processFileAndDir';
-import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
+import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 繰り返し処理1回文の処理を行う
@@ -16,7 +16,7 @@ import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from
  * @param params 繰り返し毎のパラメーター
  */
 export default async function executeIteration(
-  config: MigrationTargetConfig,
+  config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult | null> {
   const { inputPath, outputPath, template, templatePath, replacementBracket, forceOutput, onIterationStart, onIterationEnd, filter } =

@@ -3,7 +3,7 @@ import path from 'path';
 
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
 import operateContent from './operateContent';
-import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
+import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 任意のソースからファイルを作成する
@@ -16,7 +16,7 @@ import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from
 export default async function createFile(
   content: string,
   outputPath: string,
-  config: MigrationTargetConfig,
+  config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult> {
   // ソースの操作

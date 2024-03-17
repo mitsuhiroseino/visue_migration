@@ -6,7 +6,7 @@ import { ReplaceByValuesOptions } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import finshParams from './helpers/finshParams';
-import { IterationParams, MigrationIterationResult, MigrationTargetConfig } from './types';
+import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 export type CreateFileOptions = ReplaceByValuesOptions;
 
@@ -21,7 +21,7 @@ export type CreateFileOptions = ReplaceByValuesOptions;
 export default async function createFileAndDir(
   inputPath: string,
   outputPath: string,
-  config: MigrationTargetConfig,
+  config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult> {
   const stat = await fs.stat(inputPath);
