@@ -18,9 +18,14 @@ export type MigrationConfig<O = Options> = CommonConfig<O> &
     id?: string;
 
     /**
-     * タスク
+     * タスクの設定
      */
     tasks: MigrationTaskConfig | MigrationTaskConfig[];
+
+    /**
+     * タスクを並列で実行する
+     */
+    parallelTasks?: boolean;
   };
 
 /**
@@ -36,9 +41,14 @@ export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
     id?: string;
 
     /**
-     * タスク配下で並列実行可能なジョブの設定
+     * ジョブの設定
      */
     jobs: MigrationJobConfig | MigrationJobConfig[];
+
+    /**
+     * ジョブを並列で実行する
+     */
+    parallelJobs?: boolean;
   };
 
 /**
