@@ -1,3 +1,4 @@
+import { Content } from '../types';
 import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
@@ -12,7 +13,7 @@ import { OperationConfig, OperationConfigTypes, OperationParams, OperationResult
  * @returns
  */
 export default async function operate(
-  content: string,
+  content: Content,
   configs: OperationConfig | OperationConfig[],
   params: OperationParams
 ): Promise<OperationResult> {

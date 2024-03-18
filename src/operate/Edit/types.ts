@@ -1,10 +1,11 @@
+import { Content } from '../../types';
 import { OPERATION_TYPE } from '../constants';
 import { OperationConfig, OperationParams } from '../types';
 
 /**
  * 編集関数の設定
  */
-export type EditConfig = OperationConfig & {
+export type EditConfig<C = Content> = OperationConfig & {
   /**
    * 操作種別
    */
@@ -13,5 +14,5 @@ export type EditConfig = OperationConfig & {
   /**
    * 編集関数
    */
-  editContent: (content: string, params: OperationParams) => Promise<string>;
+  editContent: (content: C, params: OperationParams) => Promise<C>;
 };

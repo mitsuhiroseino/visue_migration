@@ -17,8 +17,8 @@ const catchError = (e: any, message: string, config: MigrationJobConfig, params:
  * @param params
  * @returns
  */
-export default async function operateContent(content: string, config: MigrationJobConfig, params: IterationParams): Promise<string> {
-  const { initialize, formatter: format, preFormatting, postFormatting, formatterOptions, operations, finalize, forceOutput } = config;
+export default async function operateTextContent(content: string, config: MigrationJobConfig, params: IterationParams): Promise<string> {
+  const { initialize, formatter: format, preFormatting, postFormatting, formatterOptions, operations, finalize } = config;
 
   // 任意の前処理
   if (initialize) {
@@ -29,6 +29,7 @@ export default async function operateContent(content: string, config: MigrationJ
       return content;
     }
   }
+
   if (preFormatting) {
     // 処理開始前のフォーマットあり
     try {
@@ -38,9 +39,10 @@ export default async function operateContent(content: string, config: MigrationJ
       return content;
     }
   }
+
   let migrated;
   if (operations) {
-    // ソースの内容を移行
+    // 操作
     try {
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
       migrated = await operate(content, operateConfigs, { ...params });
@@ -51,6 +53,7 @@ export default async function operateContent(content: string, config: MigrationJ
   } else {
     migrated = { content, results: [] };
   }
+
   if (postFormatting) {
     // 処理終了後のフォーマットあり
     try {
@@ -60,6 +63,7 @@ export default async function operateContent(content: string, config: MigrationJ
       return migrated.content;
     }
   }
+
   // 任意の後処理
   if (finalize) {
     try {
@@ -69,5 +73,6 @@ export default async function operateContent(content: string, config: MigrationJ
       return migrated.content;
     }
   }
+
   return migrated.content;
 }

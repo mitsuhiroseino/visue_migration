@@ -12,7 +12,7 @@ import { UnbomConfig } from './types';
  * @param options オプション
  * @returns 処理結果
  */
-const Unbom: Operation<UnbomConfig> = async (content: string, config: UnbomConfig, params: OperationParams) => {
+const Unbom: Operation<UnbomConfig, string> = async (content: string, config: UnbomConfig, params: OperationParams) => {
   // 置換の実行
   return replace(content, /^\ufeff/, '');
 };

@@ -13,7 +13,7 @@ import { ReplaceConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Replace: Operation<ReplaceConfig> = async (content: string, config: ReplaceConfig, params: OperationParams) => {
+const Replace: Operation<ReplaceConfig, string> = async (content: string, config: ReplaceConfig, params: OperationParams) => {
   let { patterns, formatPatterns, replacement = '', formatReplacement, replacementBracket } = config;
   const patternsOpations = { replacementBracket, content, preserveString: !formatPatterns };
   const replacementOpations = { replacementBracket, content, preserveString: !formatReplacement };

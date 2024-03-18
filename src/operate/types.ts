@@ -1,4 +1,4 @@
-import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
+import { Content, FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { AddConfig } from './Add';
 import { BundleConfig } from './Bundle';
@@ -26,7 +26,7 @@ export type OperationConfigTypes =
   | UnbomConfig;
 
 /**
- * ソースを操作する際の種別
+ * コンテンツを操作する際の種別
  */
 export type OperationType = (typeof OPERATION_TYPE)[keyof typeof OPERATION_TYPE];
 
@@ -69,16 +69,16 @@ export type OperationParams = {
 /**
  * 処理の結果
  */
-export type OperationResult = { content: string; results: OperationConfigTypes[] };
+export type OperationResult = { content: Content; results: OperationConfigTypes[] };
 
 /**
  * 内容に対する操作
  */
-export type Operation<C extends OperationConfig = OperationConfig> = (
-  content: string,
-  config: C,
+export type Operation<S extends OperationConfig = OperationConfig, C = Content> = (
+  content: C,
+  config: S,
   params: OperationParams
-) => Promise<string>;
+) => Promise<Content>;
 
 /**
  * 静的パターン

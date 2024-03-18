@@ -2,11 +2,11 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
-import operateContent from './operateContent';
+import operateTextContent from './operateTextContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
- * 任意のソースからファイルを作成する
+ * 任意のコンテンツからファイルを作成する
  * @param content ファイルの内容
  * @param outputPath 出力先ファイルのパス
  * @param config 設定
@@ -19,9 +19,9 @@ export default async function createFile(
   config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult> {
-  // ソースの操作
-  content = await operateContent(content, config, params);
-  // ソースファイルの出力
+  // 操作
+  content = await operateTextContent(content, config, params);
+  // ファイルの出力
   const parentPath = path.dirname(outputPath);
   await fs.ensureDir(parentPath);
   const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;

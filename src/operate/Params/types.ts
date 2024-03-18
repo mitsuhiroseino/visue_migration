@@ -1,3 +1,4 @@
+import { Content } from '../../types';
 import { BundleConfig } from '../Bundle';
 import { OPERATION_TYPE } from '../constants';
 import { OperationParams } from '../types';
@@ -5,7 +6,7 @@ import { OperationParams } from '../types';
 /**
  * パラメーターの更新
  */
-export type ParamsConfig = Omit<BundleConfig, 'type'> & {
+export type ParamsConfig<C = Content> = Omit<BundleConfig, 'type'> & {
   /**
    * 操作種別
    */
@@ -17,5 +18,5 @@ export type ParamsConfig = Omit<BundleConfig, 'type'> & {
    * @param params 現在のパラメーター
    * @returns 現在のパラメーターとの差分
    */
-  createDiff: (content: string, params: OperationParams) => Promise<OperationParams>;
+  createDiff: (content: C, params: OperationParams) => Promise<OperationParams>;
 };

@@ -10,7 +10,7 @@ describe('migrate', () => {
             jobs: [
               {
                 template: 'abc',
-                outputPath: '',
+                outputPath: 'ABC.txt',
                 operations: {
                   type: 'edit',
                   editContent: async (content: string, params: OperationParams) => {

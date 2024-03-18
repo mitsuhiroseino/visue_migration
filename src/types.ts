@@ -3,16 +3,21 @@ import { Options } from 'prettier';
 import { ReplaceByValuesOptions, ReplacementValues } from './utils/replaceByValues';
 
 /**
- * ソースコードのフォーマット処理に関する設定
+ * ファイルの内容の型
+ */
+export type Content = string | Buffer;
+
+/**
+ * テキストのフォーマット処理に関する設定
  */
 export type FormattingConfig<O = Options> = {
   /**
    * フォーマッターの指定
-   * @param source ソース
+   * @param content コンテンツ
    * @param options オプション
    * @returns
    */
-  formatter?: (source: string, options: O) => Promise<string>;
+  formatter?: (content: string, options: O) => Promise<string>;
 
   /**
    * 移行処理開始前のフォーマット有無
@@ -32,7 +37,7 @@ export type FormattingConfig<O = Options> = {
 };
 
 /**
- * ソースコードの置換に関する設定
+ * テキストの置換に関する設定
  */
 export type ReplacementConfig = ReplaceByValuesOptions & {
   /**

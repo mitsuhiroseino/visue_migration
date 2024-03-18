@@ -1,10 +1,11 @@
+import { Content } from '../../types';
 import { OPERATION_TYPE } from '../constants';
 import { OperationConfig, OperationParams } from '../types';
 
 /**
  * 編集関数の設定
  */
-export type BundleConfig = OperationConfig & {
+export type BundleConfig<C = Content> = OperationConfig & {
   /**
    * 操作種別
    */
@@ -13,8 +14,5 @@ export type BundleConfig = OperationConfig & {
   /**
    * 纏められた操作
    */
-  operations:
-    | OperationConfig
-    | OperationConfig[]
-    | ((content: string, params: OperationParams) => Promise<OperationConfig | OperationConfig[]>);
+  operations: OperationConfig | OperationConfig[] | ((content: C, params: OperationParams) => Promise<OperationConfig | OperationConfig[]>);
 };

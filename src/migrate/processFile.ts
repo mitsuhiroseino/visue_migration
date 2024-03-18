@@ -1,10 +1,12 @@
+import Encoding from 'encoding-japanese';
 import fs from 'fs-extra';
 import path from 'path';
 
 import { MIGRATION_ITEM_STATUS } from './constants';
 import finshParams from './helpers/finshParams';
 import isCopyOnly from './helpers/isCopyOnly';
-import operateContent from './operateContent';
+import operateBinaryContent from './operateBinaryContent';
+import operateTextContent from './operateTextContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 export default async function processFile(
@@ -22,15 +24,31 @@ export default async function processFile(
     return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
   } else {
     // ファイル内の変換が必要な場合
-    const { inputEncoding, outputEncoding } = config;
+    const { binary, inputEncoding, outputEncoding } = config;
     // ファイルの入力
-    let content = await fs.readFile(inputPath, { encoding: inputEncoding });
-    // 内容の操作
-    content = await operateContent(content, config, finshParams(params, { inputPath, outputPath }));
+    const buffer = await fs.readFile(inputPath);
+    let encoding: any;
+    if (binary) {
+      encoding = 'BINARY';
+    } else {
+      encoding = Encoding.detect(buffer);
+    }
+    let content;
+    let writeFileOptions;
+    if (!encoding || encoding === 'BINARY') {
+      // バイナリファイルの場合
+      content = await operateBinaryContent(buffer, config, finshParams(params, { inputPath, outputPath }));
+    } else {
+      // テキストファイルの場合
+      content = buffer.toString(inputEncoding || encoding);
+      // 内容の操作
+      content = await operateTextContent(content, config, finshParams(params, { inputPath, outputPath }));
+      writeFileOptions = { encoding: outputEncoding || encoding };
+    }
     // ファイルの出力
     const parentPath = path.dirname(outputPath);
     await fs.ensureDir(parentPath);
-    await fs.writeFile(outputPath, content, { encoding: outputEncoding });
+    await fs.writeFile(outputPath, content, writeFileOptions);
     return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
   }
 }

@@ -6,7 +6,7 @@ import inheritConfig from './helpers/inheritConfig';
 import { MigrationJobResult, MigrationTaskConfig, MigrationTaskResult } from './types';
 
 /**
- * 以降の設定に従いソースファイルの移行を行う
+ * 以降の設定に従いファイルの移行を行う
  * @param configs 移行設定
  * @returns
  */

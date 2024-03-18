@@ -42,7 +42,7 @@ export default async function executeIteration(
       const cfgs = { ...config, preFormatting: false };
       result = await createFile(content, outputFilePath, cfgs, finishedParams);
     } else if (templatePath != null) {
-      // テンプレートファイルを読み込んでソースを生成
+      // テンプレートファイルを読み込んで生成
       const tplPath = await getFinishedString(templatePath, finishedParams, replacementOptions);
       finishedParams = finshParams(finishedParams, { inputPath: tplPath });
       const availablePath = await fs.exists(tplPath);

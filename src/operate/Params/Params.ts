@@ -1,3 +1,4 @@
+import { Content } from '../../types';
 import Bundle from '../Bundle';
 import OperationFactory from '../OperationFactory';
 import { OPERATION_TYPE } from '../constants';
@@ -12,7 +13,7 @@ import { ParamsConfig } from './types';
  * @param options オプション
  * @returns 処理結果
  */
-const Params: Operation<ParamsConfig> = async (content: string, config: ParamsConfig, params: OperationParams) => {
+const Params: Operation<ParamsConfig, Content> = async (content: Content, config: ParamsConfig<Content>, params: OperationParams) => {
   const { type, createDiff, ...rest } = config;
   // パラメーターの更新
   const diff = await createDiff(content, { ...params });

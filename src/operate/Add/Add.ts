@@ -15,7 +15,7 @@ import { AddConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Add: Operation<AddConfig> = async (content: string, config: AddConfig, params: OperationParams) => {
+const Add: Operation<AddConfig, string> = async (content: string, config: AddConfig, params: OperationParams) => {
   let { patterns, formatPatterns, additionalString, formatAdditionalString, addPosition = 'before', replacementBracket } = config;
   const additionalStrOptions = { replacementBracket, content, preserveString: !formatAdditionalString };
   const patternsOptions = { replacementBracket, content, preserveString: !formatPatterns };
@@ -24,7 +24,7 @@ const Add: Operation<AddConfig> = async (content: string, config: AddConfig, par
 
   let cnt = content;
   if (patterns == null) {
-    // patternが無い場合はソース自体の前方or後方に追加
+    // patternが無い場合はコンテンツ自体の前方or後方に追加
     cnt = addPosition === 'before' ? `${additionalStr}${cnt}` : `${cnt}${additionalStr}`;
   } else {
     for (const pattern of asArray(patterns)) {

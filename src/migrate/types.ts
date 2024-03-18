@@ -94,9 +94,14 @@ export type MigrationJobConfig<O = Options> = CommonConfig<O> &
 
     /**
      * ファイルのコピーのみ行う
-     * このプロパティがtrueの場合は、ソースコードの編集に関するプロパティは無効
+     * このプロパティがtrueの場合は、コンテンツの編集に関するプロパティは無効
      */
     copy?: boolean;
+
+    /**
+     * ファイルをバイナリ形式で読み込んで処理する
+     */
+    binary?: boolean;
 
     /**
      * 下記の条件に当てはまったファイル・ディレクトリのみ処理対象とする
@@ -107,29 +112,34 @@ export type MigrationJobConfig<O = Options> = CommonConfig<O> &
      */
     filter?: Condition<IterationParams>;
 
-    // 以下はソースコードの編集に関するプロパティ
+    // 以下はコンテンツの編集に関するプロパティ
 
     /**
      * フォーマットも含む編集処理前に実行される任意の処理
-     * @param source 編集処理前のソースコード
+     * @param content コンテンツ
      * @param params 繰り返し処理毎のパラメーター
      * @param config 当コンフィグ
-     * @returns 編集処理対象になるソースコード
+     * @returns 編集処理対象になるコンテンツ
      */
-    initialize?: (source: string, params: IterationParams, config: Omit<MigrationJobConfig<O>, 'initialize'>) => Promise<string>;
+    initialize?: <C = string | Buffer>(
+      content: C,
+      params: IterationParams,
+      config: Omit<MigrationJobConfig<O>, 'initialize'>
+    ) => Promise<C>;
 
     /**
      * 操作の設定
-     * ここに定義した操作はフォーマットされたソースコードに対して行われる
      */
     operations?: OperationConfigTypes | OperationConfigTypes[];
 
     /**
      * フォーマットも含む編集処理後に実行される任意の処理
-     * @param source 編集処理後のソースコード
-     * @returns 最終的なソースコード
+     * @param content 編集処理後のコンテンツ
+     * @param params 繰り返し処理毎のパラメーター
+     * @param config 当コンフィグ
+     * @returns 最終的なコンテンツ
      */
-    finalize?: (source: string, params: IterationParams, results: OperationResult[]) => Promise<string>;
+    finalize?: <C = string | Buffer>(content: C, params: IterationParams, results: OperationResult[]) => Promise<C>;
   };
 
 /**

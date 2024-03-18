@@ -1,4 +1,4 @@
-import { Operation, OperationConfig } from './types';
+import { Operation } from './types';
 
 class OperationFactory {
   /**
@@ -11,7 +11,7 @@ class OperationFactory {
    * @param type
    * @param operation
    */
-  register(type: string, operation: Operation<any>) {
+  register(type: string, operation: Operation<any, any>) {
     this._operations[type] = operation;
   }
 
