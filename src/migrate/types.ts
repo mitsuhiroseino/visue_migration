@@ -5,6 +5,7 @@ import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../type
 import { Condition } from '../utils/isMatch';
 import { ReplacementValues } from '../utils/replaceByValues';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
+import { EntryType } from './helpers/getFsGenerator';
 
 /**
  * 移行の設定
@@ -300,5 +301,10 @@ type IterationConfig<O = Options> = {
   /**
    * 繰り返し処理毎にパラメーターを作成するイテレーターの取得元
    */
-  iteration?: (config: MigrationJobConfig<O>) => Generator<IterationParams> | IterationParams[] | IterationParams;
+  iteration?: ((config: MigrationJobConfig<O>) => Generator<IterationParams>) | IterationParams[] | IterationParams | string;
+
+  /**
+   * iterationに文字列形式のディレクトリのパスを指定した場合にのみ有効
+   */
+  entryType?: EntryType;
 };

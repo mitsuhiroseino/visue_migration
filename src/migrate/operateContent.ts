@@ -3,9 +3,9 @@ import asArray from '../utils/asArray';
 import inheritConfig from './helpers/inheritConfig';
 import { IterationParams, MigrationJobConfig } from './types';
 
-const catchError = (e, message, forceOutput) => {
-  if (!forceOutput) {
-    console.error(message);
+const catchError = (e: any, message: string, config: MigrationJobConfig, params: IterationParams) => {
+  if (!config.forceOutput) {
+    console.error(`${message}: ${params._outputPath}`);
     throw e;
   }
 };
@@ -25,7 +25,7 @@ export default async function operateContent(content: string, config: MigrationJ
     try {
       content = await initialize(content, { ...params }, { ...config });
     } catch (e) {
-      catchError(e, 'Error in initializing', forceOutput);
+      catchError(e, 'Error in initializing', config, params);
       return content;
     }
   }
@@ -34,7 +34,7 @@ export default async function operateContent(content: string, config: MigrationJ
     try {
       content = await format(content, preFormatting as typeof formatterOptions);
     } catch (e) {
-      catchError(e, 'Error in pre-formatting', forceOutput);
+      catchError(e, 'Error in pre-formatting', config, params);
       return content;
     }
   }
@@ -45,7 +45,7 @@ export default async function operateContent(content: string, config: MigrationJ
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
       migrated = await operate(content, operateConfigs, { ...params });
     } catch (e) {
-      catchError(e, 'Error in operation', forceOutput);
+      catchError(e, 'Error in operation', config, params);
       return content;
     }
   } else {
@@ -56,7 +56,7 @@ export default async function operateContent(content: string, config: MigrationJ
     try {
       migrated.content = await format(migrated.content, postFormatting as typeof formatterOptions);
     } catch (e) {
-      catchError(e, 'Error in post-formatting', forceOutput);
+      catchError(e, 'Error in post-formatting', config, params);
       return migrated.content;
     }
   }
@@ -65,7 +65,7 @@ export default async function operateContent(content: string, config: MigrationJ
     try {
       migrated.content = await finalize(migrated.content, { ...params }, migrated.results);
     } catch (e) {
-      catchError(e, 'Error in finalizing', forceOutput);
+      catchError(e, 'Error in finalizing', config, params);
       return migrated.content;
     }
   }

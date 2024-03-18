@@ -1,6 +1,8 @@
 import isPlainObject from 'lodash/isPlainObject';
+import isString from 'lodash/isString';
 
 import { IterationParams, MigrationJobConfig } from '../types';
+import getFsGenerator from './getFsGenerator';
 
 /**
  * イテレーターを取得する
@@ -9,7 +11,7 @@ import { IterationParams, MigrationJobConfig } from '../types';
  * @returns
  */
 export default function getIterator(
-  iteration: (cfg: MigrationJobConfig) => Generator<IterationParams> | IterationParams[] | IterationParams | null | undefined,
+  iteration: ((cfg: MigrationJobConfig) => Generator<IterationParams>) | IterationParams[] | IterationParams | string | null | undefined,
   config: MigrationJobConfig
 ): Generator<IterationParams> {
   // ジェネレーターを作成する
@@ -27,6 +29,9 @@ export default function getIterator(
         yield params;
       }
     };
+  } else if (isString(iteration)) {
+    // 指定されたディレクトリ配下のエントリーのパスを返すジェネレーター
+    generator = getFsGenerator(iteration);
   } else if (isPlainObject(iteration)) {
     // 指定されたパラメーターを返すジェネレーター
     const object = { ...iteration };
