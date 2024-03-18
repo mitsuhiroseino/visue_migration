@@ -305,6 +305,12 @@ type IterationConfig<O = Options> = {
 
   /**
    * iterationに文字列形式のディレクトリのパスを指定した場合にのみ有効
+   * パスの取得対象のエントリー種別
+   *
+   * - 未指定: ファイルのみ
+   * - file: ファイルのみ
+   * - dir: ディレクトリのみ
+   * - both: ファイル、ディレクトリ
    */
   entryType?: EntryType;
 };
