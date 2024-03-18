@@ -1,14 +1,8 @@
 import operate, { OperationConfig } from '../operate';
 import asArray from '../utils/asArray';
+import catchError from './helpers/catchError';
 import inheritConfig from './helpers/inheritConfig';
 import { IterationParams, MigrationJobConfig } from './types';
-
-const catchError = (e: any, message: string, config: MigrationJobConfig, params: IterationParams) => {
-  if (!config.forceOutput) {
-    console.error(`${message}: ${params._outputPath}`);
-    throw e;
-  }
-};
 
 /**
  * テキストコンテンツの変換処理を行う
@@ -18,14 +12,15 @@ const catchError = (e: any, message: string, config: MigrationJobConfig, params:
  * @returns
  */
 export default async function operateBinaryContent(content: Buffer, config: MigrationJobConfig, params: IterationParams): Promise<Buffer> {
-  const { initialize, operations, finalize } = config;
+  const { initialize, operations, finalize, forceOutput } = config;
+  const { _outputPath } = params;
 
   // 任意の前処理
   if (initialize) {
     try {
       content = await initialize(content, { ...params }, { ...config });
     } catch (e) {
-      catchError(e, 'Error in initializing', config, params);
+      catchError(e, `Error in initializing: ${_outputPath}`, forceOutput);
       return content;
     }
   }
@@ -37,7 +32,7 @@ export default async function operateBinaryContent(content: Buffer, config: Migr
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
       migrated = await operate(content, operateConfigs, { ...params });
     } catch (e) {
-      catchError(e, 'Error in operation', config, params);
+      catchError(e, `Error in operation: ${_outputPath}`, forceOutput);
       return content;
     }
   } else {
@@ -49,7 +44,7 @@ export default async function operateBinaryContent(content: Buffer, config: Migr
     try {
       migrated.content = await finalize(migrated.content, { ...params }, migrated.results);
     } catch (e) {
-      catchError(e, 'Error in finalizing', config, params);
+      catchError(e, `Error in finalizing: ${_outputPath}`, forceOutput);
       return migrated.content;
     }
   }

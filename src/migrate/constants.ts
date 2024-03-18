@@ -126,6 +126,4 @@ export const DEFAULT_CONFIGS = {
   formatter: DEFAULT_FORMATTER,
   formatterOptions: DEFAULT_FORMATTER_OPTIONS,
   replacementBracket: DEFAULT_BRACKET,
-  inputEncoding: DEFAULT_TEXT_ENCODING,
-  outputEncoding: DEFAULT_TEXT_ENCODING,
 };
