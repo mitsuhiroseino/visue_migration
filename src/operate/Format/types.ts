@@ -14,6 +14,7 @@ export type FormatConfig<O = Options> = OperationConfig & {
 
   /**
    * 任意のフォーマッター
+   * 未指定の場合はpreFormatting,postFormattingで使用しているフォーマッター
    * @param content 処理対象
    * @param options フォーマッターのオプション
    * @returns

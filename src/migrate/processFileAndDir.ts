@@ -35,7 +35,9 @@ export default async function processFileAndDir(
         const promises = [];
         for (const item of items) {
           if (item.isFile()) {
-            promises.push(fs.copy(path.join(inputPath, item.name), path.join(outputPath, item.name), { overwrite: true }));
+            promises.push(
+              fs.copy(path.join(inputPath, item.name), path.join(outputPath, item.name), { overwrite: true })
+            );
           }
         }
         await Promise.all(promises);

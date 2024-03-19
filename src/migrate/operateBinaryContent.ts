@@ -1,4 +1,4 @@
-import operate, { OperationConfig } from '../operate';
+import operate, { CONTENT_TYPE, OperationConfig } from '../operate';
 import asArray from '../utils/asArray';
 import catchError from './helpers/catchError';
 import inheritConfig from './helpers/inheritConfig';
@@ -11,7 +11,11 @@ import { IterationParams, MigrationJobConfig } from './types';
  * @param params
  * @returns
  */
-export default async function operateBinaryContent(content: Buffer, config: MigrationJobConfig, params: IterationParams): Promise<Buffer> {
+export default async function operateBinaryContent(
+  content: Buffer,
+  config: MigrationJobConfig,
+  params: IterationParams
+): Promise<Buffer> {
   const { initialize, operations, finalize, forceOutput } = config;
   const { _outputPath } = params;
 
@@ -30,7 +34,7 @@ export default async function operateBinaryContent(content: Buffer, config: Migr
     // 操作
     try {
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
-      migrated = await operate(content, operateConfigs, { ...params });
+      migrated = await operate(content, operateConfigs, { ...params, _contentType: CONTENT_TYPE.BINARY });
     } catch (e) {
       catchError(e, `Error in operation: ${_outputPath}`, forceOutput);
       return content;

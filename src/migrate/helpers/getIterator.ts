@@ -11,7 +11,13 @@ import getFsGenerator from './getFsGenerator';
  * @returns
  */
 export default function getIterator(
-  iteration: ((cfg: MigrationJobConfig) => Generator<IterationParams>) | IterationParams[] | IterationParams | string | null | undefined,
+  iteration:
+    | ((cfg: MigrationJobConfig) => Generator<IterationParams>)
+    | IterationParams[]
+    | IterationParams
+    | string
+    | null
+    | undefined,
   config: MigrationJobConfig
 ): Generator<IterationParams> {
   // ジェネレーターを作成する

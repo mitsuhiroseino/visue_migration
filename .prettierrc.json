@@ -5,15 +5,11 @@
   "tabWidth": 2,
   "bracketSpacing": true,
   "singleQuote": true,
-  "printWidth": 140,
+  "printWidth": 120,
   "trailingComma": "es5",
   "endOfLine": "auto",
-  "importOrder": [
-    "^[./]"
-  ],
+  "importOrder": ["^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ]
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

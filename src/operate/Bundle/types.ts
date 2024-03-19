@@ -14,5 +14,8 @@ export type BundleConfig<C = Content> = OperationConfig & {
   /**
    * 纏められた操作
    */
-  operations: OperationConfig | OperationConfig[] | ((content: C, params: OperationParams) => Promise<OperationConfig | OperationConfig[]>);
+  operations:
+    | OperationConfig
+    | OperationConfig[]
+    | ((content: C, params: OperationParams) => Promise<OperationConfig | OperationConfig[]>);
 };

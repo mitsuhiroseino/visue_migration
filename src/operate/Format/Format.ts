@@ -1,5 +1,5 @@
 import OperationFactory from '../OperationFactory';
-import { OPERATION_TYPE } from '../constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { FormatConfig } from './types';
 
@@ -10,9 +10,13 @@ import { FormatConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Format: Operation<FormatConfig, string> = async (content: string, config: FormatConfig, params: OperationParams) => {
+const Format: Operation<FormatConfig, string> = async (
+  content: string,
+  config: FormatConfig,
+  params: OperationParams
+) => {
   const { formatter, formatterOptions } = config;
   return await formatter(content, formatterOptions);
 };
 export default Format;
-OperationFactory.register(OPERATION_TYPE.FORMAT, Format);
+OperationFactory.register(OPERATION_TYPE.FORMAT, Format, CONTENT_TYPE.TEXT);

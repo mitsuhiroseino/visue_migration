@@ -9,7 +9,7 @@ import { GenerateConfig } from './Generate';
 import { ParamsConfig } from './Params';
 import { ReplaceConfig } from './Replace';
 import { UnbomConfig } from './Unbom';
-import { OPERATION_TYPE } from './constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
 
 /**
  * 操作の設定
@@ -29,6 +29,11 @@ export type OperationConfigTypes =
  * コンテンツを操作する際の種別
  */
 export type OperationType = (typeof OPERATION_TYPE)[keyof typeof OPERATION_TYPE];
+
+/**
+ * コンテンツの種別
+ */
+export type ContentType = (typeof CONTENT_TYPE)[keyof typeof CONTENT_TYPE];
 
 /**
  * 操作の設定
@@ -61,6 +66,11 @@ export type OperationConfig<T = string> = FormattingConfig &
  */
 export type OperationParams = {
   /**
+   * コンテンツ種別
+   */
+  _contentType?: ContentType;
+
+  /**
    * 任意の値
    */
   [key: string | number]: any;
@@ -88,7 +98,10 @@ export type StaticPattern = string | RegExp;
 /**
  * 動的パターン
  */
-export type DynamicPattern = (params: OperationParams, options?: { [key: string]: unknown }) => string | RegExp | Function;
+export type DynamicPattern = (
+  params: OperationParams,
+  options?: { [key: string]: unknown }
+) => string | RegExp | Function;
 
 /**
  * 静的・動的パターン

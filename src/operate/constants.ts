@@ -47,3 +47,18 @@ export const OPERATION_TYPE = {
    */
   UNBOM: 'unbom',
 } as const;
+
+/**
+ * コンテンツの種別
+ */
+export const CONTENT_TYPE = {
+  /**
+   * バイナリー
+   */
+  BINARY: 'binary',
+
+  /**
+   * テキスト
+   */
+  TEXT: 'text',
+} as const;

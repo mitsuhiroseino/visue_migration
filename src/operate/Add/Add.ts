@@ -4,7 +4,7 @@ import asArray from '../../utils/asArray';
 import prepareValue from '../../utils/prepareValue';
 import replace from '../../utils/replace';
 import OperationFactory from '../OperationFactory';
-import { OPERATION_TYPE } from '../constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { FlexiblePattern, Operation, OperationParams, StaticPattern } from '../types';
 import { AddConfig } from './types';
 
@@ -16,7 +16,14 @@ import { AddConfig } from './types';
  * @returns 処理結果
  */
 const Add: Operation<AddConfig, string> = async (content: string, config: AddConfig, params: OperationParams) => {
-  let { patterns, formatPatterns, additionalString, formatAdditionalString, addPosition = 'before', replacementBracket } = config;
+  let {
+    patterns,
+    formatPatterns,
+    additionalString,
+    formatAdditionalString,
+    addPosition = 'before',
+    replacementBracket,
+  } = config;
   const additionalStrOptions = { replacementBracket, content, preserveString: !formatAdditionalString };
   const patternsOptions = { replacementBracket, content, preserveString: !formatPatterns };
   // 前処理
@@ -49,4 +56,4 @@ const Add: Operation<AddConfig, string> = async (content: string, config: AddCon
   return cnt;
 };
 export default Add;
-OperationFactory.register(OPERATION_TYPE.ADD, Add);
+OperationFactory.register(OPERATION_TYPE.ADD, Add, CONTENT_TYPE.TEXT);

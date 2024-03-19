@@ -11,7 +11,11 @@ import { EditConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Edit: Operation<EditConfig, Content> = async (content: Content, config: EditConfig<Content>, params: OperationParams) => {
+const Edit: Operation<EditConfig, Content> = async (
+  content: Content,
+  config: EditConfig<Content>,
+  params: OperationParams
+) => {
   let { editContent } = config;
   // 実行
   return await editContent(content, params);

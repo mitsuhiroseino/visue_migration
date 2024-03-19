@@ -2,7 +2,7 @@ import { Content } from '../types';
 import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
-import { OPERATION_TYPE } from './constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
 import { OperationConfig, OperationConfigTypes, OperationParams, OperationResult } from './types';
 
 /**
@@ -28,7 +28,10 @@ export default async function operate(
     let { type = OPERATION_TYPE.REPLACE, filter } = operationConfig;
     const shouldProcess = currentContent != null ? await isMatch(currentContent, filter, params) : false;
     if (shouldProcess) {
-      const operation = OperationFactory.get(type);
+      const operation =
+        params._contentType === CONTENT_TYPE.BINARY
+          ? OperationFactory.getBinaryOperation(type)
+          : OperationFactory.getTextOperation(type);
       if (operation) {
         // オペレーションを直列で実行
         const operatedContent = await operation(currentContent, operationConfig, params);

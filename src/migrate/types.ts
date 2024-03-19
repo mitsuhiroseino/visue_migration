@@ -305,13 +305,20 @@ type MigrationIterationEvents<O = Options> = {
   onIterationEnd?: (result: MigrationIterationResult, config: MigrationJobConfig<O>, params: IterationParams) => void;
 };
 
-export type CommonConfig<O = Options> = FormattingConfig<O> & ReplacementConfig & InputOputputConfig & IterationConfig<O>;
+export type CommonConfig<O = Options> = FormattingConfig<O> &
+  ReplacementConfig &
+  InputOputputConfig &
+  IterationConfig<O>;
 
 type IterationConfig<O = Options> = {
   /**
    * 繰り返し処理毎にパラメーターを作成するイテレーターの取得元
    */
-  iteration?: ((config: MigrationJobConfig<O>) => Generator<IterationParams>) | IterationParams[] | IterationParams | string;
+  iteration?:
+    | ((config: MigrationJobConfig<O>) => Generator<IterationParams>)
+    | IterationParams[]
+    | IterationParams
+    | string;
 
   /**
    * iterationに文字列形式のディレクトリのパスを指定した場合にのみ有効

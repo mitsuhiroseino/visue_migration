@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 
 import OperationFactory from '../OperationFactory';
-import { OPERATION_TYPE } from '../constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { GenerateConfig } from './types';
 
@@ -12,11 +12,15 @@ import { GenerateConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Generate: Operation<GenerateConfig, string> = async (content: string, config: GenerateConfig, params: OperationParams) => {
+const Generate: Operation<GenerateConfig, string> = async (
+  content: string,
+  config: GenerateConfig,
+  params: OperationParams
+) => {
   let { id, type, filter, ...compileOptions } = config;
   const template = Handlebars.compile(content, compileOptions);
   // 実行
   return template(params);
 };
 export default Generate;
-OperationFactory.register(OPERATION_TYPE.GENERATE, Generate);
+OperationFactory.register(OPERATION_TYPE.GENERATE, Generate, CONTENT_TYPE.TEXT);

@@ -13,7 +13,11 @@ export type Condition<O> =
   | ((value: Content, options?: O) => boolean)
   | ((value: Content, options?: O) => Promise<boolean>);
 
-export default async function isMatch<O = any>(value: Content, condition?: Condition<O>, options?: O): Promise<boolean> {
+export default async function isMatch<O = any>(
+  value: Content,
+  condition?: Condition<O>,
+  options?: O
+): Promise<boolean> {
   if (condition == null) {
     // 条件なし
     return true;

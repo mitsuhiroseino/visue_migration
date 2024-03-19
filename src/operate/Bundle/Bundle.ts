@@ -16,7 +16,11 @@ import { BundleConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Bundle: Operation<BundleConfig, Content> = async (content: Content, config: BundleConfig<Content>, params: OperationParams) => {
+const Bundle: Operation<BundleConfig, Content> = async (
+  content: Content,
+  config: BundleConfig<Content>,
+  params: OperationParams
+) => {
   let { operations } = config;
   if (isFunction(operations)) {
     operations = await operations(content, params);

@@ -1,6 +1,6 @@
 import replace from '../../utils/replace';
 import OperationFactory from '../OperationFactory';
-import { OPERATION_TYPE } from '../constants';
+import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { UnbomConfig } from './types';
 
@@ -17,4 +17,4 @@ const Unbom: Operation<UnbomConfig, string> = async (content: string, config: Un
   return replace(content, /^\ufeff/, '');
 };
 export default Unbom;
-OperationFactory.register(OPERATION_TYPE.UNBOM, Unbom);
+OperationFactory.register(OPERATION_TYPE.UNBOM, Unbom, CONTENT_TYPE.TEXT);

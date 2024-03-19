@@ -35,7 +35,11 @@ function escapeForRegex(str: string) {
  * @param options オプション
  * @returns
  */
-export default function replaceByValues(template: string, values: ReplacementValues, options: ReplaceByValuesOptions = {}) {
+export default function replaceByValues(
+  template: string,
+  values: ReplacementValues,
+  options: ReplaceByValuesOptions = {}
+) {
   const { replacementBracket = ['{{', '}}'], removePlaceholders, flatKeys } = options,
     // valuesから値を取得する関数
     getValue = flatKeys ? getShallow : get,

@@ -19,8 +19,17 @@ export default async function executeIteration(
   config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult | null> {
-  const { inputPath, outputPath, template, templatePath, replacementBracket, forceOutput, onIterationStart, onIterationEnd, filter } =
-      config,
+  const {
+      inputPath,
+      outputPath,
+      template,
+      templatePath,
+      replacementBracket,
+      forceOutput,
+      onIterationStart,
+      onIterationEnd,
+      filter,
+    } = config,
     replacementOptions = { replacementBracket, forceOutput };
 
   applyIf(onIterationStart, [config, params]);

@@ -1,4 +1,4 @@
-import operate, { OperationConfig } from '../operate';
+import operate, { CONTENT_TYPE, OperationConfig } from '../operate';
 import asArray from '../utils/asArray';
 import catchError from './helpers/catchError';
 import inheritConfig from './helpers/inheritConfig';
@@ -11,8 +11,21 @@ import { IterationParams, MigrationJobConfig } from './types';
  * @param params
  * @returns
  */
-export default async function operateTextContent(content: string, config: MigrationJobConfig, params: IterationParams): Promise<string> {
-  const { initialize, formatter: format, preFormatting, postFormatting, formatterOptions, operations, finalize, forceOutput } = config;
+export default async function operateTextContent(
+  content: string,
+  config: MigrationJobConfig,
+  params: IterationParams
+): Promise<string> {
+  const {
+    initialize,
+    formatter: format,
+    preFormatting,
+    postFormatting,
+    formatterOptions,
+    operations,
+    finalize,
+    forceOutput,
+  } = config;
   const { _outputPath } = params;
 
   // 任意の前処理
@@ -40,7 +53,7 @@ export default async function operateTextContent(content: string, config: Migrat
     // 操作
     try {
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
-      migrated = await operate(content, operateConfigs, { ...params });
+      migrated = await operate(content, operateConfigs, { ...params, _contentType: CONTENT_TYPE.BINARY });
     } catch (e) {
       catchError(e, `Error in operation: ${_outputPath}`, forceOutput);
       return content;
