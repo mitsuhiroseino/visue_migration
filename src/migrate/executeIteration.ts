@@ -6,7 +6,7 @@ import isMatch from '../utils/isMatch';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import createFileAndDir from './createFileAndDir';
-import finshParams from './helpers/finshParams';
+import finishParams from './helpers/finishParams';
 import processFileAndDir from './processFileAndDir';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
@@ -43,7 +43,7 @@ export default async function executeIteration(
   } else {
     // 対象が存在する場合
     const outputFilePath = await getFinishedString(outputPath, params, replacementOptions);
-    let finishedParams = finshParams(params, { outputPath: outputFilePath });
+    let finishedParams = finishParams(params, { outputPath: outputFilePath });
     if (template != null) {
       // ファイルを作成
       const content = await getFinishedString(template, finishedParams, replacementOptions);
@@ -53,7 +53,7 @@ export default async function executeIteration(
     } else if (templatePath != null) {
       // テンプレートファイルを読み込んで生成
       const tplPath = await getFinishedString(templatePath, finishedParams, replacementOptions);
-      finishedParams = finshParams(finishedParams, { inputPath: tplPath });
+      finishedParams = finishParams(finishedParams, { inputPath: tplPath });
       const availablePath = await fs.exists(tplPath);
       if (availablePath) {
         // テンプレートの場合は事前フォーマットをoffにする
@@ -67,7 +67,7 @@ export default async function executeIteration(
     } else if (inputPath != null) {
       // 移行元のファイルをコピー
       const inputFilePath = await getFinishedString(inputPath, finishedParams, replacementOptions);
-      finishedParams = finshParams(finishedParams, { inputPath: inputFilePath });
+      finishedParams = finishParams(finishedParams, { inputPath: inputFilePath });
       // 除外対象か
       const shouldProcess = await isMatch(inputFilePath, filter, finishedParams);
       if (shouldProcess) {

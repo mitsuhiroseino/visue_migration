@@ -5,7 +5,7 @@ import getFinishedString from '../utils/getFinishedString';
 import { ReplaceByValuesOptions } from '../utils/replaceByValues';
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
-import finshParams from './helpers/finshParams';
+import finishParams from './helpers/finishParams';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 export type CreateFileOptions = ReplaceByValuesOptions;
@@ -42,7 +42,7 @@ export default async function createFileAndDir(
   } else if (stat.isFile()) {
     // ファイルの場合は、ファイルを読み込みcreateFileを実行した結果のPromiseを返す
     const template = await fs.readFile(inputPath, { encoding: config.inputEncoding || DEFAULT_TEXT_ENCODING });
-    const finishedParams = finshParams(params, { inputPath, outputPath });
+    const finishedParams = finishParams(params, { inputPath, outputPath });
     const content = await getFinishedString(template, finishedParams, config);
     const result = await createFile(content, outputPath, config, finishedParams);
     return { ...result, inputPath };

@@ -103,10 +103,8 @@ export const DEFAULT_FORMATTER_OPTIONS = {
   parser: 'typescript',
   endOfLine: 'crlf',
   singleQuote: true,
-  importOrder: ['^[./]'],
-  importOrderSeparation: true,
-  importOrderSortSpecifiers: true,
-  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  organizeImportsSkipDestructiveCodeActions: true,
+  plugins: ['prettier-plugin-organize-imports'],
 };
 
 /**
