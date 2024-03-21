@@ -10,8 +10,14 @@ import { ExtendConfig } from './types';
  * @returns Sharpのインスタンス
  */
 const Extend: Manipulation<ExtendConfig> = async (sharp, config) => {
-  const { type, ...cfg } = config;
-  return await sharp.extend(cfg);
+  const { type, extend, ...options } = config;
+  let arg;
+  if (extend != null) {
+    arg = extend;
+  } else {
+    arg = options;
+  }
+  return await sharp.extend(arg);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.EXTEND, Extend);
 export default Extend;

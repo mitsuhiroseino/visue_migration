@@ -4,7 +4,7 @@ import { Content } from '../types';
 import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
+import { OPERATION_TYPE } from './constants';
 import { OperationConfig, OperationConfigTypes, OperationParams, OperationResult } from './types';
 
 /**

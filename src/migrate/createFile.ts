@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
-import operateTextContent from './operateTextContent';
+import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
@@ -20,7 +20,7 @@ export default async function createFile(
   params: IterationParams
 ): Promise<MigrationIterationResult> {
   // 操作
-  content = await operateTextContent(content, config, params);
+  content = (await operateContent(content, config, params)) as string;
   // ファイルの出力
   const parentPath = path.dirname(outputPath);
   await fs.ensureDir(parentPath);

@@ -1,5 +1,4 @@
 import migrate from 'src/migrate/migrate';
-import { OperationParams } from 'src/operate';
 
 describe('migrate', () => {
   test('error', () => {

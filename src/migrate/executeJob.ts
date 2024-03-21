@@ -1,7 +1,7 @@
 import applyIf from '../utils/applyIf';
 import executeIteration from './executeIteration';
 import getIterator from './helpers/getIterator';
-import { IterationParams, MigrationJobConfig, MigrationJobResult } from './types';
+import { MigrationJobConfig, MigrationJobResult } from './types';
 
 /**
  * 1処理対象分の処理を行う
