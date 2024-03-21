@@ -56,7 +56,7 @@ export default async function operateContent(
     // 操作
     try {
       const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
-      migrated = await operate(content, operateConfigs, { ...params, _contentType: CONTENT_TYPE.BINARY });
+      migrated = await operate(content, operateConfigs, params);
     } catch (e) {
       catchError(e, `Error in operation: ${_outputPath}`, forceOutput);
       return content;

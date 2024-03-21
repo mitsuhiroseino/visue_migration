@@ -33,11 +33,6 @@ export const OPERATION_TYPE = {
   GENERATE: 'generate',
 
   /**
-   * 画像の変換
-   */
-  IMAGE: 'image',
-
-  /**
    * 画像のメタデータ取得
    */
   IMG_META: 'imgmeta',
@@ -51,6 +46,11 @@ export const OPERATION_TYPE = {
    * 文字列の置換
    */
   REPLACE: 'replace',
+
+  /**
+   * sharpを用いた画像の変換
+   */
+  SHARP: 'sharp',
 
   /**
    * BOMの削除
