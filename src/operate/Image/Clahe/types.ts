@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -10,4 +10,4 @@ export type ClaheConfig = {
    * 画像操作種別
    */
   type: typeof IMAGE_MANIPULATION_TYPE.CLAHE;
-} & sharp.ClaheOptions;
+} & Sharp.ClaheOptions;

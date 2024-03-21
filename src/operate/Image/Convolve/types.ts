@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -11,5 +11,5 @@ export type ConvolveConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.CONVOLVE;
 
-  kernel: sharp.Kernel;
+  kernel: Sharp.Kernel;
 };

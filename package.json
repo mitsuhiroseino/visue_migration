@@ -18,6 +18,7 @@
     "prepublish": "rimraf build && rollup --config",
     "start": "rimraf build && rollup --config --watch",
     "format": "prettier --write \"src/**/*.{ts,js,json}\"",
+    "cleanup": "prettier --write \"src/**/*.{ts,js,json}\" --config .prettierrc.cleanup.json && yarn format",
     "test": "jest",
     "indexes": "node ./scripts/indexes.js"
   },

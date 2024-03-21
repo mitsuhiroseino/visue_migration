@@ -38,6 +38,11 @@ export const OPERATION_TYPE = {
   IMAGE: 'image',
 
   /**
+   * 画像のメタデータ取得
+   */
+  IMG_META: 'imgmeta',
+
+  /**
    * パラメーターの追加
    */
   PARAMS: 'params',

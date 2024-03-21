@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -11,5 +11,5 @@ export type AffineConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.AFFINE;
 
-  matrix: [number, number, number, number] | sharp.Matrix2x2;
-} & sharp.AffineOptions;
+  matrix: [number, number, number, number] | Sharp.Matrix2x2;
+} & Sharp.AffineOptions;

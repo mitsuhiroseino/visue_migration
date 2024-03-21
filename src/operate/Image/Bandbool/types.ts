@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -11,5 +11,5 @@ export type BandboolConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.BANDBOOL;
 
-  boolOp: keyof sharp.BoolEnum;
+  boolOp: keyof Sharp.BoolEnum;
 };

@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -12,4 +12,4 @@ export type ThresholdConfig = {
   type: typeof IMAGE_MANIPULATION_TYPE.THRESHOLD;
 
   threshold?: number;
-} & sharp.ThresholdOptions;
+} & Sharp.ThresholdOptions;

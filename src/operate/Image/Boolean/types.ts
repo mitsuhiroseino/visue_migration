@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -12,6 +12,6 @@ export type BooleanConfig = {
   type: typeof IMAGE_MANIPULATION_TYPE.BOOLEAN;
 
   operand: string | Buffer;
-  operator: keyof sharp.BoolEnum;
-  raw?: sharp.Raw;
+  operator: keyof Sharp.BoolEnum;
+  raw?: Sharp.Raw;
 };

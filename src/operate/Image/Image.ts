@@ -4,6 +4,7 @@ import { asArray } from '../../utils';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
+import ImageManipulationFactory from './ImageManipulationFactory';
 import { ImageConfig } from './types';
 
 /**
@@ -15,7 +16,7 @@ import { ImageConfig } from './types';
  */
 const Image: Operation<ImageConfig, Buffer> = async (content: Buffer, config: ImageConfig, params: OperationParams) => {
   const { options, withMetadata, withStats, manipulations } = config;
-  const sharp = Sharp(content, options);
+  let sharp = Sharp(content, options);
 
   if (withMetadata) {
     const metadata = await sharp.metadata();
@@ -26,10 +27,16 @@ const Image: Operation<ImageConfig, Buffer> = async (content: Buffer, config: Im
     params = { ...params, _stats: stats };
   }
 
-  for (const manipulation of asArray(manipulations)) {
+  for (const manipulationConfig of asArray(manipulations)) {
+    const manipulation = ImageManipulationFactory.get(manipulationConfig.type);
+    if (manipulation) {
+      sharp = await manipulation(sharp, manipulationConfig);
+    } else {
+      console.warn(`There was no manipulation "${manipulationConfig.type}".`);
+    }
   }
 
-  return content;
+  return await sharp.toBuffer();
 };
 export default Image;
 OperationFactory.register(OPERATION_TYPE.IMAGE, Image, CONTENT_TYPE.BINARY);

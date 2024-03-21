@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
@@ -12,4 +12,4 @@ export type JoinChannelConfig = {
   type: typeof IMAGE_MANIPULATION_TYPE.JOIN_CHANNEL;
 
   images: string | Buffer | ArrayLike<string | Buffer>;
-} & sharp.SharpOptions;
+} & Sharp.SharpOptions;

@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import Sharp from 'sharp';
 
 import { Content } from '../../types';
 import { OPERATION_TYPE } from '../constants';
@@ -23,27 +23,27 @@ export type IccProfile = 'srgb' | 'p3' | 'cmyk';
 /**
  * ICCプロファイル設定
  */
-export type IccProfileConfig = { iccProfile: IccProfile } & sharp.WithIccProfileOptions;
+export type IccProfileConfig = { iccProfile: IccProfile } & Sharp.WithIccProfileOptions;
 
 /**
  * 編集可能なメタデータ
  */
-export type WriteableMetadata = sharp.WriteableMetadata;
+export type WriteableMetadata = Sharp.WriteableMetadata;
 
 /**
  * tileのオプション
  */
-export type TileOptions = sharp.TileOptions;
+export type TileOptions = Sharp.TileOptions;
 
 /**
  * EXIF
  */
-export type Exif = sharp.Exif;
+export type Exif = Sharp.Exif;
 
 /**
  * sharpインスタンス取得時のオプション
  */
-export type SharpOptions = sharp.SharpOptions;
+export type SharpOptions = Sharp.SharpOptions;
 
 /**
  * 画像の操作の設定
@@ -157,4 +157,4 @@ export type ManipulationConfig = {
 /**
  * 画像操作関数
  */
-export type Manipulation<C = ManipulationConfig, I = sharp.Sharp> = (instance: I, config: C) => Promise<I>;
+export type Manipulation<C = ManipulationConfig, I = Sharp.Sharp> = (instance: I, config: C) => Promise<I>;
