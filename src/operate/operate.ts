@@ -1,3 +1,5 @@
+import isString from 'lodash/isString';
+
 import { Content } from '../types';
 import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
@@ -28,10 +30,9 @@ export default async function operate(
     let { type = OPERATION_TYPE.REPLACE, filter } = operationConfig;
     const shouldProcess = currentContent != null ? await isMatch(currentContent, filter, params) : false;
     if (shouldProcess) {
-      const operation =
-        params._contentType === CONTENT_TYPE.BINARY
-          ? OperationFactory.getBinaryOperation(type)
-          : OperationFactory.getTextOperation(type);
+      const operation = isString(currentContent)
+        ? OperationFactory.getTextOperation(type)
+        : OperationFactory.getBinaryOperation(type);
       if (operation) {
         // オペレーションを直列で実行
         const operatedContent = await operation(currentContent, operationConfig, params);
@@ -40,7 +41,7 @@ export default async function operate(
           currentContent = operatedContent;
         }
       } else {
-        console.warn(`There was no operation "${type}".`);
+        console.warn(`There was no ${params._contentType} operation "${type}".`);
       }
     }
   }

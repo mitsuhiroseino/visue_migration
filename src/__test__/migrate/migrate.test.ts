@@ -11,12 +11,6 @@ describe('migrate', () => {
               {
                 template: 'abc',
                 outputPath: 'ABC.txt',
-                operations: {
-                  type: 'edit',
-                  editContent: async (content: string, params: OperationParams) => {
-                    throw 'Error!!!';
-                  },
-                },
               },
             ],
           },

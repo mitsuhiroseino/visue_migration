@@ -16,7 +16,7 @@ class OperationFactory {
    * 操作の登録
    * @param type 操作種別
    * @param operation 操作
-   * @param contentType 捜査対象のコンテンツ種別
+   * @param contentType 操作対象のコンテンツ種別
    */
   register(type: string, operation: Operation<any, any>, contentType?: ContentType) {
     this._operations[type] = { operation, contentType };

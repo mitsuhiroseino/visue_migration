@@ -33,6 +33,11 @@ export const OPERATION_TYPE = {
   GENERATE: 'generate',
 
   /**
+   * 画像の変換
+   */
+  IMAGE: 'image',
+
+  /**
    * パラメーターの追加
    */
   PARAMS: 'params',

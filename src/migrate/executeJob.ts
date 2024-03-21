@@ -17,9 +17,8 @@ export default async function executeJob(config: MigrationJobConfig): Promise<Mi
   // イテレーターを作成する
   const iterator = getIterator(iteration, config);
   // 対象の処理
-  let iterationParams: IterationParams;
   const results = [];
-  while ((iterationParams = iterator.next().value)) {
+  for (const iterationParams of iterator) {
     // iteratorの返す値で繰り返し処理
     const params = { ...jobParams, ...iterationParams };
     // イテレーション間は直列実行

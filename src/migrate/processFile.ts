@@ -2,11 +2,11 @@ import Encoding from 'encoding-japanese';
 import fs from 'fs-extra';
 import path from 'path';
 
+import { CONTENT_TYPE } from '../operate';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import finshParams from './helpers/finshParams';
 import isCopyOnly from './helpers/isCopyOnly';
-import operateBinaryContent from './operateBinaryContent';
-import operateTextContent from './operateTextContent';
+import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 export default async function processFile(
@@ -34,17 +34,20 @@ export default async function processFile(
       encoding = Encoding.detect(buffer);
     }
     let content;
+    let contentType;
     let writeFileOptions;
     if (!encoding || encoding === 'BINARY') {
       // バイナリファイルの場合
-      content = await operateBinaryContent(buffer, config, finshParams(params, { inputPath, outputPath }));
+      content = buffer;
+      contentType = CONTENT_TYPE.BINARY;
     } else {
       // テキストファイルの場合
       content = buffer.toString(inputEncoding || encoding);
-      // 内容の操作
-      content = await operateTextContent(content, config, finshParams(params, { inputPath, outputPath }));
+      contentType = CONTENT_TYPE.TEXT;
       writeFileOptions = { encoding: outputEncoding || encoding };
     }
+    // コンテンツの操作
+    content = await operateContent(content, config, finshParams(params, { inputPath, outputPath, contentType }));
     // ファイルの出力
     const parentPath = path.dirname(outputPath);
     await fs.ensureDir(parentPath);
