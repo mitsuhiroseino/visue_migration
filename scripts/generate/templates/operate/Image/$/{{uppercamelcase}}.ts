@@ -1,17 +1,17 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
-import { Manipulation } from '../types';
+import { ImageManipulation } from '../types';
 import { {{uppercamelcase}}Config } from './types';
 
 /**
  * {{description}}
- * @param sharp Sharpのインスタンス
+ * @param jimp Jimpのインスタンス
  * @param config {{uppercamelcase}}のコンフィグ
- * @returns Sharpのインスタンス
+ * @returns Jimpのインスタンス
  */
-const  {{uppercamelcase}}: Manipulation<{{uppercamelcase}}Config> = async (sharp, config) => {
-  const { type, ...options } = config;
-  return await sharp.{{lowercamelcase}}(options);
+const {{uppercamelcase}}: ImageManipulation<{{uppercamelcase}}Config> = async (jimp, config) => {
+  const { callback } = config;
+  return await jimp.{{lowercamelcase}}(callback);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.{{snakecase}}, {{uppercamelcase}});
 export default {{uppercamelcase}};

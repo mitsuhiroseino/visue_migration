@@ -10,10 +10,10 @@ import { EntryType } from './helpers/getFsGenerator';
 /**
  * 移行の設定
  */
-export type MigrationConfig<O = Options> = CommonConfig<O> &
-  MigrationTaskEvents<O> &
-  MigrationJobEvents<O> &
-  MigrationIterationEvents<O> & {
+export type MigrationConfig<T = OperationConfigTypes, F = Options> = CommonConfig<T, F> &
+  MigrationTaskEvents<T, F> &
+  MigrationJobEvents<T, F> &
+  MigrationIterationEvents<T, F> & {
     /**
      * ID
      */
@@ -22,7 +22,7 @@ export type MigrationConfig<O = Options> = CommonConfig<O> &
     /**
      * タスクの設定
      */
-    tasks: MigrationTaskConfig | MigrationTaskConfig[];
+    tasks: MigrationTaskConfig<T, F> | MigrationTaskConfig<T, F>[];
 
     /**
      * タスクを並列で実行する
@@ -33,10 +33,10 @@ export type MigrationConfig<O = Options> = CommonConfig<O> &
 /**
  * タスクの設定
  */
-export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
-  MigrationTaskEvents<O> &
-  MigrationJobEvents<O> &
-  MigrationIterationEvents<O> & {
+export type MigrationTaskConfig<T = OperationConfigTypes, F = Options> = CommonConfig<T, F> &
+  MigrationTaskEvents<T, F> &
+  MigrationJobEvents<T, F> &
+  MigrationIterationEvents<T, F> & {
     /**
      * タスクID
      */
@@ -45,7 +45,7 @@ export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
     /**
      * ジョブの設定
      */
-    jobs: MigrationJobConfig | MigrationJobConfig[];
+    jobs: MigrationJobConfig<T, F> | MigrationJobConfig<T, F>[];
 
     /**
      * ジョブを並列で実行する
@@ -56,9 +56,9 @@ export type MigrationTaskConfig<O = Options> = CommonConfig<O> &
 /**
  * ジョブの設定
  */
-export type MigrationJobConfig<O = Options> = CommonConfig<O> &
-  MigrationJobEvents<O> &
-  MigrationIterationEvents<O> & {
+export type MigrationJobConfig<T = OperationConfigTypes, F = Options> = CommonConfig<T, F> &
+  MigrationJobEvents<T, F> &
+  MigrationIterationEvents<T, F> & {
     /**
      *  ジョブID
      */
@@ -110,7 +110,7 @@ export type MigrationJobConfig<O = Options> = CommonConfig<O> &
      * - 正規表現の場合はパスがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter?: Condition<IterationParams>;
+    filter?: Condition<any, IterationParams>;
 
     // 以下はコンテンツの編集に関するプロパティ
 
@@ -124,13 +124,13 @@ export type MigrationJobConfig<O = Options> = CommonConfig<O> &
     initialize?: <C = string | Buffer>(
       content: C,
       params: IterationParams,
-      config: Omit<MigrationJobConfig<O>, 'initialize'>
+      config: Omit<MigrationJobConfig<T, F>, 'initialize'>
     ) => Promise<C>;
 
     /**
      * 操作の設定
      */
-    operations?: OperationConfigTypes | OperationConfigTypes[];
+    operations?: T | T[];
 
     /**
      * フォーマットも含む編集処理後に実行される任意の処理
@@ -139,7 +139,11 @@ export type MigrationJobConfig<O = Options> = CommonConfig<O> &
      * @param config 当コンフィグ
      * @returns 最終的なコンテンツ
      */
-    finalize?: <C = string | Buffer>(content: C, params: IterationParams, results: OperationResult[]) => Promise<C>;
+    finalize?: <C = string | Buffer>(
+      content: C,
+      params: IterationParams,
+      results: OperationResult<C, T>[]
+    ) => Promise<C>;
   };
 
 /**
@@ -242,14 +246,14 @@ export type MigrationIterationResult = {
 /**
  * タスク用のイベントハンドラー
  */
-type MigrationTaskEvents<O = Options> = {
+type MigrationTaskEvents<T = OperationConfigTypes, F = Options> = {
   /**
    * タスク開始時のハンドラー
    * @param config タスク設定
    * @param params タスクパラメーター
    * @returns
    */
-  onTaskStart?: (config: MigrationTaskConfig<O>) => void;
+  onTaskStart?: (config: MigrationTaskConfig<T, F>) => void;
 
   /**
    * タスク終了時のハンドラー
@@ -258,20 +262,20 @@ type MigrationTaskEvents<O = Options> = {
    * @param params タスクパラメーター
    * @returns
    */
-  onTaskEnd?: (result: MigrationTaskResult, config: MigrationTaskConfig<O>) => void;
+  onTaskEnd?: (result: MigrationTaskResult, config: MigrationTaskConfig<T, F>) => void;
 };
 
 /**
  * ジョブ用のイベントハンドラー
  */
-type MigrationJobEvents<O = Options> = {
+type MigrationJobEvents<T = OperationConfigTypes, F = Options> = {
   /**
    * ジョブ開始時のハンドラー
    * @param config ジョブ設定
    * @param params ジョブパラメーター
    * @returns
    */
-  onJobStart?: (config: MigrationJobConfig<O>) => void;
+  onJobStart?: (config: MigrationJobConfig<T, F>) => void;
 
   /**
    * ジョブ終了時のハンドラー
@@ -280,20 +284,20 @@ type MigrationJobEvents<O = Options> = {
    * @param params ジョブパラメーター
    * @returns
    */
-  onJobEnd?: (result: MigrationJobResult, config: MigrationJobConfig<O>) => void;
+  onJobEnd?: (result: MigrationJobResult, config: MigrationJobConfig<T, F>) => void;
 };
 
 /**
  * イテレーション用のイベントハンドラー
  */
-type MigrationIterationEvents<O = Options> = {
+type MigrationIterationEvents<T = OperationConfigTypes, F = Options> = {
   /**
    * イテレーション開始時のハンドラー
    * @param config イテレーション設定
    * @param params イテレーションパラメーター
    * @returns
    */
-  onIterationStart?: (config: MigrationJobConfig<O>, params: IterationParams) => void;
+  onIterationStart?: (config: MigrationJobConfig<T, F>, params: IterationParams) => void;
 
   /**
    * イテレーション終了時のハンドラー
@@ -302,20 +306,24 @@ type MigrationIterationEvents<O = Options> = {
    * @param params イテレーションパラメーター
    * @returns
    */
-  onIterationEnd?: (result: MigrationIterationResult, config: MigrationJobConfig<O>, params: IterationParams) => void;
+  onIterationEnd?: (
+    result: MigrationIterationResult,
+    config: MigrationJobConfig<T, F>,
+    params: IterationParams
+  ) => void;
 };
 
-export type CommonConfig<O = Options> = FormattingConfig<O> &
+export type CommonConfig<T = OperationConfigTypes, F = Options> = FormattingConfig<F> &
   ReplacementConfig &
   InputOputputConfig &
-  IterationConfig<O>;
+  IterationConfig<T, F>;
 
-type IterationConfig<O = Options> = {
+type IterationConfig<T = OperationConfigTypes, F = Options> = {
   /**
    * 繰り返し処理毎にパラメーターを作成するイテレーターの取得元
    */
   iteration?:
-    | ((config: MigrationJobConfig<O>) => Generator<IterationParams>)
+    | ((config: MigrationJobConfig<T, F>) => Generator<IterationParams>)
     | IterationParams[]
     | IterationParams
     | string;

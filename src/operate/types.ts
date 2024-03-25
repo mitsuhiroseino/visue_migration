@@ -38,7 +38,7 @@ export type ContentType = (typeof CONTENT_TYPE)[keyof typeof CONTENT_TYPE];
 /**
  * 操作の設定
  */
-export type OperationConfig<T = string> = FormattingConfig &
+export type OperationConfig<C = Content, T = string> = FormattingConfig &
   InputOputputConfig &
   ReplacementConfig & {
     /**
@@ -58,7 +58,7 @@ export type OperationConfig<T = string> = FormattingConfig &
      * - 正規表現の場合はcontentがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter?: Condition<OperationParams>;
+    filter?: Condition<C, OperationParams>;
   };
 
 /**
@@ -79,16 +79,16 @@ export type OperationParams = {
 /**
  * 処理の結果
  */
-export type OperationResult = { content: Content; results: OperationConfigTypes[] };
+export type OperationResult<C = Content, T = OperationConfigTypes> = { content: C; results: T[] };
 
 /**
  * 内容に対する操作
  */
-export type Operation<S extends OperationConfig = OperationConfig, C = Content> = (
+export type Operation<C = Content, S extends OperationConfig<C> = OperationConfig<C>> = (
   content: C,
   config: S,
   params: OperationParams
-) => Promise<Content>;
+) => Promise<C | Content>;
 
 /**
  * 静的パターン

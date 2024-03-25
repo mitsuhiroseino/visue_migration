@@ -14,18 +14,9 @@ import { SharpConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Sharp: Operation<SharpConfig, Buffer> = async (content: Buffer, config: SharpConfig, params: OperationParams) => {
-  const { options, withMetadata, withStats, manipulations } = config;
+const Sharp: Operation<Buffer, SharpConfig> = async (content: Buffer, config: SharpConfig, params: OperationParams) => {
+  const { options, manipulations } = config;
   let sharp = SharpLib(content, options);
-
-  if (withMetadata) {
-    const metadata = await sharp.metadata();
-    params = { ...params, _metadata: metadata };
-  }
-  if (withStats) {
-    const stats = await sharp.stats();
-    params = { ...params, _stats: stats };
-  }
 
   for (const manipulationConfig of asArray(manipulations)) {
     const manipulation = SharpManipulationFactory.get(manipulationConfig.type);

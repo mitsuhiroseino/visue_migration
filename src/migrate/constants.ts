@@ -99,13 +99,7 @@ export async function DEFAULT_FORMATTER(content: string, options: Options): Prom
 /**
  * デフォルトフォーマットオプション
  */
-export const DEFAULT_FORMATTER_OPTIONS = {
-  parser: 'typescript',
-  endOfLine: 'crlf',
-  singleQuote: true,
-  organizeImportsSkipDestructiveCodeActions: true,
-  plugins: ['prettier-plugin-organize-imports'],
-};
+export const DEFAULT_FORMATTER_OPTIONS = {};
 
 /**
  * デフォルトの括り文字

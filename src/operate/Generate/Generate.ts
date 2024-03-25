@@ -12,7 +12,7 @@ import { GenerateConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Generate: Operation<GenerateConfig, string> = async (
+const Generate: Operation<string, GenerateConfig> = async (
   content: string,
   config: GenerateConfig,
   params: OperationParams

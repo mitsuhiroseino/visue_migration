@@ -7,15 +7,15 @@ import { Content } from '../types';
 /**
  * 条件
  */
-export type Condition<O> =
+export type Condition<C, O> =
   | string
   | RegExp
-  | ((value: Content, options?: O) => boolean)
-  | ((value: Content, options?: O) => Promise<boolean>);
+  | ((value: C, options?: O) => boolean)
+  | ((value: C, options?: O) => Promise<boolean>);
 
-export default async function isMatch<O = any>(
-  value: Content,
-  condition?: Condition<O>,
+export default async function isMatch<C = Content, O = any>(
+  value: C,
+  condition?: Condition<C, O>,
   options?: O
 ): Promise<boolean> {
   if (condition == null) {

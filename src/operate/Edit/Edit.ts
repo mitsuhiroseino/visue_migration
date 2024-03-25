@@ -11,7 +11,7 @@ import { EditConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Edit: Operation<EditConfig, Content> = async (
+const Edit: Operation<Content, EditConfig> = async (
   content: Content,
   config: EditConfig<Content>,
   params: OperationParams

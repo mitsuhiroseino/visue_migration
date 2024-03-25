@@ -11,7 +11,7 @@ import { DeleteConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Delete: Operation<DeleteConfig, string> = async (
+const Delete: Operation<string, DeleteConfig> = async (
   content: string,
   config: DeleteConfig,
   params: OperationParams

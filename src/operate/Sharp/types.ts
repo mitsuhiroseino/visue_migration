@@ -62,20 +62,6 @@ export type SharpConfig = OperationConfig<Buffer> & {
   options?: SharpOptions;
 
   /**
-   * メタデータをparams._metadataとして読み込む
-   *
-   * https://sharp.pixelplumbing.com/api-input#metadata
-   */
-  withMetadata?: boolean;
-
-  /**
-   * 状態をparams._statsとして読み込む
-   *
-   * https://sharp.pixelplumbing.com/api-input#stats
-   */
-  withStats?: boolean;
-
-  /**
    * 画像に対する操作
    */
   manipulations: SharpManipulationConfig | SharpManipulationConfig[];

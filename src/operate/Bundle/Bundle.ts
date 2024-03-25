@@ -16,7 +16,7 @@ import { BundleConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Bundle: Operation<BundleConfig, Content> = async (
+const Bundle: Operation<Content, BundleConfig> = async (
   content: Content,
   config: BundleConfig<Content>,
   params: OperationParams

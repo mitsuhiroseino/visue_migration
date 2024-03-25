@@ -10,7 +10,7 @@ import { FormatConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Format: Operation<FormatConfig, string> = async (
+const Format: Operation<string, FormatConfig> = async (
   content: string,
   config: FormatConfig,
   params: OperationParams

@@ -15,7 +15,7 @@ import { AddConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Add: Operation<AddConfig, string> = async (content: string, config: AddConfig, params: OperationParams) => {
+const Add: Operation<string, AddConfig> = async (content: string, config: AddConfig, params: OperationParams) => {
   let {
     patterns,
     formatPatterns,

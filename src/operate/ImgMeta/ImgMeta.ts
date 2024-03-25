@@ -14,7 +14,7 @@ import { ImageConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const ImgMeta: Operation<ImageConfig, Buffer> = async (
+const ImgMeta: Operation<Buffer, ImageConfig> = async (
   content: Buffer,
   config: ImageConfig,
   params: OperationParams

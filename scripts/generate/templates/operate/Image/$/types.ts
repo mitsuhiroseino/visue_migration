@@ -1,5 +1,5 @@
-import sharp from 'sharp';
-
+import { ImageCallback } from '@jimp/core';
+import { {{uppercamelcase}} } from '@jimp/plugin-{{lowercamelcase}}';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
@@ -10,4 +10,6 @@ export type {{uppercamelcase}}Config = {
    * 画像操作種別
    */
   type: typeof IMAGE_MANIPULATION_TYPE.{{snakecase}};
-} & sharp.{{uppercamelcase}}Options;
+
+  callback?: ImageCallback<{{uppercamelcase}}>;
+};

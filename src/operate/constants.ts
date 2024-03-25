@@ -33,6 +33,11 @@ export const OPERATION_TYPE = {
   GENERATE: 'generate',
 
   /**
+   * 画像の変換
+   */
+  IMAGE: 'image',
+
+  /**
    * 画像のメタデータ取得
    */
   IMG_META: 'imgmeta',
