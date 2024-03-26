@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ContrastConfig } from './types';
 
 /**
+ * コントラスト
+ *
+ * 画像のコントラストを調整することができる。コントラストの調整により、画像の明るさと暗さの差を強調することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-contrast
  *
  * @param state gmのインスタンス(ステート)
  * @param config Contrastのコンフィグ

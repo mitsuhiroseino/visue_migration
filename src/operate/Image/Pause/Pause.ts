@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { PauseConfig } from './types';
 
 /**
+ * 一時停止
+ *
+ * 画像処理の一時停止を行うことができる。処理を一時停止して後で再開することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-pause
  *
  * @param state gmのインスタンス(ステート)
  * @param config Pauseのコンフィグ

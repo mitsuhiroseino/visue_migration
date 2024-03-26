@@ -4,14 +4,19 @@ import { ImageManipulation } from '../types';
 import { EndianConfig } from './types';
 
 /**
+ * エンディアン
+ *
+ * 画像のバイトオーダーを設定することができる。エンディアンの変更により、画像の解釈や表示が変わることがある。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-endian
  *
  * @param state gmのインスタンス(ステート)
  * @param config Endianのコンフィグ
  * @returns gmのインスタンス
  */
 const Endian: ImageManipulation<EndianConfig> = async (state, config) => {
-  const { type } = config;
-  return state.endian(type);
+  const { endianType } = config;
+  return state.endian(endianType);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.ENDIAN, Endian);
 export default Endian;

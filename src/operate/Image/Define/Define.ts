@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DefineConfig } from './types';
 
 /**
+ * 定義
+ *
+ * 画像処理に関する設定やパラメータを定義することができる。処理の挙動や結果を細かく調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-define
  *
  * @param state gmのインスタンス(ステート)
  * @param config Defineのコンフィグ

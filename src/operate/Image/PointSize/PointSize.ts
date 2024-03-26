@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { PointSizeConfig } from './types';
 
 /**
+ * ポイントサイズ
+ *
+ * 画像のポイントサイズを設定することができる。文字の大きさや線の太さを指定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-pointSize
  *
  * @param state gmのインスタンス(ステート)
  * @param config PointSizeのコンフィグ

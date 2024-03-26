@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { FileConfig } from './types';
 
 /**
+ * ファイル
+ *
+ * 画像のファイル情報やメタデータを取得することができる。ファイルの種類やサイズ、作成日時などの情報を取得する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-file
  *
  * @param state gmのインスタンス(ステート)
  * @param config Fileのコンフィグ

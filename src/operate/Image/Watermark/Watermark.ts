@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { WatermarkConfig } from './types';
 
 /**
+ * ウォーターマーク
+ *
+ * 画像にウォーターマークを追加することができる。透明なロゴやテキストを画像に重ねて表示する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-watermark
  *
  * @param state gmのインスタンス(ステート)
  * @param config Watermarkのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { UsePixmapConfig } from './types';
 
 /**
+ * ピクスマップの使用
+ *
+ * 画像の表示にピクスマップを使用するかどうかを設定することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-usePixmap
  *
  * @param state gmのインスタンス(ステート)
  * @param config UsePixmapのコンフィグ

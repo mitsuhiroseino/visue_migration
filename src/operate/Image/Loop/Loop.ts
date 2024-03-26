@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { LoopConfig } from './types';
 
 /**
+ * ループ
+ *
+ * 画像のアニメーションループを設定することができる。アニメーション画像の再生回数やループの制御を行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-loop
  *
  * @param state gmのインスタンス(ステート)
  * @param config Loopのコンフィグ

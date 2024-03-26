@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { LabelConfig } from './types';
 
 /**
+ * ラベル
+ *
+ * 画像にラベルを追加することができる。画像にテキストや注釈を付けるのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-label
  *
  * @param state gmのインスタンス(ステート)
  * @param config Labelのコンフィグ

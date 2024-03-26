@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SetFormatConfig } from './types';
 
 /**
+ * フォーマット設定
+ *
+ * 画像のフォーマットを設定することができる。画像のファイル形式や拡張子を指定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-setFormat
  *
  * @param state gmのインスタンス(ステート)
  * @param config SetFormatのコンフィグ

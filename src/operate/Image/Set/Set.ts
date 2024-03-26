@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SetConfig } from './types';
 
 /**
+ * 設定
+ *
+ * 画像の特定の属性を設定することができる。画像のメタデータやプロパティを設定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-set
  *
  * @param state gmのインスタンス(ステート)
  * @param config Setのコンフィグ

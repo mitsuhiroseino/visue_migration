@@ -1,7 +1,8 @@
+import { NamedColor } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Channel`の設定
  */
 export type ChannelConfig = {
   /**
@@ -9,5 +10,5 @@ export type ChannelConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.CHANNEL;
 
-  type: NamedColor | string;
+  channelType: NamedColor | string;
 };

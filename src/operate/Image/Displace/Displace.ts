@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DisplaceConfig } from './types';
 
 /**
+ * 変位
+ *
+ * 画像のピクセルを指定されたマップに基づいて変位させることができる。歪みや効果を与えるのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-displace
  *
  * @param state gmのインスタンス(ステート)
  * @param config Displaceのコンフィグ

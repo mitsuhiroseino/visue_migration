@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { NegativeConfig } from './types';
 
 /**
+ * ネガティブ
+ *
+ * 画像のネガティブを生成することができる。色の反転を行い、画像の色を反転させる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-negative
  *
  * @param state gmのインスタンス(ステート)
  * @param config Negativeのコンフィグ

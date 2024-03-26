@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { AntialiasConfig } from './types';
 
 /**
+ * アンチエイリアス
+ *
+ * 画像のアンチエイリアス処理を行うことができる。エッジや線を滑らかにすることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-antialias
  *
  * @param state gmのインスタンス(ステート)
  * @param config Antialiasのコンフィグ

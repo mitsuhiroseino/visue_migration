@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { OutputDirectoryConfig } from './types';
 
 /**
+ * 出力ディレクトリ
+ *
+ * 処理した画像を出力するディレクトリを指定することができる。画像の出力先を指定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-outputDirectory
  *
  * @param state gmのインスタンス(ステート)
  * @param config OutputDirectoryのコンフィグ

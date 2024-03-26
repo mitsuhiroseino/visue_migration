@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { GaussianConfig } from './types';
 
 /**
+ * ガウシアン
+ *
+ * 画像にガウシアンぼかしを適用することができる。ガウシアンぼかしは、画像のエッジを滑らかにするのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-gaussian
  *
  * @param state gmのインスタンス(ステート)
  * @param config Gaussianのコンフィグ

@@ -1,7 +1,8 @@
+import { ListType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`List`の設定
  */
 export type ListConfig = {
   /**
@@ -9,5 +10,5 @@ export type ListConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.LIST;
 
-  type: ListType | string;
+  listType: ListType | string;
 };

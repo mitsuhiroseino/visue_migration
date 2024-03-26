@@ -1,7 +1,8 @@
+import { FilterType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Filter`の設定
  */
 export type FilterConfig = {
   /**
@@ -9,5 +10,5 @@ export type FilterConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.FILTER;
 
-  type: FilterType | string;
+  filterType: FilterType | string;
 };

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { AdjoinConfig } from './types';
 
 /**
+ * 接合
+ *
+ * 複数の画像を一つの画像に結合することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-adjoin
  *
  * @param state gmのインスタンス(ステート)
  * @param config Adjoinのコンフィグ

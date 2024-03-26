@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { UpdateConfig } from './types';
 
 /**
+ * 更新
+ *
+ * 画像の属性を更新することができる。画像のメタデータやプロパティを更新する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-update
  *
  * @param state gmのインスタンス(ステート)
  * @param config Updateのコンフィグ

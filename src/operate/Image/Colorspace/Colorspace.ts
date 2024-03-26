@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ColorspaceConfig } from './types';
 
 /**
+ * カラースペース
+ *
+ * 画像のカラースペースを変更することができる。RGB、CMYK、グレースケールなどのカラースペースに変換することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-colorspace
  *
  * @param state gmのインスタンス(ステート)
  * @param config Colorspaceのコンフィグ

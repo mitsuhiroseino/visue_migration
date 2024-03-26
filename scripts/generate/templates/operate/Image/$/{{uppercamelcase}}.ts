@@ -4,7 +4,12 @@ import { ImageManipulation } from '../types';
 import { {{{uppercamelcase}}}Config } from './types';
 
 /**
+ * {{{name}}}
+ * 
  * {{{description}}}
+ * 
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-{{{lowercamelcase}}}
+ * 
  * @param state gmのインスタンス(ステート)
  * @param config {{{uppercamelcase}}}のコンフィグ
  * @returns gmのインスタンス

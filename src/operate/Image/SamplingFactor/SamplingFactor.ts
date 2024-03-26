@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SamplingFactorConfig } from './types';
 
 /**
+ * サンプリングファクター
+ *
+ * 画像のサンプリングファクターを設定することができる。サンプリングの精度や効率を調整する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-samplingFactor
  *
  * @param state gmのインスタンス(ステート)
  * @param config SamplingFactorのコンフィグ

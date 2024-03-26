@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DelayConfig } from './types';
 
 /**
+ * 遅延
+ *
+ * アニメーション画像のフレーム間の遅延を設定することができる。各フレームの表示時間を制御する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-delay
  *
  * @param state gmのインスタンス(ステート)
  * @param config Delayのコンフィグ

@@ -1,7 +1,8 @@
+import { CompressionType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Compress`の設定
  */
 export type CompressConfig = {
   /**
@@ -9,5 +10,5 @@ export type CompressConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.COMPRESS;
 
-  type: CompressionType | string;
+  compressionType: CompressionType | string;
 };

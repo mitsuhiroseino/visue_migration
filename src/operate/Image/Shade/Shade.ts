@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ShadeConfig } from './types';
 
 /**
+ * 影
+ *
+ * 画像に影を追加することができる。指定した方向や強度で影を付けることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-shade
  *
  * @param state gmのインスタンス(ステート)
  * @param config Shadeのコンフィグ

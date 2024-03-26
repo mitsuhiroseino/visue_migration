@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { FlattenConfig } from './types';
 
 /**
+ * フラット化
+ *
+ * 画像のレイヤーを平坦化することができる。複数の画像レイヤーを一つの画像に結合する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-flatten
  *
  * @param state gmのインスタンス(ステート)
  * @param config Flattenのコンフィグ

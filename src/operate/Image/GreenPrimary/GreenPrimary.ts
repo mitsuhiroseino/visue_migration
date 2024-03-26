@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { GreenPrimaryConfig } from './types';
 
 /**
+ * 緑の主要成分
+ *
+ * 画像の緑のプライマリ値を設定することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-greenPrimary
  *
  * @param state gmのインスタンス(ステート)
  * @param config GreenPrimaryのコンフィグ

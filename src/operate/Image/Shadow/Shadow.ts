@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ShadowConfig } from './types';
 
 /**
+ * シャドウ
+ *
+ * 画像に影を付けることができる。指定した方向や強度で影を投影することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-shadow
  *
  * @param state gmのインスタンス(ステート)
  * @param config Shadowのコンフィグ

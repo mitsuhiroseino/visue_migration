@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { EmbossConfig } from './types';
 
 /**
+ * エンボス
+ *
+ * 画像に浮き出し効果を与えることができる。画像に立体感や質感を与えるのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-emboss
  *
  * @param state gmのインスタンス(ステート)
  * @param config Embossのコンフィグ

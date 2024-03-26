@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MonochromeConfig } from './types';
 
 /**
+ * モノクロ
+ *
+ * 画像をモノクロームに変換することができる。白黒や二値化などのモノクローム処理が可能。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-monochrome
  *
  * @param state gmのインスタンス(ステート)
  * @param config Monochromeのコンフィグ

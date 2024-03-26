@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { GravityConfig } from './types';
 
 /**
+ * 重力
+ *
+ * 画像の揃える基準点を指定することができる。画像の配置や重心を制御するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-gravity
  *
  * @param state gmのインスタンス(ステート)
  * @param config Gravityのコンフィグ

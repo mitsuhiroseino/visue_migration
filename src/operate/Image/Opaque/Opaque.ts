@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { OpaqueConfig } from './types';
 
 /**
+ * 不透明
+ *
+ * 画像の透明部分を不透明にすることができる。透明な部分を指定された色やパターンで塗りつぶす。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-opaque
  *
  * @param state gmのインスタンス(ステート)
  * @param config Opaqueのコンフィグ

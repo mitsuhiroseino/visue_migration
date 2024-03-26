@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { WindowGroupConfig } from './types';
 
 /**
+ * ウィンドウグループ
+ *
+ * 画像のウィンドウグループ情報を取得することができる。画像のウィンドウをグループ化する情報を取得する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-windowGroup
  *
  * @param state gmのインスタンス(ステート)
  * @param config WindowGroupのコンフィグ

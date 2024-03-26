@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { EncodingConfig } from './types';
 
 /**
+ * エンコーディング
+ *
+ * 画像のエンコード方法や形式を指定することができる。画像のファイル形式や圧縮方法を設定するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-encoding
  *
  * @param state gmのインスタンス(ステート)
  * @param config Encodingのコンフィグ

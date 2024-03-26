@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { LatConfig } from './types';
 
 /**
+ * 緯度
+ *
+ * 画像の色調を調整することができる。色相、彩度、明度を変更することで、画像の色調を調整する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-lat
  *
  * @param state gmのインスタンス(ステート)
  * @param config Latのコンフィグ

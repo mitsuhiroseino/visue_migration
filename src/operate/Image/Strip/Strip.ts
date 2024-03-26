@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { StripConfig } from './types';
 
 /**
+ * ストリップ
+ *
+ * 画像からストリップ情報を取り除くことができる。画像ファイルからメタデータやコメントなどを取り除く。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-strip
  *
  * @param state gmのインスタンス(ステート)
  * @param config Stripのコンフィグ

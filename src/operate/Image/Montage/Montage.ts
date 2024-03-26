@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MontageConfig } from './types';
 
 /**
+ * モンタージュ
+ *
+ * 画像をモンタージュすることができる。複数の画像をタイル状に並べて1枚の画像にまとめる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-montage
  *
  * @param state gmのインスタンス(ステート)
  * @param config Montageのコンフィグ

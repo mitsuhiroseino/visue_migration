@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MotionBlurConfig } from './types';
 
 /**
+ * モーションブラー
+ *
+ * 画像にモーションブラー効果を追加することができる。画像の移動を模倣し、動きのある効果を与える。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-motionBlur
  *
  * @param state gmのインスタンス(ステート)
  * @param config MotionBlurのコンフィグ

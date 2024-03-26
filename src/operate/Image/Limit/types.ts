@@ -1,7 +1,8 @@
+import { LimitType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Limit`の設定
  */
 export type LimitConfig = {
   /**
@@ -9,6 +10,6 @@ export type LimitConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.LIMIT;
 
-  type: LimitType | string;
+  limitType: LimitType | string;
   val: string;
 };

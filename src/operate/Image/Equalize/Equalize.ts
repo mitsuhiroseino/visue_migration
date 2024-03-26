@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { EqualizeConfig } from './types';
 
 /**
+ * 均等化
+ *
+ * 画像のヒストグラムを均等化することができる。ヒストグラム均等化により、画像のコントラストを向上させることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-equalize
  *
  * @param state gmのインスタンス(ステート)
  * @param config Equalizeのコンフィグ

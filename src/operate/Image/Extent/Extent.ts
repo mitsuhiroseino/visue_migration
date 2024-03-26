@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ExtentConfig } from './types';
 
 /**
+ * 範囲
+ *
+ * 画像のサイズを変更することができる。指定されたサイズにリサイズするか、余白を追加してサイズを変更する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-extent
  *
  * @param state gmのインスタンス(ステート)
  * @param config Extentのコンフィグ

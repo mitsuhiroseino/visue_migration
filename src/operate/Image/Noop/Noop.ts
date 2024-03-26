@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { NoopConfig } from './types';
 
 /**
+ * 無効
+ *
+ * 画像処理を行わずに、画像をそのまま返すことができる。何もしない処理を行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-noop
  *
  * @param state gmのインスタンス(ステート)
  * @param config Noopのコンフィグ

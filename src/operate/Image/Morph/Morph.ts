@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MorphConfig } from './types';
 
 /**
+ * 変形
+ *
+ * 画像間のモーフィングを行うことができる。複数の画像間で形状や特徴を変化させるのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-morph
  *
  * @param state gmのインスタンス(ステート)
  * @param config Morphのコンフィグ

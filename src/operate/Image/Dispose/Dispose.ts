@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DisposeConfig } from './types';
 
 /**
+ * 破棄
+ *
+ * アニメーション画像の各フレームの後処理方法を設定することができる。フレームの間のトランジションやクリア方法などを指定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-dispose
  *
  * @param state gmのインスタンス(ステート)
  * @param config Disposeのコンフィグ

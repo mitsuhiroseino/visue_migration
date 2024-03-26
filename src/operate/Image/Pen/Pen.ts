@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { PenConfig } from './types';
 
 /**
+ * ペン
+ *
+ * 画像に線やパスを描画することができる。ペンのスタイルや太さを指定して、画像に線を描く。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-pen
  *
  * @param state gmのインスタンス(ステート)
  * @param config Penのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { HighlightStyleConfig } from './types';
 
 /**
+ * ハイライトのスタイル
+ *
+ * 画像のハイライトのスタイルを指定することができる。ハイライトのスタイルや効果を変更するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-highlightStyle
  *
  * @param state gmのインスタンス(ステート)
  * @param config HighlightStyleのコンフィグ

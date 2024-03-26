@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ComposeConfig } from './types';
 
 /**
+ * 合成
+ *
+ * 複数の画像を合成することができる。合成モードや透明度などのパラメータを指定して、複数の画像を組み合わせることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-compose
  *
  * @param state gmのインスタンス(ステート)
  * @param config Composeのコンフィグ

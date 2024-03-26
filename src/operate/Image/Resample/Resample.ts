@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ResampleConfig } from './types';
 
 /**
+ * 再サンプリング
+ *
+ * 画像のリサンプリングを行うことができる。画像の解像度やサイズを変更する際に使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-resample
  *
  * @param state gmのインスタンス(ステート)
  * @param config Resampleのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { IconGeometryConfig } from './types';
 
 /**
+ * アイコンのジオメトリ
+ *
+ * アイコンのサイズや配置を指定することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-iconGeometry
  *
  * @param state gmのインスタンス(ステート)
  * @param config IconGeometryのコンフィグ

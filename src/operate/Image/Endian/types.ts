@@ -1,7 +1,8 @@
+import { EndianType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Endian`の設定
  */
 export type EndianConfig = {
   /**
@@ -9,5 +10,5 @@ export type EndianConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.ENDIAN;
 
-  type: EndianType | string;
+  endianType: EndianType | string;
 };

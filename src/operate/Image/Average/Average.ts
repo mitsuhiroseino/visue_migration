@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { AverageConfig } from './types';
 
 /**
+ * 平均
+ *
+ * 複数の画像の平均値を計算することができる。統計情報の取得や複数の画像をブレンドするのに使用できる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-average
  *
  * @param state gmのインスタンス(ステート)
  * @param config Averageのコンフィグ

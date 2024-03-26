@@ -1,7 +1,8 @@
+import { VisualType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Visual`の設定
  */
 export type VisualConfig = {
   /**
@@ -9,5 +10,5 @@ export type VisualConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.VISUAL;
 
-  type: VisualType | string;
+  visualType: VisualType | string;
 };

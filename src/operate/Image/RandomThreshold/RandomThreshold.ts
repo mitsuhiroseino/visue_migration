@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { RandomThresholdConfig } from './types';
 
 /**
+ * ランダムしきい値
+ *
+ * 画像のランダムしきい値処理を行うことができる。ランダムなしきい値を使用して、画像を二値化する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-randomThreshold
  *
  * @param state gmのインスタンス(ステート)
  * @param config RandomThresholdのコンフィグ

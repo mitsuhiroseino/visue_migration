@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SegmentConfig } from './types';
 
 /**
+ * セグメント
+ *
+ * 画像をセグメント化して分割することができる。画像を領域ごとに分割し、個々の領域を処理する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-segment
  *
  * @param state gmのインスタンス(ステート)
  * @param config Segmentのコンフィグ

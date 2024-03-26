@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ForegroundConfig } from './types';
 
 /**
+ * 前景
+ *
+ * 画像に前景色を指定することができる。文字や形状の描画などに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-foreground
  *
  * @param state gmのインスタンス(ステート)
  * @param config Foregroundのコンフィグ

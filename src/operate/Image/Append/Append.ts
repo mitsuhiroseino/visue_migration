@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { AppendConfig } from './types';
 
 /**
+ * 追加
+ *
+ * 複数の画像を連結して一つの画像にすることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-append
  *
  * @param state gmのインスタンス(ステート)
  * @param config Appendのコンフィグ

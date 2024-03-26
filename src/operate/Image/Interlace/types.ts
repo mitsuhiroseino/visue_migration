@@ -1,7 +1,8 @@
+import { InterlaceType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Interlace`の設定
  */
 export type InterlaceConfig = {
   /**
@@ -9,5 +10,5 @@ export type InterlaceConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.INTERLACE;
 
-  type: InterlaceType | string;
+  interlaceType: InterlaceType | string;
 };

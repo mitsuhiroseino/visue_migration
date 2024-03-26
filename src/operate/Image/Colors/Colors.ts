@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ColorsConfig } from './types';
 
 /**
+ * 色
+ *
+ * 画像の色数を変更することができる。色数の変更により、画像の色の表現を調整することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-colors
  *
  * @param state gmのインスタンス(ステート)
  * @param config Colorsのコンフィグ

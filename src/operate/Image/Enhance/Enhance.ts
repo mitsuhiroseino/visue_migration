@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { EnhanceConfig } from './types';
 
 /**
+ * 強調
+ *
+ * 画像の品質を向上させることができる。画像の鮮明度、色彩、コントラストなどを調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-enhance
  *
  * @param state gmのインスタンス(ステート)
  * @param config Enhanceのコンフィグ

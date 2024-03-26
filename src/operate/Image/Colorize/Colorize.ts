@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ColorizeConfig } from './types';
 
 /**
+ * 着色
+ *
+ * 画像に色を付けることができる。画像全体または指定された領域に色を塗ることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-colorize
  *
  * @param state gmのインスタンス(ステート)
  * @param config Colorizeのコンフィグ

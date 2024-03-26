@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { StereoConfig } from './types';
 
 /**
+ * ステレオ
+ *
+ * 画像をステレオ視用に処理することができる。左右の画像を立体視効果として合成する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-stereo
  *
  * @param state gmのインスタンス(ステート)
  * @param config Stereoのコンフィグ

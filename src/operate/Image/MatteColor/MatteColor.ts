@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MatteColorConfig } from './types';
 
 /**
+ * マットの色
+ *
+ * 画像のマットの色を指定することができる。マットの色や透明度を調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-matteColor
  *
  * @param state gmのインスタンス(ステート)
  * @param config MatteColorのコンフィグ

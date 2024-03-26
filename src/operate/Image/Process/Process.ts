@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ProcessConfig } from './types';
 
 /**
+ * プロセス
+ *
+ * 画像処理を実行することができる。指定された処理を画像に適用し、変換や加工を行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-process
  *
  * @param state gmのインスタンス(ステート)
  * @param config Processのコンフィグ

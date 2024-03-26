@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ShaveConfig } from './types';
 
 /**
+ * 剃る
+ *
+ * 画像の余白や枠を削除することができる。指定した幅や高さだけ画像の周囲を削除する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-shave
  *
  * @param state gmのインスタンス(ステート)
  * @param config Shaveのコンフィグ

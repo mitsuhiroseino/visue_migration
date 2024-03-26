@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { NoProfileConfig } from './types';
 
 /**
+ * プロファイルなし
+ *
+ * 画像からプロファイル情報を削除することができる。画像のメタデータからプロファイル情報を除去する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-noProfile
  *
  * @param state gmのインスタンス(ステート)
  * @param config NoProfileのコンフィグ

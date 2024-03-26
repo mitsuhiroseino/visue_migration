@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { CoalesceConfig } from './types';
 
 /**
+ * 連結
+ *
+ * 複数の画像を連結することができる。複数の画像を連結して一つのアニメーション画像にする。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-coalesce
  *
  * @param state gmのインスタンス(ステート)
  * @param config Coalesceのコンフィグ

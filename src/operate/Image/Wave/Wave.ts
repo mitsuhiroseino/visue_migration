@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { WaveConfig } from './types';
 
 /**
+ * 波
+ *
+ * 画像に波紋効果を追加することができる。指定した波形や振幅で画像を歪ませる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-wave
  *
  * @param state gmのインスタンス(ステート)
  * @param config Waveのコンフィグ

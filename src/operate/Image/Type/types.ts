@@ -1,7 +1,8 @@
+import { ImageType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Type`の設定
  */
 export type TypeConfig = {
   /**
@@ -9,5 +10,5 @@ export type TypeConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.TYPE;
 
-  type: ImageType | string;
+  imageType: ImageType | string;
 };

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DeconstructConfig } from './types';
 
 /**
+ * 分解
+ *
+ * 画像の色を成分ごとに分解することができる。RGBやCMYKなどの成分を個別に操作するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-deconstruct
  *
  * @param state gmのインスタンス(ステート)
  * @param config Deconstructのコンフィグ

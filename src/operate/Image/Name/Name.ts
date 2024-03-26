@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { NameConfig } from './types';
 
 /**
+ * 名前
+ *
+ * 画像の名前や識別子を設定することができる。画像に名前を付けて識別するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-name
  *
  * @param state gmのインスタンス(ステート)
  * @param config Nameのコンフィグ

@@ -16,7 +16,7 @@ const MANIPULATION_INDEX_TEMPLATE_PATH = './scripts/generate/templates/operate/I
 const MANIPULATION_INDEX_OUTPUT_PATH = './src/operate/Image/index.ts';
 
 migration.initConfig({
-  postFormatting: { ...postFormatting, parser: 'typescript' },
+  postFormatting: { ...postFormatting, parser: 'typescript', organizeImportsSkipDestructiveCodeActions: false },
   onIterationStart: (config, params) => {
     fs.removeSync(replaceByValues(MANIPULATION_OUTPUT_PATH, params));
   },

@@ -1,7 +1,7 @@
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Trim`の設定
  */
 export type TrimConfig = {
   /**

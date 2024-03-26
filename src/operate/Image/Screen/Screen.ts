@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ScreenConfig } from './types';
 
 /**
+ * スクリーン
+ *
+ * 画像のスクリーン合成を行うことができる。画像を別の画像や背景と合成して表示する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-screen
  *
  * @param state gmのインスタンス(ステート)
  * @param config Screenのコンフィグ

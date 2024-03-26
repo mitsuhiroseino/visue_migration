@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { FlipConfig } from './types';
 
 /**
+ * 反転
+ *
+ * 画像を上下に反転させることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-flip
  *
  * @param state gmのインスタンス(ステート)
  * @param config Flipのコンフィグ

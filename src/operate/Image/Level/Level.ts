@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { LevelConfig } from './types';
 
 /**
+ * レベル
+ *
+ * 画像のレベルを調整することができる。色の範囲を変更することで、コントラストや明るさを調整する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-level
  *
  * @param state gmのインスタンス(ステート)
  * @param config Levelのコンフィグ

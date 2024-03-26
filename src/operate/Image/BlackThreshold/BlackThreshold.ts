@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BlackThresholdConfig } from './types';
 
 /**
+ * 黒のしきい値
+ *
+ * 画像の黒色の閾値を設定することができる。指定された閾値より暗いピクセルを黒色として扱うことができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-blackThreshold
  *
  * @param state gmのインスタンス(ステート)
  * @param config BlackThresholdのコンフィグ
@@ -11,7 +16,11 @@ import { BlackThresholdConfig } from './types';
  */
 const BlackThreshold: ImageManipulation<BlackThresholdConfig> = async (state, config) => {
   const { intensity, red, green, blue, opacity } = config;
-  return state.blackThreshold(intensity, red, green, blue, opacity);
+  if (intensity == null) {
+    return state.blackThreshold(red, green, blue, opacity);
+  } else {
+    return state.blackThreshold(intensity);
+  }
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.BLACK_THRESHOLD, BlackThreshold);
 export default BlackThreshold;

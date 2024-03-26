@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { PingConfig } from './types';
 
 /**
+ * ピンク
+ *
+ * 画像の情報を取得することができる。画像のメタデータやファイル情報を取得する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-ping
  *
  * @param state gmのインスタンス(ステート)
  * @param config Pingのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ModulateConfig } from './types';
 
 /**
+ * 変調
+ *
+ * 画像の色相、彩度、明度を調整することができる。色のバランスや鮮やかさを調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-modulate
  *
  * @param state gmのインスタンス(ステート)
  * @param config Modulateのコンフィグ

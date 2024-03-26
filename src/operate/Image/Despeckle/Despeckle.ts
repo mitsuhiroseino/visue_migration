@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DespeckleConfig } from './types';
 
 /**
+ * 斑点除去
+ *
+ * 画像からスペックルノイズを除去することができる。画像のクリーンアップや改善に使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-despeckle
  *
  * @param state gmのインスタンス(ステート)
  * @param config Despeckleのコンフィグ

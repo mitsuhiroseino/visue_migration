@@ -1,7 +1,7 @@
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`ColorMap`の設定
  */
 export type ColorMapConfig = {
   /**
@@ -9,5 +9,5 @@ export type ColorMapConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.COLOR_MAP;
 
-  type: 'shared' | 'private' | string;
+  colorMapType: 'shared' | 'private' | string;
 };

@@ -1,7 +1,8 @@
+import { UnitType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Units`の設定
  */
 export type UnitsConfig = {
   /**
@@ -9,5 +10,5 @@ export type UnitsConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.UNITS;
 
-  type: UnitType | string;
+  unitType: UnitType | string;
 };

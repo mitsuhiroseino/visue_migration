@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SteganoConfig } from './types';
 
 /**
+ * ステガノ
+ *
+ * ステガノグラフィを行うことができる。秘密情報を画像に埋め込んだり、画像から秘密情報を取り出すことができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-stegano
  *
  * @param state gmのインスタンス(ステート)
  * @param config Steganoのコンフィグ

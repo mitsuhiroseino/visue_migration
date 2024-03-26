@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BoxConfig } from './types';
 
 /**
+ * ボックス
+ *
+ * 画像にボックスフィルタを適用することができる。ボックスフィルタは、画像をぼかすのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-box
  *
  * @param state gmのインスタンス(ステート)
  * @param config Boxのコンフィグ

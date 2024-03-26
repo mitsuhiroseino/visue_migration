@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { TileConfig } from './types';
 
 /**
+ * タイル
+ *
+ * 画像をタイル状に並べることができる。指定したパターンや配置で画像をタイル表示する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-tile
  *
  * @param state gmのインスタンス(ステート)
  * @param config Tileのコンフィグ

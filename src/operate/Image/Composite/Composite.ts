@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { CompositeConfig } from './types';
 
 /**
+ * 合成
+ *
+ * 画像を合成することができる。複数の画像を組み合わせて1枚の画像を作成する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-composite
  *
  * @param state gmのインスタンス(ステート)
  * @param config Compositeのコンフィグ

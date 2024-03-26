@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { GeometryConfig } from './types';
 
 /**
+ * ジオメトリ
+ *
+ * 画像の幅や高さ、位置を指定することができる。画像のサイズや配置を調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-geometry
  *
  * @param state gmのインスタンス(ステート)
  * @param config Geometryのコンフィグ
@@ -11,7 +16,11 @@ import { GeometryConfig } from './types';
  */
 const Geometry: ImageManipulation<GeometryConfig> = async (state, config) => {
   const { width, height, option, geometry } = config;
-  return state.geometry(width, height, option, geometry);
+  if (geometry == null) {
+    return state.geometry(width, height, option);
+  } else {
+    return state.geometry(geometry);
+  }
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.GEOMETRY, Geometry);
 export default Geometry;

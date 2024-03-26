@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { PageConfig } from './types';
 
 /**
+ * ページ
+ *
+ * 画像のページサイズや配置を設定することができる。印刷やレイアウトの際に使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-page
  *
  * @param state gmのインスタンス(ステート)
  * @param config Pageのコンフィグ

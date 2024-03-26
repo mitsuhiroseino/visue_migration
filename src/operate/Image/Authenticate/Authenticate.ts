@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { AuthenticateConfig } from './types';
 
 /**
+ * 認証
+ *
+ * 画像の認証を行うことができる。特定の画像が正当であるかどうかを確認できる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-authenticate
  *
  * @param state gmのインスタンス(ステート)
  * @param config Authenticateのコンフィグ

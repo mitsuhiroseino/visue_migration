@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { LowerConfig } from './types';
 
 /**
+ * 小文字化
+ *
+ * 画像の色の明るさを調整することができる。画像の全体的な明るさを調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-lower
  *
  * @param state gmのインスタンス(ステート)
  * @param config Lowerのコンフィグ

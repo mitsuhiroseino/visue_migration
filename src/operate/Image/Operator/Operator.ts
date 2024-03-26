@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { OperatorConfig } from './types';
 
 /**
+ * 演算子
+ *
+ * 画像の演算を行うことができる。画像同士の加算、減算、乗算などの演算を実行する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-operator
  *
  * @param state gmのインスタンス(ステート)
  * @param config Operatorのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BlurConfig } from './types';
 
 /**
+ * ぼかし
+ *
+ * 画像にぼかしを適用することができる。これにより、画像のエッジが滑らかになり、ノイズが軽減される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-blur
  *
  * @param state gmのインスタンス(ステート)
  * @param config Blurのコンフィグ

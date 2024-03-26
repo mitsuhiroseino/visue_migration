@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SceneConfig } from './types';
 
 /**
+ * シーン
+ *
+ * 画像のシーン番号を設定することができる。複数のシーンが含まれる画像ファイルの特定のシーンを指定する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-scene
  *
  * @param state gmのインスタンス(ステート)
  * @param config Sceneのコンフィグ

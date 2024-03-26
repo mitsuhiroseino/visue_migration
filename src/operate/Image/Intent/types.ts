@@ -1,7 +1,8 @@
+import { IntentType } from 'gm';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Blur`の設定
+ * 画像操作`Intent`の設定
  */
 export type IntentConfig = {
   /**
@@ -9,5 +10,5 @@ export type IntentConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.INTENT;
 
-  type: IntentType | string;
+  intentType: IntentType | string;
 };

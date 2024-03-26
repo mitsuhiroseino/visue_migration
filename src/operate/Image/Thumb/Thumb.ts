@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ThumbConfig } from './types';
 
 /**
+ * サムネイル
+ *
+ * 画像のサムネイルを生成することができる。指定したサイズに縮小して画像を生成する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-thumb
  *
  * @param state gmのインスタンス(ステート)
  * @param config Thumbのコンフィグ

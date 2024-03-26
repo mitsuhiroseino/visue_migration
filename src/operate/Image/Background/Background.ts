@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BackgroundConfig } from './types';
 
 /**
+ * 背景
+ *
+ * 背景を設定することができる。画像に背景色や背景画像を追加する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-background
  *
  * @param state gmのインスタンス(ステート)
  * @param config Backgroundのコンフィグ

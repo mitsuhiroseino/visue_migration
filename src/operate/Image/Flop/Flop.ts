@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { FlopConfig } from './types';
 
 /**
+ * 反転
+ *
+ * 画像を左右に反転させることができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-flop
  *
  * @param state gmのインスタンス(ステート)
  * @param config Flopのコンフィグ

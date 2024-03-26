@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SampleConfig } from './types';
 
 /**
+ * サンプル
+ *
+ * 画像のサンプリングを行うことができる。画像の一部をサンプリングして取得する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-sample
  *
  * @param state gmのインスタンス(ステート)
  * @param config Sampleのコンフィグ

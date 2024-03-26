@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { QualityConfig } from './types';
 
 /**
+ * 品質
+ *
+ * 画像の品質を設定することができる。圧縮率や品質レベルを調整することで、画像のファイルサイズと品質のバランスを調整する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-quality
  *
  * @param state gmのインスタンス(ステート)
  * @param config Qualityのコンフィグ

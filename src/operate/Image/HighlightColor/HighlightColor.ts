@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { HighlightColorConfig } from './types';
 
 /**
+ * ハイライトの色
+ *
+ * 画像のハイライト色を指定することができる。ハイライトの色や強度を調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-highlightColor
  *
  * @param state gmのインスタンス(ステート)
  * @param config HighlightColorのコンフィグ

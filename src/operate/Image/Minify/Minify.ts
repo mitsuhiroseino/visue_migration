@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { MinifyConfig } from './types';
 
 /**
+ * 縮小
+ *
+ * 画像を縮小することができる。画像のサイズを縮小して、ファイルサイズを減らすことができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-minify
  *
  * @param state gmのインスタンス(ステート)
  * @param config Minifyのコンフィグ

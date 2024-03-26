@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BluePrimaryConfig } from './types';
 
 /**
+ * 青の主要成分
+ *
+ * 画像の青のプライマリ値を設定することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-bluePrimary
  *
  * @param state gmのインスタンス(ステート)
  * @param config BluePrimaryのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { RecolorConfig } from './types';
 
 /**
+ * 再着色
+ *
+ * 画像の色を再塗装することができる。指定した色やパターンで、画像の色を変更する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-recolor
  *
  * @param state gmのインスタンス(ステート)
  * @param config Recolorのコンフィグ

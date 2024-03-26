@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { SilentConfig } from './types';
 
 /**
+ * 静か
+ *
+ * 画像処理の出力を抑制することができる。処理結果を出力せずに処理を行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-silent
  *
  * @param state gmのインスタンス(ステート)
  * @param config Silentのコンフィグ

@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { ChopConfig } from './types';
 
 /**
+ * 切り取り
+ *
+ * 画像から指定された範囲を切り取ることができる。指定された範囲外の部分が削除される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-chop
  *
  * @param state gmのインスタンス(ステート)
  * @param config Chopのコンフィグ

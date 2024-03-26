@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DensityConfig } from './types';
 
 /**
+ * 密度
+ *
+ * 画像の解像度や密度を設定することができる。印刷や表示における画像の品質を調整するのに使用される。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-density
  *
  * @param state gmのインスタンス(ステート)
  * @param config Densityのコンフィグ

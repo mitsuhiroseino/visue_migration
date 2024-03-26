@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { RegionConfig } from './types';
 
 /**
+ * 領域
+ *
+ * 画像の特定の領域を指定することができる。指定した範囲内の画像処理を行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-region
  *
  * @param state gmのインスタンス(ステート)
  * @param config Regionのコンフィグ

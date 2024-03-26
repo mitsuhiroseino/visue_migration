@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { RawSizeConfig } from './types';
 
 /**
+ * 生のサイズ
+ *
+ * 画像の生のサイズを取得することができる。画像ファイルの圧縮や変換前の生のサイズを取得する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-rawSize
  *
  * @param state gmのインスタンス(ステート)
  * @param config RawSizeのコンフィグ

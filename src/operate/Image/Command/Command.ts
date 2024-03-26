@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { CommandConfig } from './types';
 
 /**
+ * コマンド
+ *
+ * コマンドを実行することができる。外部プログラムを呼び出し、画像処理などを行う。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-command
  *
  * @param state gmのインスタンス(ステート)
  * @param config Commandのコンフィグ

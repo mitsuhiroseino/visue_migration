@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { BitdepthConfig } from './types';
 
 /**
+ * ビット深度
+ *
+ * 画像のビット深度を変更することができる。色の表現精度を調整することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-bitdepth
  *
  * @param state gmのインスタンス(ステート)
  * @param config Bitdepthのコンフィグ

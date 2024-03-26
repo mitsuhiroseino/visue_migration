@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { EdgeConfig } from './types';
 
 /**
+ * エッジ
+ *
+ * 画像のエッジを検出することができる。エッジ検出により、画像の輪郭を強調することができる。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-edge
  *
  * @param state gmのインスタンス(ステート)
  * @param config Edgeのコンフィグ

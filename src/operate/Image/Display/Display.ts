@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { DisplayConfig } from './types';
 
 /**
+ * 表示
+ *
+ * 画像を表示することができる。画像を表示するウィンドウやデバイスを指定して画像を表示する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-display
  *
  * @param state gmのインスタンス(ステート)
  * @param config Displayのコンフィグ

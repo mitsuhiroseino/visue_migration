@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { WhitePointConfig } from './types';
 
 /**
+ * ホワイトポイント
+ *
+ * 画像のホワイトポイントを設定することができる。画像のホワイトポイントを調整する。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-whitePoint
  *
  * @param state gmのインスタンス(ステート)
  * @param config WhitePointのコンフィグ

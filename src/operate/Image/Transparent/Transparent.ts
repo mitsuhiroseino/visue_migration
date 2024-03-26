@@ -4,6 +4,11 @@ import { ImageManipulation } from '../types';
 import { TransparentConfig } from './types';
 
 /**
+ * 透明
+ *
+ * 画像の透明度を設定することができる。指定した色を透明化し、画像の一部を透明にする。
+ *
+ * http://www.graphicsmagick.org/GraphicsMagick.html#details-transparent
  *
  * @param state gmのインスタンス(ステート)
  * @param config Transparentのコンフィグ
