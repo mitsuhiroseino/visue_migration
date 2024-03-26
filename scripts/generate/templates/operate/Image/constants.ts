@@ -15,9 +15,11 @@ export const IMAGE_OUTPUT_FORMAT = {
 export const IMAGE_MANIPULATION_TYPE = {
 {{#each manipulations}}
   /**
+   * {{{this.name}}}
+   *
    * {{{this.description}}}
    *
-   * {{{this.url}}}
+   * http://www.graphicsmagick.org/GraphicsMagick.html#details-{{{this.lowercamelcase}}}
    */
   {{{this.snakecase}}}: '{{{this.lowercamelcase}}}',
 

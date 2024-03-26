@@ -3,7 +3,7 @@ module.exports = [
     lowercamelcase: 'adjoin',
     uppercamelcase: 'Adjoin',
     snakecase: 'ADJOIN',
-    name: '接合',
+    name: '画像の結合',
     description: '複数の画像を一つの画像に結合することができる。',
   },
   {
@@ -12,7 +12,7 @@ module.exports = [
     snakecase: 'AFFINE',
     argDefs: ['matrix: string;'],
     args: 'matrix',
-    name: 'アフィン',
+    name: 'アフィン変換',
     description:
       '画像にアフィン変換を適用することができる。平行移動、回転、スケーリング、シアーなどの変換が可能である。',
   },
@@ -22,7 +22,7 @@ module.exports = [
     snakecase: 'ANTIALIAS',
     argDefs: ['enable: boolean;'],
     args: 'enable',
-    name: 'アンチエイリアス',
+    name: 'アンチエイリアス処理',
     description: '画像のアンチエイリアス処理を行うことができる。エッジや線を滑らかにすることができる。',
   },
   {
@@ -31,7 +31,7 @@ module.exports = [
     snakecase: 'APPEND',
     argDefs: ['image: string | string[];', 'ltr?: boolean;'],
     args: 'image,ltr',
-    name: '追加',
+    name: '画像の連結',
     description: '複数の画像を連結して一つの画像にすることができる。',
   },
   {
@@ -55,15 +55,15 @@ module.exports = [
     lowercamelcase: 'average',
     uppercamelcase: 'Average',
     snakecase: 'AVERAGE',
-    name: '平均',
+    name: '平均値算出',
     description: '複数の画像の平均値を計算することができる。統計情報の取得や複数の画像をブレンドするのに使用できる。',
   },
   {
     lowercamelcase: 'backdrop',
     uppercamelcase: 'Backdrop',
     snakecase: 'BACKDROP',
-    name: '背景',
-    description: '画像の背景を指定した色や画像に設定することができる。',
+    name: '背景画像',
+    description: '画像の背景を指定した画像に設定することができる。',
   },
   {
     lowercamelcase: 'background',
@@ -71,8 +71,8 @@ module.exports = [
     snakecase: 'BACKGROUND',
     argDefs: ['color: string;'],
     args: 'color',
-    name: '背景',
-    description: '背景を設定することができる。画像に背景色や背景画像を追加する。',
+    name: '背景色',
+    description: '背景を設定することができる。画像に背景色を追加する。',
   },
   {
     lowercamelcase: 'bitdepth',
