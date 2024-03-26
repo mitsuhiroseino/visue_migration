@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { NormalizeConfig } from './types';
 
 /**
- * 色の正規化
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Normalizeのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Normalize: ImageManipulation<NormalizeConfig> = async (jimp, config) => {
-  const { callback } = config;
-  return await jimp.normalize(callback);
+const Normalize: ImageManipulation<NormalizeConfig> = async (state, config) => {
+  const {} = config;
+  return state.normalize();
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.NORMALIZE, Normalize);
 export default Normalize;

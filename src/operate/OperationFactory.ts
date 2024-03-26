@@ -1,15 +1,13 @@
+import Factory from '../utils/Factory';
 import { CONTENT_TYPE } from './constants';
 import { ContentType, Operation } from './types';
 
-class OperationFactory {
+class OperationFactory extends Factory<Operation<any, any>> {
   /**
    * ファイルに対する操作
    */
-  private _operations: {
-    [type: string]: {
-      operation: Operation<any, any>;
-      contentType?: ContentType;
-    };
+  private _contentTypes: {
+    [type: string]: ContentType | '_';
   } = {};
 
   /**
@@ -18,8 +16,9 @@ class OperationFactory {
    * @param operation 操作
    * @param contentType 操作対象のコンテンツ種別
    */
-  register(type: string, operation: Operation<any, any>, contentType?: ContentType) {
-    this._operations[type] = { operation, contentType };
+  register(type: string, operation: Operation<any, any>, contentType: ContentType = CONTENT_TYPE.NONE) {
+    super.register(type, operation);
+    this._contentTypes[type] = contentType;
   }
 
   /**
@@ -29,9 +28,9 @@ class OperationFactory {
    * @returns
    */
   get(type: string, contentType?: ContentType): Operation<any, any> {
-    const item = this._operations[type];
-    if (item && (item.contentType === contentType || item.contentType == null || contentType == null)) {
-      return item.operation;
+    const cType = this._contentTypes[type];
+    if (cType && (cType === contentType || cType == CONTENT_TYPE.NONE || contentType == null)) {
+      return super.get(type);
     }
   }
 

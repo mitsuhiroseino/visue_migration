@@ -2,22 +2,16 @@ import isFunction from 'lodash/isFunction';
 import isRegExp from 'lodash/isRegExp';
 import isString from 'lodash/isString';
 
-import { Content } from '../types';
-
 /**
  * 条件
  */
-export type Condition<C, O> =
+export type Condition =
   | string
   | RegExp
-  | ((value: C, options?: O) => boolean)
-  | ((value: C, options?: O) => Promise<boolean>);
+  | ((value: any, options?: any) => boolean)
+  | ((value: any, options?: any) => Promise<boolean>);
 
-export default async function isMatch<C = Content, O = any>(
-  value: C,
-  condition?: Condition<C, O>,
-  options?: O
-): Promise<boolean> {
+export default async function isMatch<C, O>(value: C, condition?: Condition, options?: O): Promise<boolean> {
   if (condition == null) {
     // 条件なし
     return true;

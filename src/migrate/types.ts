@@ -110,7 +110,7 @@ export type MigrationJobConfig<T = OperationConfigTypes, F = Options> = CommonCo
      * - 正規表現の場合はパスがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter?: Condition<any, IterationParams>;
+    filter?: Condition;
 
     // 以下はコンテンツの編集に関するプロパティ
 

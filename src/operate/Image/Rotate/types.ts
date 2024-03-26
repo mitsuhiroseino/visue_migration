@@ -1,9 +1,7 @@
-import { ImageCallback } from '@jimp/core';
-import { Rotate } from '@jimp/plugin-rotate';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Rotate`の設定
+ * 画像操作`Blur`の設定
  */
 export type RotateConfig = {
   /**
@@ -11,7 +9,6 @@ export type RotateConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.ROTATE;
 
-  deg: number;
-  mode: string | boolean;
-  callback?: ImageCallback<Rotate>;
+  backgroundColor: string;
+  degrees: number;
 };

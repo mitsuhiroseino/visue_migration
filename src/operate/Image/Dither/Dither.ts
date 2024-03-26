@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { DitherConfig } from './types';
 
 /**
- * ノイズ
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Ditherのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Dither: ImageManipulation<DitherConfig> = async (jimp, config) => {
-  const { callback } = config;
-  return await jimp.dither565(callback);
+const Dither: ImageManipulation<DitherConfig> = async (state, config) => {
+  const { enable } = config;
+  return state.dither(enable);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.DITHER, Dither);
 export default Dither;

@@ -1,9 +1,7 @@
-import { ImageCallback } from '@jimp/core';
-import { Scale } from '@jimp/plugin-scale';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Scale`の設定
+ * 画像操作`Blur`の設定
  */
 export type ScaleConfig = {
   /**
@@ -11,10 +9,6 @@ export type ScaleConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.SCALE;
 
-  fit?: boolean;
-  factor?: number;
-  width?: number;
-  height?: number;
-  mode?: string;
-  callback?: ImageCallback<Scale>;
+  width: number;
+  height: number;
 };

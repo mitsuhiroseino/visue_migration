@@ -48,7 +48,7 @@ export type SharpOptions = SharpLib.SharpOptions;
 /**
  * 画像の操作の設定
  */
-export type SharpConfig = OperationConfig<Buffer> & {
+export type SharpConfig = OperationConfig & {
   /**
    * 操作種別
    */

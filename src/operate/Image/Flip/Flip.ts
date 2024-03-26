@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { FlipConfig } from './types';
 
 /**
- * 水平または垂直に反転する
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Flipのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Flip: ImageManipulation<FlipConfig> = async (jimp, config) => {
-  const { horizontal, vertical, callback } = config;
-  return await jimp.flip(horizontal, vertical, callback);
+const Flip: ImageManipulation<FlipConfig> = async (state, config) => {
+  const {} = config;
+  return state.flip();
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.FLIP, Flip);
 export default Flip;

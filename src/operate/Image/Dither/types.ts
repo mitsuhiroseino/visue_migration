@@ -1,9 +1,7 @@
-import { ImageCallback } from '@jimp/core';
-import { Dither } from '@jimp/plugin-dither';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`Dither`の設定
+ * 画像操作`Blur`の設定
  */
 export type DitherConfig = {
   /**
@@ -11,5 +9,5 @@ export type DitherConfig = {
    */
   type: typeof IMAGE_MANIPULATION_TYPE.DITHER;
 
-  callback?: ImageCallback<Dither>;
+  enable?: boolean;
 };

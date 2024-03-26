@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { GaussianConfig } from './types';
 
 /**
- * ガウスぼかし
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Gaussianのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Gaussian: ImageManipulation<GaussianConfig> = async (jimp, config) => {
-  const { radius, callback } = config;
-  return await jimp.gaussian(radius, callback);
+const Gaussian: ImageManipulation<GaussianConfig> = async (state, config) => {
+  const { radius, sigma } = config;
+  return state.gaussian(radius, sigma);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.GAUSSIAN, Gaussian);
 export default Gaussian;

@@ -38,9 +38,9 @@ export const OPERATION_TYPE = {
   IMAGE: 'image',
 
   /**
-   * 画像のメタデータ取得
+   * jimpを用いた画像の変換
    */
-  IMG_META: 'imgmeta',
+  JIMP: 'jimp',
 
   /**
    * パラメーターの追加
@@ -76,4 +76,9 @@ export const CONTENT_TYPE = {
    * テキスト
    */
   TEXT: 'text',
+
+  /**
+   * 指定なし
+   */
+  NONE: 'none',
 } as const;

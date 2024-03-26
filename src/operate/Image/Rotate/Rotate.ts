@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { RotateConfig } from './types';
 
 /**
- * 回転
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Rotateのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Rotate: ImageManipulation<RotateConfig> = async (jimp, config) => {
-  const { deg, mode, callback } = config;
-  return await jimp.rotate(deg, mode, callback);
+const Rotate: ImageManipulation<RotateConfig> = async (state, config) => {
+  const { backgroundColor, degrees } = config;
+  return state.rotate(backgroundColor, degrees);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.ROTATE, Rotate);
 export default Rotate;

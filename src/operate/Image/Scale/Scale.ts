@@ -4,18 +4,14 @@ import { ImageManipulation } from '../types';
 import { ScaleConfig } from './types';
 
 /**
- * 拡大／縮小
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Scaleのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Scale: ImageManipulation<ScaleConfig> = async (jimp, config) => {
-  const { fit, factor, width, height, mode, callback } = config;
-  if (fit) {
-    return await jimp.scaleToFit(width, height, mode, callback);
-  } else {
-    return await jimp.scale(factor, callback);
-  }
+const Scale: ImageManipulation<ScaleConfig> = async (state, config) => {
+  const { width, height } = config;
+  return state.scale(width, height);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.SCALE, Scale);
 export default Scale;

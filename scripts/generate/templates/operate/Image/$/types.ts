@@ -1,15 +1,15 @@
-import { ImageCallback } from '@jimp/core';
-import { {{uppercamelcase}} } from '@jimp/plugin-{{lowercamelcase}}';
 import { IMAGE_MANIPULATION_TYPE } from '../constants';
 
 /**
- * 画像操作`{{uppercamelcase}}`の設定
+ * 画像操作`Blur`の設定
  */
-export type {{uppercamelcase}}Config = {
+export type {{{uppercamelcase}}}Config = {
   /**
    * 画像操作種別
    */
-  type: typeof IMAGE_MANIPULATION_TYPE.{{snakecase}};
+  type: typeof IMAGE_MANIPULATION_TYPE.{{{snakecase}}};
 
-  callback?: ImageCallback<{{uppercamelcase}}>;
+{{#each argDefs}}
+  {{{this}}}
+{{/each}}
 };

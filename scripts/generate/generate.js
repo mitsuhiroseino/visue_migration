@@ -10,6 +10,8 @@ const replaceByValues = require('../../build/utils/replaceByValues').default;
 
 const MANIPULATION_TEMPLATE_PATH = './scripts/generate/templates/operate/Image/$';
 const MANIPULATION_OUTPUT_PATH = './src/operate/Image/{{uppercamelcase}}';
+const MANIPULATION_CONSTANS_TEMPLATE_PATH = './scripts/generate/templates/operate/Image/constants.ts';
+const MANIPULATION_CONSTANS_OUTPUT_PATH = './src/operate/Image/constants.ts';
 const MANIPULATION_INDEX_TEMPLATE_PATH = './scripts/generate/templates/operate/Image/index.ts';
 const MANIPULATION_INDEX_OUTPUT_PATH = './src/operate/Image/index.ts';
 
@@ -29,6 +31,17 @@ migration.initConfig({
         templatePath: MANIPULATION_TEMPLATE_PATH,
         outputPath: MANIPULATION_OUTPUT_PATH,
         iteration: manipulations,
+        operations: {
+          type: GENERATE,
+        },
+      },
+    },
+    {
+      id: 'image-manipulations-constants',
+      jobs: {
+        templatePath: MANIPULATION_CONSTANS_TEMPLATE_PATH,
+        outputPath: MANIPULATION_CONSTANS_OUTPUT_PATH,
+        params: { manipulations },
         operations: {
           type: GENERATE,
         },

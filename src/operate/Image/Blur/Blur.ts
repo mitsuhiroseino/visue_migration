@@ -4,14 +4,14 @@ import { ImageManipulation } from '../types';
 import { BlurConfig } from './types';
 
 /**
- * ぼかし
- * @param jimp Jimpのインスタンス
+ *
+ * @param state gmのインスタンス(ステート)
  * @param config Blurのコンフィグ
- * @returns Jimpのインスタンス
+ * @returns gmのインスタンス
  */
-const Blur: ImageManipulation<BlurConfig> = async (jimp, config) => {
-  const { radius, callback } = config;
-  return await jimp.blur(radius, callback);
+const Blur: ImageManipulation<BlurConfig> = async (state, config) => {
+  const { radius, sigma } = config;
+  return state.blur(radius, sigma);
 };
 ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.BLUR, Blur);
 export default Blur;

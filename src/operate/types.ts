@@ -38,7 +38,7 @@ export type ContentType = (typeof CONTENT_TYPE)[keyof typeof CONTENT_TYPE];
 /**
  * 操作の設定
  */
-export type OperationConfig<C = Content, T = string> = FormattingConfig &
+export type OperationConfig<T = OperationType> = FormattingConfig &
   InputOputputConfig &
   ReplacementConfig & {
     /**
@@ -49,7 +49,7 @@ export type OperationConfig<C = Content, T = string> = FormattingConfig &
     /**
      * 操作種別
      */
-    type?: OperationType | T;
+    type?: T;
 
     /**
      * 下記の条件に当てはまったコンテンツのみ処理を行う
@@ -58,7 +58,7 @@ export type OperationConfig<C = Content, T = string> = FormattingConfig &
      * - 正規表現の場合はcontentがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter?: Condition<C, OperationParams>;
+    filter?: Condition;
   };
 
 /**
@@ -84,7 +84,7 @@ export type OperationResult<C = Content, T = OperationConfigTypes> = { content: 
 /**
  * 内容に対する操作
  */
-export type Operation<C = Content, S extends OperationConfig<C> = OperationConfig<C>> = (
+export type Operation<C = Content, S extends OperationConfig = OperationConfig> = (
   content: C,
   config: S,
   params: OperationParams
