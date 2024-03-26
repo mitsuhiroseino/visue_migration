@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { GammaConfig } from './types';
 
 /**
- * ガンマ
+ * ガンマ補正
  *
  * 画像のガンマ補正を行うことができる。画像の明るさやコントラストを調整するのに使用される。
  *

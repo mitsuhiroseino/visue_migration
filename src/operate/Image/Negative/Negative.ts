@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { NegativeConfig } from './types';
 
 /**
- * ネガティブ
+ * 色の反転
  *
- * 画像のネガティブを生成することができる。色の反転を行い、画像の色を反転させる。
+ * すべてのピクセルをその補色で置き換える。色の反転を行い、画像の色を反転させる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-negative
  *

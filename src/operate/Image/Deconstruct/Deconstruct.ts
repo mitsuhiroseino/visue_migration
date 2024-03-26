@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { DeconstructConfig } from './types';
 
 /**
- * 分解
+ * 色成分の分解
  *
  * 画像の色を成分ごとに分解することができる。RGBやCMYKなどの成分を個別に操作するのに使用される。
  *

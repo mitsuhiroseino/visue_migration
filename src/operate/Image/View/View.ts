@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { ViewConfig } from './types';
 
 /**
- * ビュー
+ * 表示パラメータ指定
  *
- * 画像のビュー情報を取得することができる。画像のビューのサイズや位置などの情報を取得する。
+ * FlashPix表示パラメータ指定。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-view
  *

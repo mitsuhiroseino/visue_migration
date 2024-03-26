@@ -131,7 +131,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   BLUR: 'blur',
 
   /**
-   * 境界
+   * 境界線
    *
    * 画像に境界線を追加することができる。境界線は、画像の周囲にフレームを付けるのに使用される。
    *
@@ -140,7 +140,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   BORDER: 'border',
 
   /**
-   * 境界の色
+   * 境界線色
    *
    * 境界線の色を設定することができる。境界線の色は、画像に追加されるフレームの色を指定するのに使用される。
    *
@@ -149,7 +149,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   BORDER_COLOR: 'borderColor',
 
   /**
-   * ボックス
+   * ボックスフィルタ
    *
    * 画像にボックスフィルタを適用することができる。ボックスフィルタは、画像をぼかすのに使用される。
    *
@@ -158,7 +158,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   BOX: 'box',
 
   /**
-   * チャンネル
+   * チャンネル操作
    *
    * 画像の特定のチャンネルを操作することができる。RGBやCMYKなどのチャンネルに対して、異なる処理を適用することができる。
    *
@@ -167,7 +167,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   CHANNEL: 'channel',
 
   /**
-   * 木炭
+   * 木炭効果
    *
    * 画像に木炭効果を適用することができる。木炭効果は、画像に粗い質感を与えるのに使用される。
    *
@@ -194,7 +194,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   CLIP: 'clip',
 
   /**
-   * 連結
+   * アニメーション
    *
    * 複数の画像を連結することができる。複数の画像を連結して一つのアニメーション画像にする。
    *
@@ -221,7 +221,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   COLOR_MAP: 'colorMap',
 
   /**
-   * 色
+   * 色数変更
    *
    * 画像の色数を変更することができる。色数の変更により、画像の色の表現を調整することができる。
    *
@@ -230,22 +230,13 @@ export const IMAGE_MANIPULATION_TYPE = {
   COLORS: 'colors',
 
   /**
-   * カラースペース
+   * カラースペース変更
    *
    * 画像のカラースペースを変更することができる。RGB、CMYK、グレースケールなどのカラースペースに変換することができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-colorspace
    */
   COLORSPACE: 'colorspace',
-
-  /**
-   * コマンド
-   *
-   * コマンドを実行することができる。外部プログラムを呼び出し、画像処理などを行う。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-command
-   */
-  COMMAND: 'command',
 
   /**
    * 合成
@@ -275,7 +266,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   COMPRESS: 'compress',
 
   /**
-   * コントラスト
+   * コントラスト調整
    *
    * 画像のコントラストを調整することができる。コントラストの調整により、画像の明るさと暗さの差を強調することができる。
    *
@@ -284,22 +275,13 @@ export const IMAGE_MANIPULATION_TYPE = {
   CONTRAST: 'contrast',
 
   /**
-   * 畳み込み
+   * 畳み込みフィルタ
    *
    * 画像に畳み込みフィルタを適用することができる。畳み込みフィルタを使用することで、画像の特徴を強調したり、ノイズを除去したりすることができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-convolve
    */
   CONVOLVE: 'convolve',
-
-  /**
-   * ディレクトリの作成
-   *
-   * 指定されたパスにディレクトリを作成することができる。ディレクトリが存在しない場合は、自動的に作成される。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-createDirectories
-   */
-  CREATE_DIRECTORIES: 'createDirectories',
 
   /**
    * 切り抜き
@@ -320,7 +302,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   CYCLE: 'cycle',
 
   /**
-   * 分解
+   * 色成分の分解
    *
    * 画像の色を成分ごとに分解することができる。RGBやCMYKなどの成分を個別に操作するのに使用される。
    *
@@ -329,7 +311,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DECONSTRUCT: 'deconstruct',
 
   /**
-   * 定義
+   * パラメータ定義
    *
    * 画像処理に関する設定やパラメータを定義することができる。処理の挙動や結果を細かく調整するのに使用される。
    *
@@ -338,7 +320,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DEFINE: 'define',
 
   /**
-   * 遅延
+   * 遅延設定
    *
    * アニメーション画像のフレーム間の遅延を設定することができる。各フレームの表示時間を制御する。
    *
@@ -347,7 +329,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DELAY: 'delay',
 
   /**
-   * 密度
+   * 解像度
    *
    * 画像の解像度や密度を設定することができる。印刷や表示における画像の品質を調整するのに使用される。
    *
@@ -356,7 +338,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DENSITY: 'density',
 
   /**
-   * 斑点除去
+   * スペックルノイズ除去
    *
    * 画像からスペックルノイズを除去することができる。画像のクリーンアップや改善に使用される。
    *
@@ -365,7 +347,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DESPECKLE: 'despeckle',
 
   /**
-   * 変位
+   * ピクセル変位
    *
    * 画像のピクセルを指定されたマップに基づいて変位させることができる。歪みや効果を与えるのに使用される。
    *
@@ -374,16 +356,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DISPLACE: 'displace',
 
   /**
-   * 表示
-   *
-   * 画像を表示することができる。画像を表示するウィンドウやデバイスを指定して画像を表示する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-display
-   */
-  DISPLAY: 'display',
-
-  /**
-   * 破棄
+   * 後処理
    *
    * アニメーション画像の各フレームの後処理方法を設定することができる。フレームの間のトランジションやクリア方法などを指定する。
    *
@@ -392,7 +365,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DISPOSE: 'dispose',
 
   /**
-   * 溶解
+   * トランジション
    *
    * 画像同士を指定された割合で混合することができる。トランジションやフェードイン/フェードアウトのエフェクトを作成するのに使用される。
    *
@@ -401,7 +374,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DISSOLVE: 'dissolve',
 
   /**
-   * ディザリング
+   * 減色
    *
    * 画像の色を減色することができる。色数を減らすことで画像を効果的に圧縮するのに使用される。
    *
@@ -410,7 +383,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   DITHER: 'dither',
 
   /**
-   * エッジ
+   * エッジ検出
    *
    * 画像のエッジを検出することができる。エッジ検出により、画像の輪郭を強調することができる。
    *
@@ -419,7 +392,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   EDGE: 'edge',
 
   /**
-   * エンボス
+   * エンボス効果
    *
    * 画像に浮き出し効果を与えることができる。画像に立体感や質感を与えるのに使用される。
    *
@@ -428,7 +401,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   EMBOSS: 'emboss',
 
   /**
-   * エンコーディング
+   * エンコーディング指定
    *
    * 画像のエンコード方法や形式を指定することができる。画像のファイル形式や圧縮方法を設定するのに使用される。
    *
@@ -446,7 +419,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   ENDIAN: 'endian',
 
   /**
-   * 強調
+   * 鮮明度、色彩、コントラスト調整
    *
    * 画像の品質を向上させることができる。画像の鮮明度、色彩、コントラストなどを調整するのに使用される。
    *
@@ -455,7 +428,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   ENHANCE: 'enhance',
 
   /**
-   * 均等化
+   * ヒストグラム均等化
    *
    * 画像のヒストグラムを均等化することができる。ヒストグラム均等化により、画像のコントラストを向上させることができる。
    *
@@ -464,22 +437,13 @@ export const IMAGE_MANIPULATION_TYPE = {
   EQUALIZE: 'equalize',
 
   /**
-   * 範囲
+   * サイズ変更
    *
    * 画像のサイズを変更することができる。指定されたサイズにリサイズするか、余白を追加してサイズを変更する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-extent
    */
   EXTENT: 'extent',
-
-  /**
-   * ファイル
-   *
-   * 画像のファイル情報やメタデータを取得することができる。ファイルの種類やサイズ、作成日時などの情報を取得する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-file
-   */
-  FILE: 'file',
 
   /**
    * フィルタ
@@ -491,7 +455,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FILTER: 'filter',
 
   /**
-   * フラット化
+   * レイヤー統合
    *
    * 画像のレイヤーを平坦化することができる。複数の画像レイヤーを一つの画像に結合する。
    *
@@ -500,7 +464,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FLATTEN: 'flatten',
 
   /**
-   * 反転
+   * 上下反転
    *
    * 画像を上下に反転させることができる。
    *
@@ -509,7 +473,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FLIP: 'flip',
 
   /**
-   * 反転
+   * 左右反転
    *
    * 画像を左右に反転させることができる。
    *
@@ -518,7 +482,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FLOP: 'flop',
 
   /**
-   * 前景
+   * 前景色
    *
    * 画像に前景色を指定することができる。文字や形状の描画などに使用される。
    *
@@ -527,7 +491,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FOREGROUND: 'foreground',
 
   /**
-   * フレーム
+   * 枠線追加
    *
    * 画像に枠線を追加することができる。指定した色や太さで画像を枠で囲む。
    *
@@ -545,7 +509,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   FUZZ: 'fuzz',
 
   /**
-   * ガンマ
+   * ガンマ補正
    *
    * 画像のガンマ補正を行うことができる。画像の明るさやコントラストを調整するのに使用される。
    *
@@ -554,7 +518,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   GAMMA: 'gamma',
 
   /**
-   * ガウシアン
+   * ガウシアンぼかし
    *
    * 画像にガウシアンぼかしを適用することができる。ガウシアンぼかしは、画像のエッジを滑らかにするのに使用される。
    *
@@ -563,7 +527,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   GAUSSIAN: 'gaussian',
 
   /**
-   * ジオメトリ
+   * 幅、高さ、位置調整
    *
    * 画像の幅や高さ、位置を指定することができる。画像のサイズや配置を調整するのに使用される。
    *
@@ -581,7 +545,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   GREEN_PRIMARY: 'greenPrimary',
 
   /**
-   * 重力
+   * 画像揃え基準点指定
    *
    * 画像の揃える基準点を指定することができる。画像の配置や重心を制御するのに使用される。
    *
@@ -626,16 +590,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   IMPLODE: 'implode',
 
   /**
-   * 入力
-   *
-   * 入力画像を設定することができる。処理の対象となる入力画像を指定する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-in
-   */
-  IN: 'in',
-
-  /**
-   * 意図
+   * カラー管理操作
    *
    * 画像の処理目的を指定することができる。色変換やリサイズなどの処理方法を指定する。
    *
@@ -662,16 +617,16 @@ export const IMAGE_MANIPULATION_TYPE = {
   LABEL: 'label',
 
   /**
-   * 緯度
+   * ローカル適応しきい値処理
    *
-   * 画像の色調を調整することができる。色相、彩度、明度を変更することで、画像の色調を調整する。
+   * 指定された幅、高さ、オフセットを使用して、ローカル適応しきい値処理を実行する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-lat
    */
   LAT: 'lat',
 
   /**
-   * レベル
+   * コントラストレベル調整
    *
    * 画像のレベルを調整することができる。色の範囲を変更することで、コントラストや明るさを調整する。
    *
@@ -680,7 +635,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   LEVEL: 'level',
 
   /**
-   * 制限
+   * リソース制限
    *
    * 画像処理に対するリソースの制限を設定することができる。メモリやCPUの使用量、処理速度などを制御する。
    *
@@ -716,9 +671,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   LOOP: 'loop',
 
   /**
-   * 小文字化
+   * 擬似的エッジ
    *
-   * 画像の色の明るさを調整することができる。画像の全体的な明るさを調整するのに使用される。
+   * 画像のエッジを擬似的に3Dに下げる効果を作成する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-lower
    */
@@ -752,16 +707,16 @@ export const IMAGE_MANIPULATION_TYPE = {
   MASK: 'mask',
 
   /**
-   * マット
+   * マットチャネル保存
    *
-   * 画像にマットを追加することができる。マットを追加することで、画像の透過性や形状を調整することができる。
+   * 画像にマットチャネルがある場合は、マットチャネルを保存する。画像の透過性や形状を調整することができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-matte
    */
   MATTE: 'matte',
 
   /**
-   * マットの色
+   * マットチャネル色
    *
    * 画像のマットの色を指定することができる。マットの色や透明度を調整するのに使用される。
    *
@@ -770,18 +725,18 @@ export const IMAGE_MANIPULATION_TYPE = {
   MATTE_COLOR: 'matteColor',
 
   /**
-   * 最大誤差
+   * エラー最大量
    *
-   * 画像処理における最大誤差を設定することができる。処理の精度や品質を調整するのに使用される。
+   * 合計画像エラーの最大量を指定する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-maximumError
    */
   MAXIMUM_ERROR: 'maximumError',
 
   /**
-   * 中央値
+   * メディアンフィルター
    *
-   * 画像の中央値フィルタを適用することができる。中央値フィルタは、画像のノイズを除去するのに使用される。
+   * 画像のメディアンフィルターを適用することができる。メディアンフィルターは、画像のノイズを除去するのに使用される。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-median
    */
@@ -797,7 +752,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   MINIFY: 'minify',
 
   /**
-   * モード
+   * 動作モード
    *
    * 画像のモードを設定することができる。カラーモードや画像の表示形式を指定するのに使用される。
    *
@@ -806,7 +761,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   MODE: 'mode',
 
   /**
-   * 変調
+   * 明るさ、彩度、色相変更
    *
    * 画像の色相、彩度、明度を調整することができる。色のバランスや鮮やかさを調整するのに使用される。
    *
@@ -842,7 +797,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   MONTAGE: 'montage',
 
   /**
-   * 変形
+   * モーフィング
    *
    * 画像間のモーフィングを行うことができる。複数の画像間で形状や特徴を変化させるのに使用される。
    *
@@ -869,18 +824,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   MOTION_BLUR: 'motionBlur',
 
   /**
-   * 名前
+   * 色の反転
    *
-   * 画像の名前や識別子を設定することができる。画像に名前を付けて識別するのに使用される。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-name
-   */
-  NAME: 'name',
-
-  /**
-   * ネガティブ
-   *
-   * 画像のネガティブを生成することができる。色の反転を行い、画像の色を反転させる。
+   * すべてのピクセルをその補色で置き換える。色の反転を行い、画像の色を反転させる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-negative
    */
@@ -894,15 +840,6 @@ export const IMAGE_MANIPULATION_TYPE = {
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-noise
    */
   NOISE: 'noise',
-
-  /**
-   * 無効
-   *
-   * 画像処理を行わずに、画像をそのまま返すことができる。何もしない処理を行う。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-noop
-   */
-  NOOP: 'noop',
 
   /**
    * 正規化
@@ -925,7 +862,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 演算子
    *
-   * 画像の演算を行うことができる。画像同士の加算、減算、乗算などの演算を実行する。
+   * 画像チャネルに数学演算子、ビット演算子、または値演算子を適用する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-operator
    */
@@ -941,25 +878,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   ORDERED_DITHER: 'orderedDither',
 
   /**
-   * 出力
-   *
-   * 出力先を設定することができる。処理結果の出力先を指定する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-out
-   */
-  OUT: 'out',
-
-  /**
-   * 出力ディレクトリ
-   *
-   * 処理した画像を出力するディレクトリを指定することができる。画像の出力先を指定する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-outputDirectory
-   */
-  OUTPUT_DIRECTORY: 'outputDirectory',
-
-  /**
-   * ページ
+   * キャンバスのサイズ、位置
    *
    * 画像のページサイズや配置を設定することができる。印刷やレイアウトの際に使用される。
    *
@@ -970,25 +889,16 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 一時停止
    *
-   * 画像処理の一時停止を行うことができる。処理を一時停止して後で再開することができる。
+   * アニメーション ループ間で一時停止する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-pause
    */
   PAUSE: 'pause',
 
   /**
-   * ペン
+   * 画像特性
    *
-   * 画像に線やパスを描画することができる。ペンのスタイルや太さを指定して、画像に線を描く。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-pen
-   */
-  PEN: 'pen',
-
-  /**
-   * ピンク
-   *
-   * 画像の情報を取得することができる。画像のメタデータやファイル情報を取得する。
+   * 画像の特徴を効率的に判断する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-ping
    */
@@ -997,14 +907,14 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * ポイントサイズ
    *
-   * 画像のポイントサイズを設定することができる。文字の大きさや線の太さを指定する。
+   * PostScript、X11、またはTrueTypeフォントのポイントサイズ。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-pointSize
    */
   POINT_SIZE: 'pointSize',
 
   /**
-   * プロファイルなし
+   * プロファイル削除
    *
    * 画像からプロファイル情報を削除することができる。画像のメタデータからプロファイル情報を除去する。
    *
@@ -1022,9 +932,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   PREVIEW: 'preview',
 
   /**
-   * ペイント
+   * 油絵効果
    *
-   * 画像にペイント処理を適用することができる。画像に直接描画や色の塗りつぶしを行う。
+   * 油絵をシミュレートする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-paint
    */
@@ -1033,14 +943,14 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * プロセス
    *
-   * 画像処理を実行することができる。指定された処理を画像に適用し、変換や加工を行う。
+   * プロセスモジュールを使用して一連の画像を処理する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-process
    */
   PROCESS: 'process',
 
   /**
-   * プロファイル
+   * プロファイル追加
    *
    * 画像にプロファイル情報を適用することができる。画像の色空間や色の表現を定義するプロファイル情報を適用する。
    *
@@ -1067,9 +977,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   RANDOM_THRESHOLD: 'randomThreshold',
 
   /**
-   * 品質
+   * 画像品質
    *
-   * 画像の品質を設定することができる。圧縮率や品質レベルを調整することで、画像のファイルサイズと品質のバランスを調整する。
+   * JPEG/MIFF/PNG/TIFFの圧縮レベル。圧縮率や品質レベルを調整することで、画像のファイルサイズと品質のバランスを調整する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-quality
    */
@@ -1078,7 +988,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 浮き出し
    *
-   * 画像に浮き出し効果を追加することができる。指定した方向や程度で、画像の輪郭を浮き出し状にする。
+   * 画像の端を明るくしたり暗くしたりする。指定した方向や程度で、画像の輪郭を浮き出し状にする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-raise
    */
@@ -1087,7 +997,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 再着色
    *
-   * 画像の色を再塗装することができる。指定した色やパターンで、画像の色を変更する。
+   * 色変換マトリックスを画像チャンネルに適用する。指定した色やパターンで、画像の色を変更する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-recolor
    */
@@ -1103,27 +1013,18 @@ export const IMAGE_MANIPULATION_TYPE = {
   RED_PRIMARY: 'redPrimary',
 
   /**
-   * 領域
+   * 領域指定
    *
-   * 画像の特定の領域を指定することができる。指定した範囲内の画像処理を行う。
+   * 画像の一部にオプションを適用する。指定した範囲内の画像処理を行う。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-region
    */
   REGION: 'region',
 
   /**
-   * リモート
-   *
-   * 画像のリモート処理を実行することができる。リモートサーバーに画像を送信して処理を実行し、結果を取得する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-remote
-   */
-  REMOTE: 'remote',
-
-  /**
    * レンダリング
    *
-   * 画像をレンダリングすることができる。画像を生成して表示したり、ファイルに書き出したりする。
+   * レンダリングベクター操作。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-render
    */
@@ -1139,18 +1040,18 @@ export const IMAGE_MANIPULATION_TYPE = {
   REPAGE: 'repage',
 
   /**
-   * サンプル
+   * 拡大縮小
    *
-   * 画像のサンプリングを行うことができる。画像の一部をサンプリングして取得する。
+   * ピクセルサンプリングを使用して画像を拡大縮小する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-sample
    */
   SAMPLE: 'sample',
 
   /**
-   * サンプリングファクター
+   * クロマサブサンプリング係数
    *
-   * 画像のサンプリングファクターを設定することができる。サンプリングの精度や効率を調整する。
+   * DPX、JPEG、MPEG、またはYUVエンコーダがクロマダウンサンプリングに使用するサンプリング係数を指定する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-samplingFactor
    */
@@ -1159,7 +1060,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 生のサイズ
    *
-   * 画像の生のサイズを取得することができる。画像ファイルの圧縮や変換前の生のサイズを取得する。
+   * 画像の生のサイズを指定することができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-rawSize
    */
@@ -1168,7 +1069,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 再サンプリング
    *
-   * 画像のリサンプリングを行うことができる。画像の解像度やサイズを変更する際に使用される。
+   * 画像を指定された水平および垂直解像度にリサンプルする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-resample
    */
@@ -1184,9 +1085,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   RESIZE: 'resize',
 
   /**
-   * ロール
+   * 垂直／水平回転
    *
-   * 画像を指定した方向にスクロールさせることができる。画像を上下左右にスクロールする。
+   * 画像を垂直または水平に回転させる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-roll
    */
@@ -1202,7 +1103,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   ROTATE: 'rotate',
 
   /**
-   * シーン
+   * シーン番号設定
    *
    * 画像のシーン番号を設定することができる。複数のシーンが含まれる画像ファイルの特定のシーンを指定する。
    *
@@ -1211,9 +1112,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   SCENE: 'scene',
 
   /**
-   * シーン
+   * シーン番号の範囲設定
    *
-   * 画像内のシーンの情報を取得することができる。複数のシーンが含まれる画像ファイルのシーン情報を取得する。
+   * 画像内のシーンの範囲を指定することができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-scenes
    */
@@ -1229,16 +1130,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   SCALE: 'scale',
 
   /**
-   * スクリーン
-   *
-   * 画像のスクリーン合成を行うことができる。画像を別の画像や背景と合成して表示する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-screen
-   */
-  SCREEN: 'screen',
-
-  /**
-   * セグメント
+   * 画像分割
    *
    * 画像をセグメント化して分割することができる。画像を領域ごとに分割し、個々の領域を処理する。
    *
@@ -1265,7 +1157,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   SEPIA: 'sepia',
 
   /**
-   * 設定
+   * 画像属性設定
    *
    * 画像の特定の属性を設定することができる。画像のメタデータやプロパティを設定する。
    *
@@ -1285,7 +1177,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * 影
    *
-   * 画像に影を追加することができる。指定した方向や強度で影を付けることができる。
+   * 遠方の光源を使用して画像に影を付ける。指定した方向や強度で影を付けることができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-shade
    */
@@ -1294,7 +1186,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * シャドウ
    *
-   * 画像に影を付けることができる。指定した方向や強度で影を投影することができる。
+   * モンタージュに影を付ける。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-shadow
    */
@@ -1310,9 +1202,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   SHARED_MEMORY: 'sharedMemory',
 
   /**
-   * 剃る
+   * ピクセル削除
    *
-   * 画像の余白や枠を削除することができる。指定した幅や高さだけ画像の周囲を削除する。
+   * 画像の端からピクセルを削り取る。指定した幅や高さだけ画像の周囲を削除する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-shave
    */
@@ -1330,14 +1222,14 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * せん断
    *
-   * 画像をせん断させることができる。指定した方向や角度で画像をせん断する。
+   * X軸またはY軸に沿って画像をせん断する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-shear
    */
   SHEAR: 'shear',
 
   /**
-   * 静か
+   * コンソール出力抑止
    *
    * 画像処理の出力を抑制することができる。処理結果を出力せずに処理を行う。
    *
@@ -1348,7 +1240,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * スナップショット
    *
-   * 画像のスナップショットを取得することができる。画像の状態や属性のスナップショットを取得する。
+   * Xサーバー画面から複数の画像を取得し、アニメーションシーケンスを作成する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-snaps
    */
@@ -1357,7 +1249,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * ソラライズ
    *
-   * 画像をソラリゼーションさせることができる。画像の一部分をネガポジ反転させ、劇的な効果を与える。
+   * しきい値レベルを超えるすべてのピクセルを無効にする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-solarize
    */
@@ -1373,9 +1265,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   SPREAD: 'spread',
 
   /**
-   * ステガノ
+   * 透かし非表示
    *
-   * ステガノグラフィを行うことができる。秘密情報を画像に埋め込んだり、画像から秘密情報を取り出すことができる。
+   * 画像内の透かしを非表示にする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-stegano
    */
@@ -1391,9 +1283,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   STEREO: 'stereo',
 
   /**
-   * ストリップ
+   * プロファイル削除
    *
-   * 画像からストリップ情報を取り除くことができる。画像ファイルからメタデータやコメントなどを取り除く。
+   * 画像からすべてのプロファイルとテキスト属性を削除する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-strip
    */
@@ -1409,7 +1301,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   SWIRL: 'swirl',
 
   /**
-   * テキストフォント
+   * テキストフォント指定
    *
    * 画像にテキストを追加する際のフォントを指定することができる。
    *
@@ -1438,7 +1330,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * サムネイル
    *
-   * 画像のサムネイルを生成することができる。指定したサイズに縮小して画像を生成する。
+   * 画像のサイズを素早く変更する。画質よりも速度を重視。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-thumb
    */
@@ -1447,7 +1339,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * サムネイル
    *
-   * サムネイルを作成することができる。元の画像から縮小されたサムネイル画像を生成する。
+   * 画像のサイズを素早く変更する。画質よりも速度を重視。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-thumbnail
    */
@@ -1472,27 +1364,27 @@ export const IMAGE_MANIPULATION_TYPE = {
   TITLE: 'title',
 
   /**
-   * 変形
+   * 変換
    *
-   * 画像の変形処理を行うことができる。回転や反転、歪みなどの変形を施す。
+   * イメージを変換する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-transform
    */
   TRANSFORM: 'transform',
 
   /**
-   * 透明
+   * 透明化
    *
-   * 画像の透明度を設定することができる。指定した色を透明化し、画像の一部を透明にする。
+   * 指定した色を透明化し、画像の一部を透明にする。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-transparent
    */
   TRANSPARENT: 'transparent',
 
   /**
-   * ツリーの深さ
+   * 減色アルゴリズムのツリーの深さ
    *
-   * 画像のツリーの深さを取得することができる。画像ファイルの階層構造の深さを調べる。
+   * 減色アルゴリズムのツリーの深さを指定することができる。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-treeDepth
    */
@@ -1510,25 +1402,16 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * タイプ
    *
-   * 画像のタイプや形式を取得することができる。画像のファイル形式や MIME タイプを調べる。
+   * 2値、グレースケール、パレット、トゥルーカラー、トゥルーカラー+アルファなどを指定。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-type
    */
   TYPE: 'type',
 
   /**
-   * 更新
+   * 解像度の単位指定
    *
-   * 画像の属性を更新することができる。画像のメタデータやプロパティを更新する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-update
-   */
-  UPDATE: 'update',
-
-  /**
-   * 単位
-   *
-   * 画像の単位を取得することができる。画像の単位をピクセル、インチ、センチなどで取得する。
+   * 画像の単位を指定することができる。画像の単位をピクセル/インチ、ピクセル/センチなどで指定する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-units
    */
@@ -1553,9 +1436,9 @@ export const IMAGE_MANIPULATION_TYPE = {
   USE_PIXMAP: 'usePixmap',
 
   /**
-   * ビュー
+   * 表示パラメータ指定
    *
-   * 画像のビュー情報を取得することができる。画像のビューのサイズや位置などの情報を取得する。
+   * FlashPix表示パラメータ指定。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-view
    */
@@ -1573,7 +1456,7 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * ビジュアル
    *
-   * 画像のビジュアル情報を取得することができる。画像の色空間やビジュアル特性を取得する。
+   * このXビジュアル タイプを使用して画像をアニメーション化する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-visual
    */
@@ -1582,16 +1465,16 @@ export const IMAGE_MANIPULATION_TYPE = {
   /**
    * ウォーターマーク
    *
-   * 画像にウォーターマークを追加することができる。透明なロゴやテキストを画像に重ねて表示する。
+   * 透かしの明るさと彩度のパーセント指定。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-watermark
    */
   WATERMARK: 'watermark',
 
   /**
-   * 波
+   * 正弦波
    *
-   * 画像に波紋効果を追加することができる。指定した波形や振幅で画像を歪ませる。
+   * 正弦波に沿って画像を変更する。
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-wave
    */
@@ -1614,22 +1497,4 @@ export const IMAGE_MANIPULATION_TYPE = {
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-whiteThreshold
    */
   WHITE_THRESHOLD: 'whiteThreshold',
-
-  /**
-   * ウィンドウ
-   *
-   * 画像のウィンドウ情報を取得することができる。画像のウィンドウ位置やサイズなどを取得する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-window
-   */
-  WINDOW: 'window',
-
-  /**
-   * ウィンドウグループ
-   *
-   * 画像のウィンドウグループ情報を取得することができる。画像のウィンドウをグループ化する情報を取得する。
-   *
-   * http://www.graphicsmagick.org/GraphicsMagick.html#details-windowGroup
-   */
-  WINDOW_GROUP: 'windowGroup',
 } as const;

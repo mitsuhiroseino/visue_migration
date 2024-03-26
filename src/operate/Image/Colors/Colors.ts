@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ColorsConfig } from './types';
 
 /**
- * 色
+ * 色数変更
  *
  * 画像の色数を変更することができる。色数の変更により、画像の色の表現を調整することができる。
  *

@@ -6,7 +6,7 @@ import { SolarizeConfig } from './types';
 /**
  * ソラライズ
  *
- * 画像をソラリゼーションさせることができる。画像の一部分をネガポジ反転させ、劇的な効果を与える。
+ * しきい値レベルを超えるすべてのピクセルを無効にする。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-solarize
  *

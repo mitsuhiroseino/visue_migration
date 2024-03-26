@@ -6,7 +6,7 @@ import { ShadeConfig } from './types';
 /**
  * 影
  *
- * 画像に影を追加することができる。指定した方向や強度で影を付けることができる。
+ * 遠方の光源を使用して画像に影を付ける。指定した方向や強度で影を付けることができる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-shade
  *

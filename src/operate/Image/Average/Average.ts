@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { AverageConfig } from './types';
 
 /**
- * 平均
+ * 平均値算出
  *
  * 複数の画像の平均値を計算することができる。統計情報の取得や複数の画像をブレンドするのに使用できる。
  *

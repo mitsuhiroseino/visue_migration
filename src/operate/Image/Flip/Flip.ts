@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { FlipConfig } from './types';
 
 /**
- * 反転
+ * 上下反転
  *
  * 画像を上下に反転させることができる。
  *

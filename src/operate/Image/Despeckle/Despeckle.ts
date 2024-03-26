@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { DespeckleConfig } from './types';
 
 /**
- * 斑点除去
+ * スペックルノイズ除去
  *
  * 画像からスペックルノイズを除去することができる。画像のクリーンアップや改善に使用される。
  *

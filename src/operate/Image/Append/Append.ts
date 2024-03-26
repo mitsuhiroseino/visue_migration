@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { AppendConfig } from './types';
 
 /**
- * 追加
+ * 画像の連結
  *
  * 複数の画像を連結して一つの画像にすることができる。
  *

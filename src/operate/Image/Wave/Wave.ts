@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { WaveConfig } from './types';
 
 /**
- * 波
+ * 正弦波
  *
- * 画像に波紋効果を追加することができる。指定した波形や振幅で画像を歪ませる。
+ * 正弦波に沿って画像を変更する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-wave
  *

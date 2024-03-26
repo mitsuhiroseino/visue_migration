@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { RegionConfig } from './types';
 
 /**
- * 領域
+ * 領域指定
  *
- * 画像の特定の領域を指定することができる。指定した範囲内の画像処理を行う。
+ * 画像の一部にオプションを適用する。指定した範囲内の画像処理を行う。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-region
  *

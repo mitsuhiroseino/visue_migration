@@ -6,7 +6,7 @@ import { PointSizeConfig } from './types';
 /**
  * ポイントサイズ
  *
- * 画像のポイントサイズを設定することができる。文字の大きさや線の太さを指定する。
+ * PostScript、X11、またはTrueTypeフォントのポイントサイズ。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-pointSize
  *

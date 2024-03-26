@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { AntialiasConfig } from './types';
 
 /**
- * アンチエイリアス
+ * アンチエイリアス処理
  *
  * 画像のアンチエイリアス処理を行うことができる。エッジや線を滑らかにすることができる。
  *

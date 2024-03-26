@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { IntentConfig } from './types';
 
 /**
- * 意図
+ * カラー管理操作
  *
  * 画像の処理目的を指定することができる。色変換やリサイズなどの処理方法を指定する。
  *

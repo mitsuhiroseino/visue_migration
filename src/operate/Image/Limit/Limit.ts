@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { LimitConfig } from './types';
 
 /**
- * 制限
+ * リソース制限
  *
  * 画像処理に対するリソースの制限を設定することができる。メモリやCPUの使用量、処理速度などを制御する。
  *

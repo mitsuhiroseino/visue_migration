@@ -6,7 +6,7 @@ import { OperatorConfig } from './types';
 /**
  * 演算子
  *
- * 画像の演算を行うことができる。画像同士の加算、減算、乗算などの演算を実行する。
+ * 画像チャネルに数学演算子、ビット演算子、または値演算子を適用する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-operator
  *

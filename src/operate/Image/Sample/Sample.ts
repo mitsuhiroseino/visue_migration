@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { SampleConfig } from './types';
 
 /**
- * サンプル
+ * 拡大縮小
  *
- * 画像のサンプリングを行うことができる。画像の一部をサンプリングして取得する。
+ * ピクセルサンプリングを使用して画像を拡大縮小する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-sample
  *

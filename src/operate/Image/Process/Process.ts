@@ -6,7 +6,7 @@ import { ProcessConfig } from './types';
 /**
  * プロセス
  *
- * 画像処理を実行することができる。指定された処理を画像に適用し、変換や加工を行う。
+ * プロセスモジュールを使用して一連の画像を処理する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-process
  *

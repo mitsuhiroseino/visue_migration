@@ -6,7 +6,7 @@ import { WatermarkConfig } from './types';
 /**
  * ウォーターマーク
  *
- * 画像にウォーターマークを追加することができる。透明なロゴやテキストを画像に重ねて表示する。
+ * 透かしの明るさと彩度のパーセント指定。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-watermark
  *

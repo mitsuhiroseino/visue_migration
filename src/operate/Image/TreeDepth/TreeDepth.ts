@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { TreeDepthConfig } from './types';
 
 /**
- * ツリーの深さ
+ * 減色アルゴリズムのツリーの深さ
  *
- * 画像のツリーの深さを取得することができる。画像ファイルの階層構造の深さを調べる。
+ * 減色アルゴリズムのツリーの深さを指定することができる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-treeDepth
  *

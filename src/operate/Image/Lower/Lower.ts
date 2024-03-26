@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { LowerConfig } from './types';
 
 /**
- * 小文字化
+ * 擬似的エッジ
  *
- * 画像の色の明るさを調整することができる。画像の全体的な明るさを調整するのに使用される。
+ * 画像のエッジを擬似的に3Dに下げる効果を作成する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-lower
  *

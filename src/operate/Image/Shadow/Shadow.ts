@@ -6,7 +6,7 @@ import { ShadowConfig } from './types';
 /**
  * シャドウ
  *
- * 画像に影を付けることができる。指定した方向や強度で影を投影することができる。
+ * モンタージュに影を付ける。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-shadow
  *

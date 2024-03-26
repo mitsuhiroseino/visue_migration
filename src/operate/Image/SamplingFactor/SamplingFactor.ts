@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { SamplingFactorConfig } from './types';
 
 /**
- * サンプリングファクター
+ * クロマサブサンプリング係数
  *
- * 画像のサンプリングファクターを設定することができる。サンプリングの精度や効率を調整する。
+ * DPX、JPEG、MPEG、またはYUVエンコーダがクロマダウンサンプリングに使用するサンプリング係数を指定する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-samplingFactor
  *

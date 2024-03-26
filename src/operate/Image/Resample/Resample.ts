@@ -6,7 +6,7 @@ import { ResampleConfig } from './types';
 /**
  * 再サンプリング
  *
- * 画像のリサンプリングを行うことができる。画像の解像度やサイズを変更する際に使用される。
+ * 画像を指定された水平および垂直解像度にリサンプルする。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-resample
  *

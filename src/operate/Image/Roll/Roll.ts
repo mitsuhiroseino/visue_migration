@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { RollConfig } from './types';
 
 /**
- * ロール
+ * 垂直／水平回転
  *
- * 画像を指定した方向にスクロールさせることができる。画像を上下左右にスクロールする。
+ * 画像を垂直または水平に回転させる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-roll
  *

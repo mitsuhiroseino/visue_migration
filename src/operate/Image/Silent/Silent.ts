@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { SilentConfig } from './types';
 
 /**
- * 静か
+ * コンソール出力抑止
  *
  * 画像処理の出力を抑制することができる。処理結果を出力せずに処理を行う。
  *

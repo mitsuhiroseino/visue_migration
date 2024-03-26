@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { CoalesceConfig } from './types';
 
 /**
- * 連結
+ * アニメーション
  *
  * 複数の画像を連結することができる。複数の画像を連結して一つのアニメーション画像にする。
  *

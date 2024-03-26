@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { ScenesConfig } from './types';
 
 /**
- * シーン
+ * シーン番号の範囲設定
  *
- * 画像内のシーンの情報を取得することができる。複数のシーンが含まれる画像ファイルのシーン情報を取得する。
+ * 画像内のシーンの範囲を指定することができる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-scenes
  *

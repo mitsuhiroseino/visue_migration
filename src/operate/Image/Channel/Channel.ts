@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ChannelConfig } from './types';
 
 /**
- * チャンネル
+ * チャンネル操作
  *
  * 画像の特定のチャンネルを操作することができる。RGBやCMYKなどのチャンネルに対して、異なる処理を適用することができる。
  *

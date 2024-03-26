@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { SteganoConfig } from './types';
 
 /**
- * ステガノ
+ * 透かし非表示
  *
- * ステガノグラフィを行うことができる。秘密情報を画像に埋め込んだり、画像から秘密情報を取り出すことができる。
+ * 画像内の透かしを非表示にする。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-stegano
  *

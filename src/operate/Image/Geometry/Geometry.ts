@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { GeometryConfig } from './types';
 
 /**
- * ジオメトリ
+ * 幅、高さ、位置調整
  *
  * 画像の幅や高さ、位置を指定することができる。画像のサイズや配置を調整するのに使用される。
  *

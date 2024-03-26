@@ -6,7 +6,7 @@ import { TypeConfig } from './types';
 /**
  * タイプ
  *
- * 画像のタイプや形式を取得することができる。画像のファイル形式や MIME タイプを調べる。
+ * 2値、グレースケール、パレット、トゥルーカラー、トゥルーカラー+アルファなどを指定。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-type
  *

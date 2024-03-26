@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { MedianConfig } from './types';
 
 /**
- * 中央値
+ * メディアンフィルター
  *
- * 画像の中央値フィルタを適用することができる。中央値フィルタは、画像のノイズを除去するのに使用される。
+ * 画像のメディアンフィルターを適用することができる。メディアンフィルターは、画像のノイズを除去するのに使用される。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-median
  *

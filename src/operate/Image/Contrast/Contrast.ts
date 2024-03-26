@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ContrastConfig } from './types';
 
 /**
- * コントラスト
+ * コントラスト調整
  *
  * 画像のコントラストを調整することができる。コントラストの調整により、画像の明るさと暗さの差を強調することができる。
  *

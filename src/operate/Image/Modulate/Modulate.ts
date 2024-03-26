@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ModulateConfig } from './types';
 
 /**
- * 変調
+ * 明るさ、彩度、色相変更
  *
  * 画像の色相、彩度、明度を調整することができる。色のバランスや鮮やかさを調整するのに使用される。
  *

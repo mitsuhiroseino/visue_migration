@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { PaintConfig } from './types';
 
 /**
- * ペイント
+ * 油絵効果
  *
- * 画像にペイント処理を適用することができる。画像に直接描画や色の塗りつぶしを行う。
+ * 油絵をシミュレートする。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-paint
  *

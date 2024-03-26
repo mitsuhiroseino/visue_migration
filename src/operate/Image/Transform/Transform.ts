@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { TransformConfig } from './types';
 
 /**
- * 変形
+ * 変換
  *
- * 画像の変形処理を行うことができる。回転や反転、歪みなどの変形を施す。
+ * イメージを変換する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-transform
  *

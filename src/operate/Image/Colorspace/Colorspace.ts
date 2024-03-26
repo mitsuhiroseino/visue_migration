@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ColorspaceConfig } from './types';
 
 /**
- * カラースペース
+ * カラースペース変更
  *
  * 画像のカラースペースを変更することができる。RGB、CMYK、グレースケールなどのカラースペースに変換することができる。
  *

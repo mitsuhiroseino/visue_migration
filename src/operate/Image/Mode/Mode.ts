@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ModeConfig } from './types';
 
 /**
- * モード
+ * 動作モード
  *
  * 画像のモードを設定することができる。カラーモードや画像の表示形式を指定するのに使用される。
  *

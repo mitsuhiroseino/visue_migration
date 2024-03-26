@@ -6,7 +6,7 @@ import { PauseConfig } from './types';
 /**
  * 一時停止
  *
- * 画像処理の一時停止を行うことができる。処理を一時停止して後で再開することができる。
+ * アニメーション ループ間で一時停止する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-pause
  *

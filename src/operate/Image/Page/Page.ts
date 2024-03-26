@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { PageConfig } from './types';
 
 /**
- * ページ
+ * キャンバスのサイズ、位置
  *
  * 画像のページサイズや配置を設定することができる。印刷やレイアウトの際に使用される。
  *

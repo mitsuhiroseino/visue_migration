@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ProfileConfig } from './types';
 
 /**
- * プロファイル
+ * プロファイル追加
  *
  * 画像にプロファイル情報を適用することができる。画像の色空間や色の表現を定義するプロファイル情報を適用する。
  *

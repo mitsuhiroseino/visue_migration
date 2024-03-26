@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { EncodingConfig } from './types';
 
 /**
- * エンコーディング
+ * エンコーディング指定
  *
  * 画像のエンコード方法や形式を指定することができる。画像のファイル形式や圧縮方法を設定するのに使用される。
  *

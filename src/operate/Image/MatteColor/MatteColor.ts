@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { MatteColorConfig } from './types';
 
 /**
- * マットの色
+ * マットチャネル色
  *
  * 画像のマットの色を指定することができる。マットの色や透明度を調整するのに使用される。
  *

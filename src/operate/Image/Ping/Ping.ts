@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { PingConfig } from './types';
 
 /**
- * ピンク
+ * 画像特性
  *
- * 画像の情報を取得することができる。画像のメタデータやファイル情報を取得する。
+ * 画像の特徴を効率的に判断する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-ping
  *

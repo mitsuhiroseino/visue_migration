@@ -6,7 +6,7 @@ import { ShearConfig } from './types';
 /**
  * せん断
  *
- * 画像をせん断させることができる。指定した方向や角度で画像をせん断する。
+ * X軸またはY軸に沿って画像をせん断する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-shear
  *

@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { TransparentConfig } from './types';
 
 /**
- * 透明
+ * 透明化
  *
- * 画像の透明度を設定することができる。指定した色を透明化し、画像の一部を透明にする。
+ * 指定した色を透明化し、画像の一部を透明にする。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-transparent
  *

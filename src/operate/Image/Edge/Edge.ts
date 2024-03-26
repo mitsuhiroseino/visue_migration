@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { EdgeConfig } from './types';
 
 /**
- * エッジ
+ * エッジ検出
  *
  * 画像のエッジを検出することができる。エッジ検出により、画像の輪郭を強調することができる。
  *

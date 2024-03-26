@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { LevelConfig } from './types';
 
 /**
- * レベル
+ * コントラストレベル調整
  *
  * 画像のレベルを調整することができる。色の範囲を変更することで、コントラストや明るさを調整する。
  *

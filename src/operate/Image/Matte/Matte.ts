@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { MatteConfig } from './types';
 
 /**
- * マット
+ * マットチャネル保存
  *
- * 画像にマットを追加することができる。マットを追加することで、画像の透過性や形状を調整することができる。
+ * 画像にマットチャネルがある場合は、マットチャネルを保存する。画像の透過性や形状を調整することができる。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-matte
  *

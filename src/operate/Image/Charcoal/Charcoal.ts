@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { CharcoalConfig } from './types';
 
 /**
- * 木炭
+ * 木炭効果
  *
  * 画像に木炭効果を適用することができる。木炭効果は、画像に粗い質感を与えるのに使用される。
  *

@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { TextFontConfig } from './types';
 
 /**
- * テキストフォント
+ * テキストフォント指定
  *
  * 画像にテキストを追加する際のフォントを指定することができる。
  *

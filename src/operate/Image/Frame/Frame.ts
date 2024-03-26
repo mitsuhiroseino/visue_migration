@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { FrameConfig } from './types';
 
 /**
- * フレーム
+ * 枠線追加
  *
  * 画像に枠線を追加することができる。指定した色や太さで画像を枠で囲む。
  *

@@ -6,7 +6,7 @@ import { SnapsConfig } from './types';
 /**
  * スナップショット
  *
- * 画像のスナップショットを取得することができる。画像の状態や属性のスナップショットを取得する。
+ * Xサーバー画面から複数の画像を取得し、アニメーションシーケンスを作成する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-snaps
  *

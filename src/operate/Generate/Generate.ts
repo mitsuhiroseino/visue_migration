@@ -1,9 +1,11 @@
 import Handlebars from 'handlebars';
-
+import helpers from 'handlebars-helpers';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { GenerateConfig } from './types';
+
+helpers();
 
 /**
  * テンプレートエンジンを使用した生成の操作

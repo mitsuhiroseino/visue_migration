@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { NoProfileConfig } from './types';
 
 /**
- * プロファイルなし
+ * プロファイル削除
  *
  * 画像からプロファイル情報を削除することができる。画像のメタデータからプロファイル情報を除去する。
  *

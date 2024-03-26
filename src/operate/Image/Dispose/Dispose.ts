@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { DisposeConfig } from './types';
 
 /**
- * 破棄
+ * 後処理
  *
  * アニメーション画像の各フレームの後処理方法を設定することができる。フレームの間のトランジションやクリア方法などを指定する。
  *

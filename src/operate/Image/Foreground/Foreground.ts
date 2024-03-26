@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ForegroundConfig } from './types';
 
 /**
- * 前景
+ * 前景色
  *
  * 画像に前景色を指定することができる。文字や形状の描画などに使用される。
  *

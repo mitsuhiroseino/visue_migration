@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { BorderColorConfig } from './types';
 
 /**
- * 境界の色
+ * 境界線色
  *
  * 境界線の色を設定することができる。境界線の色は、画像に追加されるフレームの色を指定するのに使用される。
  *

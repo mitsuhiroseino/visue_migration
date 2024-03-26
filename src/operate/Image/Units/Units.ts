@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { UnitsConfig } from './types';
 
 /**
- * 単位
+ * 解像度の単位指定
  *
- * 画像の単位を取得することができる。画像の単位をピクセル、インチ、センチなどで取得する。
+ * 画像の単位を指定することができる。画像の単位をピクセル/インチ、ピクセル/センチなどで指定する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-units
  *

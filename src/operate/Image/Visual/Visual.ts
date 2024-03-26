@@ -6,7 +6,7 @@ import { VisualConfig } from './types';
 /**
  * ビジュアル
  *
- * 画像のビジュアル情報を取得することができる。画像の色空間やビジュアル特性を取得する。
+ * このXビジュアル タイプを使用して画像をアニメーション化する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-visual
  *

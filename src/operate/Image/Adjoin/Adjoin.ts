@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { AdjoinConfig } from './types';
 
 /**
- * 接合
+ * 画像の結合
  *
  * 複数の画像を一つの画像に結合することができる。
  *

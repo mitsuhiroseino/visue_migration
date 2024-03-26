@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { EqualizeConfig } from './types';
 
 /**
- * 均等化
+ * ヒストグラム均等化
  *
  * 画像のヒストグラムを均等化することができる。ヒストグラム均等化により、画像のコントラストを向上させることができる。
  *

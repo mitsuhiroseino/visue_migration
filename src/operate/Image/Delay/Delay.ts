@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { DelayConfig } from './types';
 
 /**
- * 遅延
+ * 遅延設定
  *
  * アニメーション画像のフレーム間の遅延を設定することができる。各フレームの表示時間を制御する。
  *

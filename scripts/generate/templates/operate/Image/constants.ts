@@ -21,7 +21,7 @@ export const IMAGE_MANIPULATION_TYPE = {
    *
    * http://www.graphicsmagick.org/GraphicsMagick.html#details-{{{this.lowercamelcase}}}
    */
-  {{{this.snakecase}}}: '{{{this.lowercamelcase}}}',
+  {{this.snakecase}}: '{{this.lowercamelcase}}',
 
 {{/each}}
 } as const;

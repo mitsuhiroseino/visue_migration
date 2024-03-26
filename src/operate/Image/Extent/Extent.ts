@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ExtentConfig } from './types';
 
 /**
- * 範囲
+ * サイズ変更
  *
  * 画像のサイズを変更することができる。指定されたサイズにリサイズするか、余白を追加してサイズを変更する。
  *

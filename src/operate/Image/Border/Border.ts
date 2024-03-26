@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { BorderConfig } from './types';
 
 /**
- * 境界
+ * 境界線
  *
  * 画像に境界線を追加することができる。境界線は、画像の周囲にフレームを付けるのに使用される。
  *

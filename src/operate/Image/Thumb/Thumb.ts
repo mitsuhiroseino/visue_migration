@@ -6,7 +6,7 @@ import { ThumbConfig } from './types';
 /**
  * サムネイル
  *
- * 画像のサムネイルを生成することができる。指定したサイズに縮小して画像を生成する。
+ * 画像のサイズを素早く変更する。画質よりも速度を重視。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-thumb
  *

@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { StripConfig } from './types';
 
 /**
- * ストリップ
+ * プロファイル削除
  *
- * 画像からストリップ情報を取り除くことができる。画像ファイルからメタデータやコメントなどを取り除く。
+ * 画像からすべてのプロファイルとテキスト属性を削除する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-strip
  *

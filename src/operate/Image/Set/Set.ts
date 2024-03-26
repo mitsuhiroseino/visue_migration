@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { SetConfig } from './types';
 
 /**
- * 設定
+ * 画像属性設定
  *
  * 画像の特定の属性を設定することができる。画像のメタデータやプロパティを設定する。
  *

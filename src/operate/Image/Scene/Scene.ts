@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { SceneConfig } from './types';
 
 /**
- * シーン
+ * シーン番号設定
  *
  * 画像のシーン番号を設定することができる。複数のシーンが含まれる画像ファイルの特定のシーンを指定する。
  *

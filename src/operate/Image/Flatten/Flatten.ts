@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { FlattenConfig } from './types';
 
 /**
- * フラット化
+ * レイヤー統合
  *
  * 画像のレイヤーを平坦化することができる。複数の画像レイヤーを一つの画像に結合する。
  *

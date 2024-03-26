@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { DissolveConfig } from './types';
 
 /**
- * 溶解
+ * トランジション
  *
  * 画像同士を指定された割合で混合することができる。トランジションやフェードイン/フェードアウトのエフェクトを作成するのに使用される。
  *

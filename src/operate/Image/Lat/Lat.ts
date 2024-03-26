@@ -4,9 +4,9 @@ import { ImageManipulation } from '../types';
 import { LatConfig } from './types';
 
 /**
- * 緯度
+ * ローカル適応しきい値処理
  *
- * 画像の色調を調整することができる。色相、彩度、明度を変更することで、画像の色調を調整する。
+ * 指定された幅、高さ、オフセットを使用して、ローカル適応しきい値処理を実行する。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-lat
  *

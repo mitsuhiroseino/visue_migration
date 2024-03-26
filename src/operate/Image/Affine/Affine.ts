@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { AffineConfig } from './types';
 
 /**
- * アフィン
+ * アフィン変換
  *
  * 画像にアフィン変換を適用することができる。平行移動、回転、スケーリング、シアーなどの変換が可能である。
  *

@@ -6,7 +6,7 @@ import { ThumbnailConfig } from './types';
 /**
  * サムネイル
  *
- * サムネイルを作成することができる。元の画像から縮小されたサムネイル画像を生成する。
+ * 画像のサイズを素早く変更する。画質よりも速度を重視。
  *
  * http://www.graphicsmagick.org/GraphicsMagick.html#details-thumbnail
  *

@@ -4,7 +4,7 @@ import { ImageManipulation } from '../types';
 import { ConvolveConfig } from './types';
 
 /**
- * 畳み込み
+ * 畳み込みフィルタ
  *
  * 画像に畳み込みフィルタを適用することができる。畳み込みフィルタを使用することで、画像の特徴を強調したり、ノイズを除去したりすることができる。
  *
