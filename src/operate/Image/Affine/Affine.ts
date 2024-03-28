@@ -14,7 +14,7 @@ import { AffineConfig } from './types';
  * @param config Affineのコンフィグ
  * @returns gmのインスタンス
  */
-const Affine: ImageManipulation<AffineConfig> = async (state, config) => {
+const Affine: ImageManipulation<AffineConfig> = (state, config) => {
   const { matrix } = config;
   return state.affine(matrix);
 };

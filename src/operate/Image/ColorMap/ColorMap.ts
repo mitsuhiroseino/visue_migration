@@ -14,7 +14,7 @@ import { ColorMapConfig } from './types';
  * @param config ColorMapのコンフィグ
  * @returns gmのインスタンス
  */
-const ColorMap: ImageManipulation<ColorMapConfig> = async (state, config) => {
+const ColorMap: ImageManipulation<ColorMapConfig> = (state, config) => {
   const { colorMapType } = config;
   return state.colorMap(colorMapType);
 };

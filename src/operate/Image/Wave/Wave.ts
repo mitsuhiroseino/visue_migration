@@ -14,7 +14,7 @@ import { WaveConfig } from './types';
  * @param config Waveのコンフィグ
  * @returns gmのインスタンス
  */
-const Wave: ImageManipulation<WaveConfig> = async (state, config) => {
+const Wave: ImageManipulation<WaveConfig> = (state, config) => {
   const { amplitude, wavelength } = config;
   return state.wave(amplitude, wavelength);
 };

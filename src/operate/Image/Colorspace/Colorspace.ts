@@ -14,7 +14,7 @@ import { ColorspaceConfig } from './types';
  * @param config Colorspaceのコンフィグ
  * @returns gmのインスタンス
  */
-const Colorspace: ImageManipulation<ColorspaceConfig> = async (state, config) => {
+const Colorspace: ImageManipulation<ColorspaceConfig> = (state, config) => {
   const { space } = config;
   return state.colorspace(space);
 };

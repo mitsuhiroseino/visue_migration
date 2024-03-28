@@ -14,7 +14,7 @@ import { TileConfig } from './types';
  * @param config Tileのコンフィグ
  * @returns gmのインスタンス
  */
-const Tile: ImageManipulation<TileConfig> = async (state, config) => {
+const Tile: ImageManipulation<TileConfig> = (state, config) => {
   const { filename } = config;
   return state.tile(filename);
 };

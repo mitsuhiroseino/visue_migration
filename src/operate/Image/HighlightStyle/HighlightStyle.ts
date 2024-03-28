@@ -14,7 +14,7 @@ import { HighlightStyleConfig } from './types';
  * @param config HighlightStyleのコンフィグ
  * @returns gmのインスタンス
  */
-const HighlightStyle: ImageManipulation<HighlightStyleConfig> = async (state, config) => {
+const HighlightStyle: ImageManipulation<HighlightStyleConfig> = (state, config) => {
   const { style } = config;
   return state.highlightStyle(style);
 };

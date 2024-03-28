@@ -14,7 +14,7 @@ import { RotateConfig } from './types';
  * @param config Rotateのコンフィグ
  * @returns gmのインスタンス
  */
-const Rotate: ImageManipulation<RotateConfig> = async (state, config) => {
+const Rotate: ImageManipulation<RotateConfig> = (state, config) => {
   const { backgroundColor, degrees } = config;
   return state.rotate(backgroundColor, degrees);
 };

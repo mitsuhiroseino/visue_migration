@@ -14,7 +14,7 @@ import { FuzzConfig } from './types';
  * @param config Fuzzのコンフィグ
  * @returns gmのインスタンス
  */
-const Fuzz: ImageManipulation<FuzzConfig> = async (state, config) => {
+const Fuzz: ImageManipulation<FuzzConfig> = (state, config) => {
   const { distance, percent } = config;
   return state.fuzz(distance, percent);
 };

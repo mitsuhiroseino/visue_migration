@@ -14,7 +14,7 @@ import { PaintConfig } from './types';
  * @param config Paintのコンフィグ
  * @returns gmのインスタンス
  */
-const Paint: ImageManipulation<PaintConfig> = async (state, config) => {
+const Paint: ImageManipulation<PaintConfig> = (state, config) => {
   const { radius } = config;
   return state.paint(radius);
 };

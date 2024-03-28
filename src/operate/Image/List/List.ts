@@ -14,7 +14,7 @@ import { ListConfig } from './types';
  * @param config Listのコンフィグ
  * @returns gmのインスタンス
  */
-const List: ImageManipulation<ListConfig> = async (state, config) => {
+const List: ImageManipulation<ListConfig> = (state, config) => {
   const { listType } = config;
   return state.list(listType);
 };

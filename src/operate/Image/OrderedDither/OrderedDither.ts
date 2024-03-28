@@ -14,7 +14,7 @@ import { OrderedDitherConfig } from './types';
  * @param config OrderedDitherのコンフィグ
  * @returns gmのインスタンス
  */
-const OrderedDither: ImageManipulation<OrderedDitherConfig> = async (state, config) => {
+const OrderedDither: ImageManipulation<OrderedDitherConfig> = (state, config) => {
   const { channelType, NxN } = config;
   return state.orderedDither(channelType, NxN);
 };

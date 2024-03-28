@@ -14,7 +14,7 @@ import { LimitConfig } from './types';
  * @param config Limitのコンフィグ
  * @returns gmのインスタンス
  */
-const Limit: ImageManipulation<LimitConfig> = async (state, config) => {
+const Limit: ImageManipulation<LimitConfig> = (state, config) => {
   const { limitType, val } = config;
   return state.limit(limitType, val);
 };

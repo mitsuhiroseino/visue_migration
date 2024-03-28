@@ -14,7 +14,7 @@ import { ComposeConfig } from './types';
  * @param config Composeのコンフィグ
  * @returns gmのインスタンス
  */
-const Compose: ImageManipulation<ComposeConfig> = async (state, config) => {
+const Compose: ImageManipulation<ComposeConfig> = (state, config) => {
   const { operator } = config;
   return state.compose(operator);
 };

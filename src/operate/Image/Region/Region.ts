@@ -14,7 +14,7 @@ import { RegionConfig } from './types';
  * @param config Regionのコンフィグ
  * @returns gmのインスタンス
  */
-const Region: ImageManipulation<RegionConfig> = async (state, config) => {
+const Region: ImageManipulation<RegionConfig> = (state, config) => {
   const { width, height, x, y } = config;
   return state.region(width, height, x, y);
 };

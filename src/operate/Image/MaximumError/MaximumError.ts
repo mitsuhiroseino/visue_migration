@@ -14,7 +14,7 @@ import { MaximumErrorConfig } from './types';
  * @param config MaximumErrorのコンフィグ
  * @returns gmのインスタンス
  */
-const MaximumError: ImageManipulation<MaximumErrorConfig> = async (state, config) => {
+const MaximumError: ImageManipulation<MaximumErrorConfig> = (state, config) => {
   const { limit } = config;
   return state.maximumError(limit);
 };

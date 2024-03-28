@@ -14,7 +14,7 @@ import { BorderConfig } from './types';
  * @param config Borderのコンフィグ
  * @returns gmのインスタンス
  */
-const Border: ImageManipulation<BorderConfig> = async (state, config) => {
+const Border: ImageManipulation<BorderConfig> = (state, config) => {
   const { width, height } = config;
   return state.border(width, height);
 };

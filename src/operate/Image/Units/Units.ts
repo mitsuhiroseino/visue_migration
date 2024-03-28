@@ -14,7 +14,7 @@ import { UnitsConfig } from './types';
  * @param config Unitsのコンフィグ
  * @returns gmのインスタンス
  */
-const Units: ImageManipulation<UnitsConfig> = async (state, config) => {
+const Units: ImageManipulation<UnitsConfig> = (state, config) => {
   const { unitType } = config;
   return state.units(unitType);
 };

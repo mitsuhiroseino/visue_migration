@@ -14,7 +14,7 @@ import { CropConfig } from './types';
  * @param config Cropのコンフィグ
  * @returns gmのインスタンス
  */
-const Crop: ImageManipulation<CropConfig> = async (state, config) => {
+const Crop: ImageManipulation<CropConfig> = (state, config) => {
   const { width, height, x, y, percent } = config;
   return state.crop(width, height, x, y, percent);
 };

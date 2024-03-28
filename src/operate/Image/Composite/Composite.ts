@@ -14,7 +14,7 @@ import { CompositeConfig } from './types';
  * @param config Compositeのコンフィグ
  * @returns gmのインスタンス
  */
-const Composite: ImageManipulation<CompositeConfig> = async (state, config) => {
+const Composite: ImageManipulation<CompositeConfig> = (state, config) => {
   const { changeImagePath, maskImagePath } = config;
   return state.composite(changeImagePath, maskImagePath);
 };

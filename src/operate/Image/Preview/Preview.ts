@@ -14,7 +14,7 @@ import { PreviewConfig } from './types';
  * @param config Previewのコンフィグ
  * @returns gmのインスタンス
  */
-const Preview: ImageManipulation<PreviewConfig> = async (state, config) => {
+const Preview: ImageManipulation<PreviewConfig> = (state, config) => {
   const { previewType } = config;
   return state.preview(previewType);
 };

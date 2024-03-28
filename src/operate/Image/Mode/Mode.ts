@@ -14,7 +14,7 @@ import { ModeConfig } from './types';
  * @param config Modeのコンフィグ
  * @returns gmのインスタンス
  */
-const Mode: ImageManipulation<ModeConfig> = async (state, config) => {
+const Mode: ImageManipulation<ModeConfig> = (state, config) => {
   const { mode } = config;
   return state.mode(mode);
 };

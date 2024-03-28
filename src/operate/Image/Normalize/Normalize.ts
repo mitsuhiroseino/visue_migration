@@ -14,7 +14,7 @@ import { NormalizeConfig } from './types';
  * @param config Normalizeのコンフィグ
  * @returns gmのインスタンス
  */
-const Normalize: ImageManipulation<NormalizeConfig> = async (state, config) => {
+const Normalize: ImageManipulation<NormalizeConfig> = (state, config) => {
   const {} = config;
   return state.normalize();
 };

@@ -14,7 +14,7 @@ import { BorderColorConfig } from './types';
  * @param config BorderColorのコンフィグ
  * @returns gmのインスタンス
  */
-const BorderColor: ImageManipulation<BorderColorConfig> = async (state, config) => {
+const BorderColor: ImageManipulation<BorderColorConfig> = (state, config) => {
   const { color } = config;
   return state.borderColor(color);
 };

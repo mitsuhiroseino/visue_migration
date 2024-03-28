@@ -14,7 +14,7 @@ import { ThumbConfig } from './types';
  * @param config Thumbのコンフィグ
  * @returns gmのインスタンス
  */
-const Thumb: ImageManipulation<ThumbConfig> = async (state, config) => {
+const Thumb: ImageManipulation<ThumbConfig> = (state, config) => {
   const { width, height, outName, quality, align, callback } = config;
   return state.thumb(width, height, outName, quality, align, callback);
 };

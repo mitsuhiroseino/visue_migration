@@ -14,7 +14,7 @@ import { ClipConfig } from './types';
  * @param config Clipのコンフィグ
  * @returns gmのインスタンス
  */
-const Clip: ImageManipulation<ClipConfig> = async (state, config) => {
+const Clip: ImageManipulation<ClipConfig> = (state, config) => {
   const {} = config;
   return state.clip();
 };

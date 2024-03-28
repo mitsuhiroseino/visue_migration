@@ -14,7 +14,7 @@ import { SteganoConfig } from './types';
  * @param config Steganoのコンフィグ
  * @returns gmのインスタンス
  */
-const Stegano: ImageManipulation<SteganoConfig> = async (state, config) => {
+const Stegano: ImageManipulation<SteganoConfig> = (state, config) => {
   const { offset } = config;
   return state.stegano(offset);
 };

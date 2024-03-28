@@ -14,7 +14,7 @@ import { NoiseConfig } from './types';
  * @param config Noiseのコンフィグ
  * @returns gmのインスタンス
  */
-const Noise: ImageManipulation<NoiseConfig> = async (state, config) => {
+const Noise: ImageManipulation<NoiseConfig> = (state, config) => {
   const { noiseType } = config;
   return state.noise(noiseType);
 };

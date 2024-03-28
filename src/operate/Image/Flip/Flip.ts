@@ -14,7 +14,7 @@ import { FlipConfig } from './types';
  * @param config Flipのコンフィグ
  * @returns gmのインスタンス
  */
-const Flip: ImageManipulation<FlipConfig> = async (state, config) => {
+const Flip: ImageManipulation<FlipConfig> = (state, config) => {
   const {} = config;
   return state.flip();
 };

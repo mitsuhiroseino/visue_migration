@@ -14,7 +14,7 @@ import { MontageConfig } from './types';
  * @param config Montageのコンフィグ
  * @returns gmのインスタンス
  */
-const Montage: ImageManipulation<MontageConfig> = async (state, config) => {
+const Montage: ImageManipulation<MontageConfig> = (state, config) => {
   const { otherImg } = config;
   return state.montage(otherImg);
 };

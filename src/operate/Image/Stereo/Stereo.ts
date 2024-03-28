@@ -14,7 +14,7 @@ import { StereoConfig } from './types';
  * @param config Stereoのコンフィグ
  * @returns gmのインスタンス
  */
-const Stereo: ImageManipulation<StereoConfig> = async (state, config) => {
+const Stereo: ImageManipulation<StereoConfig> = (state, config) => {
   const {} = config;
   return state.stereo();
 };

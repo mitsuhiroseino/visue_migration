@@ -14,7 +14,7 @@ import { SharedMemoryConfig } from './types';
  * @param config SharedMemoryのコンフィグ
  * @returns gmのインスタンス
  */
-const SharedMemory: ImageManipulation<SharedMemoryConfig> = async (state, config) => {
+const SharedMemory: ImageManipulation<SharedMemoryConfig> = (state, config) => {
   const {} = config;
   return state.sharedMemory();
 };

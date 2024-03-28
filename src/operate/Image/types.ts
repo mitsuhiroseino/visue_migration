@@ -21,7 +21,7 @@ export type ImageConfig = OperationConfig & {
   /**
    * 操作種別
    */
-  type?: typeof OPERATION_TYPE.JIMP;
+  type?: typeof OPERATION_TYPE.IMAGE;
 
   /**
    * 画像に対する操作
@@ -41,4 +41,4 @@ export type ImageManipulationConfig = {
 /**
  * 画像操作関数
  */
-export type ImageManipulation<C = ImageManipulationConfig> = (instance: State, config: C) => Promise<State>;
+export type ImageManipulation<C = ImageManipulationConfig> = (instance: State, config: C) => State;

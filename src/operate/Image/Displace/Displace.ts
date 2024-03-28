@@ -14,7 +14,7 @@ import { DisplaceConfig } from './types';
  * @param config Displaceのコンフィグ
  * @returns gmのインスタンス
  */
-const Displace: ImageManipulation<DisplaceConfig> = async (state, config) => {
+const Displace: ImageManipulation<DisplaceConfig> = (state, config) => {
   const { horizontal, vertical } = config;
   return state.displace(horizontal, vertical);
 };

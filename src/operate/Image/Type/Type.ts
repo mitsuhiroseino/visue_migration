@@ -14,7 +14,7 @@ import { TypeConfig } from './types';
  * @param config Typeのコンフィグ
  * @returns gmのインスタンス
  */
-const Type: ImageManipulation<TypeConfig> = async (state, config) => {
+const Type: ImageManipulation<TypeConfig> = (state, config) => {
   const { imageType } = config;
   return state.type(imageType);
 };

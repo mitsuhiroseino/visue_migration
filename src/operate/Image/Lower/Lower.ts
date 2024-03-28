@@ -14,7 +14,7 @@ import { LowerConfig } from './types';
  * @param config Lowerのコンフィグ
  * @returns gmのインスタンス
  */
-const Lower: ImageManipulation<LowerConfig> = async (state, config) => {
+const Lower: ImageManipulation<LowerConfig> = (state, config) => {
   const { width, height } = config;
   return state.lower(width, height);
 };

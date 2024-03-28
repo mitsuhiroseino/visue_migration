@@ -14,7 +14,7 @@ import { ResizeConfig } from './types';
  * @param config Resizeのコンフィグ
  * @returns gmのインスタンス
  */
-const Resize: ImageManipulation<ResizeConfig> = async (state, config) => {
+const Resize: ImageManipulation<ResizeConfig> = (state, config) => {
   const { width, height, option } = config;
   return state.resize(width, height, option);
 };

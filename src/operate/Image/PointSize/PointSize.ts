@@ -14,7 +14,7 @@ import { PointSizeConfig } from './types';
  * @param config PointSizeのコンフィグ
  * @returns gmのインスタンス
  */
-const PointSize: ImageManipulation<PointSizeConfig> = async (state, config) => {
+const PointSize: ImageManipulation<PointSizeConfig> = (state, config) => {
   const { size } = config;
   return state.pointSize(size);
 };

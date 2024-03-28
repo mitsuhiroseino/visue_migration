@@ -14,7 +14,7 @@ import { BitdepthConfig } from './types';
  * @param config Bitdepthのコンフィグ
  * @returns gmのインスタンス
  */
-const Bitdepth: ImageManipulation<BitdepthConfig> = async (state, config) => {
+const Bitdepth: ImageManipulation<BitdepthConfig> = (state, config) => {
   const { bits } = config;
   return state.bitdepth(bits);
 };

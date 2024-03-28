@@ -14,7 +14,7 @@ import { MedianConfig } from './types';
  * @param config Medianのコンフィグ
  * @returns gmのインスタンス
  */
-const Median: ImageManipulation<MedianConfig> = async (state, config) => {
+const Median: ImageManipulation<MedianConfig> = (state, config) => {
   const { radius } = config;
   return state.median(radius);
 };

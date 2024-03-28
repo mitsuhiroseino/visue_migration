@@ -14,7 +14,7 @@ import { DefineConfig } from './types';
  * @param config Defineのコンフィグ
  * @returns gmのインスタンス
  */
-const Define: ImageManipulation<DefineConfig> = async (state, config) => {
+const Define: ImageManipulation<DefineConfig> = (state, config) => {
   const { value } = config;
   return state.define(value);
 };

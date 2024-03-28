@@ -14,7 +14,7 @@ import { LevelConfig } from './types';
  * @param config Levelのコンフィグ
  * @returns gmのインスタンス
  */
-const Level: ImageManipulation<LevelConfig> = async (state, config) => {
+const Level: ImageManipulation<LevelConfig> = (state, config) => {
   const { blackPoint, gamma, whitePoint, percent } = config;
   return state.level(blackPoint, gamma, whitePoint, percent);
 };

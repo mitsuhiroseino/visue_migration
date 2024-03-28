@@ -14,7 +14,7 @@ import { MonochromeConfig } from './types';
  * @param config Monochromeのコンフィグ
  * @returns gmのインスタンス
  */
-const Monochrome: ImageManipulation<MonochromeConfig> = async (state, config) => {
+const Monochrome: ImageManipulation<MonochromeConfig> = (state, config) => {
   const {} = config;
   return state.monochrome();
 };

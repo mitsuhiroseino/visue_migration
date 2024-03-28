@@ -14,7 +14,7 @@ import { ThresholdConfig } from './types';
  * @param config Thresholdのコンフィグ
  * @returns gmのインスタンス
  */
-const Threshold: ImageManipulation<ThresholdConfig> = async (state, config) => {
+const Threshold: ImageManipulation<ThresholdConfig> = (state, config) => {
   const { value, percent } = config;
   return state.threshold(value, percent);
 };

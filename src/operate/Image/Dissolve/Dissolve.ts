@@ -14,7 +14,7 @@ import { DissolveConfig } from './types';
  * @param config Dissolveのコンフィグ
  * @returns gmのインスタンス
  */
-const Dissolve: ImageManipulation<DissolveConfig> = async (state, config) => {
+const Dissolve: ImageManipulation<DissolveConfig> = (state, config) => {
   const { percent } = config;
   return state.dissolve(percent);
 };

@@ -14,7 +14,7 @@ import { UnsharpConfig } from './types';
  * @param config Unsharpのコンフィグ
  * @returns gmのインスタンス
  */
-const Unsharp: ImageManipulation<UnsharpConfig> = async (state, config) => {
+const Unsharp: ImageManipulation<UnsharpConfig> = (state, config) => {
   const { radius, sigma, amount, threshold } = config;
   return state.unsharp(radius, sigma, amount, threshold);
 };

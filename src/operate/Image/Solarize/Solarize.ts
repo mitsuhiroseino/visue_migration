@@ -14,7 +14,7 @@ import { SolarizeConfig } from './types';
  * @param config Solarizeのコンフィグ
  * @returns gmのインスタンス
  */
-const Solarize: ImageManipulation<SolarizeConfig> = async (state, config) => {
+const Solarize: ImageManipulation<SolarizeConfig> = (state, config) => {
   const { threshold } = config;
   return state.solarize(threshold);
 };

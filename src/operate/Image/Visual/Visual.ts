@@ -14,7 +14,7 @@ import { VisualConfig } from './types';
  * @param config Visualのコンフィグ
  * @returns gmのインスタンス
  */
-const Visual: ImageManipulation<VisualConfig> = async (state, config) => {
+const Visual: ImageManipulation<VisualConfig> = (state, config) => {
   const { visualType } = config;
   return state.visual(visualType);
 };

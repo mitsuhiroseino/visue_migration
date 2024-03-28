@@ -14,7 +14,7 @@ import { MonitorConfig } from './types';
  * @param config Monitorのコンフィグ
  * @returns gmのインスタンス
  */
-const Monitor: ImageManipulation<MonitorConfig> = async (state, config) => {
+const Monitor: ImageManipulation<MonitorConfig> = (state, config) => {
   const {} = config;
   return state.monitor();
 };

@@ -14,7 +14,7 @@ import { SetFormatConfig } from './types';
  * @param config SetFormatのコンフィグ
  * @returns gmのインスタンス
  */
-const SetFormat: ImageManipulation<SetFormatConfig> = async (state, config) => {
+const SetFormat: ImageManipulation<SetFormatConfig> = (state, config) => {
   const { format } = config;
   return state.setFormat(format);
 };

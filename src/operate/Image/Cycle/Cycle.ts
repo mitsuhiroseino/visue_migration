@@ -14,7 +14,7 @@ import { CycleConfig } from './types';
  * @param config Cycleのコンフィグ
  * @returns gmのインスタンス
  */
-const Cycle: ImageManipulation<CycleConfig> = async (state, config) => {
+const Cycle: ImageManipulation<CycleConfig> = (state, config) => {
   const { amount } = config;
   return state.cycle(amount);
 };

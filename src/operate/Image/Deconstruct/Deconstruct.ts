@@ -14,7 +14,7 @@ import { DeconstructConfig } from './types';
  * @param config Deconstructのコンフィグ
  * @returns gmのインスタンス
  */
-const Deconstruct: ImageManipulation<DeconstructConfig> = async (state, config) => {
+const Deconstruct: ImageManipulation<DeconstructConfig> = (state, config) => {
   const {} = config;
   return state.deconstruct();
 };

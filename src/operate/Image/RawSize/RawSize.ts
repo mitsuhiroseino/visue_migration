@@ -14,7 +14,7 @@ import { RawSizeConfig } from './types';
  * @param config RawSizeのコンフィグ
  * @returns gmのインスタンス
  */
-const RawSize: ImageManipulation<RawSizeConfig> = async (state, config) => {
+const RawSize: ImageManipulation<RawSizeConfig> = (state, config) => {
   const { width, height, offset } = config;
   return state.rawSize(width, height, offset);
 };

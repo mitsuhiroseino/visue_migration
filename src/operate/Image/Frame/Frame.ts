@@ -14,7 +14,7 @@ import { FrameConfig } from './types';
  * @param config Frameのコンフィグ
  * @returns gmのインスタンス
  */
-const Frame: ImageManipulation<FrameConfig> = async (state, config) => {
+const Frame: ImageManipulation<FrameConfig> = (state, config) => {
   const { width, height, outerBevelWidth, outBevelHeight } = config;
   return state.frame(width, height, outerBevelWidth, outBevelHeight);
 };

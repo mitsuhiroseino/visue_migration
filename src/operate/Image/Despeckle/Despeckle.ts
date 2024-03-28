@@ -14,7 +14,7 @@ import { DespeckleConfig } from './types';
  * @param config Despeckleのコンフィグ
  * @returns gmのインスタンス
  */
-const Despeckle: ImageManipulation<DespeckleConfig> = async (state, config) => {
+const Despeckle: ImageManipulation<DespeckleConfig> = (state, config) => {
   const {} = config;
   return state.despeckle();
 };

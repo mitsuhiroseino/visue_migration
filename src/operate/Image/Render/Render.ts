@@ -14,7 +14,7 @@ import { RenderConfig } from './types';
  * @param config Renderのコンフィグ
  * @returns gmのインスタンス
  */
-const Render: ImageManipulation<RenderConfig> = async (state, config) => {
+const Render: ImageManipulation<RenderConfig> = (state, config) => {
   const {} = config;
   return state.render();
 };

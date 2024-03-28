@@ -20,7 +20,7 @@ const Image: Operation<Buffer, ImageConfig> = async (content: Buffer, config: Im
   for (const manipulationConfig of asArray(manipulations)) {
     const manipulation = JimpManipulationFactory.get(manipulationConfig.type);
     if (manipulation) {
-      state = await manipulation(state, manipulationConfig);
+      state = manipulation(state, manipulationConfig);
     } else {
       console.warn(`There was no manipulation "${manipulationConfig.type}".`);
     }

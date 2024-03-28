@@ -14,7 +14,7 @@ import { ScenesConfig } from './types';
  * @param config Scenesのコンフィグ
  * @returns gmのインスタンス
  */
-const Scenes: ImageManipulation<ScenesConfig> = async (state, config) => {
+const Scenes: ImageManipulation<ScenesConfig> = (state, config) => {
   const { start, end } = config;
   return state.scenes(start, end);
 };

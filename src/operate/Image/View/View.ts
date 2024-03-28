@@ -14,7 +14,7 @@ import { ViewConfig } from './types';
  * @param config Viewのコンフィグ
  * @returns gmのインスタンス
  */
-const View: ImageManipulation<ViewConfig> = async (state, config) => {
+const View: ImageManipulation<ViewConfig> = (state, config) => {
   const {} = config;
   return state.view();
 };

@@ -14,7 +14,7 @@ import { SelectFrameConfig } from './types';
  * @param config SelectFrameのコンフィグ
  * @returns gmのインスタンス
  */
-const SelectFrame: ImageManipulation<SelectFrameConfig> = async (state, config) => {
+const SelectFrame: ImageManipulation<SelectFrameConfig> = (state, config) => {
   const { frame } = config;
   return state.selectFrame(frame);
 };

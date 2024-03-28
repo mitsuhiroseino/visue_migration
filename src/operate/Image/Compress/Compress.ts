@@ -14,7 +14,7 @@ import { CompressConfig } from './types';
  * @param config Compressのコンフィグ
  * @returns gmのインスタンス
  */
-const Compress: ImageManipulation<CompressConfig> = async (state, config) => {
+const Compress: ImageManipulation<CompressConfig> = (state, config) => {
   const { compressionType } = config;
   return state.compress(compressionType);
 };

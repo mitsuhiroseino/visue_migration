@@ -14,7 +14,7 @@ import { ShadowConfig } from './types';
  * @param config Shadowのコンフィグ
  * @returns gmのインスタンス
  */
-const Shadow: ImageManipulation<ShadowConfig> = async (state, config) => {
+const Shadow: ImageManipulation<ShadowConfig> = (state, config) => {
   const { radius, sigma } = config;
   return state.shadow(radius, sigma);
 };

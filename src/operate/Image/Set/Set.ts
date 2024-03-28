@@ -14,7 +14,7 @@ import { SetConfig } from './types';
  * @param config Setのコンフィグ
  * @returns gmのインスタンス
  */
-const Set: ImageManipulation<SetConfig> = async (state, config) => {
+const Set: ImageManipulation<SetConfig> = (state, config) => {
   const { attribute, value } = config;
   return state.set(attribute, value);
 };

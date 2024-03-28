@@ -14,7 +14,7 @@ import { EnhanceConfig } from './types';
  * @param config Enhanceのコンフィグ
  * @returns gmのインスタンス
  */
-const Enhance: ImageManipulation<EnhanceConfig> = async (state, config) => {
+const Enhance: ImageManipulation<EnhanceConfig> = (state, config) => {
   const {} = config;
   return state.enhance();
 };

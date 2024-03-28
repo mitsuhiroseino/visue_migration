@@ -14,7 +14,7 @@ import { FlattenConfig } from './types';
  * @param config Flattenのコンフィグ
  * @returns gmのインスタンス
  */
-const Flatten: ImageManipulation<FlattenConfig> = async (state, config) => {
+const Flatten: ImageManipulation<FlattenConfig> = (state, config) => {
   const {} = config;
   return state.flatten();
 };

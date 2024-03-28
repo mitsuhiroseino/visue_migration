@@ -14,7 +14,7 @@ import { BluePrimaryConfig } from './types';
  * @param config BluePrimaryのコンフィグ
  * @returns gmのインスタンス
  */
-const BluePrimary: ImageManipulation<BluePrimaryConfig> = async (state, config) => {
+const BluePrimary: ImageManipulation<BluePrimaryConfig> = (state, config) => {
   const { x, y } = config;
   return state.bluePrimary(x, y);
 };

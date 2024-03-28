@@ -14,7 +14,7 @@ import { AppendConfig } from './types';
  * @param config Appendのコンフィグ
  * @returns gmのインスタンス
  */
-const Append: ImageManipulation<AppendConfig> = async (state, config) => {
+const Append: ImageManipulation<AppendConfig> = (state, config) => {
   const { image, ltr } = config;
   return state.append(image, ltr);
 };

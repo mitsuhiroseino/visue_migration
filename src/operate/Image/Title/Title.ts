@@ -14,7 +14,7 @@ import { TitleConfig } from './types';
  * @param config Titleのコンフィグ
  * @returns gmのインスタンス
  */
-const Title: ImageManipulation<TitleConfig> = async (state, config) => {
+const Title: ImageManipulation<TitleConfig> = (state, config) => {
   const { title } = config;
   return state.title(title);
 };

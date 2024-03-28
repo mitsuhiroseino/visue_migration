@@ -14,7 +14,7 @@ import { GaussianConfig } from './types';
  * @param config Gaussianのコンフィグ
  * @returns gmのインスタンス
  */
-const Gaussian: ImageManipulation<GaussianConfig> = async (state, config) => {
+const Gaussian: ImageManipulation<GaussianConfig> = (state, config) => {
   const { radius, sigma } = config;
   return state.gaussian(radius, sigma);
 };

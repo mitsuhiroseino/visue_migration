@@ -14,7 +14,7 @@ import { LabelConfig } from './types';
  * @param config Labelのコンフィグ
  * @returns gmのインスタンス
  */
-const Label: ImageManipulation<LabelConfig> = async (state, config) => {
+const Label: ImageManipulation<LabelConfig> = (state, config) => {
   const { name } = config;
   return state.label(name);
 };

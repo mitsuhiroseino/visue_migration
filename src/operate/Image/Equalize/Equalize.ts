@@ -14,7 +14,7 @@ import { EqualizeConfig } from './types';
  * @param config Equalizeのコンフィグ
  * @returns gmのインスタンス
  */
-const Equalize: ImageManipulation<EqualizeConfig> = async (state, config) => {
+const Equalize: ImageManipulation<EqualizeConfig> = (state, config) => {
   const {} = config;
   return state.equalize();
 };

@@ -14,7 +14,7 @@ import { AdjoinConfig } from './types';
  * @param config Adjoinのコンフィグ
  * @returns gmのインスタンス
  */
-const Adjoin: ImageManipulation<AdjoinConfig> = async (state, config) => {
+const Adjoin: ImageManipulation<AdjoinConfig> = (state, config) => {
   const {} = config;
   return state.adjoin();
 };

@@ -14,7 +14,7 @@ import { ChannelConfig } from './types';
  * @param config Channelのコンフィグ
  * @returns gmのインスタンス
  */
-const Channel: ImageManipulation<ChannelConfig> = async (state, config) => {
+const Channel: ImageManipulation<ChannelConfig> = (state, config) => {
   const { channelType } = config;
   return state.channel(channelType);
 };

@@ -14,7 +14,7 @@ import { QualityConfig } from './types';
  * @param config Qualityのコンフィグ
  * @returns gmのインスタンス
  */
-const Quality: ImageManipulation<QualityConfig> = async (state, config) => {
+const Quality: ImageManipulation<QualityConfig> = (state, config) => {
   const { level } = config;
   return state.quality(level);
 };

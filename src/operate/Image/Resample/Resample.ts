@@ -14,7 +14,7 @@ import { ResampleConfig } from './types';
  * @param config Resampleのコンフィグ
  * @returns gmのインスタンス
  */
-const Resample: ImageManipulation<ResampleConfig> = async (state, config) => {
+const Resample: ImageManipulation<ResampleConfig> = (state, config) => {
   const { horizontal, vertical } = config;
   return state.resample(horizontal, vertical);
 };

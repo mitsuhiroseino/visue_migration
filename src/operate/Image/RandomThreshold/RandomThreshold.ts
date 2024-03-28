@@ -14,7 +14,7 @@ import { RandomThresholdConfig } from './types';
  * @param config RandomThresholdのコンフィグ
  * @returns gmのインスタンス
  */
-const RandomThreshold: ImageManipulation<RandomThresholdConfig> = async (state, config) => {
+const RandomThreshold: ImageManipulation<RandomThresholdConfig> = (state, config) => {
   const { channelType, LOWxHIGH } = config;
   return state.randomThreshold(channelType, LOWxHIGH);
 };

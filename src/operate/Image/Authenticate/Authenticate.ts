@@ -14,7 +14,7 @@ import { AuthenticateConfig } from './types';
  * @param config Authenticateのコンフィグ
  * @returns gmのインスタンス
  */
-const Authenticate: ImageManipulation<AuthenticateConfig> = async (state, config) => {
+const Authenticate: ImageManipulation<AuthenticateConfig> = (state, config) => {
   const { password } = config;
   return state.authenticate(password);
 };

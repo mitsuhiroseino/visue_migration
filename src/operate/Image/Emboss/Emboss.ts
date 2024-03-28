@@ -14,7 +14,7 @@ import { EmbossConfig } from './types';
  * @param config Embossのコンフィグ
  * @returns gmのインスタンス
  */
-const Emboss: ImageManipulation<EmbossConfig> = async (state, config) => {
+const Emboss: ImageManipulation<EmbossConfig> = (state, config) => {
   const { radius } = config;
   return state.emboss(radius);
 };

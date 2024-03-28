@@ -14,7 +14,7 @@ import { SwirlConfig } from './types';
  * @param config Swirlのコンフィグ
  * @returns gmのインスタンス
  */
-const Swirl: ImageManipulation<SwirlConfig> = async (state, config) => {
+const Swirl: ImageManipulation<SwirlConfig> = (state, config) => {
   const { degrees } = config;
   return state.swirl(degrees);
 };

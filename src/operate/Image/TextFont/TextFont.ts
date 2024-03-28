@@ -14,7 +14,7 @@ import { TextFontConfig } from './types';
  * @param config TextFontのコンフィグ
  * @returns gmのインスタンス
  */
-const TextFont: ImageManipulation<TextFontConfig> = async (state, config) => {
+const TextFont: ImageManipulation<TextFontConfig> = (state, config) => {
   const { font } = config;
   return state.textFont(font);
 };

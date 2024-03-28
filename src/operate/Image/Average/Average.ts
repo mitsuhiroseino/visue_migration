@@ -14,7 +14,7 @@ import { AverageConfig } from './types';
  * @param config Averageのコンフィグ
  * @returns gmのインスタンス
  */
-const Average: ImageManipulation<AverageConfig> = async (state, config) => {
+const Average: ImageManipulation<AverageConfig> = (state, config) => {
   const {} = config;
   return state.average();
 };

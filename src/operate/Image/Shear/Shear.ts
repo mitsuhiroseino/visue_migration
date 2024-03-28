@@ -14,7 +14,7 @@ import { ShearConfig } from './types';
  * @param config Shearのコンフィグ
  * @returns gmのインスタンス
  */
-const Shear: ImageManipulation<ShearConfig> = async (state, config) => {
+const Shear: ImageManipulation<ShearConfig> = (state, config) => {
   const { xDegrees, yDegress } = config;
   return state.shear(xDegrees, yDegress);
 };

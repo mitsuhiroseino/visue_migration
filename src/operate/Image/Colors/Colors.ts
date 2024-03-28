@@ -14,7 +14,7 @@ import { ColorsConfig } from './types';
  * @param config Colorsのコンフィグ
  * @returns gmのインスタンス
  */
-const Colors: ImageManipulation<ColorsConfig> = async (state, config) => {
+const Colors: ImageManipulation<ColorsConfig> = (state, config) => {
   const { colors } = config;
   return state.colors(colors);
 };

@@ -14,7 +14,7 @@ import { EndianConfig } from './types';
  * @param config Endianのコンフィグ
  * @returns gmのインスタンス
  */
-const Endian: ImageManipulation<EndianConfig> = async (state, config) => {
+const Endian: ImageManipulation<EndianConfig> = (state, config) => {
   const { endianType } = config;
   return state.endian(endianType);
 };

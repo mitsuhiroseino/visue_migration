@@ -14,7 +14,7 @@ import { HighlightColorConfig } from './types';
  * @param config HighlightColorのコンフィグ
  * @returns gmのインスタンス
  */
-const HighlightColor: ImageManipulation<HighlightColorConfig> = async (state, config) => {
+const HighlightColor: ImageManipulation<HighlightColorConfig> = (state, config) => {
   const { color } = config;
   return state.highlightColor(color);
 };

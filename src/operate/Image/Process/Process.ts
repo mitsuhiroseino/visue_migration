@@ -14,7 +14,7 @@ import { ProcessConfig } from './types';
  * @param config Processのコンフィグ
  * @returns gmのインスタンス
  */
-const Process: ImageManipulation<ProcessConfig> = async (state, config) => {
+const Process: ImageManipulation<ProcessConfig> = (state, config) => {
   const { command } = config;
   return state.process(command);
 };

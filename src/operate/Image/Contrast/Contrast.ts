@@ -14,7 +14,7 @@ import { ContrastConfig } from './types';
  * @param config Contrastのコンフィグ
  * @returns gmのインスタンス
  */
-const Contrast: ImageManipulation<ContrastConfig> = async (state, config) => {
+const Contrast: ImageManipulation<ContrastConfig> = (state, config) => {
   const { multiplier } = config;
   return state.contrast(multiplier);
 };

@@ -14,7 +14,7 @@ import { GravityConfig } from './types';
  * @param config Gravityのコンフィグ
  * @returns gmのインスタンス
  */
-const Gravity: ImageManipulation<GravityConfig> = async (state, config) => {
+const Gravity: ImageManipulation<GravityConfig> = (state, config) => {
   const { direction } = config;
   return state.gravity(direction);
 };

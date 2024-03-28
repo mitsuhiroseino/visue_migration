@@ -14,7 +14,7 @@ import { RecolorConfig } from './types';
  * @param config Recolorのコンフィグ
  * @returns gmのインスタンス
  */
-const Recolor: ImageManipulation<RecolorConfig> = async (state, config) => {
+const Recolor: ImageManipulation<RecolorConfig> = (state, config) => {
   const { matrix } = config;
   return state.recolor(matrix);
 };

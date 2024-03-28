@@ -14,7 +14,7 @@ import { RepageConfig } from './types';
  * @param config Repageのコンフィグ
  * @returns gmのインスタンス
  */
-const Repage: ImageManipulation<RepageConfig> = async (state, config) => {
+const Repage: ImageManipulation<RepageConfig> = (state, config) => {
   const { width, height, xoff, yoff, arg, reset } = config;
   if (reset == null) {
     return state.repage(width, height, xoff, yoff, arg);

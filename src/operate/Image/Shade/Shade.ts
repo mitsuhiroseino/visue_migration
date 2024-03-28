@@ -14,7 +14,7 @@ import { ShadeConfig } from './types';
  * @param config Shadeのコンフィグ
  * @returns gmのインスタンス
  */
-const Shade: ImageManipulation<ShadeConfig> = async (state, config) => {
+const Shade: ImageManipulation<ShadeConfig> = (state, config) => {
   const { azimuth, elevation } = config;
   return state.shade(azimuth, elevation);
 };

@@ -14,7 +14,7 @@ import { NegativeConfig } from './types';
  * @param config Negativeのコンフィグ
  * @returns gmのインスタンス
  */
-const Negative: ImageManipulation<NegativeConfig> = async (state, config) => {
+const Negative: ImageManipulation<NegativeConfig> = (state, config) => {
   const {} = config;
   return state.negative();
 };

@@ -14,7 +14,7 @@ import { ExtentConfig } from './types';
  * @param config Extentのコンフィグ
  * @returns gmのインスタンス
  */
-const Extent: ImageManipulation<ExtentConfig> = async (state, config) => {
+const Extent: ImageManipulation<ExtentConfig> = (state, config) => {
   const { width, height, options } = config;
   return state.extent(width, height, options);
 };

@@ -14,7 +14,7 @@ import { IntentConfig } from './types';
  * @param config Intentのコンフィグ
  * @returns gmのインスタンス
  */
-const Intent: ImageManipulation<IntentConfig> = async (state, config) => {
+const Intent: ImageManipulation<IntentConfig> = (state, config) => {
   const { intentType } = config;
   return state.intent(intentType);
 };

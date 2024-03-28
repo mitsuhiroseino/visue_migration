@@ -14,7 +14,7 @@ import { RedPrimaryConfig } from './types';
  * @param config RedPrimaryのコンフィグ
  * @returns gmのインスタンス
  */
-const RedPrimary: ImageManipulation<RedPrimaryConfig> = async (state, config) => {
+const RedPrimary: ImageManipulation<RedPrimaryConfig> = (state, config) => {
   const { x, y } = config;
   return state.redPrimary(x, y);
 };

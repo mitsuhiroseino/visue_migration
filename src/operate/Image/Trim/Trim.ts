@@ -14,7 +14,7 @@ import { TrimConfig } from './types';
  * @param config Trimのコンフィグ
  * @returns gmのインスタンス
  */
-const Trim: ImageManipulation<TrimConfig> = async (state, config) => {
+const Trim: ImageManipulation<TrimConfig> = (state, config) => {
   const {} = config;
   return state.trim();
 };

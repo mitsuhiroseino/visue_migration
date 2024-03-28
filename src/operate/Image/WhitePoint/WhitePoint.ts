@@ -14,7 +14,7 @@ import { WhitePointConfig } from './types';
  * @param config WhitePointのコンフィグ
  * @returns gmのインスタンス
  */
-const WhitePoint: ImageManipulation<WhitePointConfig> = async (state, config) => {
+const WhitePoint: ImageManipulation<WhitePointConfig> = (state, config) => {
   const { x, y } = config;
   return state.whitePoint(x, y);
 };

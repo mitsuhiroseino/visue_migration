@@ -14,7 +14,7 @@ import { InterlaceConfig } from './types';
  * @param config Interlaceのコンフィグ
  * @returns gmのインスタンス
  */
-const Interlace: ImageManipulation<InterlaceConfig> = async (state, config) => {
+const Interlace: ImageManipulation<InterlaceConfig> = (state, config) => {
   const { interlaceType } = config;
   return state.interlace(interlaceType);
 };

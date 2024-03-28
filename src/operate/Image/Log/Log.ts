@@ -14,7 +14,7 @@ import { LogConfig } from './types';
  * @param config Logのコンフィグ
  * @returns gmのインスタンス
  */
-const Log: ImageManipulation<LogConfig> = async (state, config) => {
+const Log: ImageManipulation<LogConfig> = (state, config) => {
   const { format } = config;
   return state.log(format);
 };

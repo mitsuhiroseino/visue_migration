@@ -14,7 +14,7 @@ import { MosaicConfig } from './types';
  * @param config Mosaicのコンフィグ
  * @returns gmのインスタンス
  */
-const Mosaic: ImageManipulation<MosaicConfig> = async (state, config) => {
+const Mosaic: ImageManipulation<MosaicConfig> = (state, config) => {
   const {} = config;
   return state.mosaic();
 };

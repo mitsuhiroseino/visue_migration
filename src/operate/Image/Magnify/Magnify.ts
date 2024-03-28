@@ -14,7 +14,7 @@ import { MagnifyConfig } from './types';
  * @param config Magnifyのコンフィグ
  * @returns gmのインスタンス
  */
-const Magnify: ImageManipulation<MagnifyConfig> = async (state, config) => {
+const Magnify: ImageManipulation<MagnifyConfig> = (state, config) => {
   const { factor } = config;
   return state.magnify(factor);
 };

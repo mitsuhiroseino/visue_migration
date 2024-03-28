@@ -14,7 +14,7 @@ import { MaskConfig } from './types';
  * @param config Maskのコンフィグ
  * @returns gmのインスタンス
  */
-const Mask: ImageManipulation<MaskConfig> = async (state, config) => {
+const Mask: ImageManipulation<MaskConfig> = (state, config) => {
   const { filename } = config;
   return state.mask(filename);
 };

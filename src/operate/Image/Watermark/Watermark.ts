@@ -14,7 +14,7 @@ import { WatermarkConfig } from './types';
  * @param config Watermarkのコンフィグ
  * @returns gmのインスタンス
  */
-const Watermark: ImageManipulation<WatermarkConfig> = async (state, config) => {
+const Watermark: ImageManipulation<WatermarkConfig> = (state, config) => {
   const { brightness, saturation } = config;
   return state.watermark(brightness, saturation);
 };

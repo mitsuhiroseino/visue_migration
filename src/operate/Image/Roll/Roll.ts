@@ -14,7 +14,7 @@ import { RollConfig } from './types';
  * @param config Rollのコンフィグ
  * @returns gmのインスタンス
  */
-const Roll: ImageManipulation<RollConfig> = async (state, config) => {
+const Roll: ImageManipulation<RollConfig> = (state, config) => {
   const { horizontal, vertical } = config;
   return state.roll(horizontal, vertical);
 };

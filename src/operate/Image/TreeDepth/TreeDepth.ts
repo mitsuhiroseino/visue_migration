@@ -14,7 +14,7 @@ import { TreeDepthConfig } from './types';
  * @param config TreeDepthのコンフィグ
  * @returns gmのインスタンス
  */
-const TreeDepth: ImageManipulation<TreeDepthConfig> = async (state, config) => {
+const TreeDepth: ImageManipulation<TreeDepthConfig> = (state, config) => {
   const { depth } = config;
   return state.treeDepth(depth);
 };

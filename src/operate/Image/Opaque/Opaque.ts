@@ -14,7 +14,7 @@ import { OpaqueConfig } from './types';
  * @param config Opaqueのコンフィグ
  * @returns gmのインスタンス
  */
-const Opaque: ImageManipulation<OpaqueConfig> = async (state, config) => {
+const Opaque: ImageManipulation<OpaqueConfig> = (state, config) => {
   const { color } = config;
   return state.opaque(color);
 };

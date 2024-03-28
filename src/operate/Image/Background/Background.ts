@@ -14,7 +14,7 @@ import { BackgroundConfig } from './types';
  * @param config Backgroundのコンフィグ
  * @returns gmのインスタンス
  */
-const Background: ImageManipulation<BackgroundConfig> = async (state, config) => {
+const Background: ImageManipulation<BackgroundConfig> = (state, config) => {
   const { color } = config;
   return state.background(color);
 };

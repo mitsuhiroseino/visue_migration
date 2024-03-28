@@ -14,7 +14,7 @@ import { DisposeConfig } from './types';
  * @param config Disposeのコンフィグ
  * @returns gmのインスタンス
  */
-const Dispose: ImageManipulation<DisposeConfig> = async (state, config) => {
+const Dispose: ImageManipulation<DisposeConfig> = (state, config) => {
   const { method } = config;
   return state.dispose(method);
 };

@@ -14,7 +14,7 @@ import { SilentConfig } from './types';
  * @param config Silentのコンフィグ
  * @returns gmのインスタンス
  */
-const Silent: ImageManipulation<SilentConfig> = async (state, config) => {
+const Silent: ImageManipulation<SilentConfig> = (state, config) => {
   const {} = config;
   return state.silent();
 };

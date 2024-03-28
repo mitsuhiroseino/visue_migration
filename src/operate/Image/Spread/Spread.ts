@@ -14,7 +14,7 @@ import { SpreadConfig } from './types';
  * @param config Spreadのコンフィグ
  * @returns gmのインスタンス
  */
-const Spread: ImageManipulation<SpreadConfig> = async (state, config) => {
+const Spread: ImageManipulation<SpreadConfig> = (state, config) => {
   const { amount } = config;
   return state.spread(amount);
 };

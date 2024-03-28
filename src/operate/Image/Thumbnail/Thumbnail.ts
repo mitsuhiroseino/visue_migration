@@ -14,7 +14,7 @@ import { ThumbnailConfig } from './types';
  * @param config Thumbnailのコンフィグ
  * @returns gmのインスタンス
  */
-const Thumbnail: ImageManipulation<ThumbnailConfig> = async (state, config) => {
+const Thumbnail: ImageManipulation<ThumbnailConfig> = (state, config) => {
   const { width, height, options } = config;
   return state.thumbnail(width, height, options);
 };

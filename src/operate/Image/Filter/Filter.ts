@@ -14,7 +14,7 @@ import { FilterConfig } from './types';
  * @param config Filterのコンフィグ
  * @returns gmのインスタンス
  */
-const Filter: ImageManipulation<FilterConfig> = async (state, config) => {
+const Filter: ImageManipulation<FilterConfig> = (state, config) => {
   const { filterType } = config;
   return state.filter(filterType);
 };

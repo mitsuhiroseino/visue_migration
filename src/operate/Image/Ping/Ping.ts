@@ -14,7 +14,7 @@ import { PingConfig } from './types';
  * @param config Pingのコンフィグ
  * @returns gmのインスタンス
  */
-const Ping: ImageManipulation<PingConfig> = async (state, config) => {
+const Ping: ImageManipulation<PingConfig> = (state, config) => {
   const {} = config;
   return state.ping();
 };

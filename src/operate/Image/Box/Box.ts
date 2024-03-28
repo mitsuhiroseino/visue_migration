@@ -14,7 +14,7 @@ import { BoxConfig } from './types';
  * @param config Boxのコンフィグ
  * @returns gmのインスタンス
  */
-const Box: ImageManipulation<BoxConfig> = async (state, config) => {
+const Box: ImageManipulation<BoxConfig> = (state, config) => {
   const { color } = config;
   return state.box(color);
 };

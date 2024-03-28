@@ -14,7 +14,7 @@ import { MatteConfig } from './types';
  * @param config Matteのコンフィグ
  * @returns gmのインスタンス
  */
-const Matte: ImageManipulation<MatteConfig> = async (state, config) => {
+const Matte: ImageManipulation<MatteConfig> = (state, config) => {
   const {} = config;
   return state.matte();
 };

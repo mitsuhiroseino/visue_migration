@@ -14,7 +14,7 @@ import { BlackThresholdConfig } from './types';
  * @param config BlackThresholdのコンフィグ
  * @returns gmのインスタンス
  */
-const BlackThreshold: ImageManipulation<BlackThresholdConfig> = async (state, config) => {
+const BlackThreshold: ImageManipulation<BlackThresholdConfig> = (state, config) => {
   const { intensity, red, green, blue, opacity } = config;
   if (intensity == null) {
     return state.blackThreshold(red, green, blue, opacity);

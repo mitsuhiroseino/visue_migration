@@ -14,7 +14,7 @@ import { SamplingFactorConfig } from './types';
  * @param config SamplingFactorのコンフィグ
  * @returns gmのインスタンス
  */
-const SamplingFactor: ImageManipulation<SamplingFactorConfig> = async (state, config) => {
+const SamplingFactor: ImageManipulation<SamplingFactorConfig> = (state, config) => {
   const { horizontalFactor, verticalFactor } = config;
   return state.samplingFactor(horizontalFactor, verticalFactor);
 };

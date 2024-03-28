@@ -14,7 +14,7 @@ import { ScaleConfig } from './types';
  * @param config Scaleのコンフィグ
  * @returns gmのインスタンス
  */
-const Scale: ImageManipulation<ScaleConfig> = async (state, config) => {
+const Scale: ImageManipulation<ScaleConfig> = (state, config) => {
   const { width, height } = config;
   return state.scale(width, height);
 };

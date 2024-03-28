@@ -14,7 +14,7 @@ import { MinifyConfig } from './types';
  * @param config Minifyのコンフィグ
  * @returns gmのインスタンス
  */
-const Minify: ImageManipulation<MinifyConfig> = async (state, config) => {
+const Minify: ImageManipulation<MinifyConfig> = (state, config) => {
   const { factor } = config;
   return state.minify(factor);
 };

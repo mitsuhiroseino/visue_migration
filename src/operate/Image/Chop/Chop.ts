@@ -14,7 +14,7 @@ import { ChopConfig } from './types';
  * @param config Chopのコンフィグ
  * @returns gmのインスタンス
  */
-const Chop: ImageManipulation<ChopConfig> = async (state, config) => {
+const Chop: ImageManipulation<ChopConfig> = (state, config) => {
   const { width, height, x, y } = config;
   return state.chop(width, height, x, y);
 };

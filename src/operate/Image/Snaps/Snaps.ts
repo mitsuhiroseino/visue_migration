@@ -14,7 +14,7 @@ import { SnapsConfig } from './types';
  * @param config Snapsのコンフィグ
  * @returns gmのインスタンス
  */
-const Snaps: ImageManipulation<SnapsConfig> = async (state, config) => {
+const Snaps: ImageManipulation<SnapsConfig> = (state, config) => {
   const { count } = config;
   return state.snaps(count);
 };

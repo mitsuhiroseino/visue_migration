@@ -14,7 +14,7 @@ import { DitherConfig } from './types';
  * @param config Ditherのコンフィグ
  * @returns gmのインスタンス
  */
-const Dither: ImageManipulation<DitherConfig> = async (state, config) => {
+const Dither: ImageManipulation<DitherConfig> = (state, config) => {
   const { enable } = config;
   return state.dither(enable);
 };

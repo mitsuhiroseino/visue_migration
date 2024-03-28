@@ -14,7 +14,7 @@ import { MapConfig } from './types';
  * @param config Mapのコンフィグ
  * @returns gmのインスタンス
  */
-const Map: ImageManipulation<MapConfig> = async (state, config) => {
+const Map: ImageManipulation<MapConfig> = (state, config) => {
   const { filename } = config;
   return state.map(filename);
 };

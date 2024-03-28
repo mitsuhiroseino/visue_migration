@@ -14,7 +14,7 @@ import { ModulateConfig } from './types';
  * @param config Modulateのコンフィグ
  * @returns gmのインスタンス
  */
-const Modulate: ImageManipulation<ModulateConfig> = async (state, config) => {
+const Modulate: ImageManipulation<ModulateConfig> = (state, config) => {
   const { b, s, h } = config;
   return state.modulate(b, s, h);
 };

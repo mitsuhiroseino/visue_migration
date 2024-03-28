@@ -14,7 +14,7 @@ import { SepiaConfig } from './types';
  * @param config Sepiaのコンフィグ
  * @returns gmのインスタンス
  */
-const Sepia: ImageManipulation<SepiaConfig> = async (state, config) => {
+const Sepia: ImageManipulation<SepiaConfig> = (state, config) => {
   const {} = config;
   return state.sepia();
 };

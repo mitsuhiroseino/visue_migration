@@ -14,7 +14,7 @@ import { AntialiasConfig } from './types';
  * @param config Antialiasのコンフィグ
  * @returns gmのインスタンス
  */
-const Antialias: ImageManipulation<AntialiasConfig> = async (state, config) => {
+const Antialias: ImageManipulation<AntialiasConfig> = (state, config) => {
   const { enable } = config;
   return state.antialias(enable);
 };

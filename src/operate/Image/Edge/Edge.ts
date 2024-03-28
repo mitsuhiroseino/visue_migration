@@ -14,7 +14,7 @@ import { EdgeConfig } from './types';
  * @param config Edgeのコンフィグ
  * @returns gmのインスタンス
  */
-const Edge: ImageManipulation<EdgeConfig> = async (state, config) => {
+const Edge: ImageManipulation<EdgeConfig> = (state, config) => {
   const { radius } = config;
   return state.edge(radius);
 };

@@ -14,7 +14,7 @@ import { DensityConfig } from './types';
  * @param config Densityのコンフィグ
  * @returns gmのインスタンス
  */
-const Density: ImageManipulation<DensityConfig> = async (state, config) => {
+const Density: ImageManipulation<DensityConfig> = (state, config) => {
   const { width, height } = config;
   return state.density(width, height);
 };

@@ -14,7 +14,7 @@ import { SegmentConfig } from './types';
  * @param config Segmentのコンフィグ
  * @returns gmのインスタンス
  */
-const Segment: ImageManipulation<SegmentConfig> = async (state, config) => {
+const Segment: ImageManipulation<SegmentConfig> = (state, config) => {
   const { clustherThreshold, smoothingThreshold } = config;
   return state.segment(clustherThreshold, smoothingThreshold);
 };

@@ -14,7 +14,7 @@ import { AutoOrientConfig } from './types';
  * @param config AutoOrientのコンフィグ
  * @returns gmのインスタンス
  */
-const AutoOrient: ImageManipulation<AutoOrientConfig> = async (state, config) => {
+const AutoOrient: ImageManipulation<AutoOrientConfig> = (state, config) => {
   const {} = config;
   return state.autoOrient();
 };

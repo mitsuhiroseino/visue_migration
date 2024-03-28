@@ -14,7 +14,7 @@ import { ProfileConfig } from './types';
  * @param config Profileのコンフィグ
  * @returns gmのインスタンス
  */
-const Profile: ImageManipulation<ProfileConfig> = async (state, config) => {
+const Profile: ImageManipulation<ProfileConfig> = (state, config) => {
   const { filename } = config;
   return state.profile(filename);
 };

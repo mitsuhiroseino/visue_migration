@@ -14,7 +14,7 @@ import { FlopConfig } from './types';
  * @param config Flopのコンフィグ
  * @returns gmのインスタンス
  */
-const Flop: ImageManipulation<FlopConfig> = async (state, config) => {
+const Flop: ImageManipulation<FlopConfig> = (state, config) => {
   const {} = config;
   return state.flop();
 };

@@ -14,7 +14,7 @@ import { UsePixmapConfig } from './types';
  * @param config UsePixmapのコンフィグ
  * @returns gmのインスタンス
  */
-const UsePixmap: ImageManipulation<UsePixmapConfig> = async (state, config) => {
+const UsePixmap: ImageManipulation<UsePixmapConfig> = (state, config) => {
   const {} = config;
   return state.usePixmap();
 };

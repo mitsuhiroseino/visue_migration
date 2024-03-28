@@ -14,7 +14,7 @@ import { PageConfig } from './types';
  * @param config Pageのコンフィグ
  * @returns gmのインスタンス
  */
-const Page: ImageManipulation<PageConfig> = async (state, config) => {
+const Page: ImageManipulation<PageConfig> = (state, config) => {
   const { width, height, arg } = config;
   return state.page(width, height, arg);
 };

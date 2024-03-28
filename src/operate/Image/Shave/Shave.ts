@@ -14,7 +14,7 @@ import { ShaveConfig } from './types';
  * @param config Shaveのコンフィグ
  * @returns gmのインスタンス
  */
-const Shave: ImageManipulation<ShaveConfig> = async (state, config) => {
+const Shave: ImageManipulation<ShaveConfig> = (state, config) => {
   const { width, height, percent } = config;
   return state.shave(width, height, percent);
 };

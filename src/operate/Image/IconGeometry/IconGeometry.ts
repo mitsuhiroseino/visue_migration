@@ -14,7 +14,7 @@ import { IconGeometryConfig } from './types';
  * @param config IconGeometryのコンフィグ
  * @returns gmのインスタンス
  */
-const IconGeometry: ImageManipulation<IconGeometryConfig> = async (state, config) => {
+const IconGeometry: ImageManipulation<IconGeometryConfig> = (state, config) => {
   const { geometry } = config;
   return state.iconGeometry(geometry);
 };

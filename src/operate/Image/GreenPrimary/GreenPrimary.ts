@@ -14,7 +14,7 @@ import { GreenPrimaryConfig } from './types';
  * @param config GreenPrimaryのコンフィグ
  * @returns gmのインスタンス
  */
-const GreenPrimary: ImageManipulation<GreenPrimaryConfig> = async (state, config) => {
+const GreenPrimary: ImageManipulation<GreenPrimaryConfig> = (state, config) => {
   const { x, y } = config;
   return state.greenPrimary(x, y);
 };

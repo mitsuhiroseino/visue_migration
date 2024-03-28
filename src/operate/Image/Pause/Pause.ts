@@ -14,7 +14,7 @@ import { PauseConfig } from './types';
  * @param config Pauseのコンフィグ
  * @returns gmのインスタンス
  */
-const Pause: ImageManipulation<PauseConfig> = async (state, config) => {
+const Pause: ImageManipulation<PauseConfig> = (state, config) => {
   const { seconds } = config;
   return state.pause(seconds);
 };

@@ -14,7 +14,7 @@ import { ImplodeConfig } from './types';
  * @param config Implodeのコンフィグ
  * @returns gmのインスタンス
  */
-const Implode: ImageManipulation<ImplodeConfig> = async (state, config) => {
+const Implode: ImageManipulation<ImplodeConfig> = (state, config) => {
   const { factor } = config;
   return state.implode(factor);
 };

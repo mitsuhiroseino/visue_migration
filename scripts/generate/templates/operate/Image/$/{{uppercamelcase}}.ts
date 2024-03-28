@@ -14,7 +14,7 @@ import { {{uppercamelcase}}Config } from './types';
  * @param config {{uppercamelcase}}のコンフィグ
  * @returns gmのインスタンス
  */
-const {{uppercamelcase}}: ImageManipulation<{{uppercamelcase}}Config> = async (state, config) => {
+const {{uppercamelcase}}: ImageManipulation<{{uppercamelcase}}Config> = (state, config) => {
   const { {{args}} } = config;
   {{#if (eq uppercamelcase "BlackThreshold")}}
   if (intensity == null) {

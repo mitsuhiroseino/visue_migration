@@ -14,7 +14,7 @@ import { TransformConfig } from './types';
  * @param config Transformのコンフィグ
  * @returns gmのインスタンス
  */
-const Transform: ImageManipulation<TransformConfig> = async (state, config) => {
+const Transform: ImageManipulation<TransformConfig> = (state, config) => {
   const { color } = config;
   return state.transform(color);
 };

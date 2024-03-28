@@ -14,7 +14,7 @@ import { CharcoalConfig } from './types';
  * @param config Charcoalのコンフィグ
  * @returns gmのインスタンス
  */
-const Charcoal: ImageManipulation<CharcoalConfig> = async (state, config) => {
+const Charcoal: ImageManipulation<CharcoalConfig> = (state, config) => {
   const { factor } = config;
   return state.charcoal(factor);
 };

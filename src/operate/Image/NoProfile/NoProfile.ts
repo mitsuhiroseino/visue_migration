@@ -14,7 +14,7 @@ import { NoProfileConfig } from './types';
  * @param config NoProfileのコンフィグ
  * @returns gmのインスタンス
  */
-const NoProfile: ImageManipulation<NoProfileConfig> = async (state, config) => {
+const NoProfile: ImageManipulation<NoProfileConfig> = (state, config) => {
   const {} = config;
   return state.noProfile();
 };

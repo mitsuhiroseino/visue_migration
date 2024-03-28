@@ -14,7 +14,7 @@ import { TransparentConfig } from './types';
  * @param config Transparentのコンフィグ
  * @returns gmのインスタンス
  */
-const Transparent: ImageManipulation<TransparentConfig> = async (state, config) => {
+const Transparent: ImageManipulation<TransparentConfig> = (state, config) => {
   const { color } = config;
   return state.transparent(color);
 };

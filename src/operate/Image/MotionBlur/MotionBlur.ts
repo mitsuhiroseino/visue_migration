@@ -14,7 +14,7 @@ import { MotionBlurConfig } from './types';
  * @param config MotionBlurのコンフィグ
  * @returns gmのインスタンス
  */
-const MotionBlur: ImageManipulation<MotionBlurConfig> = async (state, config) => {
+const MotionBlur: ImageManipulation<MotionBlurConfig> = (state, config) => {
   const { radius, sigma, angle } = config;
   return state.motionBlur(radius, sigma, angle);
 };

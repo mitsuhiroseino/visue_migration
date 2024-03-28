@@ -14,7 +14,7 @@ import { EncodingConfig } from './types';
  * @param config Encodingのコンフィグ
  * @returns gmのインスタンス
  */
-const Encoding: ImageManipulation<EncodingConfig> = async (state, config) => {
+const Encoding: ImageManipulation<EncodingConfig> = (state, config) => {
   const { encoding } = config;
   return state.encoding(encoding);
 };

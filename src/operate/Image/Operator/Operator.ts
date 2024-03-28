@@ -14,7 +14,7 @@ import { OperatorConfig } from './types';
  * @param config Operatorのコンフィグ
  * @returns gmのインスタンス
  */
-const Operator: ImageManipulation<OperatorConfig> = async (state, config) => {
+const Operator: ImageManipulation<OperatorConfig> = (state, config) => {
   const { channel, operator, rvalue, percent } = config;
   return state.operator(channel, operator, rvalue, percent);
 };

@@ -14,7 +14,7 @@ import { RaiseConfig } from './types';
  * @param config Raiseのコンフィグ
  * @returns gmのインスタンス
  */
-const Raise: ImageManipulation<RaiseConfig> = async (state, config) => {
+const Raise: ImageManipulation<RaiseConfig> = (state, config) => {
   const { width, height } = config;
   return state.raise(width, height);
 };

@@ -14,7 +14,7 @@ import { BlurConfig } from './types';
  * @param config Blurのコンフィグ
  * @returns gmのインスタンス
  */
-const Blur: ImageManipulation<BlurConfig> = async (state, config) => {
+const Blur: ImageManipulation<BlurConfig> = (state, config) => {
   const { radius, sigma } = config;
   return state.blur(radius, sigma);
 };

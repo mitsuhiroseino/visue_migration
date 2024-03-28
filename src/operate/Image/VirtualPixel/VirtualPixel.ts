@@ -14,7 +14,7 @@ import { VirtualPixelConfig } from './types';
  * @param config VirtualPixelのコンフィグ
  * @returns gmのインスタンス
  */
-const VirtualPixel: ImageManipulation<VirtualPixelConfig> = async (state, config) => {
+const VirtualPixel: ImageManipulation<VirtualPixelConfig> = (state, config) => {
   const { method } = config;
   return state.virtualPixel(method);
 };

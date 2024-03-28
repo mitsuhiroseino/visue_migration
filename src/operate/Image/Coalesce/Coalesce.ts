@@ -14,7 +14,7 @@ import { CoalesceConfig } from './types';
  * @param config Coalesceのコンフィグ
  * @returns gmのインスタンス
  */
-const Coalesce: ImageManipulation<CoalesceConfig> = async (state, config) => {
+const Coalesce: ImageManipulation<CoalesceConfig> = (state, config) => {
   const {} = config;
   return state.coalesce();
 };

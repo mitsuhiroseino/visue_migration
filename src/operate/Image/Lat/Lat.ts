@@ -14,7 +14,7 @@ import { LatConfig } from './types';
  * @param config Latのコンフィグ
  * @returns gmのインスタンス
  */
-const Lat: ImageManipulation<LatConfig> = async (state, config) => {
+const Lat: ImageManipulation<LatConfig> = (state, config) => {
   const { width, height, offset, percent } = config;
   return state.lat(width, height, offset, percent);
 };

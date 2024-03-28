@@ -14,7 +14,7 @@ import { GammaConfig } from './types';
  * @param config Gammaのコンフィグ
  * @returns gmのインスタンス
  */
-const Gamma: ImageManipulation<GammaConfig> = async (state, config) => {
+const Gamma: ImageManipulation<GammaConfig> = (state, config) => {
   const { r, g, b } = config;
   return state.gamma(r, g, b);
 };

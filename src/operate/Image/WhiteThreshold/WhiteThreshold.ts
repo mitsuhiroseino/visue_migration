@@ -14,7 +14,7 @@ import { WhiteThresholdConfig } from './types';
  * @param config WhiteThresholdのコンフィグ
  * @returns gmのインスタンス
  */
-const WhiteThreshold: ImageManipulation<WhiteThresholdConfig> = async (state, config) => {
+const WhiteThreshold: ImageManipulation<WhiteThresholdConfig> = (state, config) => {
   const { red, green, blue, opacity, intensity } = config;
   if (intensity == null) {
     return state.whiteThreshold(red, green, blue, opacity);

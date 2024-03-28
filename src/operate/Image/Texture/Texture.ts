@@ -14,7 +14,7 @@ import { TextureConfig } from './types';
  * @param config Textureのコンフィグ
  * @returns gmのインスタンス
  */
-const Texture: ImageManipulation<TextureConfig> = async (state, config) => {
+const Texture: ImageManipulation<TextureConfig> = (state, config) => {
   const { filename } = config;
   return state.texture(filename);
 };

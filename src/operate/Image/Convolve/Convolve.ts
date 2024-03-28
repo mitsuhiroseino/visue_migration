@@ -14,7 +14,7 @@ import { ConvolveConfig } from './types';
  * @param config Convolveのコンフィグ
  * @returns gmのインスタンス
  */
-const Convolve: ImageManipulation<ConvolveConfig> = async (state, config) => {
+const Convolve: ImageManipulation<ConvolveConfig> = (state, config) => {
   const { kernel } = config;
   return state.convolve(kernel);
 };

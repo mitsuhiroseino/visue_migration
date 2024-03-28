@@ -14,7 +14,7 @@ import { DelayConfig } from './types';
  * @param config Delayのコンフィグ
  * @returns gmのインスタンス
  */
-const Delay: ImageManipulation<DelayConfig> = async (state, config) => {
+const Delay: ImageManipulation<DelayConfig> = (state, config) => {
   const { centiseconds } = config;
   return state.delay(centiseconds);
 };

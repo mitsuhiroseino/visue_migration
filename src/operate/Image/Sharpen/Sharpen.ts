@@ -14,7 +14,7 @@ import { SharpenConfig } from './types';
  * @param config Sharpenのコンフィグ
  * @returns gmのインスタンス
  */
-const Sharpen: ImageManipulation<SharpenConfig> = async (state, config) => {
+const Sharpen: ImageManipulation<SharpenConfig> = (state, config) => {
   const { radius, sigma } = config;
   return state.sharpen(radius, sigma);
 };

@@ -14,7 +14,7 @@ import { LoopConfig } from './types';
  * @param config Loopのコンフィグ
  * @returns gmのインスタンス
  */
-const Loop: ImageManipulation<LoopConfig> = async (state, config) => {
+const Loop: ImageManipulation<LoopConfig> = (state, config) => {
   const { iterations } = config;
   return state.loop(iterations);
 };

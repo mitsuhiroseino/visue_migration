@@ -14,7 +14,7 @@ import { ColorizeConfig } from './types';
  * @param config Colorizeのコンフィグ
  * @returns gmのインスタンス
  */
-const Colorize: ImageManipulation<ColorizeConfig> = async (state, config) => {
+const Colorize: ImageManipulation<ColorizeConfig> = (state, config) => {
   const { red, green, blue } = config;
   return state.colorize(red, green, blue);
 };

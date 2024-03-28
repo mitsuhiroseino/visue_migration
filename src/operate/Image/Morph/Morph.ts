@@ -14,7 +14,7 @@ import { MorphConfig } from './types';
  * @param config Morphのコンフィグ
  * @returns gmのインスタンス
  */
-const Morph: ImageManipulation<MorphConfig> = async (state, config) => {
+const Morph: ImageManipulation<MorphConfig> = (state, config) => {
   const { otherImg, outName, callback } = config;
   return state.morph(otherImg, outName, callback);
 };

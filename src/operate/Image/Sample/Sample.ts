@@ -14,7 +14,7 @@ import { SampleConfig } from './types';
  * @param config Sampleのコンフィグ
  * @returns gmのインスタンス
  */
-const Sample: ImageManipulation<SampleConfig> = async (state, config) => {
+const Sample: ImageManipulation<SampleConfig> = (state, config) => {
   const { geometry } = config;
   return state.sample(geometry);
 };

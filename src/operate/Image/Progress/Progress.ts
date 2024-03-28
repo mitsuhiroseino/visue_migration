@@ -14,7 +14,7 @@ import { ProgressConfig } from './types';
  * @param config Progressのコンフィグ
  * @returns gmのインスタンス
  */
-const Progress: ImageManipulation<ProgressConfig> = async (state, config) => {
+const Progress: ImageManipulation<ProgressConfig> = (state, config) => {
   const {} = config;
   return state.progress();
 };

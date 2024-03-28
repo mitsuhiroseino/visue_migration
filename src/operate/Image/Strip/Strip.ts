@@ -14,7 +14,7 @@ import { StripConfig } from './types';
  * @param config Stripのコンフィグ
  * @returns gmのインスタンス
  */
-const Strip: ImageManipulation<StripConfig> = async (state, config) => {
+const Strip: ImageManipulation<StripConfig> = (state, config) => {
   const {} = config;
   return state.strip();
 };
