@@ -1,17 +1,11 @@
 import { Content } from '../../types';
-import { BundleConfig } from '../Bundle';
 import { OPERATION_TYPE } from '../constants';
-import { OperationParams } from '../types';
+import { OperationParams, ParentOperationConfigBase } from '../types';
 
 /**
  * パラメーターの更新
  */
-export type ParamsConfig<C = Content> = Omit<BundleConfig, 'type'> & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.PARAMS;
-
+export type ParamsConfig<C = Content> = ParentOperationConfigBase<typeof OPERATION_TYPE.PARAMS, C> & {
   /**
    * パラメーターの差分作成関数
    * @param content コンテンツ

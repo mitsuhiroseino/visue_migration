@@ -9,9 +9,9 @@ import { NormaliseConfig } from './types';
  * @param config Normaliseのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Normalise: SharpManipulation<NormaliseConfig> = async (sharp, config) => {
+const Normalise: SharpManipulation<NormaliseConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.normalise(options);
+  return sharp.normalise(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.NORMALISE, Normalise);
 export default Normalise;

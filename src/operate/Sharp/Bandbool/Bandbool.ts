@@ -9,9 +9,9 @@ import { BandboolConfig } from './types';
  * @param config Bandboolのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Bandbool: SharpManipulation<BandboolConfig> = async (sharp, config) => {
+const Bandbool: SharpManipulation<BandboolConfig> = (sharp, config) => {
   const { boolOp } = config;
-  return await sharp.bandbool(boolOp);
+  return sharp.bandbool(boolOp);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.BANDBOOL, Bandbool);
 export default Bandbool;

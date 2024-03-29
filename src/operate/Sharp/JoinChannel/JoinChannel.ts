@@ -9,9 +9,9 @@ import { JoinChannelConfig } from './types';
  * @param config JoinChannelのコンフィグ
  * @returns Sharpのインスタンス
  */
-const JoinChannel: SharpManipulation<JoinChannelConfig> = async (sharp, config) => {
+const JoinChannel: SharpManipulation<JoinChannelConfig> = (sharp, config) => {
   const { type, images, ...options } = config;
-  return await sharp.joinChannel(images, options);
+  return sharp.joinChannel(images, options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.JOIN_CHANNEL, JoinChannel);
 export default JoinChannel;

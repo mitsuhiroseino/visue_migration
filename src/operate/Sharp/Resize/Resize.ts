@@ -9,9 +9,9 @@ import { ResizeConfig } from './types';
  * @param config Resizeのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Resize: SharpManipulation<ResizeConfig> = async (sharp, config) => {
+const Resize: SharpManipulation<ResizeConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.resize(options);
+  return sharp.resize(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.RESIZE, Resize);
 export default Resize;

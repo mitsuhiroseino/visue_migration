@@ -6,6 +6,7 @@ import { DeleteConfig } from './Delete';
 import { EditConfig } from './Edit';
 import { FormatConfig } from './Format';
 import { GenerateConfig } from './Generate';
+import { ImageConfig } from './Image';
 import { ParamsConfig } from './Params';
 import { ReplaceConfig } from './Replace';
 import { UnbomConfig } from './Unbom';
@@ -14,13 +15,14 @@ import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
 /**
  * 操作の設定
  */
-export type OperationConfigTypes =
+export type OperationConfig =
   | AddConfig
   | BundleConfig
   | DeleteConfig
   | EditConfig
   | FormatConfig
   | GenerateConfig
+  | ImageConfig
   | ParamsConfig
   | ReplaceConfig
   | UnbomConfig;
@@ -38,7 +40,7 @@ export type ContentType = (typeof CONTENT_TYPE)[keyof typeof CONTENT_TYPE];
 /**
  * 操作の設定
  */
-export type OperationConfig<T = OperationType> = FormattingConfig &
+export type OperationConfigBase<T = OperationType> = FormattingConfig &
   InputOputputConfig &
   ReplacementConfig & {
     /**
@@ -62,6 +64,19 @@ export type OperationConfig<T = OperationType> = FormattingConfig &
   };
 
 /**
+ * 子要素を持つ操作のコンフィグ
+ */
+export type ParentOperationConfigBase<T = OperationType, C = Content> = OperationConfigBase<T> & {
+  /**
+   * 子操作
+   */
+  operations:
+    | OperationConfigBase
+    | OperationConfigBase[]
+    | ((content: C, params: OperationParams) => Promise<OperationConfigBase | OperationConfigBase>);
+};
+
+/**
  * 内容に埋め込む値
  */
 export type OperationParams = {
@@ -79,16 +94,24 @@ export type OperationParams = {
 /**
  * 処理の結果
  */
-export type OperationResult<C = Content, T = OperationConfigTypes> = { content: C; results: T[] };
+export type OperationResult<C = Content, T = OperationConfig> = { content: C; results: T[] };
 
 /**
  * 内容に対する操作
  */
-export type Operation<C = Content, S extends OperationConfig = OperationConfig> = (
+export type Operation<C = Content, S extends OperationConfigBase = OperationConfigBase> = (
   content: C,
   config: S,
   params: OperationParams
 ) => Promise<C | Content>;
+
+/**
+ * 子要素を持つ操作
+ */
+export type ParentOperation<C = Content, S extends ParentOperationConfigBase = ParentOperationConfigBase> = Operation<
+  C,
+  S
+>;
 
 /**
  * 静的パターン

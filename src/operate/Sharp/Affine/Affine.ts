@@ -9,9 +9,9 @@ import { AffineConfig } from './types';
  * @param config Affineのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Affine: SharpManipulation<AffineConfig> = async (sharp, config) => {
+const Affine: SharpManipulation<AffineConfig> = (sharp, config) => {
   const { type, matrix, ...options } = config;
-  return await sharp.affine(matrix, options);
+  return sharp.affine(matrix, options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.AFFINE, Affine);
 export default Affine;

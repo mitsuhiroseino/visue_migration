@@ -21,7 +21,7 @@ const Sharp: Operation<Buffer, SharpConfig> = async (content: Buffer, config: Sh
   for (const manipulationConfig of asArray(manipulations)) {
     const manipulation = SharpManipulationFactory.get(manipulationConfig.type);
     if (manipulation) {
-      sharp = await manipulation(sharp, manipulationConfig);
+      sharp = manipulation(sharp, manipulationConfig);
     } else {
       console.warn(`There was no manipulation "${manipulationConfig.type}".`);
     }

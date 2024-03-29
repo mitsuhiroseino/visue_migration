@@ -9,9 +9,9 @@ import { ToColourspaceConfig } from './types';
  * @param config ToColourspaceのコンフィグ
  * @returns Sharpのインスタンス
  */
-const ToColourspace: SharpManipulation<ToColourspaceConfig> = async (sharp, config) => {
+const ToColourspace: SharpManipulation<ToColourspaceConfig> = (sharp, config) => {
   const { colourspace } = config;
-  return await sharp.toColourspace(colourspace);
+  return sharp.toColourspace(colourspace);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.TO_COLOURSPACE, ToColourspace);
 export default ToColourspace;

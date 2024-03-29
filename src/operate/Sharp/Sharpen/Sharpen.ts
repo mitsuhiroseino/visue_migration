@@ -9,9 +9,9 @@ import { SharpenConfig } from './types';
  * @param config Sharpenのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Sharpen: SharpManipulation<SharpenConfig> = async (sharp, config) => {
+const Sharpen: SharpManipulation<SharpenConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.sharpen(options);
+  return sharp.sharpen(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.SHARPEN, Sharpen);
 export default Sharpen;

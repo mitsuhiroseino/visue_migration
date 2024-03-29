@@ -1,15 +1,10 @@
 import { OPERATION_TYPE } from '../constants';
-import { FlexiblePattern, OperationConfig } from '../types';
+import { FlexiblePattern, OperationConfigBase } from '../types';
 
 /**
  * 文字列置換の設定
  */
-export type ReplaceConfig = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.REPLACE;
-
+export type ReplaceConfig = OperationConfigBase<typeof OPERATION_TYPE.REPLACE> & {
   /**
    * 置換対象
    */

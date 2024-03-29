@@ -9,9 +9,9 @@ import { FlipConfig } from './types';
  * @param config Flipのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Flip: SharpManipulation<FlipConfig> = async (sharp, config) => {
+const Flip: SharpManipulation<FlipConfig> = (sharp, config) => {
   const { flip } = config;
-  return await sharp.flip(flip);
+  return sharp.flip(flip);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.FLIP, Flip);
 export default Flip;

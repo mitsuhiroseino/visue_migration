@@ -9,9 +9,9 @@ import { BlurConfig } from './types';
  * @param config Blurのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Blur: SharpManipulation<BlurConfig> = async (sharp, config) => {
+const Blur: SharpManipulation<BlurConfig> = (sharp, config) => {
   const { sigma } = config;
-  return await sharp.blur(sigma);
+  return sharp.blur(sigma);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.BLUR, Blur);
 export default Blur;

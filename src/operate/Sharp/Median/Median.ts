@@ -9,9 +9,9 @@ import { MedianConfig } from './types';
  * @param config Medianのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Median: SharpManipulation<MedianConfig> = async (sharp, config) => {
+const Median: SharpManipulation<MedianConfig> = (sharp, config) => {
   const { size } = config;
-  return await sharp.median(size);
+  return sharp.median(size);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.MEDIAN, Median);
 export default Median;

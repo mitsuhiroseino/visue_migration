@@ -1,13 +1,10 @@
 import SharpLib from 'sharp';
-
 import { SHARP_MANIPULATION_TYPE } from '../constants';
+import { SharpManipulationConfig } from '../types';
 
 /**
  * 画像操作`Normalize`の設定
  */
-export type NormalizeConfig = {
-  /**
-   * 画像操作種別
-   */
-  type: typeof SHARP_MANIPULATION_TYPE.NORMALIZE;
-} & SharpLib.NormaliseOptions;
+export type NormalizeConfig = SharpManipulationConfig<
+  typeof SHARP_MANIPULATION_TYPE.NORMALIZE
+> & {} & SharpLib.NormaliseOptions;

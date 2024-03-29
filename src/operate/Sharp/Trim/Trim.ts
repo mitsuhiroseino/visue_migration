@@ -9,9 +9,9 @@ import { TrimConfig } from './types';
  * @param config Trimのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Trim: SharpManipulation<TrimConfig> = async (sharp, config) => {
+const Trim: SharpManipulation<TrimConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.trim(options);
+  return sharp.trim(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.TRIM, Trim);
 export default Trim;

@@ -9,9 +9,9 @@ import { PipelineColorspaceConfig } from './types';
  * @param config PipelineColorspaceのコンフィグ
  * @returns Sharpのインスタンス
  */
-const PipelineColorspace: SharpManipulation<PipelineColorspaceConfig> = async (sharp, config) => {
+const PipelineColorspace: SharpManipulation<PipelineColorspaceConfig> = (sharp, config) => {
   const { colorspace } = config;
-  return await sharp.pipelineColorspace(colorspace);
+  return sharp.pipelineColorspace(colorspace);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.PIPELINE_COLORSPACE, PipelineColorspace);
 export default PipelineColorspace;

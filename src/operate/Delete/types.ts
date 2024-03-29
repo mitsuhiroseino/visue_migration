@@ -1,15 +1,10 @@
 import { OPERATION_TYPE } from '../constants';
-import { FlexiblePattern, OperationConfig } from '../types';
+import { FlexiblePattern, OperationConfigBase } from '../types';
 
 /**
  * 文字列削除の設定
  */
-export type DeleteConfig = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.DELETE;
-
+export type DeleteConfig = OperationConfigBase<typeof OPERATION_TYPE.DELETE> & {
   /**
    * 削除対象
    */

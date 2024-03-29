@@ -9,9 +9,9 @@ import { FlopConfig } from './types';
  * @param config Flopのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Flop: SharpManipulation<FlopConfig> = async (sharp, config) => {
+const Flop: SharpManipulation<FlopConfig> = (sharp, config) => {
   const { flop } = config;
-  return await sharp.flop(flop);
+  return sharp.flop(flop);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.FLOP, Flop);
 export default Flop;

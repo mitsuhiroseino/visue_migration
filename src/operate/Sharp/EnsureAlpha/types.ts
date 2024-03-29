@@ -1,13 +1,9 @@
 import { SHARP_MANIPULATION_TYPE } from '../constants';
+import { SharpManipulationConfig } from '../types';
 
 /**
  * 画像操作`EnsureAlpha`の設定
  */
-export type EnsureAlphaConfig = {
-  /**
-   * 画像操作種別
-   */
-  type: typeof SHARP_MANIPULATION_TYPE.ENSURE_ALPHA;
-
+export type EnsureAlphaConfig = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.ENSURE_ALPHA> & {
   alpha?: number;
 };

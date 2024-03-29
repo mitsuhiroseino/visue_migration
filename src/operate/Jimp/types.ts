@@ -1,7 +1,7 @@
 import Jimp from 'jimp';
 
 import { OPERATION_TYPE } from '../constants';
-import { OperationConfig } from '../types';
+import { OperationConfigBase } from '../types';
 import { JIMP_MANIPULATION_TYPE, JIMP_OUTPUT_FORMAT } from './constants';
 
 /**
@@ -17,12 +17,7 @@ export type JimpOutputFormat = (typeof JIMP_OUTPUT_FORMAT)[keyof typeof JIMP_OUT
 /**
  * 画像の操作の設定
  */
-export type JimpConfig = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.JIMP;
-
+export type JimpConfig = OperationConfigBase<typeof OPERATION_TYPE.JIMP> & {
   /**
    * 画像に対する操作
    */
@@ -34,8 +29,8 @@ export type JimpConfig = OperationConfig & {
   mime?: string;
 };
 
-export type JimpManipulationConfig = {
-  type: JimpManipulationType;
+export type JimpManipulationConfig<T = JimpManipulationType> = {
+  type: T;
 };
 
 /**

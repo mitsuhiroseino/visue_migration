@@ -9,9 +9,9 @@ import { ExtractChannelConfig } from './types';
  * @param config ExtractChannelのコンフィグ
  * @returns Sharpのインスタンス
  */
-const ExtractChannel: SharpManipulation<ExtractChannelConfig> = async (sharp, config) => {
+const ExtractChannel: SharpManipulation<ExtractChannelConfig> = (sharp, config) => {
   const { channel } = config;
-  return await sharp.extractChannel(channel);
+  return sharp.extractChannel(channel);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.EXTRACT_CHANNEL, ExtractChannel);
 export default ExtractChannel;

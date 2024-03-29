@@ -1,17 +1,12 @@
 import { Options } from 'prettier';
 
 import { OPERATION_TYPE } from '../constants';
-import { OperationConfig } from '../types';
+import { OperationConfigBase } from '../types';
 
 /**
  * フォーマットの設定
  */
-export type FormatConfig<O = Options> = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.FORMAT;
-
+export type FormatConfig<O = Options> = OperationConfigBase<typeof OPERATION_TYPE.FORMAT> & {
   /**
    * 任意のフォーマッター
    * 未指定の場合はpreFormatting,postFormattingで使用しているフォーマッター

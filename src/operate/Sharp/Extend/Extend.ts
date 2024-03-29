@@ -9,7 +9,7 @@ import { ExtendConfig } from './types';
  * @param config Extendのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Extend: SharpManipulation<ExtendConfig> = async (sharp, config) => {
+const Extend: SharpManipulation<ExtendConfig> = (sharp, config) => {
   const { type, extend, ...options } = config;
   let arg;
   if (extend != null) {
@@ -17,7 +17,7 @@ const Extend: SharpManipulation<ExtendConfig> = async (sharp, config) => {
   } else {
     arg = options;
   }
-  return await sharp.extend(arg);
+  return sharp.extend(arg);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.EXTEND, Extend);
 export default Extend;

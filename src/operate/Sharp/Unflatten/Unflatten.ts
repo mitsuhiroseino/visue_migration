@@ -9,8 +9,8 @@ import { UnflattenConfig } from './types';
  * @param config Unflattenのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Unflatten: SharpManipulation<UnflattenConfig> = async (sharp, config) => {
-  return await sharp.unflatten();
+const Unflatten: SharpManipulation<UnflattenConfig> = (sharp, config) => {
+  return sharp.unflatten();
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.UNFLATTEN, Unflatten);
 export default Unflatten;

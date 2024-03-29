@@ -9,9 +9,9 @@ import { ConvolveConfig } from './types';
  * @param config Convolveのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Convolve: SharpManipulation<ConvolveConfig> = async (sharp, config) => {
+const Convolve: SharpManipulation<ConvolveConfig> = (sharp, config) => {
   const { kernel } = config;
-  return await sharp.convolve(kernel);
+  return sharp.convolve(kernel);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.CONVOLVE, Convolve);
 export default Convolve;

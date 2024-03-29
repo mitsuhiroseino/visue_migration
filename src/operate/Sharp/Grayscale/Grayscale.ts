@@ -9,9 +9,9 @@ import { GrayscaleConfig } from './types';
  * @param config Grayscaleのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Grayscale: SharpManipulation<GrayscaleConfig> = async (sharp, config) => {
+const Grayscale: SharpManipulation<GrayscaleConfig> = (sharp, config) => {
   const { grayscale } = config;
-  return await sharp.grayscale(grayscale);
+  return sharp.grayscale(grayscale);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.GRAYSCALE, Grayscale);
 export default Grayscale;

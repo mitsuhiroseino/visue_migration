@@ -9,15 +9,15 @@ import { FlattenConfig } from './types';
  * @param config Flattenのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Flatten: SharpManipulation<FlattenConfig> = async (sharp, config) => {
+const Flatten: SharpManipulation<FlattenConfig> = (sharp, config) => {
   const { flatten, background } = config;
   let arg;
   if (flatten != null) {
     arg = flatten;
   } else if (background != null) {
-    arg = { background };
+    arg = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { background };
   }
-  return await sharp.flatten(arg);
+  return sharp.flatten(arg);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.FLATTEN, Flatten);
 export default Flatten;

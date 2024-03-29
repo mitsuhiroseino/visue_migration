@@ -9,13 +9,13 @@ import { BooleanConfig } from './types';
  * @param config Booleanのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Boolean: SharpManipulation<BooleanConfig> = async (sharp, config) => {
+const Boolean: SharpManipulation<BooleanConfig> = (sharp, config) => {
   const { operand, operator, raw } = config;
   let options;
   if (raw) {
-    options = { raw };
+    options = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { raw };
   }
-  return await sharp.boolean(operand, operator, options);
+  return sharp.boolean(operand, operator, options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.BOOLEAN, Boolean);
 export default Boolean;

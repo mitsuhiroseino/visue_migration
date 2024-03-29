@@ -9,9 +9,9 @@ import { ModulateConfig } from './types';
  * @param config Modulateのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Modulate: SharpManipulation<ModulateConfig> = async (sharp, config) => {
+const Modulate: SharpManipulation<ModulateConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.modulate(options);
+  return sharp.modulate(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.MODULATE, Modulate);
 export default Modulate;

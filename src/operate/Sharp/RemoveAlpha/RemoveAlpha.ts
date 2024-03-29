@@ -9,8 +9,8 @@ import { RemoveAlphaConfig } from './types';
  * @param config RemoveAlphaのコンフィグ
  * @returns Sharpのインスタンス
  */
-const RemoveAlpha: SharpManipulation<RemoveAlphaConfig> = async (sharp, config) => {
-  return await sharp.removeAlpha();
+const RemoveAlpha: SharpManipulation<RemoveAlphaConfig> = (sharp, config) => {
+  return sharp.removeAlpha();
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.REMOVE_ALPHA, RemoveAlpha);
 export default RemoveAlpha;

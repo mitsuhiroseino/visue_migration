@@ -1,15 +1,9 @@
 import { compile } from 'handlebars';
 
 import { OPERATION_TYPE } from '../constants';
-import { OperationConfig } from '../types';
+import { OperationConfigBase } from '../types';
 
 /**
  * テンプレートエンジンを使用した生成の設定
  */
-export type GenerateConfig = OperationConfig &
-  Parameters<typeof compile>[1] & {
-    /**
-     * 操作種別
-     */
-    type?: typeof OPERATION_TYPE.GENERATE;
-  };
+export type GenerateConfig = OperationConfigBase<typeof OPERATION_TYPE.GENERATE> & Parameters<typeof compile>[1] & {};

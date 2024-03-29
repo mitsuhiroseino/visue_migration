@@ -5,7 +5,7 @@ import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
 import { OPERATION_TYPE } from './constants';
-import { OperationConfig, OperationConfigTypes, OperationParams, OperationResult } from './types';
+import { OperationConfig, OperationConfigBase, OperationParams, OperationResult } from './types';
 
 /**
  * 処理対象内の文字列をコンフィグに従って置換する
@@ -16,14 +16,14 @@ import { OperationConfig, OperationConfigTypes, OperationParams, OperationResult
  */
 export default async function operate(
   content: Content,
-  configs: OperationConfig | OperationConfig[],
+  configs: OperationConfigBase | OperationConfigBase[],
   params: OperationParams
 ): Promise<OperationResult> {
   // 置換の為に出来るだけ改行が無い状態にする
   const operationConfigs = asArray(configs);
 
   // 置換情報を基に処理対象の置換
-  const results: OperationConfigTypes[] = [];
+  const results: OperationConfig[] = [];
   let currentContent = content;
   for (const operationConfig of operationConfigs) {
     // 置換
@@ -37,7 +37,7 @@ export default async function operate(
         // オペレーションを直列で実行
         const operatedContent = await operation(currentContent, operationConfig, params);
         if (currentContent !== operatedContent) {
-          results.push({ ...operationConfig } as OperationConfigTypes);
+          results.push({ ...operationConfig } as OperationConfig);
           currentContent = operatedContent;
         }
       } else {

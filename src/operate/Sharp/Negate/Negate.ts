@@ -9,15 +9,15 @@ import { NegateConfig } from './types';
  * @param config Negateのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Negate: SharpManipulation<NegateConfig> = async (sharp, config) => {
+const Negate: SharpManipulation<NegateConfig> = (sharp, config) => {
   const { negate, alpha } = config;
   let arg;
   if (negate != null) {
     arg = negate;
   } else if (alpha != null) {
-    arg = { alpha };
+    arg = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { alpha };
   }
-  return await sharp.negate(arg);
+  return sharp.negate(arg);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.NEGATE, Negate);
 export default Negate;

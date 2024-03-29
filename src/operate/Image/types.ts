@@ -1,7 +1,7 @@
 import { State } from 'gm';
-
 import { OPERATION_TYPE } from '../constants';
-import { OperationConfig } from '../types';
+import { OperationConfigBase } from '../types';
+import { ImageManipulationConfigType as ImageManipulationConfig } from './configTypes';
 import { IMAGE_MANIPULATION_TYPE, IMAGE_OUTPUT_FORMAT } from './constants';
 
 /**
@@ -17,16 +17,15 @@ export type ImageOutputFormat = (typeof IMAGE_OUTPUT_FORMAT)[keyof typeof IMAGE_
 /**
  * 画像の操作の設定
  */
-export type ImageConfig = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.IMAGE;
-
+export type ImageConfig = OperationConfigBase<typeof OPERATION_TYPE.IMAGE> & {
   /**
    * 画像に対する操作
    */
-  manipulations: ImageManipulationConfig | ImageManipulationConfig[];
+  manipulations:
+    | ImageManipulationConfigBase
+    | ImageManipulationConfigBase[]
+    | ImageManipulationConfig
+    | ImageManipulationConfig[];
 
   /**
    * 出力時のファイル形式
@@ -34,11 +33,11 @@ export type ImageConfig = OperationConfig & {
   fileFormat?: string;
 };
 
-export type ImageManipulationConfig = {
-  type: ImageManipulationType;
+export type ImageManipulationConfigBase<T = ImageManipulationType> = {
+  type: T;
 };
 
 /**
  * 画像操作関数
  */
-export type ImageManipulation<C = ImageManipulationConfig> = (instance: State, config: C) => State;
+export type ImageManipulation<C = ImageManipulationConfigBase> = (instance: State, config: C) => State;

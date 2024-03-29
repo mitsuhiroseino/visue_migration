@@ -9,9 +9,9 @@ import { LinearConfig } from './types';
  * @param config Linearのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Linear: SharpManipulation<LinearConfig> = async (sharp, config) => {
+const Linear: SharpManipulation<LinearConfig> = (sharp, config) => {
   const { multiplier, offset } = config;
-  return await sharp.linear(multiplier, offset);
+  return sharp.linear(multiplier, offset);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.LINEAR, Linear);
 export default Linear;

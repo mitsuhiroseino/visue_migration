@@ -1,6 +1,6 @@
 import { Content } from '../../types';
-import Bundle from '../Bundle';
 import OperationFactory from '../OperationFactory';
+import ParentOperationBase from '../ParentOperationBase';
 import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { ParamsConfig } from './types';
@@ -22,7 +22,7 @@ const Params: Operation<Content, ParamsConfig> = async (
   // パラメーターの更新
   const diff = await createDiff(content, { ...params });
   // 新しいパラメーターで子操作を実行
-  return await Bundle(content, rest, { ...params, ...diff });
+  return await ParentOperationBase(content, rest, { ...params, ...diff });
 };
 export default Params;
 OperationFactory.register(OPERATION_TYPE.PARAMS, Params);

@@ -9,9 +9,9 @@ import { EnsureAlphaConfig } from './types';
  * @param config EnsureAlphaのコンフィグ
  * @returns Sharpのインスタンス
  */
-const EnsureAlpha: SharpManipulation<EnsureAlphaConfig> = async (sharp, config) => {
+const EnsureAlpha: SharpManipulation<EnsureAlphaConfig> = (sharp, config) => {
   const { alpha } = config;
-  return await sharp.ensureAlpha(alpha);
+  return sharp.ensureAlpha(alpha);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.ENSURE_ALPHA, EnsureAlpha);
 export default EnsureAlpha;

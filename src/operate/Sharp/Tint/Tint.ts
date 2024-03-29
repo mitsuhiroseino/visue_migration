@@ -9,9 +9,9 @@ import { TintConfig } from './types';
  * @param config Tintのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Tint: SharpManipulation<TintConfig> = async (sharp, config) => {
+const Tint: SharpManipulation<TintConfig> = (sharp, config) => {
   const { tint } = config;
-  return await sharp.tint(tint);
+  return sharp.tint(tint);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.TINT, Tint);
 export default Tint;

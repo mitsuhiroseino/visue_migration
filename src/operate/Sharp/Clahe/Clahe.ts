@@ -9,9 +9,9 @@ import { ClaheConfig } from './types';
  * @param config Claheのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Clahe: SharpManipulation<ClaheConfig> = async (sharp, config) => {
+const Clahe: SharpManipulation<ClaheConfig> = (sharp, config) => {
   const { type, ...options } = config;
-  return await sharp.clahe(options);
+  return sharp.clahe(options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.CLAHE, Clahe);
 export default Clahe;

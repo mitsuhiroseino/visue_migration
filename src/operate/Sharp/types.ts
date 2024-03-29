@@ -2,7 +2,7 @@ import SharpLib from 'sharp';
 
 import { Content } from '../../types';
 import { OPERATION_TYPE } from '../constants';
-import { OperationConfig, OperationParams } from '../types';
+import { OperationConfigBase, OperationParams } from '../types';
 import { SHARP_MANIPULATION_TYPE, SHARP_OUTPUT_FORMAT } from './constants';
 
 /**
@@ -48,12 +48,7 @@ export type SharpOptions = SharpLib.SharpOptions;
 /**
  * 画像の操作の設定
  */
-export type SharpConfig = OperationConfig & {
-  /**
-   * 操作種別
-   */
-  type?: typeof OPERATION_TYPE.SHARP;
-
+export type SharpConfig = OperationConfigBase<typeof OPERATION_TYPE.SHARP> & {
   // 入力系オプション
 
   /**
@@ -133,14 +128,14 @@ export type SharpConfig = OperationConfig & {
 /**
  * 画像に対する操作
  */
-export type SharpManipulationConfig = {
+export type SharpManipulationConfig<T = SharpManipulationType> = {
   /**
    * 画像操作種別
    */
-  type: SharpManipulationType;
+  type: T;
 };
 
 /**
  * 画像操作関数
  */
-export type SharpManipulation<C = SharpManipulationConfig, I = SharpLib.Sharp> = (instance: I, config: C) => Promise<I>;
+export type SharpManipulation<C = SharpManipulationConfig, I = SharpLib.Sharp> = (instance: I, config: C) => I;

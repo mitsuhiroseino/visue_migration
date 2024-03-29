@@ -1,6 +1,6 @@
 import isString from 'lodash/isString';
 
-import operate, { CONTENT_TYPE, OperationConfig } from '../operate';
+import operate, { CONTENT_TYPE, OperationConfigBase } from '../operate';
 import { Content } from '../types';
 import asArray from '../utils/asArray';
 import catchError from './helpers/catchError';
@@ -55,7 +55,9 @@ export default async function operateContent(
   if (operations) {
     // 操作
     try {
-      const operateConfigs = asArray<OperationConfig>(operations).map((operation) => inheritConfig(operation, config));
+      const operateConfigs = asArray<OperationConfigBase>(operations).map((operation) =>
+        inheritConfig(operation, config)
+      );
       migrated = await operate(content, operateConfigs, params);
     } catch (e) {
       catchError(e, `Error in operation: ${_outputPath}`, forceOutput);

@@ -9,9 +9,9 @@ import { GammaConfig } from './types';
  * @param config Gammaのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Gamma: SharpManipulation<GammaConfig> = async (sharp, config) => {
+const Gamma: SharpManipulation<GammaConfig> = (sharp, config) => {
   const { gamma, gammaOut } = config;
-  return await sharp.gamma(gamma, gammaOut);
+  return sharp.gamma(gamma, gammaOut);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.GAMMA, Gamma);
 export default Gamma;

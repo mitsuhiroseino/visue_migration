@@ -9,9 +9,9 @@ import { RecombConfig } from './types';
  * @param config Recombのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Recomb: SharpManipulation<RecombConfig> = async (sharp, config) => {
+const Recomb: SharpManipulation<RecombConfig> = (sharp, config) => {
   const { inputMatrix } = config;
-  return await sharp.recomb(inputMatrix);
+  return sharp.recomb(inputMatrix);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.RECOMB, Recomb);
 export default Recomb;

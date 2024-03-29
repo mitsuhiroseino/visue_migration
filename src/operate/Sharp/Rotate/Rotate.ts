@@ -9,9 +9,9 @@ import { RotateConfig } from './types';
  * @param config Rotateのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Rotate: SharpManipulation<RotateConfig> = async (sharp, config) => {
+const Rotate: SharpManipulation<RotateConfig> = (sharp, config) => {
   const { type, angle, ...options } = config;
-  return await sharp.rotate(angle, options);
+  return sharp.rotate(angle, options);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.ROTATE, Rotate);
 export default Rotate;

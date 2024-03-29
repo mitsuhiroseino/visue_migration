@@ -9,9 +9,9 @@ import { ExtractConfig } from './types';
  * @param config Extractのコンフィグ
  * @returns Sharpのインスタンス
  */
-const Extract: SharpManipulation<ExtractConfig> = async (sharp, config) => {
+const Extract: SharpManipulation<ExtractConfig> = (sharp, config) => {
   const { region } = config;
-  return await sharp.extract(region);
+  return sharp.extract(region);
 };
 SharpManipulationFactory.register(SHARP_MANIPULATION_TYPE.EXTRACT, Extract);
 export default Extract;

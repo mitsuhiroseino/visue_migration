@@ -3,9 +3,10 @@ import isFunction from 'lodash/isFunction';
 import { Content } from '../../types';
 import asArray from '../../utils/asArray';
 import OperationFactory from '../OperationFactory';
+import ParentOperationBase from '../ParentOperationBase';
 import { OPERATION_TYPE } from '../constants';
 import operate from '../operate';
-import { Operation, OperationParams } from '../types';
+import { Operation, OperationParams, ParentOperation } from '../types';
 import { BundleConfig } from './types';
 
 /**
@@ -16,19 +17,12 @@ import { BundleConfig } from './types';
  * @param params 1繰り返し毎のパラメーター
  * @returns 処理結果
  */
-const Bundle: Operation<Content, BundleConfig> = async (
+const Bundle: ParentOperation<Content, BundleConfig> = async (
   content: Content,
   config: BundleConfig<Content>,
   params: OperationParams
 ) => {
-  let { operations } = config;
-  if (isFunction(operations)) {
-    operations = await operations(content, params);
-  }
-  operations = asArray(operations);
-
-  const result = await operate(content, operations, params);
-  return result.content;
+  return await ParentOperationBase(content, config, params);
 };
 export default Bundle;
 OperationFactory.register(OPERATION_TYPE.BUNDLE, Bundle);

@@ -14,6 +14,8 @@ const MANIPULATION_CONSTANS_TEMPLATE_PATH = './scripts/generate/templates/operat
 const MANIPULATION_CONSTANS_OUTPUT_PATH = './src/operate/Image/constants.ts';
 const MANIPULATION_INDEX_TEMPLATE_PATH = './scripts/generate/templates/operate/Image/index.ts';
 const MANIPULATION_INDEX_OUTPUT_PATH = './src/operate/Image/index.ts';
+const MANIPULATION_CONFIGTYPES_TEMPLATE_PATH = './scripts/generate/templates/operate/Image/configTypes.ts';
+const MANIPULATION_CONFIGTYPES_OUTPUT_PATH = './src/operate/Image/configTypes.ts';
 
 migration.initConfig({
   postFormatting: { ...postFormatting, parser: 'typescript', organizeImportsSkipDestructiveCodeActions: false },
