@@ -1,16 +1,12 @@
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
-import { ImageManipulationConfigBase } from '../types';
+import { ImageCallback } from '@jimp/core';
+import { Blur } from '@jimp/plugin-blur';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { ImageManipulationConfig } from '../types';
 
 /**
  * 画像操作`Blur`の設定
  */
-export type BlurConfig = ImageManipulationConfigBase<typeof IMAGE_MANIPULATION_TYPE.BLUR> & {
-  /**
-   * 画像操作種別
-   */
-  type: typeof IMAGE_MANIPULATION_TYPE.BLUR;
-
-  // 操作固有の設定
+export type BlurConfig = ImageManipulationConfig<typeof JIMP_MANIPULATION_TYPE.BLUR> & {
   radius: number;
-  sigma?: number;
+  callback?: ImageCallback<Blur>;
 };

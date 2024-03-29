@@ -1,22 +1,17 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { ResizeConfig } from './types';
 
 /**
  * リサイズ
- *
- * 画像のリサイズを行うことができる。画像のサイズを指定した幅や高さに変更する。
- *
- * http://www.graphicsmagick.org/GraphicsMagick.html#details-resize
- *
- * @param state gmのインスタンス(ステート)
+ * @param jimp Jimpのインスタンス
  * @param config Resizeのコンフィグ
- * @returns gmのインスタンス
+ * @returns Jimpのインスタンス
  */
-const Resize: ImageManipulation<ResizeConfig> = (state, config) => {
-  const { width, height, option } = config;
-  return state.resize(width, height, option);
+const Resize: ImageManipulation<ResizeConfig> = async (jimp, config) => {
+  const { width, height, mode, callback } = config;
+  return await jimp.resize(width, height, mode, callback);
 };
-ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.RESIZE, Resize);
+ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.RESIZE, Resize);
 export default Resize;

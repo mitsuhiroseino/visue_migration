@@ -33,14 +33,14 @@ export const OPERATION_TYPE = {
   GENERATE: 'generate',
 
   /**
+   * gmを用いた画像の変換
+   */
+  GM: 'gm',
+
+  /**
    * 画像の変換
    */
   IMAGE: 'image',
-
-  /**
-   * jimpを用いた画像の変換
-   */
-  JIMP: 'jimp',
 
   /**
    * パラメーターの追加

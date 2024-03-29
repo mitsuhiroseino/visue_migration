@@ -1,22 +1,21 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { ScaleConfig } from './types';
 
 /**
- * スケール
- *
- * 画像のスケーリングを行うことができる。画像のサイズを指定した倍率で拡大縮小する。
- *
- * http://www.graphicsmagick.org/GraphicsMagick.html#details-scale
- *
- * @param state gmのインスタンス(ステート)
+ * 拡大／縮小
+ * @param jimp Jimpのインスタンス
  * @param config Scaleのコンフィグ
- * @returns gmのインスタンス
+ * @returns Jimpのインスタンス
  */
-const Scale: ImageManipulation<ScaleConfig> = (state, config) => {
-  const { width, height } = config;
-  return state.scale(width, height);
+const Scale: ImageManipulation<ScaleConfig> = async (jimp, config) => {
+  const { fit, factor, width, height, mode, callback } = config;
+  if (fit) {
+    return await jimp.scaleToFit(width, height, mode, callback);
+  } else {
+    return await jimp.scale(factor, callback);
+  }
 };
-ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.SCALE, Scale);
+ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.SCALE, Scale);
 export default Scale;

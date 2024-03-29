@@ -1,22 +1,17 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { BlurConfig } from './types';
 
 /**
  * ぼかし
- *
- * 画像にぼかしを適用することができる。これにより、画像のエッジが滑らかになり、ノイズが軽減される。
- *
- * http://www.graphicsmagick.org/GraphicsMagick.html#details-blur
- *
- * @param state gmのインスタンス(ステート)
+ * @param jimp Jimpのインスタンス
  * @param config Blurのコンフィグ
- * @returns gmのインスタンス
+ * @returns Jimpのインスタンス
  */
-const Blur: ImageManipulation<BlurConfig> = (state, config) => {
-  const { radius, sigma } = config;
-  return state.blur(radius, sigma);
+const Blur: ImageManipulation<BlurConfig> = async (jimp, config) => {
+  const { radius, callback } = config;
+  return await jimp.blur(radius, callback);
 };
-ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.BLUR, Blur);
+ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.BLUR, Blur);
 export default Blur;

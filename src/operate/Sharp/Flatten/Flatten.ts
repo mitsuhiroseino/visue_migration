@@ -15,7 +15,7 @@ const Flatten: SharpManipulation<FlattenConfig> = (sharp, config) => {
   if (flatten != null) {
     arg = flatten;
   } else if (background != null) {
-    arg = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { background };
+    arg = { background };
   }
   return sharp.flatten(arg);
 };

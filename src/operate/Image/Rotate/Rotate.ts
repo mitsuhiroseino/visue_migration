@@ -1,22 +1,17 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { RotateConfig } from './types';
 
 /**
  * 回転
- *
- * 画像を回転させることができる。指定した角度だけ画像を回転させる。
- *
- * http://www.graphicsmagick.org/GraphicsMagick.html#details-rotate
- *
- * @param state gmのインスタンス(ステート)
+ * @param jimp Jimpのインスタンス
  * @param config Rotateのコンフィグ
- * @returns gmのインスタンス
+ * @returns Jimpのインスタンス
  */
-const Rotate: ImageManipulation<RotateConfig> = (state, config) => {
-  const { backgroundColor, degrees } = config;
-  return state.rotate(backgroundColor, degrees);
+const Rotate: ImageManipulation<RotateConfig> = async (jimp, config) => {
+  const { deg, mode, callback } = config;
+  return await jimp.rotate(deg, mode, callback);
 };
-ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.ROTATE, Rotate);
+ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.ROTATE, Rotate);
 export default Rotate;

@@ -1,22 +1,17 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { DitherConfig } from './types';
 
 /**
- * 減色
- *
- * 画像の色を減色することができる。色数を減らすことで画像を効果的に圧縮するのに使用される。
- *
- * http://www.graphicsmagick.org/GraphicsMagick.html#details-dither
- *
- * @param state gmのインスタンス(ステート)
+ * ノイズ
+ * @param jimp Jimpのインスタンス
  * @param config Ditherのコンフィグ
- * @returns gmのインスタンス
+ * @returns Jimpのインスタンス
  */
-const Dither: ImageManipulation<DitherConfig> = (state, config) => {
-  const { enable } = config;
-  return state.dither(enable);
+const Dither: ImageManipulation<DitherConfig> = async (jimp, config) => {
+  const { callback } = config;
+  return await jimp.dither565(callback);
 };
-ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.DITHER, Dither);
+ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.DITHER, Dither);
 export default Dither;

@@ -1,14 +1,11 @@
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
-import { ImageManipulationConfigBase } from '../types';
+import { ImageCallback } from '@jimp/core';
+import { Normalize } from '@jimp/plugin-normalize';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { ImageManipulationConfig } from '../types';
 
 /**
  * 画像操作`Normalize`の設定
  */
-export type NormalizeConfig = ImageManipulationConfigBase<typeof IMAGE_MANIPULATION_TYPE.NORMALIZE> & {
-  /**
-   * 画像操作種別
-   */
-  type: typeof IMAGE_MANIPULATION_TYPE.NORMALIZE;
-
-  // 操作固有の設定
+export type NormalizeConfig = ImageManipulationConfig<typeof JIMP_MANIPULATION_TYPE.NORMALIZE> & {
+  callback?: ImageCallback<Normalize>;
 };

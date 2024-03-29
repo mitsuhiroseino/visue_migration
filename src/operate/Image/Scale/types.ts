@@ -1,16 +1,16 @@
-import { IMAGE_MANIPULATION_TYPE } from '../constants';
-import { ImageManipulationConfigBase } from '../types';
+import { ImageCallback } from '@jimp/core';
+import { Scale } from '@jimp/plugin-scale';
+import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { ImageManipulationConfig } from '../types';
 
 /**
  * 画像操作`Scale`の設定
  */
-export type ScaleConfig = ImageManipulationConfigBase<typeof IMAGE_MANIPULATION_TYPE.SCALE> & {
-  /**
-   * 画像操作種別
-   */
-  type: typeof IMAGE_MANIPULATION_TYPE.SCALE;
-
-  // 操作固有の設定
-  width: number;
-  height: number;
+export type ScaleConfig = ImageManipulationConfig<typeof JIMP_MANIPULATION_TYPE.SCALE> & {
+  fit?: boolean;
+  factor?: number;
+  width?: number;
+  height?: number;
+  mode?: string;
+  callback?: ImageCallback<Scale>;
 };

@@ -13,7 +13,7 @@ const Boolean: SharpManipulation<BooleanConfig> = (sharp, config) => {
   const { operand, operator, raw } = config;
   let options;
   if (raw) {
-    options = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { raw };
+    options = { raw };
   }
   return sharp.boolean(operand, operator, options);
 };

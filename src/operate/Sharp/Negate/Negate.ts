@@ -15,7 +15,7 @@ const Negate: SharpManipulation<NegateConfig> = (sharp, config) => {
   if (negate != null) {
     arg = negate;
   } else if (alpha != null) {
-    arg = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.AFFINE> & { alpha };
+    arg = { alpha };
   }
   return sharp.negate(arg);
 };

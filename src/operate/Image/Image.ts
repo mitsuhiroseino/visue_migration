@@ -1,9 +1,9 @@
-import gm from 'gm';
+import Jimp from 'jimp';
 import asArray from '../../utils/asArray';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
-import JimpManipulationFactory from './ImageManipulationFactory';
+import ImageManipulationFactory from './ImageManipulationFactory';
 import { ImageConfig } from './types';
 
 /**
@@ -14,33 +14,26 @@ import { ImageConfig } from './types';
  * @returns 処理結果
  */
 const Image: Operation<Buffer, ImageConfig> = async (content: Buffer, config: ImageConfig, params: OperationParams) => {
-  const { manipulations, fileFormat } = config;
-  let state = gm(content);
+  const { manipulations, mime } = config;
+  let jimp = await Jimp.read(content);
 
   for (const manipulationConfig of asArray(manipulations)) {
-    const manipulation = JimpManipulationFactory.get(manipulationConfig.type);
+    const manipulation = ImageManipulationFactory.get(manipulationConfig.type);
     if (manipulation) {
-      state = manipulation(state, manipulationConfig);
+      jimp = await manipulation(jimp, manipulationConfig);
     } else {
       console.warn(`There was no manipulation "${manipulationConfig.type}".`);
     }
   }
-  return await new Promise((resolve, reject) => {
-    const callback = (err, buffer) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(buffer);
-      }
-    };
-    if (fileFormat != null) {
-      // ファイル形式の変換あり
-      return state.toBuffer(fileFormat, callback);
-    } else {
-      // ファイル形式の変換なし
-      return state.toBuffer(callback);
-    }
-  });
+
+  let mimeType;
+  if (mime) {
+    mimeType = mime;
+  } else {
+    mimeType = jimp.getMIME();
+  }
+
+  return await jimp.getBufferAsync(mimeType);
 };
 export default Image;
 OperationFactory.register(OPERATION_TYPE.IMAGE, Image, CONTENT_TYPE.BINARY);
