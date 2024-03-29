@@ -1,7 +1,7 @@
 /**
  * 出力画像フォーマット
  */
-export const IMAGE_OUTPUT_FORMAT = {
+export const GM_OUTPUT_FORMAT = {
     BMP: 'bmp',
     GIF: 'gif',
     JPEG: 'jpeg',
@@ -12,7 +12,7 @@ export const IMAGE_OUTPUT_FORMAT = {
 /**
  * 画像に対する操作
  */
-export const IMAGE_MANIPULATION_TYPE = {
+export const GM_MANIPULATION_TYPE = {
 {{#each manipulations}}
   /**
    * {{{this.name}}}

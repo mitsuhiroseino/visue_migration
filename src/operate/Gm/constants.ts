@@ -1,7 +1,7 @@
 /**
  * 出力画像フォーマット
  */
-export const IMAGE_OUTPUT_FORMAT = {
+export const GM_OUTPUT_FORMAT = {
   BMP: 'bmp',
   GIF: 'gif',
   JPEG: 'jpeg',

@@ -1,2 +1,2 @@
 export type * from './types';
-export { default } from './{{uppercamelcase}}';
+export { default } from './{{{uppercamelcase}}}';
