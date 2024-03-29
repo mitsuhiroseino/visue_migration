@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { BlurConfig } from './types';
 
@@ -13,5 +13,5 @@ const Blur: ImageManipulation<BlurConfig> = async (jimp, config) => {
   const { radius, callback } = config;
   return await jimp.blur(radius, callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.BLUR, Blur);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.BLUR, Blur);
 export default Blur;

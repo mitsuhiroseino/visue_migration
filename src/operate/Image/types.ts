@@ -1,18 +1,20 @@
 import Jimp from 'jimp';
-
 import { OPERATION_TYPE } from '../constants';
 import { OperationConfigBase } from '../types';
-import { JIMP_MANIPULATION_TYPE, JIMP_OUTPUT_FORMAT } from './constants';
+import ImageManipulationConfig from './ImageManipulationConfig';
+import { IMAGE_MANIPULATION_TYPE, IMAGE_OUTPUT_FORMAT } from './constants';
+
+export { default as ImageManipulationConfig } from './ImageManipulationConfig';
 
 /**
  * 画像操作種別
  */
-export type ImageManipulationType = (typeof JIMP_MANIPULATION_TYPE)[keyof typeof JIMP_MANIPULATION_TYPE];
+export type ImageManipulationType = (typeof IMAGE_MANIPULATION_TYPE)[keyof typeof IMAGE_MANIPULATION_TYPE];
 
 /**
  * 出力画像フォーマット
  */
-export type ImageOutputFormat = (typeof JIMP_OUTPUT_FORMAT)[keyof typeof JIMP_OUTPUT_FORMAT];
+export type ImageOutputFormat = (typeof IMAGE_OUTPUT_FORMAT)[keyof typeof IMAGE_OUTPUT_FORMAT];
 
 /**
  * 画像の操作の設定
@@ -21,7 +23,11 @@ export type ImageConfig = OperationConfigBase<typeof OPERATION_TYPE.IMAGE> & {
   /**
    * 画像に対する操作
    */
-  manipulations: ImageManipulationConfig | ImageManipulationConfig[];
+  manipulations:
+    | ImageManipulationConfigBase
+    | ImageManipulationConfigBase[]
+    | ImageManipulationConfig
+    | ImageManipulationConfig[];
 
   /**
    * 出力時のファイル形式
@@ -29,11 +35,11 @@ export type ImageConfig = OperationConfigBase<typeof OPERATION_TYPE.IMAGE> & {
   mime?: string;
 };
 
-export type ImageManipulationConfig<T = ImageManipulationType> = {
+export type ImageManipulationConfigBase<T = ImageManipulationType> = {
   type: T;
 };
 
 /**
  * 画像操作関数
  */
-export type ImageManipulation<C = ImageManipulationConfig> = (instance: Jimp, config: C) => Promise<Jimp>;
+export type ImageManipulation<C = ImageManipulationConfigBase> = (instance: Jimp, config: C) => Promise<Jimp>;

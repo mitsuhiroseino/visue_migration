@@ -1,12 +1,8 @@
-import isFunction from 'lodash/isFunction';
-
 import { Content } from '../../types';
-import asArray from '../../utils/asArray';
 import OperationFactory from '../OperationFactory';
 import ParentOperationBase from '../ParentOperationBase';
 import { OPERATION_TYPE } from '../constants';
-import operate from '../operate';
-import { Operation, OperationParams, ParentOperation } from '../types';
+import { OperationParams, ParentOperation } from '../types';
 import { BundleConfig } from './types';
 
 /**

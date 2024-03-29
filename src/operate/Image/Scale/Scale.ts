@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { ScaleConfig } from './types';
 
@@ -17,5 +17,5 @@ const Scale: ImageManipulation<ScaleConfig> = async (jimp, config) => {
     return await jimp.scale(factor, callback);
   }
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.SCALE, Scale);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.SCALE, Scale);
 export default Scale;

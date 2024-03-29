@@ -1,5 +1,6 @@
 import isString from 'lodash/isString';
 
+import { OperationConfig } from '../../operate';
 import { INHERITED_CONFIGS } from '../constants';
 import { CommonConfig } from '../types';
 
@@ -9,9 +10,9 @@ import { CommonConfig } from '../types';
  * @param baseConfig 親の設定
  * @param mapping 子と親のコンフィグ名が異なる場合のマッピング。親のコンフィグ名をキー、子のコンフィグ名を値として定義する
  */
-export default function inheritConfig<C extends CommonConfig>(
+export default function inheritConfig<C extends CommonConfig<OC>, OC extends OperationConfig>(
   config: C,
-  baseConfig: CommonConfig,
+  baseConfig: any,
   mapping: { [baseConfigName: string]: string | boolean } = INHERITED_CONFIGS
 ): C {
   const cfg = { ...config };

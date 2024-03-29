@@ -164,7 +164,7 @@ import { WaveConfig } from './Wave';
 import { WhitePointConfig } from './WhitePoint';
 import { WhiteThresholdConfig } from './WhiteThreshold';
 
-export type GmManipulationConfigType =
+type GmManipulationConfig =
   | AdjoinConfig
   | AffineConfig
   | AntialiasConfig
@@ -330,3 +330,5 @@ export type GmManipulationConfigType =
   | WaveConfig
   | WhitePointConfig
   | WhiteThresholdConfig;
+
+export default GmManipulationConfig;

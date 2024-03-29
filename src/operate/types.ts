@@ -1,31 +1,8 @@
 import { Content, FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
-import { AddConfig } from './Add';
-import { BundleConfig } from './Bundle';
-import { DeleteConfig } from './Delete';
-import { EditConfig } from './Edit';
-import { FormatConfig } from './Format';
-import { GenerateConfig } from './Generate';
-import { ImageConfig } from './Image';
-import { ParamsConfig } from './Params';
-import { ReplaceConfig } from './Replace';
-import { UnbomConfig } from './Unbom';
 import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
 
-/**
- * 操作の設定
- */
-export type OperationConfig =
-  | AddConfig
-  | BundleConfig
-  | DeleteConfig
-  | EditConfig
-  | FormatConfig
-  | GenerateConfig
-  | ImageConfig
-  | ParamsConfig
-  | ReplaceConfig
-  | UnbomConfig;
+export { default as OperationConfig } from './OperationConfig';
 
 /**
  * コンテンツを操作する際の種別
@@ -66,14 +43,15 @@ export type OperationConfigBase<T = OperationType> = FormattingConfig &
 /**
  * 子要素を持つ操作のコンフィグ
  */
-export type ParentOperationConfigBase<T = OperationType, C = Content> = OperationConfigBase<T> & {
+export type ParentOperationConfigBase<
+  T = OperationType,
+  C = Content,
+  OC = OperationConfigBase,
+> = OperationConfigBase<T> & {
   /**
    * 子操作
    */
-  operations:
-    | OperationConfigBase
-    | OperationConfigBase[]
-    | ((content: C, params: OperationParams) => Promise<OperationConfigBase | OperationConfigBase>);
+  operations: OC | OC[] | ((content: C, params: OperationParams) => Promise<OC | OC[]>);
 };
 
 /**
@@ -94,16 +72,15 @@ export type OperationParams = {
 /**
  * 処理の結果
  */
-export type OperationResult<C = Content, T = OperationConfig> = { content: C; results: T[] };
+export type OperationResult<C = Content, OC = OperationConfigBase> = { content: C; results: OC[] };
 
 /**
  * 内容に対する操作
  */
-export type Operation<C = Content, S extends OperationConfigBase = OperationConfigBase> = (
-  content: C,
-  config: S,
-  params: OperationParams
-) => Promise<C | Content>;
+export type Operation<
+  C = Content,
+  S extends OperationConfigBase<OperationConfigBase['id']> = OperationConfigBase<OperationConfigBase['id']>,
+> = (content: C, config: S, params: OperationParams) => Promise<C | Content>;
 
 /**
  * 子要素を持つ操作

@@ -4,11 +4,11 @@ import asArray from './utils/asArray';
 /**
  * 移行クラス
  */
-class Migration {
+class Migration<C extends MigrationConfig = MigrationConfig> {
   /**
    * 読み込み済みのコンフィグ
    */
-  private _config: MigrationConfig;
+  private _config: C;
 
   /**
    * タスクのマップ
@@ -21,7 +21,7 @@ class Migration {
    * 移行設定の初期化
    * @param config 移行設定
    */
-  initConfig(config: MigrationConfig) {
+  initConfig(config: C) {
     const _tasks: { [id: string]: MigrationTaskConfig } = {};
     for (const task of asArray(config.tasks)) {
       if (task.id != null) {
@@ -67,4 +67,4 @@ class Migration {
     return await migrate(config);
   }
 }
-export default new Migration();
+export default Migration;

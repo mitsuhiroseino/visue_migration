@@ -1,7 +1,7 @@
 /**
  * 出力画像フォーマット
  */
-export const JIMP_OUTPUT_FORMAT = {
+export const IMAGE_OUTPUT_FORMAT = {
   BMP: 'bmp',
   GIF: 'gif',
   JPEG: 'jpeg',
@@ -12,7 +12,7 @@ export const JIMP_OUTPUT_FORMAT = {
 /**
  * 画像に対する操作
  */
-export const JIMP_MANIPULATION_TYPE = {
+export const IMAGE_MANIPULATION_TYPE = {
   /**
    * ブール関数を使用して複数の画像を1つに結合する
    *

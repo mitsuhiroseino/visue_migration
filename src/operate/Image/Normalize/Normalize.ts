@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { NormalizeConfig } from './types';
 
@@ -13,5 +13,5 @@ const Normalize: ImageManipulation<NormalizeConfig> = async (jimp, config) => {
   const { callback } = config;
   return await jimp.normalize(callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.NORMALIZE, Normalize);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.NORMALIZE, Normalize);
 export default Normalize;

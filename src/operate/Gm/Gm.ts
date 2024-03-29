@@ -7,7 +7,7 @@ import GmManipulationFactory from './GmManipulationFactory';
 import { GmConfig } from './types';
 
 /**
- * 画像のメタ情報をparamsに追加する
+ * 画像処理
  * @param content 処理対象
  * @param config 操作設定
  * @param params 1繰り返し毎のパラメーター

@@ -1,6 +1,6 @@
 import Jimp from 'jimp';
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { MaskConfig } from './types';
 
@@ -15,5 +15,5 @@ const Mask: ImageManipulation<MaskConfig> = async (jimp, config) => {
   const srcJimp = await Jimp.read(src);
   return await jimp.mask(srcJimp, x, y, callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.MASK, Mask);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.MASK, Mask);
 export default Mask;

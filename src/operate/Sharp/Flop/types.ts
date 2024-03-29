@@ -1,9 +1,9 @@
 import { SHARP_MANIPULATION_TYPE } from '../constants';
-import { SharpManipulationConfig } from '../types';
+import { SharpManipulationConfigBase } from '../types';
 
 /**
  * 画像操作`Flop`の設定
  */
-export type FlopConfig = SharpManipulationConfig<typeof SHARP_MANIPULATION_TYPE.FLOP> & {
+export type FlopConfig = SharpManipulationConfigBase<typeof SHARP_MANIPULATION_TYPE.FLOP> & {
   flop?: boolean;
 };

@@ -11,7 +11,7 @@ import { MigrationConfig, MigrationResult, MigrationStatus, MigrationTaskResult 
  * @param config 移行設定
  * @returns
  */
-export default async function migrate(config: MigrationConfig): Promise<MigrationResult> {
+export default async function migrate<C extends MigrationConfig>(config: C): Promise<MigrationResult> {
   const taskFns: (() => Promise<MigrationTaskResult>)[] = [];
   let results: MigrationTaskResult[], status: MigrationStatus, message: string, error;
   try {

@@ -1,11 +1,10 @@
 import isString from 'lodash/isString';
 
-import { Content } from '../types';
 import asArray from '../utils/asArray';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
 import { OPERATION_TYPE } from './constants';
-import { OperationConfig, OperationConfigBase, OperationParams, OperationResult } from './types';
+import { OperationConfig, OperationParams, OperationResult } from './types';
 
 /**
  * 処理対象内の文字列をコンフィグに従って置換する
@@ -14,16 +13,16 @@ import { OperationConfig, OperationConfigBase, OperationParams, OperationResult 
  * @param params 置換前・後の文字列に埋め込むパラメーター
  * @returns
  */
-export default async function operate(
-  content: Content,
-  configs: OperationConfigBase | OperationConfigBase[],
+export default async function operate<C, OC extends OperationConfig>(
+  content: C,
+  configs: OC | OC[],
   params: OperationParams
-): Promise<OperationResult> {
+): Promise<OperationResult<C, OC>> {
   // 置換の為に出来るだけ改行が無い状態にする
   const operationConfigs = asArray(configs);
 
   // 置換情報を基に処理対象の置換
-  const results: OperationConfig[] = [];
+  const results: OC[] = [];
   let currentContent = content;
   for (const operationConfig of operationConfigs) {
     // 置換
@@ -37,7 +36,7 @@ export default async function operate(
         // オペレーションを直列で実行
         const operatedContent = await operation(currentContent, operationConfig, params);
         if (currentContent !== operatedContent) {
-          results.push({ ...operationConfig } as OperationConfig);
+          results.push({ ...operationConfig } as OC);
           currentContent = operatedContent;
         }
       } else {

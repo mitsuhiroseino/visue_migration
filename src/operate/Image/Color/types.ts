@@ -1,12 +1,12 @@
 import { ImageCallback } from '@jimp/core';
 import { Color, ColorAction } from '@jimp/plugin-color';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
-import { ImageManipulationConfig } from '../types';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
+import { ImageManipulationConfigBase } from '../types';
 
 /**
  * 画像操作`Color`の設定
  */
-export type ColorConfig = ImageManipulationConfig<typeof JIMP_MANIPULATION_TYPE.COLOR> & {
+export type ColorConfig = ImageManipulationConfigBase<typeof IMAGE_MANIPULATION_TYPE.COLOR> & {
   actions: ColorAction[];
   callback?: ImageCallback<Color>;
 };

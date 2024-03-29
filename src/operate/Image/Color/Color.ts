@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { ColorConfig } from './types';
 
@@ -13,5 +13,5 @@ const Color: ImageManipulation<ColorConfig> = async (jimp, config) => {
   const { actions, callback } = config;
   return await jimp.color(actions, callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.COLOR, Color);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.COLOR, Color);
 export default Color;

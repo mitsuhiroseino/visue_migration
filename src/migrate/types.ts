@@ -1,6 +1,6 @@
 import { Options } from 'prettier';
 
-import { OperationConfig, OperationResult } from '../operate';
+import { OperationConfig, OperationConfigBase, OperationResult } from '../operate';
 import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { ReplacementValues } from '../utils/replaceByValues';
@@ -33,10 +33,10 @@ export type MigrationConfig<OC = OperationConfig, FO = Options> = CommonConfig<O
 /**
  * タスクの設定
  */
-export type MigrationTaskConfig<OC = OperationConfig, OF = Options> = CommonConfig<OC, OF> &
-  MigrationTaskEvents<OC, OF> &
-  MigrationJobEvents<OC, OF> &
-  MigrationIterationEvents<OC, OF> & {
+export type MigrationTaskConfig<OC = OperationConfig, FO = Options> = CommonConfig<OC, FO> &
+  MigrationTaskEvents<OC, FO> &
+  MigrationJobEvents<OC, FO> &
+  MigrationIterationEvents<OC, FO> & {
     /**
      * タスクID
      */
@@ -45,7 +45,7 @@ export type MigrationTaskConfig<OC = OperationConfig, OF = Options> = CommonConf
     /**
      * ジョブの設定
      */
-    jobs: MigrationJobConfig<OC, OF> | MigrationJobConfig<OC, OF>[];
+    jobs: MigrationJobConfig<OC, FO> | MigrationJobConfig<OC, FO>[];
 
     /**
      * ジョブを並列で実行する

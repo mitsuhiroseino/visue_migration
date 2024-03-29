@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { InvertConfig } from './types';
 
@@ -13,5 +13,5 @@ const Invert: ImageManipulation<InvertConfig> = async (jimp, config) => {
   const { callback } = config;
   return await jimp.invert(callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.INVERT, Invert);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.INVERT, Invert);
 export default Invert;

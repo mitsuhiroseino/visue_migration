@@ -1,5 +1,5 @@
 import ImageManipulationFactory from '../ImageManipulationFactory';
-import { JIMP_MANIPULATION_TYPE } from '../constants';
+import { IMAGE_MANIPULATION_TYPE } from '../constants';
 import { ImageManipulation } from '../types';
 import { ContainConfig } from './types';
 
@@ -13,5 +13,5 @@ const Contain: ImageManipulation<ContainConfig> = async (jimp, config) => {
   const { width, height, alignBits, mode, callback } = config;
   return await jimp.contain(width, height, alignBits, mode, callback);
 };
-ImageManipulationFactory.register(JIMP_MANIPULATION_TYPE.CONTAIN, Contain);
+ImageManipulationFactory.register(IMAGE_MANIPULATION_TYPE.CONTAIN, Contain);
 export default Contain;

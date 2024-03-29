@@ -1,6 +1,5 @@
 import isString from 'lodash/isString';
-
-import operate, { CONTENT_TYPE, OperationConfigBase } from '../operate';
+import operate, { OperationConfig } from '../operate';
 import { Content } from '../types';
 import asArray from '../utils/asArray';
 import catchError from './helpers/catchError';
@@ -14,9 +13,9 @@ import { IterationParams, MigrationJobConfig } from './types';
  * @param params
  * @returns
  */
-export default async function operateContent(
+export default async function operateContent<OC extends OperationConfig>(
   content: Content,
-  config: MigrationJobConfig,
+  config: MigrationJobConfig<OC>,
   params: IterationParams
 ): Promise<Content> {
   const {
@@ -55,9 +54,7 @@ export default async function operateContent(
   if (operations) {
     // 操作
     try {
-      const operateConfigs = asArray<OperationConfigBase>(operations).map((operation) =>
-        inheritConfig(operation, config)
-      );
+      const operateConfigs = asArray(operations).map((operation) => inheritConfig(operation, config));
       migrated = await operate(content, operateConfigs, params);
     } catch (e) {
       catchError(e, `Error in operation: ${_outputPath}`, forceOutput);
