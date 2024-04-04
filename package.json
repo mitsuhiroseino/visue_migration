@@ -1,6 +1,6 @@
 {
   "name": "@visue/migration",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "license": "MIT",
   "main": "build/index.cjs",
   "module": "build/index.mjs",
@@ -17,8 +17,8 @@
     "build": "rimraf build && rollup --config",
     "prepublish": "rimraf build && rollup --config",
     "start": "rimraf build && rollup --config --watch",
-    "format": "prettier --write \"src/**/*.{ts,js,json}\"",
-    "cleanup": "prettier --write \"src/**/*.{ts,js,json}\" --config .prettierrc.cleanup.json && yarn format",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,scss,sass,html,json}\"",
+    "format-c": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,scss,sass,html,json}\" --config ./.prettierrc.cleanup.js",
     "test": "jest",
     "indexes": "node ./scripts/indexes.js"
   },

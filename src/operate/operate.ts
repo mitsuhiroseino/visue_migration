@@ -27,7 +27,7 @@ export default async function operate<C, OC extends OperationConfig>(
   for (const operationConfig of operationConfigs) {
     // 置換
     let { type = OPERATION_TYPE.REPLACE, filter } = operationConfig;
-    const shouldProcess = currentContent != null ? await isMatch(currentContent, filter, params) : false;
+    const shouldProcess = currentContent != null ? isMatch(currentContent, filter, params) : false;
     if (shouldProcess) {
       const operation = isString(currentContent)
         ? OperationFactory.getTextOperation(type)

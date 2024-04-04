@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 
-export type ReplaceByValuesOptions = {
+export type ReplacePlaceholdersOptions = {
   /**
    * 置換対象を囲む文字
    * デフォルトは`['{{', '}}']`
@@ -18,7 +18,7 @@ export type ReplaceByValuesOptions = {
   flatKeys?: boolean;
 };
 
-export type ReplacementValues = { [key: string]: string | number | undefined };
+export type ReplacementValues = { [key: string]: unknown };
 
 const getShallow = (values, key) => values[key];
 
@@ -35,10 +35,10 @@ function escapeForRegex(str: string) {
  * @param options オプション
  * @returns
  */
-export default function replaceByValues(
+export default function replacePlaceholders(
   template: string,
   values: ReplacementValues,
-  options: ReplaceByValuesOptions = {}
+  options: ReplacePlaceholdersOptions = {}
 ) {
   const { replacementBracket = ['{{', '}}'], removePlaceholders, flatKeys } = options,
     // valuesから値を取得する関数

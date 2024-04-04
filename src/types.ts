@@ -1,6 +1,5 @@
 import { Options } from 'prettier';
-
-import { ReplaceByValuesOptions, ReplacementValues } from './utils/replaceByValues';
+import { ReplacePlaceholdersOptions, ReplacementValues } from './utils/replacePlaceholders';
 
 /**
  * ファイルの内容の型
@@ -39,7 +38,7 @@ export type FormattingConfig<O = Options> = {
 /**
  * テキストの置換に関する設定
  */
-export type ReplacementConfig = ReplaceByValuesOptions & {
+export type ReplacementConfig = ReplacePlaceholdersOptions & {
   /**
    * プレイスホルダーと置き換えられる値
    */

@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 
 import applyIf from '../utils/applyIf';
-import getFinishedString from '../utils/getFinishedString';
 import isMatch from '../utils/isMatch';
+import prepareValue from '../utils/prepareValue';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import createFileAndDir from './createFileAndDir';
@@ -37,22 +37,22 @@ export default async function executeIteration(
   let result: MigrationIterationResult = null;
   if (outputPath != null && inputPath == null && template == null && templatePath == null) {
     // 出力があるのに入力元が存在しない場合
-    const outputFilePath = await getFinishedString(outputPath, params, replacementOptions);
+    const outputFilePath: string = prepareValue(outputPath, params, replacementOptions);
     result = { inputPath: null, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
     console.warn('input does not exist.', JSON.stringify({ inputPath, template, templatePath, outputPath }));
   } else {
     // 対象が存在する場合
-    const outputFilePath = await getFinishedString(outputPath, params, replacementOptions);
+    const outputFilePath: string = prepareValue(outputPath, params, replacementOptions);
     let finishedParams = finishParams(params, { outputPath: outputFilePath });
     if (template != null) {
       // ファイルを作成
-      const content = await getFinishedString(template, finishedParams, replacementOptions);
+      const content: string = prepareValue(template, finishedParams, replacementOptions);
       // テンプレートの場合は事前フォーマットをoffにする
       const cfgs = { ...config, preFormatting: false };
       result = await createFile(content, outputFilePath, cfgs, finishedParams);
     } else if (templatePath != null) {
       // テンプレートファイルを読み込んで生成
-      const tplPath = await getFinishedString(templatePath, finishedParams, replacementOptions);
+      const tplPath: string = prepareValue(templatePath, finishedParams, replacementOptions);
       finishedParams = finishParams(finishedParams, { inputPath: tplPath });
       const availablePath = await fs.exists(tplPath);
       if (availablePath) {
@@ -66,10 +66,10 @@ export default async function executeIteration(
       }
     } else if (inputPath != null) {
       // 移行元のファイルをコピー
-      const inputFilePath = await getFinishedString(inputPath, finishedParams, replacementOptions);
+      const inputFilePath: string = prepareValue(inputPath, finishedParams, replacementOptions);
       finishedParams = finishParams(finishedParams, { inputPath: inputFilePath });
       // 除外対象か
-      const shouldProcess = await isMatch(inputFilePath, filter, finishedParams);
+      const shouldProcess = isMatch(inputFilePath, filter, finishedParams);
       if (shouldProcess) {
         // 処理対象
         const availablePath = await fs.exists(inputFilePath);

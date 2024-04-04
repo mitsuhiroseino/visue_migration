@@ -89,21 +89,3 @@ export type ParentOperation<C = Content, S extends ParentOperationConfigBase = P
   C,
   S
 >;
-
-/**
- * 静的パターン
- */
-export type StaticPattern = string | RegExp;
-
-/**
- * 動的パターン
- */
-export type DynamicPattern = (
-  params: OperationParams,
-  options?: { [key: string]: unknown }
-) => string | RegExp | Function;
-
-/**
- * 静的・動的パターン
- */
-export type FlexiblePattern = StaticPattern | DynamicPattern;

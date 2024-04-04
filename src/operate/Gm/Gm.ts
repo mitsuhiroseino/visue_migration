@@ -8,6 +8,7 @@ import { GmConfig } from './types';
 
 /**
  * 画像処理
+ * 利用するためには実行環境に対応したGraphicsMagickのインストールが必要
  * @param content 処理対象
  * @param config 操作設定
  * @param params 1繰り返し毎のパラメーター

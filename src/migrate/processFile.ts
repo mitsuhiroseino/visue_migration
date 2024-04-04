@@ -1,11 +1,9 @@
 import Encoding from 'encoding-japanese';
 import fs from 'fs-extra';
 import path from 'path';
-
 import { CONTENT_TYPE } from '../operate';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import finishParams from './helpers/finishParams';
-import isCopyOnly from './helpers/isCopyOnly';
 import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
@@ -15,7 +13,7 @@ export default async function processFile(
   config: MigrationJobConfig,
   params: IterationParams
 ): Promise<MigrationIterationResult> {
-  if (isCopyOnly(config)) {
+  if (config.copy) {
     // ファイルのコピーのみで済む場合
     const parentPath = path.dirname(outputPath);
     await fs.ensureDir(parentPath);
@@ -47,7 +45,11 @@ export default async function processFile(
       writeFileOptions = { encoding: outputEncoding || encoding };
     }
     // コンテンツの操作
-    content = await operateContent(content, config, finishParams(params, { inputPath, outputPath, contentType }));
+    content = await operateContent(
+      content,
+      config,
+      finishParams(params, { inputPath, outputPath, contentType, content })
+    );
     // ファイルの出力
     const parentPath = path.dirname(outputPath);
     await fs.ensureDir(parentPath);

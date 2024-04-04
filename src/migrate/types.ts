@@ -1,9 +1,9 @@
 import { Options } from 'prettier';
-
-import { OperationConfig, OperationConfigBase, OperationResult } from '../operate';
+import { OperationConfig, OperationResult } from '../operate';
 import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
-import { ReplacementValues } from '../utils/replaceByValues';
+import { ReplacementValues } from '../utils/replacePlaceholders';
+import { ReplaceWithConfigsConfig } from '../utils/replaceWithConfigs';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
 import { EntryType } from './helpers/getFsGenerator';
 
@@ -65,8 +65,8 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
     id?: string;
 
     /**
-     * 移行元のファイルパス
-     * 既存のファイルをコピー&変種して移行する場合に指定
+     * 移行元のディレクトリまたはファイルのパス
+     * 既存のファイルをコピー&編集して移行する場合に指定
      */
     inputPath?: string | ((params: IterationParams) => string);
 
@@ -77,26 +77,26 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
     template?: string | ((params: IterationParams) => string);
 
     /**
-     * 移行先へ保存するファイルの内容が記載されたファイルやそれらが保存されたディレクトリ
+     * 移行先へ保存するファイルのテンプレートのディレクトリまたはファイルのパス
      * 新規のファイルを作成する場合にパスを指定
      */
     templatePath?: string | ((params: IterationParams) => string);
 
     /**
-     * 移行先のファイルパス
+     * 移行先のディレクトリまたはファイルのパス
      */
     outputPath: string | ((params: IterationParams) => string);
+
+    /**
+     * 移行先ファイル名
+     * 移行先の指定がディレクトリの場合にその配下のファイルの名称を変更する場合に指定する
+     */
+    itemName?: ReplaceWithConfigsConfig<IterationParams> | ReplaceWithConfigsConfig<IterationParams>[];
 
     /**
      * 処理対象がディレクトリの場合にサブディレクトリは処理しない
      */
     ignoreSubDir?: boolean;
-
-    /**
-     * ファイルのコピーのみ行う
-     * このプロパティがtrueの場合は、コンテンツの編集に関するプロパティは無効
-     */
-    copy?: boolean;
 
     /**
      * ファイルをバイナリ形式で読み込んで処理する
@@ -111,6 +111,12 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
      * - 関数の場合は戻り値がtrueだったもの
      */
     filter?: Condition;
+
+    /**
+     * ファイルのコピーのみ行う
+     * このプロパティがtrueの場合は、コンテンツの編集に関するプロパティは全て無効
+     */
+    copy?: boolean;
 
     // 以下はコンテンツの編集に関するプロパティ
 

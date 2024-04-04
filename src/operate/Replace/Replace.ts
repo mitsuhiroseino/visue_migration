@@ -1,9 +1,10 @@
 import asArray from '../../utils/asArray';
 import prepareValue from '../../utils/prepareValue';
-import replace from '../../utils/replace';
+import replace, { StaticPattern } from '../../utils/replace';
+import replaceWithConfigs from '../../utils/replaceWithConfigs';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
-import { Operation, OperationParams, StaticPattern } from '../types';
+import { Operation, OperationParams } from '../types';
 import { ReplaceConfig } from './types';
 
 /**
@@ -18,20 +19,7 @@ const Replace: Operation<string, ReplaceConfig> = async (
   config: ReplaceConfig,
   params: OperationParams
 ) => {
-  let { patterns, formatPatterns, replacement = '', formatReplacement, replacementBracket } = config;
-  const patternsOpations = { replacementBracket, content, preserveString: !formatPatterns };
-  const replacementOpations = { replacementBracket, content, preserveString: !formatReplacement };
-  // 前処理
-  replacement = prepareValue(replacement, params, replacementOpations);
-
-  let cnt = content;
-  for (const pattern of asArray(patterns)) {
-    const ptn: StaticPattern = prepareValue(pattern, params, patternsOpations);
-    // 置換の実行
-    cnt = replace(cnt, ptn, replacement);
-  }
-
-  return cnt;
+  return replaceWithConfigs(content, config, params);
 };
 export default Replace;
 OperationFactory.register(OPERATION_TYPE.REPLACE, Replace, CONTENT_TYPE.TEXT);

@@ -1,14 +1,14 @@
 import fs from 'fs-extra';
 import path from 'path';
-
-import getFinishedString from '../utils/getFinishedString';
-import { ReplaceByValuesOptions } from '../utils/replaceByValues';
+import prepareValue from '../utils/prepareValue';
+import { ReplacePlaceholdersOptions } from '../utils/replacePlaceholders';
+import replaceWithConfigs from '../utils/replaceWithConfigs';
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import finishParams from './helpers/finishParams';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
-export type CreateFileOptions = ReplaceByValuesOptions;
+export type CreateFileOptions = ReplacePlaceholdersOptions;
 
 /**
  * input配下のファイルをテンプレートとしてoutput配下に出力する
@@ -30,11 +30,17 @@ export default async function createFileAndDir(
     // ディレクトリの場合は配下のファイル・ディレクトリを順次処理
     const items = await fs.readdir(inputPath);
     const promises = [];
+    const { itemName } = config;
     for (const item of items) {
       const inputItemPath = path.join(inputPath, item);
-      let outputItemPath = path.join(outputPath, item);
-      // テンプレートから生成する場合はプレイスホルダーの置換
-      outputItemPath = await getFinishedString(outputItemPath, params, config);
+      // テンプレートから生成する場合はパスの置換があるかも
+      let outputItem;
+      if (itemName) {
+        outputItem = replaceWithConfigs(item, itemName, finishParams(params, { inputItemPath, inputItem: item }));
+      } else {
+        outputItem = item;
+      }
+      let outputItemPath = path.join(outputPath, outputItem);
       promises.push(createFileAndDir(inputItemPath, outputItemPath, config, params));
     }
     await Promise.all(promises);
@@ -43,7 +49,7 @@ export default async function createFileAndDir(
     // ファイルの場合は、ファイルを読み込みcreateFileを実行した結果のPromiseを返す
     const template = await fs.readFile(inputPath, { encoding: config.inputEncoding || DEFAULT_TEXT_ENCODING });
     const finishedParams = finishParams(params, { inputPath, outputPath });
-    const content = await getFinishedString(template, finishedParams, config);
+    const content: string = prepareValue(template, finishedParams, config);
     const result = await createFile(content, outputPath, config, finishedParams);
     return { ...result, inputPath };
   }

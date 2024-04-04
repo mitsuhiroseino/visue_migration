@@ -1,5 +1,6 @@
+import { FlexiblePattern } from '../../utils/replace';
 import { OPERATION_TYPE } from '../constants';
-import { FlexiblePattern, OperationConfigBase } from '../types';
+import { OperationConfigBase } from '../types';
 
 /**
  * 文字列追加の設定
@@ -11,9 +12,9 @@ export type AddConfig = OperationConfigBase<typeof OPERATION_TYPE.ADD> & {
   patterns?: FlexiblePattern | FlexiblePattern[];
 
   /**
-   * patternsの要素が文字列の場合にプレイスホルダーをparamsの値で置換する
+   * patternsの要素のプレイスホルダーを置換するなどの前処理を行わない
    */
-  formatPatterns?: boolean;
+  preservePatterns?: boolean;
 
   /**
    * 追加する文字列
@@ -21,9 +22,9 @@ export type AddConfig = OperationConfigBase<typeof OPERATION_TYPE.ADD> & {
   additionalString: string;
 
   /**
-   * additionalStringが文字列の場合にプレイスホルダーをparamsの値で置換する
+   * additionalStringのプレイスホルダーを置換するなどの前処理を行わない
    */
-  formatAdditionalString?: boolean;
+  preserveAdditionalString?: boolean;
 
   /**
    * 追加位置
