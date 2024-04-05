@@ -38,11 +38,11 @@ export type FormattingConfig<O = Options> = {
 /**
  * テキストの置換に関する設定
  */
-export type ReplacementConfig = ReplacePlaceholdersOptions & {
+export type ReplacementConfig<P = ReplacementValues> = ReplacePlaceholdersOptions & {
   /**
    * プレイスホルダーと置き換えられる値
    */
-  params?: ReplacementValues;
+  params?: P;
 };
 
 /**

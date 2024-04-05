@@ -16,7 +16,7 @@ import { IterationParams, MigrationJobConfig } from './types';
 export default async function operateContent<OC extends OperationConfig>(
   content: Content,
   config: MigrationJobConfig<OC>,
-  params: IterationParams
+  params: IterationParams,
 ): Promise<Content> {
   const {
     initialize,
@@ -33,7 +33,7 @@ export default async function operateContent<OC extends OperationConfig>(
   // 任意の前処理
   if (initialize) {
     try {
-      content = await initialize(content, { ...params }, { ...config });
+      content = await initialize(content, { ...config }, { ...params });
     } catch (e) {
       catchError(e, `Error in initializing: ${_outputPath}`, forceOutput);
       return content;
@@ -77,7 +77,7 @@ export default async function operateContent<OC extends OperationConfig>(
   // 任意の後処理
   if (finalize) {
     try {
-      migrated.content = await finalize(migrated.content, { ...params }, migrated.results);
+      migrated.content = await finalize(migrated.content, { ...config }, { ...params }, migrated.results);
     } catch (e) {
       catchError(e, `Error in finalizing: ${_outputPath}`, forceOutput);
       return migrated.content;

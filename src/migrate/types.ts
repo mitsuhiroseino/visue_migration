@@ -2,8 +2,9 @@ import { Options } from 'prettier';
 import { OperationConfig, OperationResult } from '../operate';
 import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
+import { DynamicPattern } from '../utils/replace';
 import { ReplacementValues } from '../utils/replacePlaceholders';
-import { ReplaceWithConfigsConfig } from '../utils/replaceWithConfigs';
+import { ReplaceWithConfigsConfig, Replacer } from '../utils/replaceWithConfigs';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
 import { EntryType } from './helpers/getFsGenerator';
 
@@ -68,30 +69,34 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
      * 移行元のディレクトリまたはファイルのパス
      * 既存のファイルをコピー&編集して移行する場合に指定
      */
-    inputPath?: string | ((params: IterationParams) => string);
+    inputPath?: VariableString;
 
     /**
      * 移行先へ保存するファイルのテンプレート
      * 新規のファイルを作成する場合にファイルの内容そのものを指定
      */
-    template?: string | ((params: IterationParams) => string);
+    template?: VariableString;
 
     /**
      * 移行先へ保存するファイルのテンプレートのディレクトリまたはファイルのパス
      * 新規のファイルを作成する場合にパスを指定
      */
-    templatePath?: string | ((params: IterationParams) => string);
+    templatePath?: VariableString;
 
     /**
      * 移行先のディレクトリまたはファイルのパス
      */
-    outputPath: string | ((params: IterationParams) => string);
+    outputPath: VariableString;
 
     /**
      * 移行先ファイル名
      * 移行先の指定がディレクトリの場合にその配下のファイルの名称を変更する場合に指定する
      */
-    itemName?: ReplaceWithConfigsConfig<IterationParams> | ReplaceWithConfigsConfig<IterationParams>[];
+    itemName?:
+      | ReplaceWithConfigsConfig<IterationParams>
+      | ReplaceWithConfigsConfig<IterationParams>[]
+      | Replacer<IterationParams>
+      | Replacer<IterationParams>[];
 
     /**
      * 処理対象がディレクトリの場合にサブディレクトリは処理しない
@@ -110,7 +115,7 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
      * - 正規表現の場合はパスがtestでtrueになったもの
      * - 関数の場合は戻り値がtrueだったもの
      */
-    filter?: Condition;
+    filter?: Condition<IterationParams>;
 
     /**
      * ファイルのコピーのみ行う
@@ -123,14 +128,14 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
     /**
      * フォーマットも含む編集処理前に実行される任意の処理
      * @param content コンテンツ
-     * @param params 繰り返し処理毎のパラメーター
      * @param config 当コンフィグ
+     * @param params 繰り返し処理毎のパラメーター
      * @returns 編集処理対象になるコンテンツ
      */
     initialize?: <C = string | Buffer>(
       content: C,
+      config: MigrationJobConfig<OC, FO>,
       params: IterationParams,
-      config: Omit<MigrationJobConfig<OC, FO>, 'initialize'>
     ) => Promise<C>;
 
     /**
@@ -141,14 +146,16 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
     /**
      * フォーマットも含む編集処理後に実行される任意の処理
      * @param content 編集処理後のコンテンツ
-     * @param params 繰り返し処理毎のパラメーター
      * @param config 当コンフィグ
+     * @param params 繰り返し処理毎のパラメーター
+     * @param result 処理結果
      * @returns 最終的なコンテンツ
      */
     finalize?: <C = string | Buffer>(
       content: C,
+      config: MigrationJobConfig<OC, FO>,
       params: IterationParams,
-      results: OperationResult<C, OC>[]
+      results: OperationResult<C, OC>[],
     ) => Promise<C>;
   };
 
@@ -315,7 +322,7 @@ type MigrationIterationEvents<OC = OperationConfig, FO = Options> = {
   onIterationEnd?: (
     result: MigrationIterationResult,
     config: MigrationJobConfig<OC, FO>,
-    params: IterationParams
+    params: IterationParams,
   ) => void;
 };
 
@@ -345,3 +352,8 @@ type IterationConfig<OC = OperationConfig, FO = Options> = {
    */
   entryType?: EntryType;
 };
+
+/**
+ * 動的に変更される文字列
+ */
+type VariableString = string | DynamicPattern<IterationParams>;

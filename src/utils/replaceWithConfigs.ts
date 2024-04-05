@@ -36,13 +36,13 @@ export type ReplaceWithConfigsConfig<O extends ReplaceOptions = ReplaceOptions> 
   /**
    * 条件に当てはまったもののみ処理対象とする
    */
-  filter?: Condition;
+  filter?: Condition<O>;
 };
 
 /**
  * 任意の置換処理
  */
-export type Replacer = (str: string, options?: ReplaceOptions) => string;
+export type Replacer<O extends ReplaceOptions = ReplaceOptions> = (str: string, options?: O) => string;
 
 /**
  * 設定を基に文字列の置換を行う
@@ -54,7 +54,7 @@ export type Replacer = (str: string, options?: ReplaceOptions) => string;
 export default function replaceWithConfigs<O extends ReplaceOptions = ReplaceOptions>(
   str: string,
   configs: ReplaceWithConfigsConfig | ReplaceWithConfigsConfig[] | Replacer | Replacer[],
-  options?: O
+  options?: O,
 ) {
   let result = str;
   for (const config of asArray(configs)) {

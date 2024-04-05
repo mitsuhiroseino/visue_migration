@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import replace, { ReplaceOptions } from './replace';
 
 export type ReplacePlaceholdersOptions = {
   /**
@@ -18,7 +19,7 @@ export type ReplacePlaceholdersOptions = {
   flatKeys?: boolean;
 };
 
-export type ReplacementValues = { [key: string]: unknown };
+export type ReplacementValues = ReplaceOptions;
 
 const getShallow = (values, key) => values[key];
 
@@ -38,7 +39,7 @@ function escapeForRegex(str: string) {
 export default function replacePlaceholders(
   template: string,
   values: ReplacementValues,
-  options: ReplacePlaceholdersOptions = {}
+  options: ReplacePlaceholdersOptions = {},
 ) {
   const { replacementBracket = ['{{', '}}'], removePlaceholders, flatKeys } = options,
     // valuesから値を取得する関数
@@ -54,7 +55,7 @@ export default function replacePlaceholders(
     pattern = `${l}(.*?)${r}`,
     regex = new RegExp(pattern, 'g');
 
-  return template.replace(regex, (match, key) => {
+  return replace(template, regex, (match, key) => {
     const value = getValue(values, key);
     if (value != null) {
       return value;
