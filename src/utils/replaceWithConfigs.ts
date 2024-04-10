@@ -1,7 +1,7 @@
 import isFunction from 'lodash/isFunction';
 import asArray from './asArray';
+import finishDynamicValue, { FinishDynamicValueOptions } from './finishDynamicValue';
 import isMatch, { Condition } from './isMatch';
-import prepareValue, { PrepareValueOptions, ReplacementValues } from './prepareValue';
 import replace, { FlexiblePattern, ReplaceOptions, StaticPattern } from './replace';
 
 export { DynamicPattern, FlexiblePattern, StaticPattern } from './replace';
@@ -10,7 +10,7 @@ export { DynamicPattern, FlexiblePattern, StaticPattern } from './replace';
  * 置換設定
  */
 export type ReplaceWithConfigsConfig<O extends ReplaceOptions = ReplaceOptions> = Omit<
-  PrepareValueOptions,
+  FinishDynamicValueOptions,
   'preserveString' | 'preserveFunction'
 > & {
   /**
@@ -88,12 +88,12 @@ function createReplacer(config: ReplaceWithConfigsConfig | Replacer): Replacer {
     // Replacerを作って返す
     return (str: string, options: ReplaceOptions = {}) => {
       // 置換後文字列の作成
-      const rep: string = prepareValue(replacement, options, replacementOpations);
+      const rep: string = finishDynamicValue(replacement, options, replacementOpations);
       let result = str;
       if (isMatch(str, filter, options)) {
         for (const pattern of asArray(patterns)) {
           // パターンの作成
-          const ptn: StaticPattern = prepareValue(pattern, options, patternsOpations);
+          const ptn: StaticPattern = finishDynamicValue(pattern, options, patternsOpations);
           result = replace(result, ptn, rep, options);
         }
       }

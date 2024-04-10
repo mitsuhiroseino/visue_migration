@@ -78,7 +78,12 @@ export const CONTENT_TYPE = {
   TEXT: 'text',
 
   /**
+   * オブジェクト、配列など
+   */
+  OBJECT: 'object',
+
+  /**
    * 指定なし
    */
-  NONE: 'none',
+  ANY: 'any',
 } as const;

@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import prepareValue from '../utils/prepareValue';
+import finishDynamicValue from '../utils/finishDynamicValue';
 import { ReplacePlaceholdersOptions } from '../utils/replacePlaceholders';
 import replaceWithConfigs from '../utils/replaceWithConfigs';
 import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
@@ -23,7 +23,7 @@ export default async function createFileAndDir(
   inputPath: string,
   outputPath: string,
   config: MigrationJobConfig,
-  params: IterationParams
+  params: IterationParams,
 ): Promise<MigrationIterationResult> {
   const stat = await fs.stat(inputPath);
   if (stat.isDirectory()) {
@@ -40,7 +40,7 @@ export default async function createFileAndDir(
       } else {
         outputItem = item;
       }
-      let outputItemPath = path.join(outputPath, outputItem);
+      const outputItemPath = outputPath != null ? path.join(outputPath, outputItem) : null;
       promises.push(createFileAndDir(inputItemPath, outputItemPath, config, params));
     }
     await Promise.all(promises);
@@ -49,7 +49,7 @@ export default async function createFileAndDir(
     // ファイルの場合は、ファイルを読み込みcreateFileを実行した結果のPromiseを返す
     const template = await fs.readFile(inputPath, { encoding: config.inputEncoding || DEFAULT_TEXT_ENCODING });
     const finishedParams = finishParams(params, { inputPath, outputPath });
-    const content: string = prepareValue(template, finishedParams, config);
+    const content: string = finishDynamicValue(template, finishedParams, config);
     const result = await createFile(content, outputPath, config, finishedParams);
     return { ...result, inputPath };
   }

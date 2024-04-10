@@ -11,15 +11,22 @@ export default async function processFile(
   inputPath: string,
   outputPath: string,
   config: MigrationJobConfig,
-  params: IterationParams
+  params: IterationParams,
 ): Promise<MigrationIterationResult> {
   if (config.copy) {
     // ファイルのコピーのみで済む場合
-    const parentPath = path.dirname(outputPath);
-    await fs.ensureDir(parentPath);
-    // 単純コピー
-    await fs.copyFile(inputPath, outputPath);
-    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
+    if (outputPath != null) {
+      // 出力先あり
+      const parentPath = path.dirname(outputPath);
+      await fs.ensureDir(parentPath);
+      // 単純コピー
+      await fs.copyFile(inputPath, outputPath);
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
+    } else {
+      // 出力先なし
+      console.warn('output does not exist.', JSON.stringify({ inputPath, outputPath }));
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.NONE };
+    }
   } else {
     // ファイル内の変換が必要な場合
     const { binary, inputEncoding, outputEncoding } = config;
@@ -48,12 +55,16 @@ export default async function processFile(
     content = await operateContent(
       content,
       config,
-      finishParams(params, { inputPath, outputPath, contentType, content })
+      finishParams(params, { inputPath, outputPath, contentType, content }),
     );
-    // ファイルの出力
-    const parentPath = path.dirname(outputPath);
-    await fs.ensureDir(parentPath);
-    await fs.writeFile(outputPath, content, writeFileOptions);
-    return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
+    if (outputPath != null) {
+      // ファイルの出力
+      const parentPath = path.dirname(outputPath);
+      await fs.ensureDir(parentPath);
+      await fs.writeFile(outputPath, content, writeFileOptions);
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
+    } else {
+      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.PROCESSED };
+    }
   }
 }

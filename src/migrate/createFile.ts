@@ -17,14 +17,18 @@ export default async function createFile(
   content: string,
   outputPath: string,
   config: MigrationJobConfig,
-  params: IterationParams
+  params: IterationParams,
 ): Promise<MigrationIterationResult> {
   // 操作
   content = (await operateContent(content, config, finishParams(params, { content }))) as string;
-  // ファイルの出力
-  const parentPath = path.dirname(outputPath);
-  await fs.ensureDir(parentPath);
-  const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;
-  await fs.writeFile(outputPath, content, { encoding: outputEncoding });
-  return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED };
+  if (outputPath != null) {
+    // ファイルの出力
+    const parentPath = path.dirname(outputPath);
+    await fs.ensureDir(parentPath);
+    const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;
+    await fs.writeFile(outputPath, content, { encoding: outputEncoding });
+    return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED };
+  } else {
+    return { outputPath, status: MIGRATION_ITEM_STATUS.PROCESSED };
+  }
 }

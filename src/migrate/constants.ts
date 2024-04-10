@@ -20,6 +20,11 @@ export const MIGRATION_ITEM_STATUS = {
   CREATED: 'created',
 
   /**
+   * 処理済
+   */
+  PROCESSED: 'processed',
+
+  /**
    * スキップ
    */
   SKIPPED: 'skipped',

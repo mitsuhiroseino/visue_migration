@@ -1,7 +1,7 @@
 import isString from 'lodash/isString';
 
 import asArray from '../../utils/asArray';
-import prepareValue from '../../utils/prepareValue';
+import finishDynamicValue from '../../utils/finishDynamicValue';
 import replace, { FlexiblePattern, StaticPattern } from '../../utils/replace';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
@@ -37,7 +37,7 @@ const Add: Operation<string, AddConfig> = async (content: string, config: AddCon
     preserveFunction: preservePatterns,
   };
   // 前処理
-  const additionalStr = prepareValue(additionalString, params, additionalStrOptions);
+  const additionalStr = finishDynamicValue(additionalString, params, additionalStrOptions);
 
   let cnt = content;
   if (patterns == null) {
@@ -45,7 +45,7 @@ const Add: Operation<string, AddConfig> = async (content: string, config: AddCon
     cnt = addPosition === 'before' ? `${additionalStr}${cnt}` : `${cnt}${additionalStr}`;
   } else {
     for (const pattern of asArray(patterns)) {
-      const ptn = prepareValue<FlexiblePattern, StaticPattern>(pattern, params, patternsOptions);
+      const ptn = finishDynamicValue<FlexiblePattern, StaticPattern>(pattern, params, patternsOptions);
       if (isString(ptn)) {
         // patternが文字列の場合はpatternの前方or後方に追加
         const replacement = addPosition === 'before' ? `${additionalStr}${ptn}` : `${ptn}${additionalStr}`;

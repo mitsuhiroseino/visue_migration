@@ -1,8 +1,7 @@
 import fs from 'fs-extra';
-
 import applyIf from '../utils/applyIf';
+import finishDynamicValue from '../utils/finishDynamicValue';
 import isMatch from '../utils/isMatch';
-import prepareValue from '../utils/prepareValue';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import createFileAndDir from './createFileAndDir';
@@ -17,7 +16,7 @@ import { IterationParams, MigrationIterationResult, MigrationJobConfig } from '.
  */
 export default async function executeIteration(
   config: MigrationJobConfig,
-  params: IterationParams
+  params: IterationParams,
 ): Promise<MigrationIterationResult | null> {
   const {
       inputPath,
@@ -35,24 +34,30 @@ export default async function executeIteration(
   applyIf(onIterationStart, [config, params]);
 
   let result: MigrationIterationResult = null;
-  if (outputPath != null && inputPath == null && template == null && templatePath == null) {
-    // 出力があるのに入力元が存在しない場合
-    const outputFilePath: string = prepareValue(outputPath, params, replacementOptions);
-    result = { inputPath: null, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
-    console.warn('input does not exist.', JSON.stringify({ inputPath, template, templatePath, outputPath }));
+  if (inputPath == null && template == null && templatePath == null) {
+    // 入力が無い場合
+    if (outputPath != null) {
+      // 入力が無いのに出力がある場合
+      const outputFilePath: string = finishDynamicValue(outputPath, params, replacementOptions);
+      result = { inputPath: null, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
+      console.warn('input does not exist.', JSON.stringify({ inputPath, template, templatePath, outputPath }));
+    } else {
+      // 出力も無い場合
+      result = { inputPath: null, outputPath: null, status: MIGRATION_ITEM_STATUS.NONE };
+    }
   } else {
-    // 対象が存在する場合
-    const outputFilePath: string = prepareValue(outputPath, params, replacementOptions);
+    // 入力が有る場合
+    const outputFilePath: string = finishDynamicValue(outputPath, params, replacementOptions);
     let finishedParams = finishParams(params, { outputPath: outputFilePath });
     if (template != null) {
       // ファイルを作成
-      const content: string = prepareValue(template, finishedParams, replacementOptions);
+      const content: string = finishDynamicValue(template, finishedParams, replacementOptions);
       // テンプレートの場合は事前フォーマットをoffにする
       const cfgs = { ...config, preFormatting: false };
       result = await createFile(content, outputFilePath, cfgs, finishedParams);
     } else if (templatePath != null) {
       // テンプレートファイルを読み込んで生成
-      const tplPath: string = prepareValue(templatePath, finishedParams, replacementOptions);
+      const tplPath: string = finishDynamicValue(templatePath, finishedParams, replacementOptions);
       finishedParams = finishParams(finishedParams, { inputPath: tplPath });
       const availablePath = await fs.exists(tplPath);
       if (availablePath) {
@@ -66,7 +71,7 @@ export default async function executeIteration(
       }
     } else if (inputPath != null) {
       // 移行元のファイルをコピー
-      const inputFilePath: string = prepareValue(inputPath, finishedParams, replacementOptions);
+      const inputFilePath: string = finishDynamicValue(inputPath, finishedParams, replacementOptions);
       finishedParams = finishParams(finishedParams, { inputPath: inputFilePath });
       // 除外対象か
       const shouldProcess = isMatch(inputFilePath, filter, finishedParams);

@@ -20,7 +20,7 @@ export default async function processFileAndDir(
   outputPath: string,
   config: MigrationJobConfig,
   params: IterationParams,
-  _level = 0
+  _level = 0,
 ): Promise<MigrationIterationResult> {
   const { ignoreSubDir } = config;
   const stat = await fs.stat(inputPath);
@@ -28,27 +28,35 @@ export default async function processFileAndDir(
     // ディレクトリの場合
     if (config.copy) {
       // コピーだけで済む場合
-      if (ignoreSubDir) {
-        // 対象のフォルダ直下のファイルのみコピー
-        await fs.ensureDir(outputPath);
-        const items = await fs.readdir(inputPath, { withFileTypes: true });
-        const promises = [];
-        for (const item of items) {
-          if (item.isFile()) {
-            promises.push(
-              fs.copy(path.join(inputPath, item.name), path.join(outputPath, item.name), { overwrite: true })
-            );
+      if (outputPath != null) {
+        if (ignoreSubDir) {
+          // 対象のフォルダ直下のファイルのみコピー
+          await fs.ensureDir(outputPath);
+          const items = await fs.readdir(inputPath, { withFileTypes: true });
+          const promises = [];
+          for (const item of items) {
+            if (item.isFile()) {
+              promises.push(
+                fs.copy(path.join(inputPath, item.name), path.join(outputPath, item.name), { overwrite: true }),
+              );
+            }
           }
+          await Promise.all(promises);
+        } else {
+          // サブフォルダも含めてコピー
+          await fs.copy(inputPath, outputPath, { overwrite: true });
         }
-        await Promise.all(promises);
+        return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
       } else {
-        // サブフォルダも含めてコピー
-        await fs.copy(inputPath, outputPath, { overwrite: true });
+        // 出力先なし
+        console.warn('output does not exist.', JSON.stringify({ inputPath, outputPath }));
+        return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.NONE };
       }
-      return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.COPIED };
     } else {
       // テキストファイルの変換が必要な場合
-      await fs.ensureDir(outputPath);
+      if (outputPath != null) {
+        await fs.ensureDir(outputPath);
+      }
       const items = await fs.readdir(inputPath);
       const { itemName } = config;
       await Promise.all(
@@ -60,9 +68,9 @@ export default async function processFileAndDir(
           } else {
             outputItem = item;
           }
-          const outputItemPath = path.join(outputPath, outputItem);
+          const outputItemPath = outputPath != null ? path.join(outputPath, outputItem) : null;
           return await processFileAndDir(inputItemPath, outputItemPath, config, params, _level + 1);
-        })
+        }),
       );
       return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };
     }

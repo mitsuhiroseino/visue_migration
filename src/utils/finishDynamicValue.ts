@@ -4,7 +4,7 @@ import replacePlaceholders, { ReplacePlaceholdersOptions, ReplacementValues } fr
 
 export { ReplacementValues } from './replacePlaceholders';
 
-export type PrepareValueOptions = ReplacePlaceholdersOptions & {
+export type FinishDynamicValueOptions = ReplacePlaceholdersOptions & {
   /**
    * 文字列の場合はそのまま返す
    */
@@ -30,7 +30,11 @@ export type PrepareValueOptions = ReplacePlaceholdersOptions & {
  * @param options
  * @returns
  */
-export default function prepareValue<T, R>(target: T, values: ReplacementValues, options: PrepareValueOptions = {}): R {
+export default function finishDynamicValue<T, R>(
+  target: T,
+  values: ReplacementValues,
+  options: FinishDynamicValueOptions = {},
+): R {
   const { preserveString, preserveFunction, fnOptions, ...rest } = options;
   if (!preserveString && isString(target)) {
     // 文字列の場合はプレイスホルダーを置換

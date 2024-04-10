@@ -16,7 +16,7 @@ class OperationFactory extends Factory<Operation<any, any>> {
    * @param operation 操作
    * @param contentType 操作対象のコンテンツ種別
    */
-  register(type: string, operation: Operation<any, any>, contentType: ContentType = CONTENT_TYPE.NONE) {
+  register(type: string, operation: Operation<any, any>, contentType: ContentType = CONTENT_TYPE.ANY) {
     super.register(type, operation);
     this._contentTypes[type] = contentType;
   }
@@ -29,7 +29,7 @@ class OperationFactory extends Factory<Operation<any, any>> {
    */
   get(type: string, contentType?: ContentType): Operation<any, any> {
     const cType = this._contentTypes[type];
-    if (cType && (cType === contentType || cType == CONTENT_TYPE.NONE || contentType == null)) {
+    if (cType && (cType === contentType || cType == CONTENT_TYPE.ANY || contentType == null)) {
       return super.get(type);
     }
   }

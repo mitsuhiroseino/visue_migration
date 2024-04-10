@@ -1,5 +1,5 @@
 import asArray from '../../utils/asArray';
-import prepareValue from '../../utils/prepareValue';
+import finishDynamicValue from '../../utils/finishDynamicValue';
 import replace, { StaticPattern } from '../../utils/replace';
 import replaceWithConfigs from '../../utils/replaceWithConfigs';
 import OperationFactory from '../OperationFactory';
@@ -17,7 +17,7 @@ import { ReplaceConfig } from './types';
 const Replace: Operation<string, ReplaceConfig> = async (
   content: string,
   config: ReplaceConfig,
-  params: OperationParams
+  params: OperationParams,
 ) => {
   return replaceWithConfigs(content, config, params);
 };
