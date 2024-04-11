@@ -13,7 +13,8 @@ import { EntryType } from './helpers/getFsGenerator';
 export type MigrationConfig<OC = OperationConfig, FO = Options> = CommonConfig<OC, FO> &
   MigrationTaskEvents<OC, FO> &
   MigrationJobEvents<OC, FO> &
-  MigrationIterationEvents<OC, FO> & {
+  MigrationIterationEvents<OC, FO> &
+  MigrationItemEvents<OC, FO> & {
     /**
      * ID
      */
@@ -36,7 +37,8 @@ export type MigrationConfig<OC = OperationConfig, FO = Options> = CommonConfig<O
 export type MigrationTaskConfig<OC = OperationConfig, FO = Options> = CommonConfig<OC, FO> &
   MigrationTaskEvents<OC, FO> &
   MigrationJobEvents<OC, FO> &
-  MigrationIterationEvents<OC, FO> & {
+  MigrationIterationEvents<OC, FO> &
+  MigrationItemEvents<OC, FO> & {
     /**
      * タスクID
      */
@@ -58,7 +60,8 @@ export type MigrationTaskConfig<OC = OperationConfig, FO = Options> = CommonConf
  */
 export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfig<OC, FO> &
   MigrationJobEvents<OC, FO> &
-  MigrationIterationEvents<OC, FO> & {
+  MigrationIterationEvents<OC, FO> &
+  MigrationItemEvents<OC, FO> & {
     /**
      *  ジョブID
      */
@@ -250,6 +253,11 @@ export type MigrationIterationResult = {
   outputPath?: string;
 
   /**
+   * 処理対象の種別
+   */
+  itemType?: 'dir' | 'file';
+
+  /**
    * 処理ステータス
    */
   status: MigrationItemStatus;
@@ -323,6 +331,45 @@ type MigrationIterationEvents<OC = OperationConfig, FO = Options> = {
     config: MigrationJobConfig<OC, FO>,
     params: IterationParams,
   ) => void;
+};
+
+/**
+ * ファイル、ディレクトリ処理用のイベントハンドラー
+ */
+type MigrationItemEvents<OC = OperationConfig, FO = Options> = {
+  /**
+   * ファイル処理開始時のハンドラー
+   * @param config イテレーション設定
+   * @param params イテレーションパラメーター
+   * @returns
+   */
+  onFileStart?: (config: MigrationJobConfig<OC, FO>, params: IterationParams) => void;
+
+  /**
+   * ファイル処理終了時のハンドラー
+   * @param result イテレーション処理結果
+   * @param config イテレーション設定
+   * @param params イテレーションパラメーター
+   * @returns
+   */
+  onFileEnd?: (result: MigrationIterationResult, config: MigrationJobConfig<OC, FO>, params: IterationParams) => void;
+
+  /**
+   * ディレクトリ処理開始時のハンドラー
+   * @param config イテレーション設定
+   * @param params イテレーションパラメーター
+   * @returns
+   */
+  onDirStart?: (config: MigrationJobConfig<OC, FO>, params: IterationParams) => void;
+
+  /**
+   * ディレクトリ処理終了時のハンドラー
+   * @param result イテレーション処理結果
+   * @param config イテレーション設定
+   * @param params イテレーションパラメーター
+   * @returns
+   */
+  onDirEnd?: (result: MigrationIterationResult, config: MigrationJobConfig<OC, FO>, params: IterationParams) => void;
 };
 
 export type CommonConfig<OC = OperationConfig, FO = Options> = FormattingConfig<FO> &

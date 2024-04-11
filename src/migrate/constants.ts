@@ -33,6 +33,11 @@ export const MIGRATION_ITEM_STATUS = {
    * 処理対象なし
    */
   NONE: 'none',
+
+  /**
+   * 未処理
+   */
+  PENDING: 'pending',
 } as const;
 
 /**

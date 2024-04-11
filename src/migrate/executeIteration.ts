@@ -3,8 +3,8 @@ import applyIf from '../utils/applyIf';
 import finishDynamicValue from '../utils/finishDynamicValue';
 import isMatch from '../utils/isMatch';
 import { MIGRATION_ITEM_STATUS } from './constants';
-import createFile from './createFile';
 import createFileAndDir from './createFileAndDir';
+import createFileFromContent from './createFileFromContent';
 import finishParams from './helpers/finishParams';
 import processFileAndDir from './processFileAndDir';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
@@ -54,7 +54,7 @@ export default async function executeIteration(
       const content: string = finishDynamicValue(template, finishedParams, replacementOptions);
       // テンプレートの場合は事前フォーマットをoffにする
       const cfgs = { ...config, preFormatting: false };
-      result = await createFile(content, outputFilePath, cfgs, finishedParams);
+      result = await createFileFromContent(content, outputFilePath, cfgs, finishedParams);
     } else if (templatePath != null) {
       // テンプレートファイルを読み込んで生成
       const tplPath: string = finishDynamicValue(templatePath, finishedParams, replacementOptions);

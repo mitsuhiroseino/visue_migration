@@ -1,8 +1,10 @@
 import fs from 'fs-extra';
-import path from 'path';
-import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
+import applyIf from '../utils/applyIf';
+import finishDynamicValue from '../utils/finishDynamicValue';
+import { DEFAULT_TEXT_ENCODING } from './constants';
+import createFileFromContent from './createFileFromContent';
+import deleteParams from './helpers/deleteParams';
 import finishParams from './helpers/finishParams';
-import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
@@ -14,21 +16,22 @@ import { IterationParams, MigrationIterationResult, MigrationJobConfig } from '.
  * @returns 処理結果
  */
 export default async function createFile(
-  content: string,
+  inputPath: string,
   outputPath: string,
   config: MigrationJobConfig,
   params: IterationParams,
 ): Promise<MigrationIterationResult> {
-  // 操作
-  content = (await operateContent(content, config, finishParams(params, { content }))) as string;
-  if (outputPath != null) {
-    // ファイルの出力
-    const parentPath = path.dirname(outputPath);
-    await fs.ensureDir(parentPath);
-    const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;
-    await fs.writeFile(outputPath, content, { encoding: outputEncoding });
-    return { outputPath, status: MIGRATION_ITEM_STATUS.CREATED };
-  } else {
-    return { outputPath, status: MIGRATION_ITEM_STATUS.PROCESSED };
-  }
+  const { onFileStart, onFileEnd, ...rest } = config;
+  applyIf(onFileStart, [config, params]);
+
+  const template = await fs.readFile(inputPath, { encoding: config.inputEncoding || DEFAULT_TEXT_ENCODING });
+  const systemParams = { inputPath, outputPath };
+  finishParams(params, systemParams);
+  const content: string = finishDynamicValue(template, params, config);
+  const res = await createFileFromContent(content, outputPath, rest, params);
+  const result = { ...res, inputPath };
+
+  applyIf(onFileEnd, [result, config, { ...params }]);
+  deleteParams(params, systemParams);
+  return result;
 }
