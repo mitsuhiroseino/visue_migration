@@ -43,6 +43,26 @@ export const OPERATION_TYPE = {
   IMAGE: 'image',
 
   /**
+   * リソースをファイルから読み込む
+   */
+  INPUT: 'input',
+
+  /**
+   * 文字列をオブジェクトや配列に変換する
+   */
+  PARSE: 'parse',
+
+  /**
+   * オブジェクトや配列を文字列に変換する
+   */
+  STRINGIFY: 'stringify',
+
+  /**
+   * リソースをファイルに書き込む
+   */
+  OUTPUT: 'output',
+
+  /**
    * パラメーターの追加
    */
   PARAMS: 'params',
@@ -78,9 +98,10 @@ export const CONTENT_TYPE = {
   TEXT: 'text',
 
   /**
-   * オブジェクト、配列など
+   * オブジェクト、配列など任意の値
+   * そのままファイルへ出力した場合はJSON形式のテキストに変換される
    */
-  OBJECT: 'object',
+  OTHER: 'other',
 
   /**
    * 指定なし

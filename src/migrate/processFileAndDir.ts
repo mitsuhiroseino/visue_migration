@@ -62,14 +62,15 @@ export default async function processFileAndDir(
       await Promise.all(
         items.map(async (item) => {
           const inputItemPath = path.join(inputPath, item);
+          const finishedParams = finishParams(params, { inputItemPath, inputItem: item });
           let outputItem;
           if (itemName) {
-            outputItem = replaceWithConfigs(item, itemName, finishParams(params, { inputItemPath, inputItem: item }));
+            outputItem = replaceWithConfigs(item, itemName, finishedParams);
           } else {
             outputItem = item;
           }
           const outputItemPath = outputPath != null ? path.join(outputPath, outputItem) : null;
-          return await processFileAndDir(inputItemPath, outputItemPath, config, params, _level + 1);
+          return await processFileAndDir(inputItemPath, outputItemPath, config, finishedParams, _level + 1);
         }),
       );
       return { inputPath, outputPath, status: MIGRATION_ITEM_STATUS.CONVERTED };

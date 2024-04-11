@@ -1,6 +1,6 @@
 import isString from 'lodash/isString';
-
 import asArray from '../utils/asArray';
+import getContentType from '../utils/getContentType';
 import isMatch from '../utils/isMatch';
 import OperationFactory from './OperationFactory';
 import { OPERATION_TYPE } from './constants';
@@ -16,7 +16,7 @@ import { OperationConfig, OperationParams, OperationResult } from './types';
 export default async function operate<C, OC extends OperationConfig>(
   content: C,
   configs: OC | OC[],
-  params: OperationParams
+  params: OperationParams,
 ): Promise<OperationResult<C, OC>> {
   // 置換の為に出来るだけ改行が無い状態にする
   const operationConfigs = asArray(configs);
@@ -29,9 +29,7 @@ export default async function operate<C, OC extends OperationConfig>(
     let { type = OPERATION_TYPE.REPLACE, filter } = operationConfig;
     const shouldProcess = currentContent != null ? isMatch(currentContent, filter, params) : false;
     if (shouldProcess) {
-      const operation = isString(currentContent)
-        ? OperationFactory.getTextOperation(type)
-        : OperationFactory.getBinaryOperation(type);
+      const operation = OperationFactory.get(type, getContentType(currentContent));
       if (operation) {
         // オペレーションを直列で実行
         const operatedContent = await operation(currentContent, operationConfig, params);
@@ -41,6 +39,8 @@ export default async function operate<C, OC extends OperationConfig>(
         }
       } else {
         console.warn(`There was no ${params._contentType} operation "${type}".`);
+        // 元のコンテンツを返す
+        return { content, results: [] };
       }
     }
   }

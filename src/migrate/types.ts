@@ -1,8 +1,7 @@
 import { Options } from 'prettier';
 import { OperationConfig, OperationResult } from '../operate';
-import { FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
+import { FormattingConfig, InputOputputConfig, ReplacementConfig, VariableString } from '../types';
 import { Condition } from '../utils/isMatch';
-import { DynamicPattern } from '../utils/replace';
 import { ReplacementValues } from '../utils/replacePlaceholders';
 import { ReplaceWithConfigsConfig, Replacer } from '../utils/replaceWithConfigs';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
@@ -69,24 +68,24 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
      * 移行元のディレクトリまたはファイルのパス
      * 既存のファイルをコピー&編集して移行する場合に指定
      */
-    inputPath?: VariableString;
-
-    /**
-     * 移行先へ保存するファイルのテンプレート
-     * 新規のファイルを作成する場合にファイルの内容そのものを指定
-     */
-    template?: VariableString;
+    inputPath?: VariableString<IterationParams>;
 
     /**
      * 移行先へ保存するファイルのテンプレートのディレクトリまたはファイルのパス
      * 新規のファイルを作成する場合にパスを指定
      */
-    templatePath?: VariableString;
+    templatePath?: VariableString<IterationParams>;
+
+    /**
+     * 移行先へ保存するファイルのテンプレート
+     * 新規のファイルを作成する場合にファイルの内容そのものを指定
+     */
+    template?: VariableString<IterationParams>;
 
     /**
      * 移行先のディレクトリまたはファイルのパス
      */
-    outputPath: VariableString;
+    outputPath: VariableString<IterationParams>;
 
     /**
      * 移行先ファイル名
@@ -352,8 +351,3 @@ type IterationConfig<OC = OperationConfig, FO = Options> = {
    */
   entryType?: EntryType;
 };
-
-/**
- * 動的に変更される文字列
- */
-type VariableString = string | DynamicPattern<IterationParams>;

@@ -16,13 +16,14 @@ import { ParamsConfig } from './types';
 const Params: Operation<Content, ParamsConfig> = async (
   content: Content,
   config: ParamsConfig<Content>,
-  params: OperationParams
+  params: OperationParams,
 ) => {
-  const { type, createDiff, ...rest } = config;
+  const { type, createDiff, iterationScope, ...rest } = config;
   // パラメーターの更新
   const diff = await createDiff(content, { ...params });
   // 新しいパラメーターで子操作を実行
-  return await ParentOperationBase(content, rest, { ...params, ...diff });
+  const newParams = iterationScope ? Object.assign(params, diff) : { ...params, ...diff };
+  return await ParentOperationBase(content, rest, newParams);
 };
 export default Params;
 OperationFactory.register(OPERATION_TYPE.PARAMS, Params);

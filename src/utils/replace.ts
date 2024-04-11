@@ -20,7 +20,7 @@ export type FlexiblePattern<O extends ReplaceOptions = ReplaceOptions> = StaticP
 /**
  * パターンを動的に作成する関数の引数に渡すオプション
  */
-export type ReplaceOptions = { [key: string]: unknown };
+export type ReplaceOptions = Record<string, unknown>;
 
 /**
  * 文字列の置換を行う

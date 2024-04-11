@@ -1,10 +1,11 @@
 import { Options } from 'prettier';
+import { DynamicPattern, ReplaceOptions } from './utils/replace';
 import { ReplacePlaceholdersOptions, ReplacementValues } from './utils/replacePlaceholders';
 
 /**
  * ファイルの内容の型
  */
-export type Content = string | Buffer;
+export type Content = string | Buffer | any;
 
 /**
  * テキストのフォーマット処理に関する設定
@@ -66,3 +67,8 @@ export type InputOputputConfig = {
    */
   forceOutput?: boolean;
 };
+
+/**
+ * 動的に変更される文字列
+ */
+export type VariableString<O extends ReplaceOptions = ReplaceOptions> = string | DynamicPattern<O>;
