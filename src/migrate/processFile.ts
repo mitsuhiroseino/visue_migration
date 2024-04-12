@@ -1,46 +1,44 @@
 import Encoding from 'encoding-japanese';
 import fs from 'fs-extra';
-import path from 'path';
 import { CONTENT_TYPE } from '../operate';
 import applyIf from '../utils/applyIf';
+import isMatch from '../utils/isMatch';
+import writeAnyFile from '../utils/writeAnyFile';
 import { MIGRATION_ITEM_STATUS } from './constants';
-import deleteParams from './helpers/deleteParams';
-import finishParams from './helpers/finishParams';
+import setSystemParams from './helpers/setSystemParams';
 import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
+/**
+ * ファイルを移行する
+ * @param inputPath 移行元のパス
+ * @param outputPath 移行先のパス
+ * @param config 設定
+ * @param params 繰り返し処理毎のパラメーター
+ * @param ensured 親ディレクトリが作成済みか
+ * @returns 処理結果
+ */
 export default async function processFile(
   inputPath: string,
   outputPath: string,
   config: MigrationJobConfig,
   params: IterationParams,
+  ensured?: boolean,
 ): Promise<MigrationIterationResult> {
-  const { onFileStart, onFileEnd } = config;
-  applyIf(onFileStart, [config, params]);
+  const itemType = 'file';
+  let newParams = setSystemParams(params, { itemType, inputPath, outputPath });
+  const { onFileStart, onFileEnd, filter } = config;
+
   let result: MigrationIterationResult = {
-    itemType: 'file',
+    itemType,
     inputPath,
     outputPath,
     status: MIGRATION_ITEM_STATUS.PENDING,
   };
-  let processedParams = params;
 
-  if (config.copy) {
-    // ファイルのコピーのみで済む場合
-    if (outputPath != null) {
-      // 出力先あり
-      const parentPath = path.dirname(outputPath);
-      await fs.ensureDir(parentPath);
-      // 単純コピー
-      await fs.copyFile(inputPath, outputPath);
-      result.status = MIGRATION_ITEM_STATUS.COPIED;
-    } else {
-      // 出力先なし
-      console.warn('output does not exist.', JSON.stringify({ inputPath, outputPath }));
-      result.status = MIGRATION_ITEM_STATUS.NONE;
-    }
-  } else {
-    // ファイル内の変換が必要な場合
+  const processTarget = isMatch(inputPath, filter, newParams);
+  if (processTarget) {
+    applyIf(onFileStart, [config, newParams]);
     const { binary, inputEncoding, outputEncoding } = config;
     // ファイルの入力
     const buffer = await fs.readFile(inputPath);
@@ -52,7 +50,6 @@ export default async function processFile(
     }
     let content;
     let contentType;
-    let writeFileOptions;
     if (!encoding || encoding === 'BINARY') {
       // バイナリファイルの場合
       content = buffer;
@@ -61,26 +58,27 @@ export default async function processFile(
       // テキストファイルの場合
       content = buffer.toString(inputEncoding || encoding);
       contentType = CONTENT_TYPE.TEXT;
-      writeFileOptions = { encoding: outputEncoding || encoding };
     }
     // コンテンツの操作
-    const systemParams = { inputPath, outputPath, contentType, content };
-    finishParams(params, systemParams);
-    content = await operateContent(content, config, params);
+    newParams = setSystemParams(newParams, { contentType, content });
+    content = await operateContent(content, config, newParams);
+
     if (outputPath != null) {
-      // ファイルの出力
-      const parentPath = path.dirname(outputPath);
-      await fs.ensureDir(parentPath);
-      await fs.writeFile(outputPath, content, writeFileOptions);
+      // ファイルの出力あり
+      await writeAnyFile(outputPath, content, {
+        ensured,
+        spaces: 2,
+        encoding: outputEncoding || encoding,
+      });
       result.status = MIGRATION_ITEM_STATUS.CONVERTED;
-      // onFileEnd用に別インスタンスを作る
-      processedParams = { ...params };
-      deleteParams(params, systemParams);
     } else {
+      // ファイルの出力なし
       result.status = MIGRATION_ITEM_STATUS.PROCESSED;
     }
-  }
 
-  applyIf(onFileEnd, [result, config, processedParams]);
+    applyIf(onFileEnd, [result, config, newParams]);
+  } else {
+    result.status = MIGRATION_ITEM_STATUS.SKIPPED;
+  }
   return result;
 }

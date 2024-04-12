@@ -27,8 +27,8 @@ export default async function operate<C, OC extends OperationConfig>(
   for (const operationConfig of operationConfigs) {
     // 置換
     let { type = OPERATION_TYPE.REPLACE, filter } = operationConfig;
-    const shouldProcess = currentContent != null ? isMatch(currentContent, filter, params) : false;
-    if (shouldProcess) {
+    const processTarget = currentContent != null ? isMatch(currentContent, filter, params) : false;
+    if (processTarget) {
       const operation = OperationFactory.get(type, getContentType(currentContent));
       if (operation) {
         // オペレーションを直列で実行

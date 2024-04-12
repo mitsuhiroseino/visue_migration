@@ -1,19 +1,19 @@
 import { MIGRATION_ITEM_STATUS } from './constants';
-import createFile from './createFile';
+import copyFile from './copyFile';
 import manageDir from './manageDir';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
- * テンプレートテンプレートファイルから作成するファイルを置くディレクトリを作成する
- * @param inputPath テンプレートのパス
- * @param outputPath 出力先のパス
+ * 対象の移行を行う
+ * @param inputPath コピー元のパス
+ * @param outputPath コピー先のパス
  * @param config 設定
  * @param params 繰り返し処理毎のパラメーター
  * @param currentLevel ルートディレクトリからの深さ
  * @param ensured 親ディレクトリが作成済みか
  * @returns 処理結果
  */
-export default async function createDir(
+export default async function copyDir(
   inputPath: string,
   outputPath: string,
   config: MigrationJobConfig,
@@ -22,9 +22,9 @@ export default async function createDir(
   ensured?: boolean,
 ): Promise<MigrationIterationResult> {
   return manageDir(
-    createDir,
-    createFile,
-    MIGRATION_ITEM_STATUS.CREATED,
+    copyDir,
+    copyFile,
+    MIGRATION_ITEM_STATUS.COPIED,
     inputPath,
     outputPath,
     config,

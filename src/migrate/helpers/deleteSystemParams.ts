@@ -3,7 +3,7 @@
  * @param params パラメーター
  * @param systemParams システムの値
  */
-export default function deleteParams<P extends object>(params: P, systemParams: any): P {
+export default function deleteSystemParams<P extends object>(params: P, systemParams: any): P {
   for (const key in systemParams) {
     delete params[`_${key}`];
   }

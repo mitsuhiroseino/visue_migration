@@ -1,43 +1,40 @@
-import fs from 'fs-extra';
-import path from 'path';
 import applyIf from '../utils/applyIf';
 import isMatch from '../utils/isMatch';
 import writeAnyFile from '../utils/writeAnyFile';
-import { DEFAULT_TEXT_ENCODING, MIGRATION_ITEM_STATUS } from './constants';
-import setSystemParams from './helpers/setSystemParams';
+import { MIGRATION_ITEM_STATUS } from './constants';
 import operateContent from './operateContent';
 import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
- * テンプレートからファイルを作成する
- * @param content テンプレート
+ * 入力の無い処理
  * @param outputPath 出力先のパス
  * @param config 設定
  * @param params 繰り返し処理毎のパラメーター
  * @returns 処理結果
  */
-export default async function createFileFromContent(
-  content: string,
+export default async function processNull(
   outputPath: string,
   config: MigrationJobConfig,
   params: IterationParams,
   ensured?: boolean,
 ): Promise<MigrationIterationResult> {
-  const itemType = 'file';
-  const newParams = setSystemParams(params, { itemType, outputPath, content });
-  const { onFileStart, onFileEnd, filter } = config;
-  const result: MigrationIterationResult = { itemType, outputPath, status: MIGRATION_ITEM_STATUS.PENDING };
+  const { onFileStart, onFileEnd, filter, outputEncoding } = config;
+  const result: MigrationIterationResult = {
+    status: MIGRATION_ITEM_STATUS.PENDING,
+  };
 
-  const processTarget = isMatch(content, filter, newParams);
+  const processTarget = isMatch(null, filter, params);
   if (processTarget) {
-    applyIf(onFileStart, [config, newParams]);
+    applyIf(onFileStart, [config, params]);
 
-    // 操作
-    content = (await operateContent(content, config, newParams)) as string;
+    let result: MigrationIterationResult = {
+      status: MIGRATION_ITEM_STATUS.PENDING,
+    };
+
+    const content = await operateContent(null, config, params);
 
     if (outputPath != null) {
       // ファイルの出力あり
-      const { outputEncoding = DEFAULT_TEXT_ENCODING } = config;
       await writeAnyFile(outputPath, content, {
         ensured,
         encoding: outputEncoding,
@@ -49,7 +46,7 @@ export default async function createFileFromContent(
       result.status = MIGRATION_ITEM_STATUS.PROCESSED;
     }
 
-    applyIf(onFileEnd, [result, config, newParams]);
+    applyIf(onFileEnd, [result, config, params]);
   } else {
     result.status = MIGRATION_ITEM_STATUS.SKIPPED;
   }

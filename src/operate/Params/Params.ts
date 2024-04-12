@@ -18,12 +18,11 @@ const Params: Operation<Content, ParamsConfig> = async (
   config: ParamsConfig<Content>,
   params: OperationParams,
 ) => {
-  const { type, createDiff, iterationScope, ...rest } = config;
+  const { type, createDiff, ...rest } = config;
   // パラメーターの更新
   const diff = await createDiff(content, { ...params });
   // 新しいパラメーターで子操作を実行
-  const newParams = iterationScope ? Object.assign(params, diff) : { ...params, ...diff };
-  return await ParentOperationBase(content, rest, newParams);
+  return await ParentOperationBase(content, rest, { ...params, ...diff });
 };
 export default Params;
 OperationFactory.register(OPERATION_TYPE.PARAMS, Params);
