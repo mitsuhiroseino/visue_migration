@@ -1,9 +1,8 @@
-import applyIf from '../utils/applyIf';
-import isMatch from '../utils/isMatch';
 import writeAnyFile from '../utils/writeAnyFile';
 import { MIGRATION_ITEM_STATUS } from './constants';
+import manageFile from './manageFile';
 import operateContent from './operateContent';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 入力の無い処理
@@ -18,37 +17,42 @@ export default async function processNull(
   params: IterationParams,
   ensured?: boolean,
 ): Promise<MigrationIterationResult> {
-  const { onFileStart, onFileEnd, filter, outputEncoding } = config;
-  const result: MigrationIterationResult = {
-    status: MIGRATION_ITEM_STATUS.PENDING,
-  };
+  return manageFile(fileFn, null, outputPath, config, params, ensured);
+}
 
-  const processTarget = isMatch(null, filter, params);
-  if (processTarget) {
-    applyIf(onFileStart, [config, params]);
+/**
+ * 入力の無い処理
+ * @param inputPath null
+ * @param outputPath 出力先のパス
+ * @param config 設定
+ * @param params 繰り返し処理毎のパラメーター
+ * @param ensured 親ディレクトリが作成済みか
+ * @returns 処理結果
+ */
+async function fileFn(
+  inputPath: string,
+  outputPath: string,
+  config: MigrationJobConfig,
+  params: IterationParams,
+  ensured?: boolean,
+): Promise<[MigrationItemStatus, IterationParams]> {
+  const { outputEncoding } = config;
 
-    let result: MigrationIterationResult = {
-      status: MIGRATION_ITEM_STATUS.PENDING,
-    };
+  const content = await operateContent(null, config, params);
 
-    const content = await operateContent(null, config, params);
-
-    if (outputPath != null) {
-      // ファイルの出力あり
-      await writeAnyFile(outputPath, content, {
-        ensured,
-        encoding: outputEncoding,
-        spaces: 2,
-      });
-      result.status = MIGRATION_ITEM_STATUS.CREATED;
-    } else {
-      // ファイルの出力なし
-      result.status = MIGRATION_ITEM_STATUS.PROCESSED;
-    }
-
-    applyIf(onFileEnd, [result, config, params]);
+  let status;
+  if (outputPath != null) {
+    // ファイルの出力あり
+    await writeAnyFile(outputPath, content, {
+      ensured,
+      encoding: outputEncoding,
+      spaces: 2,
+    });
+    status = MIGRATION_ITEM_STATUS.CREATED;
   } else {
-    result.status = MIGRATION_ITEM_STATUS.SKIPPED;
+    // ファイルの出力なし
+    status = MIGRATION_ITEM_STATUS.PROCESSED;
   }
-  return result;
+
+  return [status, params];
 }

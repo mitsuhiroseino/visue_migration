@@ -38,6 +38,7 @@ export default async function executeIteration(
   const outputFilePath: string = finishDynamicValue(outputPath, params, replacementOptions);
   let newParams = setSystemParams(params, { outputPath: outputFilePath });
   let result: MigrationIterationResult = null;
+
   if (inputPath == null && template == null && templatePath == null) {
     // 入力が無い場合
     result = await processNull(outputFilePath, config, newParams);
