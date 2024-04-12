@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import applyIf from '../utils/applyIf';
 import finishDynamicValue from '../utils/finishDynamicValue';
 import propagateError from '../utils/propagateError';
-import { MIGRATION_ITEM_STATUS } from './constants';
+import throwError from '../utils/throwError';
 import copyItem from './copyItem';
 import createFileFromContent from './createFileFromContent';
 import createItem from './createItem';
@@ -62,15 +62,10 @@ export default async function executeIteration(
       if (availablePath) {
         // テンプレートの場合は事前フォーマットをoffにする
         const cfgs = { ...config, preFormatting: false };
-        try {
-          result = await createItem(tplPath, outputFilePath, cfgs, newParams);
-        } catch (error) {
-          throw propagateError(error, ': ' + tplPath);
-        }
+        result = await createItem(tplPath, outputFilePath, cfgs, newParams);
       } else {
         // 処理対象なし
-        result = { inputPath: tplPath, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
-        console.warn(`"${tplPath}" does not exist.`);
+        throwError(`"${tplPath}" does not exist.`, config);
       }
     } else if (inputPath != null) {
       // 移行元を処理
@@ -78,21 +73,16 @@ export default async function executeIteration(
       newParams = setSystemParams(newParams, { inputPath: inputItemPath });
       const availablePath = await fs.exists(inputItemPath);
       if (availablePath) {
-        try {
-          if (copy) {
-            // コピー
-            result = await copyItem(inputItemPath, outputFilePath, config, newParams);
-          } else {
-            // 移行
-            result = await processItem(inputItemPath, outputFilePath, config, newParams);
-          }
-        } catch (error) {
-          throw propagateError(error, ': ' + inputItemPath);
+        if (copy) {
+          // コピー
+          result = await copyItem(inputItemPath, outputFilePath, config, newParams);
+        } else {
+          // 移行
+          result = await processItem(inputItemPath, outputFilePath, config, newParams);
         }
       } else {
         // 処理対象なし
-        result = { inputPath: inputItemPath, outputPath: outputFilePath, status: MIGRATION_ITEM_STATUS.NONE };
-        console.warn(`"${inputItemPath}" does not exist.`);
+        throwError(`"${inputItemPath}" does not exist.`, config);
       }
     }
   }

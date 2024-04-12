@@ -1,7 +1,7 @@
-import isString from 'lodash/isString';
 import asArray from '../utils/asArray';
 import getContentType from '../utils/getContentType';
 import isMatch from '../utils/isMatch';
+import throwError from '../utils/throwError';
 import OperationFactory from './OperationFactory';
 import { OPERATION_TYPE } from './constants';
 import { OperationConfig, OperationParams, OperationResult } from './types';
@@ -38,9 +38,7 @@ export default async function operate<C, OC extends OperationConfig>(
           currentContent = operatedContent;
         }
       } else {
-        console.warn(`There was no ${params._contentType} operation "${type}".`);
-        // 元のコンテンツを返す
-        return { content, results: [] };
+        throwError(`There was no ${params._contentType} operation "${type}".`, operationConfig);
       }
     }
   }

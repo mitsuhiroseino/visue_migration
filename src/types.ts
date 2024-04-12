@@ -69,6 +69,16 @@ export type InputOputputConfig = {
 };
 
 /**
+ * ログに関する設定
+ */
+export type LogConfig = {
+  /**
+   * ログを出力しない
+   */
+  silent?: boolean;
+};
+
+/**
  * 動的に変更される文字列
  */
 export type VariableString<O extends ReplaceOptions = ReplaceOptions> = string | DynamicPattern<O>;

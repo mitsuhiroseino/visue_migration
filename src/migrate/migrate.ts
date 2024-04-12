@@ -13,27 +13,19 @@ import { MigrationConfig, MigrationResult, MigrationStatus, MigrationTaskResult 
  */
 export default async function migrate<C extends MigrationConfig>(config: C): Promise<MigrationResult> {
   const taskFns: (() => Promise<MigrationTaskResult>)[] = [];
-  let results: MigrationTaskResult[], status: MigrationStatus, message: string, error;
-  try {
-    const cfg = assignDefaultConfig(config);
-    const { tasks } = cfg;
-    for (const task of asArray(tasks)) {
-      const taskConfig = inheritConfig(task, cfg);
-      // タスク実行用の関数を作成
-      taskFns.push(async () => await executeTask(taskConfig));
-    }
-    // 設定に従い全タスクを実行
-    results = await executeAsyncFunctions(taskFns, config.parallelTasks);
-    status = MIGRATION_STATUS.SUCCESS;
-  } catch (e) {
-    status = MIGRATION_STATUS.ERROR;
-    message = 'Exception occurred.';
-    error = e;
+
+  const cfg = assignDefaultConfig(config);
+  const { tasks } = cfg;
+  for (const task of asArray(tasks)) {
+    const taskConfig = inheritConfig(task, cfg);
+    // タスク実行用の関数を作成
+    taskFns.push(async () => await executeTask(taskConfig));
   }
+  // 設定に従い全タスクを実行
+  const results = await executeAsyncFunctions(taskFns, config.parallelTasks);
+
   return {
     results,
-    status,
-    message,
-    error,
+    status: MIGRATION_STATUS.SUCCESS,
   };
 }

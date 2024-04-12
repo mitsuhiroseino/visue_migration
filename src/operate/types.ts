@@ -1,4 +1,4 @@
-import { Content, FormattingConfig, InputOputputConfig, ReplacementConfig } from '../types';
+import { Content, FormattingConfig, InputOputputConfig, LogConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
 import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
 
@@ -19,7 +19,8 @@ export type ContentType = (typeof CONTENT_TYPE)[keyof typeof CONTENT_TYPE];
  */
 export type OperationConfigBase<T = OperationType> = FormattingConfig &
   InputOputputConfig &
-  ReplacementConfig & {
+  ReplacementConfig &
+  LogConfig & {
     /**
      * ID
      */

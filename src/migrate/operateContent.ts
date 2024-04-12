@@ -2,7 +2,7 @@ import isString from 'lodash/isString';
 import operate, { OperationConfig } from '../operate';
 import { Content } from '../types';
 import asArray from '../utils/asArray';
-import catchError from './helpers/catchError';
+import catchError from '../utils/catchError';
 import inheritConfig from './helpers/inheritConfig';
 import { IterationParams, MigrationJobConfig } from './types';
 
@@ -26,7 +26,6 @@ export default async function operateContent<OC extends OperationConfig>(
     formatterOptions,
     operations,
     finalize,
-    forceOutput,
   } = config;
   const { _outputPath } = params;
 
@@ -35,7 +34,7 @@ export default async function operateContent<OC extends OperationConfig>(
     try {
       content = await initialize(content, { ...config }, { ...params });
     } catch (e) {
-      catchError(e, 'Error in initializing', forceOutput);
+      catchError(e, 'Error in initializing', config);
       return content;
     }
   }
@@ -45,7 +44,7 @@ export default async function operateContent<OC extends OperationConfig>(
     try {
       content = await format(content, preFormatting as typeof formatterOptions);
     } catch (e) {
-      catchError(e, 'Error in pre-formatting', forceOutput);
+      catchError(e, 'Error in pre-formatting', config);
       return content;
     }
   }
@@ -57,7 +56,7 @@ export default async function operateContent<OC extends OperationConfig>(
       const operateConfigs = asArray(operations).map((operation) => inheritConfig(operation, config));
       migrated = await operate(content, operateConfigs, params);
     } catch (e) {
-      catchError(e, 'Error in operation', forceOutput);
+      catchError(e, 'Error in operation', config);
       return content;
     }
   } else {
@@ -69,7 +68,7 @@ export default async function operateContent<OC extends OperationConfig>(
     try {
       migrated.content = await format(migrated.content, postFormatting as typeof formatterOptions);
     } catch (e) {
-      catchError(e, 'Error in post-formatting', forceOutput);
+      catchError(e, 'Error in post-formatting', config);
       return migrated.content;
     }
   }
@@ -79,7 +78,7 @@ export default async function operateContent<OC extends OperationConfig>(
     try {
       migrated.content = await finalize(migrated.content, { ...config }, { ...params }, migrated.results);
     } catch (e) {
-      catchError(e, 'Error in finalizing', forceOutput);
+      catchError(e, 'Error in finalizing', config);
       return migrated.content;
     }
   }

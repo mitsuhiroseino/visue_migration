@@ -1,5 +1,6 @@
 import gm from 'gm';
 import asArray from '../../utils/asArray';
+import throwError from '../../utils/throwError';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
@@ -23,7 +24,7 @@ const Gm: Operation<Buffer, GmConfig> = async (content: Buffer, config: GmConfig
     if (manipulation) {
       state = manipulation(state, manipulationConfig);
     } else {
-      console.warn(`There was no manipulation "${manipulationConfig.type}".`);
+      throwError(`There was no manipulation "${manipulationConfig.type}".`, config);
     }
   }
   return await new Promise((resolve, reject) => {

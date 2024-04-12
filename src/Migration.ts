@@ -1,5 +1,6 @@
-import migrate, { MIGRATION_STATUS, MigrationConfig, MigrationResult, MigrationTaskConfig } from './migrate';
+import migrate, { MigrationConfig, MigrationResult, MigrationTaskConfig } from './migrate';
 import asArray from './utils/asArray';
+import throwError from './utils/throwError';
 
 /**
  * 移行クラス
@@ -50,12 +51,7 @@ class Migration<C extends MigrationConfig = MigrationConfig> {
           if (taskConfig != null) {
             taskConfigs.push(taskConfig);
           } else {
-            const message = `There was no task "${taskID}".`;
-            console.error(message);
-            return {
-              status: MIGRATION_STATUS.ERROR,
-              message,
-            };
+            throwError(`There was no task "${taskID}".`, config);
           }
         }
       }

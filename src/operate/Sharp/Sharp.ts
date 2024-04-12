@@ -1,6 +1,6 @@
 import SharpLib from 'sharp';
-
 import { asArray } from '../../utils';
+import throwError from '../../utils/throwError';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
@@ -23,7 +23,7 @@ const Sharp: Operation<Buffer, SharpConfig> = async (content: Buffer, config: Sh
     if (manipulation) {
       sharp = manipulation(sharp, manipulationConfig);
     } else {
-      console.warn(`There was no manipulation "${manipulationConfig.type}".`);
+      throwError(`There was no manipulation "${manipulationConfig.type}".`, config);
     }
   }
 

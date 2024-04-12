@@ -86,6 +86,7 @@ export const INHERITED_CONFIGS = {
   inputEncoding: true,
   outputEncoding: true,
   forceOutput: true,
+  silent: true,
   onTaskStart: true,
   onTaskEnd: true,
   onJobStart: true,

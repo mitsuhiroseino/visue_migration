@@ -1,6 +1,6 @@
 import { Options } from 'prettier';
 import { OperationConfig, OperationResult } from '../operate';
-import { FormattingConfig, InputOputputConfig, ReplacementConfig, VariableString } from '../types';
+import { FormattingConfig, InputOputputConfig, LogConfig, ReplacementConfig, VariableString } from '../types';
 import { Condition } from '../utils/isMatch';
 import { ReplacementValues } from '../utils/replacePlaceholders';
 import { ReplaceWithConfigsConfig, Replacer } from '../utils/replaceWithConfigs';
@@ -375,7 +375,8 @@ type MigrationItemEvents<OC = OperationConfig, FO = Options> = {
 export type CommonConfig<OC = OperationConfig, FO = Options> = FormattingConfig<FO> &
   ReplacementConfig &
   InputOputputConfig &
-  IterationConfig<OC, FO>;
+  IterationConfig<OC, FO> &
+  LogConfig;
 
 type IterationConfig<OC = OperationConfig, FO = Options> = {
   /**

@@ -1,5 +1,6 @@
 import Jimp from 'jimp';
 import asArray from '../../utils/asArray';
+import throwError from '../../utils/throwError';
 import OperationFactory from '../OperationFactory';
 import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
@@ -22,7 +23,7 @@ const Image: Operation<Buffer, ImageConfig> = async (content: Buffer, config: Im
     if (manipulation) {
       jimp = await manipulation(jimp, manipulationConfig);
     } else {
-      console.warn(`There was no manipulation "${manipulationConfig.type}".`);
+      throwError(`There was no manipulation "${manipulationConfig.type}".`, config);
     }
   }
 

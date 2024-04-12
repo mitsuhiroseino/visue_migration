@@ -1,5 +1,6 @@
 import applyIf from '../utils/applyIf';
 import isMatch from '../utils/isMatch';
+import propagateError from '../utils/propagateError';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import setSystemParams from './helpers/setSystemParams';
 import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
@@ -39,16 +40,18 @@ export default async function manageFile(
     status: MIGRATION_ITEM_STATUS.PENDING,
   };
 
-  const processTarget = isMatch(inputPath, filter, newParams);
-  if (processTarget) {
-    applyIf(onFileStart, [config, params]);
-
-    const [status, latestParams] = await fileFn(inputPath, outputPath, config, newParams, ensured);
-    result.status = status;
-
-    applyIf(onFileEnd, [result, config, latestParams]);
-  } else {
-    result.status = MIGRATION_ITEM_STATUS.SKIPPED;
+  try {
+    const processTarget = isMatch(inputPath, filter, newParams);
+    if (processTarget) {
+      applyIf(onFileStart, [config, params]);
+      const [status, latestParams] = await fileFn(inputPath, outputPath, config, newParams, ensured);
+      result.status = status;
+      applyIf(onFileEnd, [result, config, latestParams]);
+    } else {
+      result.status = MIGRATION_ITEM_STATUS.SKIPPED;
+    }
+  } catch (error) {
+    throw propagateError(error, inputPath);
   }
 
   return result;

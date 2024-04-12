@@ -2,6 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import applyIf from '../utils/applyIf';
 import isMatch from '../utils/isMatch';
+import propagateError from '../utils/propagateError';
 import replaceWithConfigs from '../utils/replaceWithConfigs';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import setSystemParams from './helpers/setSystemParams';
@@ -64,25 +65,43 @@ export default async function manageDir(
     const processTarget = isMatch(inputPath, filter, newParams);
     if (processTarget) {
       // 処理対象の場合
-      applyIf(onDirStart, [config, newParams]);
-      if (outputPath != null && !ensured) {
-        await fs.ensureDir(outputPath);
+      try {
+        applyIf(onDirStart, [config, newParams]);
+        if (outputPath != null && !ensured) {
+          await fs.ensureDir(outputPath);
+        }
+      } catch (error) {
+        throw propagateError(error, inputPath);
       }
 
-      const items = await fs.readdir(inputPath, { withFileTypes: true });
+      let items;
+
+      try {
+        items = await fs.readdir(inputPath, { withFileTypes: true });
+      } catch (error) {
+        throw propagateError(error, inputPath);
+      }
+
       const promises = [];
       for (const item of items) {
-        const inputItemPath = path.join(inputPath, item.name);
-        let newItemParams = setSystemParams(newParams, { inputItemPath, inputItem: item.name });
-        let outputItem;
-        if (itemName) {
-          outputItem = replaceWithConfigs(item.name, itemName, newItemParams);
-        } else {
-          outputItem = item.name;
+        let inputItemPath, outputItemPath, newItemParams;
+        try {
+          inputItemPath = path.join(inputPath, item.name);
+          newItemParams = setSystemParams(newParams, { inputItemPath, inputItem: item.name });
+          let outputItem;
+          if (itemName) {
+            outputItem = replaceWithConfigs(item.name, itemName, newItemParams);
+          } else {
+            outputItem = item.name;
+          }
+
+          outputItemPath = outputPath != null ? path.join(outputPath, outputItem) : null;
+          newItemParams = setSystemParams(newItemParams, { outputItemPath, outputItem });
+        } catch (error) {
+          throw propagateError(error, inputPath);
         }
 
-        const outputItemPath = outputPath != null ? path.join(outputPath, outputItem) : null;
-        newItemParams = setSystemParams(newItemParams, { outputItemPath, outputItem });
+        // 子要素で発生した例外はキャッチしない
         if (item.isDirectory()) {
           if (!ignoreSubDir) {
             // サブディレクトリも処理する
@@ -96,7 +115,11 @@ export default async function manageDir(
       await Promise.all(promises);
 
       result.status = completedStatus;
-      applyIf(onDirEnd, [result, config, newParams]);
+      try {
+        applyIf(onDirEnd, [result, config, newParams]);
+      } catch (error) {
+        throw propagateError(error, inputPath);
+      }
     } else {
       // 処理対象外
       result.status = MIGRATION_ITEM_STATUS.SKIPPED;
