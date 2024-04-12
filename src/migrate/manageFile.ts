@@ -1,5 +1,3 @@
-import fs from 'fs-extra';
-import path from 'path';
 import applyIf from '../utils/applyIf';
 import isMatch from '../utils/isMatch';
 import { MIGRATION_ITEM_STATUS } from './constants';
@@ -12,7 +10,7 @@ type FileFn = (
   config: MigrationJobConfig,
   params: IterationParams,
   ensured?: boolean,
-) => Promise<MigrationItemStatus>;
+) => Promise<[MigrationItemStatus, IterationParams]>;
 
 /**
  * ファイルを処理する
@@ -33,7 +31,7 @@ export default async function manageFile(
 ): Promise<MigrationIterationResult> {
   const itemType = 'file';
   const newParams = setSystemParams(params, { itemType, inputPath, outputPath });
-  const { filter } = config;
+  const { onFileStart, onFileEnd, filter } = config;
   let result: MigrationIterationResult = {
     itemType,
     inputPath,
@@ -43,7 +41,12 @@ export default async function manageFile(
 
   const processTarget = isMatch(inputPath, filter, newParams);
   if (processTarget) {
-    result.status = await fileFn(inputPath, outputPath, config, params, ensured);
+    applyIf(onFileStart, [config, params]);
+
+    const [status, latestParams] = await fileFn(inputPath, outputPath, config, newParams, ensured);
+    result.status = status;
+
+    applyIf(onFileEnd, [result, config, latestParams]);
   } else {
     result.status = MIGRATION_ITEM_STATUS.SKIPPED;
   }
