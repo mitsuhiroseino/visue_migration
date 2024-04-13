@@ -1,5 +1,6 @@
+import { CONTENT_TYPE } from '../../constants';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { FormatConfig } from './types';
 
@@ -13,7 +14,7 @@ import { FormatConfig } from './types';
 const Format: Operation<string, FormatConfig> = async (
   content: string,
   config: FormatConfig,
-  params: OperationParams
+  params: OperationParams,
 ) => {
   const { formatter, formatterOptions } = config;
   return await formatter(content, formatterOptions);

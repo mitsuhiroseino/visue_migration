@@ -1,10 +1,10 @@
 import isString from 'lodash/isString';
-
+import { CONTENT_TYPE } from '../../constants';
 import asArray from '../../utils/asArray';
 import finishDynamicValue from '../../utils/finishDynamicValue';
 import replace, { FlexiblePattern, StaticPattern } from '../../utils/replace';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { AddConfig } from './types';
 
@@ -22,16 +22,16 @@ const Add: Operation<string, AddConfig> = async (content: string, config: AddCon
     additionalString,
     preserveAdditionalString,
     addPosition = 'before',
-    replacementBracket,
+    ...rest
   } = config;
   const additionalStrOptions = {
-    replacementBracket,
+    ...rest,
     content,
     preserveString: preserveAdditionalString,
     preserveFunction: preserveAdditionalString,
   };
   const patternsOptions = {
-    replacementBracket,
+    ...rest,
     content,
     preserveString: preservePatterns,
     preserveFunction: preservePatterns,

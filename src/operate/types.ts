@@ -1,6 +1,7 @@
+import { CONTENT_TYPE } from '../constants';
 import { Content, FormattingConfig, InputOputputConfig, LogConfig, ReplacementConfig } from '../types';
 import { Condition } from '../utils/isMatch';
-import { CONTENT_TYPE, OPERATION_TYPE } from './constants';
+import { OPERATION_TYPE } from './constants';
 
 export { default as OperationConfig } from './OperationConfig';
 
@@ -24,7 +25,7 @@ export type OperationConfigBase<T = OperationType> = FormattingConfig &
     /**
      * ID
      */
-    id?: string;
+    operationId?: string;
 
     /**
      * 操作種別
@@ -80,7 +81,9 @@ export type OperationResult<C = Content, OC = OperationConfigBase> = { content: 
  */
 export type Operation<
   C = Content,
-  S extends OperationConfigBase<OperationConfigBase['id']> = OperationConfigBase<OperationConfigBase['id']>,
+  S extends OperationConfigBase<OperationConfigBase['operationId']> = OperationConfigBase<
+    OperationConfigBase['operationId']
+  >,
 > = (content: C, config: S, params: OperationParams) => Promise<C | Content>;
 
 /**

@@ -15,7 +15,12 @@ export default async function executeAsyncFunctions<R = any>(
     // 直列実行
     const results: R[] = [];
     for (const fn of fns) {
-      results.push(await fn());
+      try {
+        results.push(await fn());
+      } catch (error) {
+        // fnでエラーが発生した時点でthrow
+        throw error;
+      }
     }
     return results;
   }

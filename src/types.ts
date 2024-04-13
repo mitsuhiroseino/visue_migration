@@ -34,12 +34,22 @@ export type FormattingConfig<O = Options> = {
    * preFormatting,postFormattingがtrueの場合は、この設定を使用してフォーマットを行う
    */
   formatterOptions?: O;
+
+  /**
+   * パーサーの自動選択
+   */
+  autoParserSelection?: boolean;
+
+  /**
+   * 拡張子に対するパーサーのマップ
+   */
+  parserMap?: { [ext: string]: string };
 };
 
 /**
  * テキストの置換に関する設定
  */
-export type ReplacementConfig<P = ReplacementValues> = ReplacePlaceholdersOptions & {
+export type ReplacementConfig<P extends ReplacementValues = ReplacementValues> = ReplacePlaceholdersOptions & {
   /**
    * プレイスホルダーと置き換えられる値
    */
@@ -63,6 +73,11 @@ export type InputOputputConfig = {
   outputEncoding?: BufferEncoding;
 
   /**
+   * バイナリ形式で読み込む場合にtrue
+   */
+  binary?: boolean;
+
+  /**
    * エラーがあってもファイルを出力する
    */
   forceOutput?: boolean;
@@ -82,3 +97,25 @@ export type LogConfig = {
  * 動的に変更される文字列
  */
 export type VariableString<O extends ReplaceOptions = ReplaceOptions> = string | DynamicPattern<O>;
+
+/**
+ * 移行処理で参照する任意のパラメーター
+ */
+export type MigrationParams = ReplacementValues;
+
+/**
+ * 繰り返し処理内で有効なパラメーター
+ * _で始まるプロパティはシステム側で自動的に設定するもの
+ * それ以外はMigrationConfigのiteratorで返された値
+ */
+export type IterationParams = MigrationParams & {
+  /**
+   * ファイルの読み込み元パス
+   */
+  _inputPath?: string;
+
+  /**
+   * ファイルの出力先パス
+   */
+  _outputPath?: string;
+};

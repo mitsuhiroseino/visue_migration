@@ -1,8 +1,9 @@
 import fs from 'fs-extra';
 import path from 'path';
+import { IterationParams } from '../types';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import manageFile from './manageFile';
-import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * ファイルをコピーする

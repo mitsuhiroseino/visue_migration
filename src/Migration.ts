@@ -25,8 +25,8 @@ class Migration<C extends MigrationConfig = MigrationConfig> {
   initConfig(config: C) {
     const _tasks: { [id: string]: MigrationTaskConfig } = {};
     for (const task of asArray(config.tasks)) {
-      if (task.id != null) {
-        _tasks[task.id] = task;
+      if (task.taskId != null) {
+        _tasks[task.taskId] = task;
       }
     }
     this._tasks = _tasks;

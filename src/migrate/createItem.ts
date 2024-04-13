@@ -1,7 +1,8 @@
 import fs from 'fs-extra';
+import { IterationParams } from '../types';
 import createDir from './createDir';
 import createFile from './createFile';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * テンプレートからディレクトリ、ファイルを作成する

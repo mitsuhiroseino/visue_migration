@@ -1,7 +1,8 @@
+import { IterationParams } from '../types';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import createFile from './createFile';
 import manageDir from './manageDir';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * テンプレートテンプレートファイルから作成するファイルを置くディレクトリを作成する

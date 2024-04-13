@@ -1,8 +1,14 @@
 import { Options } from 'prettier';
 import { OperationConfig, OperationResult } from '../operate';
-import { FormattingConfig, InputOputputConfig, LogConfig, ReplacementConfig, VariableString } from '../types';
+import {
+  FormattingConfig,
+  InputOputputConfig,
+  IterationParams,
+  LogConfig,
+  ReplacementConfig,
+  VariableString,
+} from '../types';
 import { Condition } from '../utils/isMatch';
-import { ReplacementValues } from '../utils/replacePlaceholders';
 import { ReplaceWithConfigsConfig, Replacer } from '../utils/replaceWithConfigs';
 import { MIGRATION_ITEM_STATUS, MIGRATION_STATUS } from './constants';
 import { EntryType } from './helpers/getFsGenerator';
@@ -42,7 +48,7 @@ export type MigrationTaskConfig<OC = OperationConfig, FO = Options> = CommonConf
     /**
      * タスクID
      */
-    id?: string;
+    taskId?: string;
 
     /**
      * ジョブの設定
@@ -65,7 +71,7 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
     /**
      *  ジョブID
      */
-    id?: string;
+    jobId?: string;
 
     /**
      * 移行元のディレクトリまたはファイルのパス
@@ -162,28 +168,6 @@ export type MigrationJobConfig<OC = OperationConfig, FO = Options> = CommonConfi
   };
 
 /**
- * 移行に必要な任意のパラメーター
- */
-export type MigrationParams = ReplacementValues;
-
-/**
- * 繰り返し処理1回分のパラメーター
- * _で始まるプロパティはシステム側で自動的に設定するもの
- * それ以外はMigrationConfigのiteratorで返された値
- */
-export type IterationParams = MigrationParams & {
-  /**
-   * ファイルの読み込み元パス
-   */
-  _inputPath?: string;
-
-  /**
-   * ファイルの出力先パス
-   */
-  _outputPath?: string;
-};
-
-/**
  * 1ファイルorディレクトリ毎の処理結果
  */
 export type MigrationItemStatus = (typeof MIGRATION_ITEM_STATUS)[keyof typeof MIGRATION_ITEM_STATUS];
@@ -270,7 +254,6 @@ type MigrationTaskEvents<OC = OperationConfig, FO = Options> = {
   /**
    * タスク開始時のハンドラー
    * @param config タスク設定
-   * @param params タスクパラメーター
    * @returns
    */
   onTaskStart?: (config: MigrationTaskConfig<OC, FO>) => void;
@@ -279,7 +262,6 @@ type MigrationTaskEvents<OC = OperationConfig, FO = Options> = {
    * タスク終了時のハンドラー
    * @param result タスク処理結果
    * @param config タスク設定
-   * @param params タスクパラメーター
    * @returns
    */
   onTaskEnd?: (result: MigrationTaskResult, config: MigrationTaskConfig<OC, FO>) => void;
@@ -292,7 +274,6 @@ type MigrationJobEvents<OC = OperationConfig, FO = Options> = {
   /**
    * ジョブ開始時のハンドラー
    * @param config ジョブ設定
-   * @param params ジョブパラメーター
    * @returns
    */
   onJobStart?: (config: MigrationJobConfig<OC, FO>) => void;
@@ -301,7 +282,6 @@ type MigrationJobEvents<OC = OperationConfig, FO = Options> = {
    * ジョブ終了時のハンドラー
    * @param result ジョブ処理結果
    * @param config ジョブ設定
-   * @param params ジョブパラメーター
    * @returns
    */
   onJobEnd?: (result: MigrationJobResult, config: MigrationJobConfig<OC, FO>) => void;

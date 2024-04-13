@@ -1,7 +1,8 @@
+import { IterationParams } from '../types';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import manageDir from './manageDir';
 import processFile from './processFile';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * ディレクトリを移行する

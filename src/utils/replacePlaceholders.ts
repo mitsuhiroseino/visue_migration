@@ -19,6 +19,11 @@ export type ReplacePlaceholdersOptions = {
   flatKeys?: boolean;
 };
 
+export function getReplacePlaceholdersOptions<O extends ReplacePlaceholdersOptions>(options: O) {
+  const { replacementBracket, removePlaceholders, flatKeys } = options;
+  return { replacementBracket, removePlaceholders, flatKeys };
+}
+
 export type ReplacementValues = ReplaceOptions;
 
 const getShallow = (values, key) => values[key];

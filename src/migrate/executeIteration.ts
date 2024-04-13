@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import { IterationParams } from '../types';
 import applyIf from '../utils/applyIf';
 import finishDynamicValue from '../utils/finishDynamicValue';
 import propagateError from '../utils/propagateError';
@@ -9,7 +10,7 @@ import createItem from './createItem';
 import setSystemParams from './helpers/setSystemParams';
 import processItem from './processItem';
 import processNull from './processNull';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 繰り返し処理1回文の処理を行う
@@ -20,22 +21,11 @@ export default async function executeIteration(
   config: MigrationJobConfig,
   params: IterationParams,
 ): Promise<MigrationIterationResult | null> {
-  const {
-      inputPath,
-      outputPath,
-      template,
-      templatePath,
-      replacementBracket,
-      forceOutput,
-      copy,
-      onIterationStart,
-      onIterationEnd,
-    } = config,
-    replacementOptions = { replacementBracket, forceOutput };
+  const { inputPath, outputPath, template, templatePath, copy, onIterationStart, onIterationEnd } = config;
 
   applyIf(onIterationStart, [config, params]);
 
-  const outputFilePath: string = finishDynamicValue(outputPath, params, replacementOptions);
+  const outputFilePath: string = finishDynamicValue(outputPath, params, config);
   let newParams = setSystemParams(params, { outputPath: outputFilePath });
   let result: MigrationIterationResult = null;
 
@@ -46,7 +36,7 @@ export default async function executeIteration(
     // 入力が有る場合
     if (template != null) {
       // ファイルを作成
-      const content: string = finishDynamicValue(template, newParams, replacementOptions);
+      const content: string = finishDynamicValue(template, newParams, config);
       // テンプレートの場合は事前フォーマットをoffにする
       const cfgs = { ...config, preFormatting: false };
       try {
@@ -56,7 +46,7 @@ export default async function executeIteration(
       }
     } else if (templatePath != null) {
       // テンプレートファイルを読み込んで生成
-      const tplPath: string = finishDynamicValue(templatePath, newParams, replacementOptions);
+      const tplPath: string = finishDynamicValue(templatePath, newParams, config);
       newParams = setSystemParams(newParams, { inputPath: tplPath });
       const availablePath = await fs.exists(tplPath);
       if (availablePath) {
@@ -69,7 +59,7 @@ export default async function executeIteration(
       }
     } else if (inputPath != null) {
       // 移行元を処理
-      const inputItemPath: string = finishDynamicValue(inputPath, newParams, replacementOptions);
+      const inputItemPath: string = finishDynamicValue(inputPath, newParams, config);
       newParams = setSystemParams(newParams, { inputPath: inputItemPath });
       const availablePath = await fs.exists(inputItemPath);
       if (availablePath) {

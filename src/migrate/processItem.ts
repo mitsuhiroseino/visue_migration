@@ -1,7 +1,8 @@
 import fs from 'fs-extra';
+import { IterationParams } from '../types';
 import processDir from './processDir';
 import processFile from './processFile';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 対象の移行を行う

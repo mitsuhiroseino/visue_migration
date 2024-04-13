@@ -1,8 +1,9 @@
+import { IterationParams } from '../types';
 import writeAnyFile from '../utils/writeAnyFile';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import manageFile from './manageFile';
 import operateContent from './operateContent';
-import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 入力の無い処理

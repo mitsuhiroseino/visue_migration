@@ -28,14 +28,11 @@ const Input: ParentOperation<Content, InputConfig> = async (
     preserveParamName,
     binary,
     encoding = 'utf8',
-    replacementBracket,
     ...rest
   } = config;
-
-  const replacementOptions = { replacementBracket };
   // 入力パス
   const inputFilePath: string = finishDynamicValue(inputPath, params, {
-    ...replacementOptions,
+    ...rest,
     preserveString: preserveInputPath,
   });
   // ファイルの存在を確認
@@ -46,7 +43,7 @@ const Input: ParentOperation<Content, InputConfig> = async (
 
   // パラメーター名
   const prmsName: string = finishDynamicValue(paramName, params, {
-    ...replacementOptions,
+    ...rest,
     preserveString: preserveParamName,
   });
 
@@ -56,7 +53,7 @@ const Input: ParentOperation<Content, InputConfig> = async (
     return { [prmsName]: resource };
   };
 
-  return await Params(content, { ...rest, replacementBracket, createDiff }, params);
+  return await Params(content, { ...rest, createDiff }, params);
 };
 export default Input;
 OperationFactory.register(OPERATION_TYPE.INPUT, Input);

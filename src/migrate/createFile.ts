@@ -1,9 +1,10 @@
 import fs from 'fs-extra';
+import { IterationParams } from '../types';
 import finishDynamicValue from '../utils/finishDynamicValue';
 import { DEFAULT_TEXT_ENCODING } from './constants';
 import createFileFromContent from './createFileFromContent';
 import manageFile from './manageFile';
-import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * テンプレートファイルからファイルを作成する

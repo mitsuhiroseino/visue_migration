@@ -1,8 +1,9 @@
 import SharpLib from 'sharp';
+import { CONTENT_TYPE } from '../../constants';
 import { asArray } from '../../utils';
 import throwError from '../../utils/throwError';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import SharpManipulationFactory from './SharpManipulationFactory';
 import { SharpConfig } from './types';

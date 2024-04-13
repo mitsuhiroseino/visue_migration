@@ -1,6 +1,6 @@
 import isBuffer from 'lodash/isBuffer';
 import isString from 'lodash/isString';
-import { CONTENT_TYPE } from '../operate/constants';
+import { CONTENT_TYPE } from '../constants';
 
 export default function getContentType<C>(content: C) {
   if (isString(content)) {

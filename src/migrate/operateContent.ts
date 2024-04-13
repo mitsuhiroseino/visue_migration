@@ -1,10 +1,10 @@
 import isString from 'lodash/isString';
 import operate, { OperationConfig } from '../operate';
-import { Content } from '../types';
+import { Content, IterationParams } from '../types';
 import asArray from '../utils/asArray';
 import catchError from '../utils/catchError';
 import inheritConfig from './helpers/inheritConfig';
-import { IterationParams, MigrationJobConfig } from './types';
+import { MigrationJobConfig } from './types';
 
 /**
  * コンテンツの変換処理を行う

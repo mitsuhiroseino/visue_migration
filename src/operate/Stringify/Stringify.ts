@@ -1,6 +1,7 @@
+import { CONTENT_TYPE } from '../../constants';
 import { Content } from '../../types';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { STRINGIFIER } from './constants';
 import { StringifyConfig } from './types';

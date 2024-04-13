@@ -1,7 +1,8 @@
 import fs from 'fs-extra';
+import { IterationParams } from '../types';
 import copyDir from './copyDir';
 import copyFile from './copyFile';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 対象のコピーを行う

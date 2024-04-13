@@ -1,6 +1,7 @@
+import { CONTENT_TYPE } from '../../constants';
 import OperationFactory from '../OperationFactory';
 import Replace from '../Replace';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { DeleteConfig } from './types';
 
@@ -14,7 +15,7 @@ import { DeleteConfig } from './types';
 const Delete: Operation<string, DeleteConfig> = async (
   content: string,
   config: DeleteConfig,
-  params: OperationParams
+  params: OperationParams,
 ) => {
   const { type, ...rest } = config;
   return Replace(content, { ...rest, replacement: '' }, params);

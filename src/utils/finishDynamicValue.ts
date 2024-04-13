@@ -1,6 +1,10 @@
 import isFunction from 'lodash/isFunction';
 import isString from 'lodash/isString';
-import replacePlaceholders, { ReplacePlaceholdersOptions, ReplacementValues } from './replacePlaceholders';
+import replacePlaceholders, {
+  ReplacePlaceholdersOptions,
+  ReplacementValues,
+  getReplacePlaceholdersOptions,
+} from './replacePlaceholders';
 
 export { ReplacementValues } from './replacePlaceholders';
 
@@ -20,6 +24,16 @@ export type FinishDynamicValueOptions = ReplacePlaceholdersOptions & {
    */
   fnOptions?: { [key: string]: unknown };
 };
+
+export function getFinishDynamicValueOptions<O extends FinishDynamicValueOptions>(options: O) {
+  const { preserveString, preserveFunction, fnOptions } = options;
+  return {
+    preserveString,
+    preserveFunction,
+    fnOptions,
+    ...getReplacePlaceholdersOptions(options),
+  };
+}
 
 /**
  * targetが文字列の場合はプレイスホルダーにvaluesの値を埋め込んだ文字列を返し、

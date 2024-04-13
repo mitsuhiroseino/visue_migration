@@ -1,9 +1,10 @@
+import { IterationParams } from '../types';
 import applyIf from '../utils/applyIf';
 import isMatch from '../utils/isMatch';
 import propagateError from '../utils/propagateError';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import setSystemParams from './helpers/setSystemParams';
-import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 type FileFn = (
   inputPath: string,

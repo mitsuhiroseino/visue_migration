@@ -73,6 +73,7 @@ export const CONVERSION_CONFIGS = [
 
 /**
  * 親から引き継ぐ設定
+ * TODO: 見直し
  */
 export const INHERITED_CONFIGS = {
   iteration: true,
@@ -95,6 +96,8 @@ export const INHERITED_CONFIGS = {
   onTargetEnd: true,
   onIterationStart: true,
   onIterationEnd: true,
+  onFileStart: true,
+  onFileEnd: true,
 };
 
 /**

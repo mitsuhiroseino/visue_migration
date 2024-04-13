@@ -1,12 +1,13 @@
 import Encoding from 'encoding-japanese';
 import fs from 'fs-extra';
-import { CONTENT_TYPE } from '../operate';
+import { CONTENT_TYPE } from '../constants';
+import { IterationParams } from '../types';
 import writeAnyFile from '../utils/writeAnyFile';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import setSystemParams from './helpers/setSystemParams';
 import manageFile from './manageFile';
 import operateContent from './operateContent';
-import { IterationParams, MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationItemStatus, MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * ファイルを移行する

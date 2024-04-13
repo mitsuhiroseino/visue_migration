@@ -1,9 +1,10 @@
+import { CONTENT_TYPE } from '../../constants';
 import asArray from '../../utils/asArray';
 import finishDynamicValue from '../../utils/finishDynamicValue';
 import replace, { StaticPattern } from '../../utils/replace';
 import replaceWithConfigs from '../../utils/replaceWithConfigs';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { ReplaceConfig } from './types';
 

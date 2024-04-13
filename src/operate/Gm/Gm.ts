@@ -1,8 +1,9 @@
 import gm from 'gm';
+import { CONTENT_TYPE } from '../../constants';
 import asArray from '../../utils/asArray';
 import throwError from '../../utils/throwError';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import GmManipulationFactory from './GmManipulationFactory';
 import { GmConfig } from './types';

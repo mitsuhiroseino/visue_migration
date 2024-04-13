@@ -1,7 +1,8 @@
+import { IterationParams } from '../types';
 import { MIGRATION_ITEM_STATUS } from './constants';
 import copyFile from './copyFile';
 import manageDir from './manageDir';
-import { IterationParams, MigrationIterationResult, MigrationJobConfig } from './types';
+import { MigrationIterationResult, MigrationJobConfig } from './types';
 
 /**
  * 対象の移行を行う

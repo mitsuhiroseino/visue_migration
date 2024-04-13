@@ -4,7 +4,7 @@ import { Content } from '../../types';
 import finishDynamicValue from '../../utils/finishDynamicValue';
 import OperationFactory from '../OperationFactory';
 import { OPERATION_TYPE } from '../constants';
-import { Operation, OperationParams, ParentOperation } from '../types';
+import { Operation, OperationParams } from '../types';
 import { OutputConfig } from './types';
 
 /**
@@ -26,13 +26,12 @@ const Output: Operation<Content, OutputConfig> = async (
     preserveParamName,
     binary,
     encoding = 'utf8',
-    replacementBracket,
+    ...rest
   } = config;
 
-  const replacementOptions = { replacementBracket };
   // 出力パス
   const outputFilePath: string = finishDynamicValue(outputPath, params, {
-    ...replacementOptions,
+    ...rest,
     preserveString: preserveOutputPath,
   });
   // フォルダを作成
@@ -41,7 +40,7 @@ const Output: Operation<Content, OutputConfig> = async (
 
   // パラメーター名
   const prmsName: string = finishDynamicValue(paramName, params, {
-    ...replacementOptions,
+    ...rest,
     preserveString: preserveParamName,
   });
 

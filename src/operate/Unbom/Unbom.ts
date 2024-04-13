@@ -1,6 +1,7 @@
+import { CONTENT_TYPE } from '../../constants';
 import replace from '../../utils/replace';
 import OperationFactory from '../OperationFactory';
-import { CONTENT_TYPE, OPERATION_TYPE } from '../constants';
+import { OPERATION_TYPE } from '../constants';
 import { Operation, OperationParams } from '../types';
 import { UnbomConfig } from './types';
 

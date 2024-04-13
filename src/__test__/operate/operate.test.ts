@@ -1,4 +1,5 @@
-import operate, { CONTENT_TYPE, OPERATION_TYPE, OperationParams } from 'src/operate';
+import { CONTENT_TYPE } from 'src/constants';
+import operate, { OPERATION_TYPE, OperationParams } from 'src/operate';
 
 describe('operate', () => {
   test('_contentType=text', async () => {
